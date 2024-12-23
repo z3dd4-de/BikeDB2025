@@ -94,6 +94,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.errorToolStripStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 540);
@@ -545,6 +546,7 @@
             // 
             this.deathDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.deathDateTimePicker.Checked = false;
             this.deathDateTimePicker.Enabled = false;
             this.deathDateTimePicker.Location = new System.Drawing.Point(123, 173);
             this.deathDateTimePicker.Name = "deathDateTimePicker";

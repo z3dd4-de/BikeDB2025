@@ -327,6 +327,18 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage35 = new System.Windows.Forms.TabPage();
+            this.dataGridView12 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iPv4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iPv6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lANDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.restrictUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allowedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastChangedDataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.logDataGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -353,17 +365,14 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.googleTextBox = new System.Windows.Forms.TextBox();
+            this.setGoogleButton = new System.Windows.Forms.Button();
+            this.googleInstallCheckBox = new System.Windows.Forms.CheckBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.imageEditorTextBox = new System.Windows.Forms.TextBox();
+            this.setImageEditorButton = new System.Windows.Forms.Button();
+            this.flightDbCheckBox = new System.Windows.Forms.CheckBox();
             this.adminMenuStrip = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -397,19 +406,14 @@
             this.costCategoriesTableAdapter = new BikeDB2024.DataSetTableAdapters.CostCategoriesTableAdapter();
             this.notesTableAdapter = new BikeDB2024.DataSetTableAdapters.NotesTableAdapter();
             this.goalsTableAdapter = new BikeDB2024.DataSetTableAdapters.GoalsTableAdapter();
-            this.dataGridView12 = new System.Windows.Forms.DataGridView();
-            this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clientsTableAdapter = new BikeDB2024.DataSetTableAdapters.ClientsTableAdapter();
-            this.idDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iPv4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iPv6DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lANDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.restrictUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.allowedUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastChangedDataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.globalSettingsCheckBox = new System.Windows.Forms.CheckBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.openGoogleFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.openImageEditorFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
+            this.imageEditorMenuTextBox = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.adminStatusStrip.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -496,6 +500,8 @@
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tabPage35.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logBindingSource)).BeginInit();
@@ -511,8 +517,7 @@
             this.adminToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
+            this.flowLayoutPanel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // adminStatusStrip
@@ -2276,7 +2281,7 @@
             this.flowLayoutPanel6.Controls.Add(this.useMailCheckBox);
             this.flowLayoutPanel6.Location = new System.Drawing.Point(103, 108);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(200, 29);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(200, 28);
             this.flowLayoutPanel6.TabIndex = 8;
             // 
             // useMailCheckBox
@@ -3163,6 +3168,93 @@
             this.tabPage35.Text = "Clients";
             this.tabPage35.UseVisualStyleBackColor = true;
             // 
+            // dataGridView12
+            // 
+            this.dataGridView12.AutoGenerateColumns = false;
+            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView12.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn13,
+            this.clientNameDataGridViewTextBoxColumn,
+            this.iPv4DataGridViewTextBoxColumn,
+            this.iPv6DataGridViewTextBoxColumn,
+            this.lANDataGridViewTextBoxColumn,
+            this.restrictUserDataGridViewTextBoxColumn,
+            this.allowedUserDataGridViewTextBoxColumn,
+            this.userDataGridViewTextBoxColumn13,
+            this.createdDataGridViewTextBoxColumn13,
+            this.lastChangedDataGridViewTextBoxColumn12});
+            this.dataGridView12.DataSource = this.clientsBindingSource;
+            this.dataGridView12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView12.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView12.Name = "dataGridView12";
+            this.dataGridView12.Size = new System.Drawing.Size(884, 418);
+            this.dataGridView12.TabIndex = 0;
+            // 
+            // idDataGridViewTextBoxColumn13
+            // 
+            this.idDataGridViewTextBoxColumn13.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn13.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn13.Name = "idDataGridViewTextBoxColumn13";
+            // 
+            // clientNameDataGridViewTextBoxColumn
+            // 
+            this.clientNameDataGridViewTextBoxColumn.DataPropertyName = "ClientName";
+            this.clientNameDataGridViewTextBoxColumn.HeaderText = "ClientName";
+            this.clientNameDataGridViewTextBoxColumn.Name = "clientNameDataGridViewTextBoxColumn";
+            // 
+            // iPv4DataGridViewTextBoxColumn
+            // 
+            this.iPv4DataGridViewTextBoxColumn.DataPropertyName = "IPv4";
+            this.iPv4DataGridViewTextBoxColumn.HeaderText = "IPv4";
+            this.iPv4DataGridViewTextBoxColumn.Name = "iPv4DataGridViewTextBoxColumn";
+            // 
+            // iPv6DataGridViewTextBoxColumn
+            // 
+            this.iPv6DataGridViewTextBoxColumn.DataPropertyName = "IPv6";
+            this.iPv6DataGridViewTextBoxColumn.HeaderText = "IPv6";
+            this.iPv6DataGridViewTextBoxColumn.Name = "iPv6DataGridViewTextBoxColumn";
+            // 
+            // lANDataGridViewTextBoxColumn
+            // 
+            this.lANDataGridViewTextBoxColumn.DataPropertyName = "LAN";
+            this.lANDataGridViewTextBoxColumn.HeaderText = "LAN";
+            this.lANDataGridViewTextBoxColumn.Name = "lANDataGridViewTextBoxColumn";
+            // 
+            // restrictUserDataGridViewTextBoxColumn
+            // 
+            this.restrictUserDataGridViewTextBoxColumn.DataPropertyName = "RestrictUser";
+            this.restrictUserDataGridViewTextBoxColumn.HeaderText = "RestrictUser";
+            this.restrictUserDataGridViewTextBoxColumn.Name = "restrictUserDataGridViewTextBoxColumn";
+            // 
+            // allowedUserDataGridViewTextBoxColumn
+            // 
+            this.allowedUserDataGridViewTextBoxColumn.DataPropertyName = "AllowedUser";
+            this.allowedUserDataGridViewTextBoxColumn.HeaderText = "AllowedUser";
+            this.allowedUserDataGridViewTextBoxColumn.Name = "allowedUserDataGridViewTextBoxColumn";
+            // 
+            // userDataGridViewTextBoxColumn13
+            // 
+            this.userDataGridViewTextBoxColumn13.DataPropertyName = "User";
+            this.userDataGridViewTextBoxColumn13.HeaderText = "User";
+            this.userDataGridViewTextBoxColumn13.Name = "userDataGridViewTextBoxColumn13";
+            // 
+            // createdDataGridViewTextBoxColumn13
+            // 
+            this.createdDataGridViewTextBoxColumn13.DataPropertyName = "Created";
+            this.createdDataGridViewTextBoxColumn13.HeaderText = "Created";
+            this.createdDataGridViewTextBoxColumn13.Name = "createdDataGridViewTextBoxColumn13";
+            // 
+            // lastChangedDataGridViewTextBoxColumn12
+            // 
+            this.lastChangedDataGridViewTextBoxColumn12.DataPropertyName = "LastChanged";
+            this.lastChangedDataGridViewTextBoxColumn12.HeaderText = "LastChanged";
+            this.lastChangedDataGridViewTextBoxColumn12.Name = "lastChangedDataGridViewTextBoxColumn12";
+            // 
+            // clientsBindingSource
+            // 
+            this.clientsBindingSource.DataMember = "Clients";
+            this.clientsBindingSource.DataSource = this.dataSet;
+            // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.logDataGridView);
@@ -3372,13 +3464,13 @@
             this.tableLayoutPanel11.Controls.Add(this.label23, 0, 4);
             this.tableLayoutPanel11.Controls.Add(this.label22, 0, 1);
             this.tableLayoutPanel11.Controls.Add(this.flowLayoutPanel8, 1, 0);
-            this.tableLayoutPanel11.Controls.Add(this.checkBox4, 1, 1);
-            this.tableLayoutPanel11.Controls.Add(this.label24, 0, 5);
+            this.tableLayoutPanel11.Controls.Add(this.googleInstallCheckBox, 1, 1);
             this.tableLayoutPanel11.Controls.Add(this.richTextBox1, 1, 6);
             this.tableLayoutPanel11.Controls.Add(this.flowLayoutPanel9, 1, 2);
-            this.tableLayoutPanel11.Controls.Add(this.textBox5, 1, 3);
-            this.tableLayoutPanel11.Controls.Add(this.checkBox5, 1, 4);
-            this.tableLayoutPanel11.Controls.Add(this.checkBox6, 1, 5);
+            this.tableLayoutPanel11.Controls.Add(this.flightDbCheckBox, 1, 4);
+            this.tableLayoutPanel11.Controls.Add(this.globalSettingsCheckBox, 1, 5);
+            this.tableLayoutPanel11.Controls.Add(this.label24, 0, 5);
+            this.tableLayoutPanel11.Controls.Add(this.flowLayoutPanel10, 1, 3);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(253, 3);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
@@ -3395,8 +3487,9 @@
             // 
             // label19
             // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(3, 0);
+            this.label19.Location = new System.Drawing.Point(3, 8);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(66, 13);
             this.label19.TabIndex = 0;
@@ -3404,8 +3497,9 @@
             // 
             // label21
             // 
+            this.label21.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(3, 85);
+            this.label21.Location = new System.Drawing.Point(3, 91);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(75, 13);
             this.label21.TabIndex = 2;
@@ -3413,8 +3507,9 @@
             // 
             // label20
             // 
+            this.label20.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(3, 55);
+            this.label20.Location = new System.Drawing.Point(3, 63);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(80, 13);
             this.label20.TabIndex = 1;
@@ -3422,8 +3517,9 @@
             // 
             // label23
             // 
+            this.label23.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(3, 110);
+            this.label23.Location = new System.Drawing.Point(3, 116);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(47, 13);
             this.label23.TabIndex = 4;
@@ -3431,8 +3527,9 @@
             // 
             // label22
             // 
+            this.label22.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(3, 30);
+            this.label22.Location = new System.Drawing.Point(3, 36);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(63, 13);
             this.label22.TabIndex = 3;
@@ -3440,48 +3537,45 @@
             // 
             // flowLayoutPanel8
             // 
-            this.flowLayoutPanel8.Controls.Add(this.textBox6);
-            this.flowLayoutPanel8.Controls.Add(this.button1);
+            this.flowLayoutPanel8.Controls.Add(this.googleTextBox);
+            this.flowLayoutPanel8.Controls.Add(this.setGoogleButton);
             this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel8.Location = new System.Drawing.Point(103, 3);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
             this.flowLayoutPanel8.Size = new System.Drawing.Size(522, 24);
             this.flowLayoutPanel8.TabIndex = 5;
             // 
-            // textBox6
+            // googleTextBox
             // 
-            this.textBox6.Location = new System.Drawing.Point(3, 3);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(367, 20);
-            this.textBox6.TabIndex = 0;
+            this.googleTextBox.Enabled = false;
+            this.googleTextBox.Location = new System.Drawing.Point(3, 3);
+            this.googleTextBox.Name = "googleTextBox";
+            this.googleTextBox.Size = new System.Drawing.Size(367, 20);
+            this.googleTextBox.TabIndex = 0;
             // 
-            // button1
+            // setGoogleButton
             // 
-            this.button1.Location = new System.Drawing.Point(376, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Öffnen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.setGoogleButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.setGoogleButton.Enabled = false;
+            this.setGoogleButton.Location = new System.Drawing.Point(376, 3);
+            this.setGoogleButton.Name = "setGoogleButton";
+            this.setGoogleButton.Size = new System.Drawing.Size(75, 23);
+            this.setGoogleButton.TabIndex = 1;
+            this.setGoogleButton.Text = "Öffnen";
+            this.setGoogleButton.UseVisualStyleBackColor = true;
+            this.setGoogleButton.Click += new System.EventHandler(this.setGoogleButton_Click);
             // 
-            // checkBox4
+            // googleInstallCheckBox
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(103, 33);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(37, 17);
-            this.checkBox4.TabIndex = 6;
-            this.checkBox4.Text = "Ja";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(3, 135);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(75, 13);
-            this.label24.TabIndex = 7;
-            this.label24.Text = "Wanderungen";
+            this.googleInstallCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.googleInstallCheckBox.AutoSize = true;
+            this.googleInstallCheckBox.Location = new System.Drawing.Point(103, 34);
+            this.googleInstallCheckBox.Name = "googleInstallCheckBox";
+            this.googleInstallCheckBox.Size = new System.Drawing.Size(37, 17);
+            this.googleInstallCheckBox.TabIndex = 6;
+            this.googleInstallCheckBox.Text = "Ja";
+            this.googleInstallCheckBox.UseVisualStyleBackColor = true;
+            this.googleInstallCheckBox.CheckedChanged += new System.EventHandler(this.googleInstallCheckBox_CheckedChanged);
             // 
             // richTextBox1
             // 
@@ -3497,57 +3591,44 @@
             // 
             // flowLayoutPanel9
             // 
-            this.flowLayoutPanel9.Controls.Add(this.textBox7);
-            this.flowLayoutPanel9.Controls.Add(this.button3);
+            this.flowLayoutPanel9.Controls.Add(this.imageEditorTextBox);
+            this.flowLayoutPanel9.Controls.Add(this.setImageEditorButton);
             this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel9.Location = new System.Drawing.Point(103, 58);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
             this.flowLayoutPanel9.Size = new System.Drawing.Size(522, 24);
             this.flowLayoutPanel9.TabIndex = 9;
             // 
-            // textBox7
+            // imageEditorTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(3, 3);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(367, 20);
-            this.textBox7.TabIndex = 0;
+            this.imageEditorTextBox.Location = new System.Drawing.Point(3, 3);
+            this.imageEditorTextBox.Name = "imageEditorTextBox";
+            this.imageEditorTextBox.Size = new System.Drawing.Size(367, 20);
+            this.imageEditorTextBox.TabIndex = 0;
             // 
-            // button3
+            // setImageEditorButton
             // 
-            this.button3.Location = new System.Drawing.Point(376, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Öffnen";
-            this.button3.UseVisualStyleBackColor = true;
+            this.setImageEditorButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.setImageEditorButton.Location = new System.Drawing.Point(376, 3);
+            this.setImageEditorButton.Name = "setImageEditorButton";
+            this.setImageEditorButton.Size = new System.Drawing.Size(75, 23);
+            this.setImageEditorButton.TabIndex = 1;
+            this.setImageEditorButton.Text = "Öffnen";
+            this.setImageEditorButton.UseVisualStyleBackColor = true;
+            this.setImageEditorButton.Click += new System.EventHandler(this.setImageEditorButton_Click);
             // 
-            // textBox5
+            // flightDbCheckBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(103, 88);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(200, 20);
-            this.textBox5.TabIndex = 10;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Enabled = false;
-            this.checkBox5.Location = new System.Drawing.Point(103, 113);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(37, 17);
-            this.checkBox5.TabIndex = 11;
-            this.checkBox5.Text = "Ja";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(103, 138);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(37, 17);
-            this.checkBox6.TabIndex = 12;
-            this.checkBox6.Text = "Ja";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.flightDbCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.flightDbCheckBox.AutoSize = true;
+            this.flightDbCheckBox.Enabled = false;
+            this.flightDbCheckBox.Location = new System.Drawing.Point(103, 114);
+            this.flightDbCheckBox.Name = "flightDbCheckBox";
+            this.flightDbCheckBox.Size = new System.Drawing.Size(37, 17);
+            this.flightDbCheckBox.TabIndex = 11;
+            this.flightDbCheckBox.Text = "Ja";
+            this.flightDbCheckBox.UseVisualStyleBackColor = true;
+            this.flightDbCheckBox.CheckedChanged += new System.EventHandler(this.flightDbCheckBox_CheckedChanged);
             // 
             // adminMenuStrip
             // 
@@ -3779,96 +3860,66 @@
             // 
             this.goalsTableAdapter.ClearBeforeFill = true;
             // 
-            // dataGridView12
-            // 
-            this.dataGridView12.AutoGenerateColumns = false;
-            this.dataGridView12.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView12.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn13,
-            this.clientNameDataGridViewTextBoxColumn,
-            this.iPv4DataGridViewTextBoxColumn,
-            this.iPv6DataGridViewTextBoxColumn,
-            this.lANDataGridViewTextBoxColumn,
-            this.restrictUserDataGridViewTextBoxColumn,
-            this.allowedUserDataGridViewTextBoxColumn,
-            this.userDataGridViewTextBoxColumn13,
-            this.createdDataGridViewTextBoxColumn13,
-            this.lastChangedDataGridViewTextBoxColumn12});
-            this.dataGridView12.DataSource = this.clientsBindingSource;
-            this.dataGridView12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView12.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView12.Name = "dataGridView12";
-            this.dataGridView12.Size = new System.Drawing.Size(884, 418);
-            this.dataGridView12.TabIndex = 0;
-            // 
-            // clientsBindingSource
-            // 
-            this.clientsBindingSource.DataMember = "Clients";
-            this.clientsBindingSource.DataSource = this.dataSet;
-            // 
             // clientsTableAdapter
             // 
             this.clientsTableAdapter.ClearBeforeFill = true;
             // 
-            // idDataGridViewTextBoxColumn13
+            // globalSettingsCheckBox
             // 
-            this.idDataGridViewTextBoxColumn13.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn13.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn13.Name = "idDataGridViewTextBoxColumn13";
+            this.globalSettingsCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.globalSettingsCheckBox.AutoSize = true;
+            this.globalSettingsCheckBox.Location = new System.Drawing.Point(103, 139);
+            this.globalSettingsCheckBox.Name = "globalSettingsCheckBox";
+            this.globalSettingsCheckBox.Size = new System.Drawing.Size(128, 17);
+            this.globalSettingsCheckBox.TabIndex = 12;
+            this.globalSettingsCheckBox.Text = "Globale Einstellungen";
+            this.globalSettingsCheckBox.UseVisualStyleBackColor = true;
+            this.globalSettingsCheckBox.CheckedChanged += new System.EventHandler(this.globalSettingsCheckBox_CheckedChanged);
             // 
-            // clientNameDataGridViewTextBoxColumn
+            // label24
             // 
-            this.clientNameDataGridViewTextBoxColumn.DataPropertyName = "ClientName";
-            this.clientNameDataGridViewTextBoxColumn.HeaderText = "ClientName";
-            this.clientNameDataGridViewTextBoxColumn.Name = "clientNameDataGridViewTextBoxColumn";
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(3, 141);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(67, 13);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Verwenden?";
             // 
-            // iPv4DataGridViewTextBoxColumn
+            // openGoogleFileDialog
             // 
-            this.iPv4DataGridViewTextBoxColumn.DataPropertyName = "IPv4";
-            this.iPv4DataGridViewTextBoxColumn.HeaderText = "IPv4";
-            this.iPv4DataGridViewTextBoxColumn.Name = "iPv4DataGridViewTextBoxColumn";
+            this.openGoogleFileDialog.Filter = "Anwendung|*.exe|Alle Dateien|*.*";
+            this.openGoogleFileDialog.Title = "Pfad für Google Earth auswählen";
             // 
-            // iPv6DataGridViewTextBoxColumn
+            // openImageEditorFileDialog
             // 
-            this.iPv6DataGridViewTextBoxColumn.DataPropertyName = "IPv6";
-            this.iPv6DataGridViewTextBoxColumn.HeaderText = "IPv6";
-            this.iPv6DataGridViewTextBoxColumn.Name = "iPv6DataGridViewTextBoxColumn";
+            this.openImageEditorFileDialog.Filter = "Anwendung|*.exe|Alle Dateien|*.*";
+            this.openImageEditorFileDialog.Title = "Bildbearbeitung auswählen";
             // 
-            // lANDataGridViewTextBoxColumn
+            // flowLayoutPanel10
             // 
-            this.lANDataGridViewTextBoxColumn.DataPropertyName = "LAN";
-            this.lANDataGridViewTextBoxColumn.HeaderText = "LAN";
-            this.lANDataGridViewTextBoxColumn.Name = "lANDataGridViewTextBoxColumn";
+            this.flowLayoutPanel10.Controls.Add(this.imageEditorMenuTextBox);
+            this.flowLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(103, 88);
+            this.flowLayoutPanel10.Name = "flowLayoutPanel10";
+            this.flowLayoutPanel10.Size = new System.Drawing.Size(522, 19);
+            this.flowLayoutPanel10.TabIndex = 14;
             // 
-            // restrictUserDataGridViewTextBoxColumn
+            // imageEditorMenuTextBox
             // 
-            this.restrictUserDataGridViewTextBoxColumn.DataPropertyName = "RestrictUser";
-            this.restrictUserDataGridViewTextBoxColumn.HeaderText = "RestrictUser";
-            this.restrictUserDataGridViewTextBoxColumn.Name = "restrictUserDataGridViewTextBoxColumn";
+            this.imageEditorMenuTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.imageEditorMenuTextBox.Enabled = false;
+            this.imageEditorMenuTextBox.Location = new System.Drawing.Point(3, 3);
+            this.imageEditorMenuTextBox.Name = "imageEditorMenuTextBox";
+            this.imageEditorMenuTextBox.Size = new System.Drawing.Size(200, 20);
+            this.imageEditorMenuTextBox.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.imageEditorMenuTextBox, "Ein Menüeintrag sollte vergeben werden, wenn ein Bildeditor ausgewählt wurde. \"&\"" +
+        " verwenden, um Keybord-Shortcut zu definieren.");
             // 
-            // allowedUserDataGridViewTextBoxColumn
+            // toolTip1
             // 
-            this.allowedUserDataGridViewTextBoxColumn.DataPropertyName = "AllowedUser";
-            this.allowedUserDataGridViewTextBoxColumn.HeaderText = "AllowedUser";
-            this.allowedUserDataGridViewTextBoxColumn.Name = "allowedUserDataGridViewTextBoxColumn";
-            // 
-            // userDataGridViewTextBoxColumn13
-            // 
-            this.userDataGridViewTextBoxColumn13.DataPropertyName = "User";
-            this.userDataGridViewTextBoxColumn13.HeaderText = "User";
-            this.userDataGridViewTextBoxColumn13.Name = "userDataGridViewTextBoxColumn13";
-            // 
-            // createdDataGridViewTextBoxColumn13
-            // 
-            this.createdDataGridViewTextBoxColumn13.DataPropertyName = "Created";
-            this.createdDataGridViewTextBoxColumn13.HeaderText = "Created";
-            this.createdDataGridViewTextBoxColumn13.Name = "createdDataGridViewTextBoxColumn13";
-            // 
-            // lastChangedDataGridViewTextBoxColumn12
-            // 
-            this.lastChangedDataGridViewTextBoxColumn12.DataPropertyName = "LastChanged";
-            this.lastChangedDataGridViewTextBoxColumn12.HeaderText = "LastChanged";
-            this.lastChangedDataGridViewTextBoxColumn12.Name = "lastChangedDataGridViewTextBoxColumn12";
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Bildbearbeitung Menüeintrag";
             // 
             // AdminForm
             // 
@@ -3987,6 +4038,8 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tabPage35.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).EndInit();
             this.tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.logDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logBindingSource)).EndInit();
@@ -4008,8 +4061,8 @@
             this.adminToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).EndInit();
+            this.flowLayoutPanel10.ResumeLayout(false);
+            this.flowLayoutPanel10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4204,17 +4257,14 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.CheckBox googleInstallCheckBox;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox googleTextBox;
+        private System.Windows.Forms.Button setGoogleButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.TextBox imageEditorTextBox;
+        private System.Windows.Forms.Button setImageEditorButton;
+        private System.Windows.Forms.CheckBox flightDbCheckBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
@@ -4397,5 +4447,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn userDataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn createdDataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastChangedDataGridViewTextBoxColumn12;
+        private System.Windows.Forms.CheckBox globalSettingsCheckBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.OpenFileDialog openGoogleFileDialog;
+        private System.Windows.Forms.OpenFileDialog openImageEditorFileDialog;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
+        private System.Windows.Forms.TextBox imageEditorMenuTextBox;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

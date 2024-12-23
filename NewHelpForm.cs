@@ -141,6 +141,9 @@ namespace BikeDB2024
                 case "Passwort ändern":
                     this.helpBrowser.Url = new Uri(String.Format("file:///{0}/HelpPages/Multiuser.html", curDir));
                     break;
+                case "Kosten":
+                    this.helpBrowser.Url = new Uri(String.Format("file:///{0}/HelpPages/Kosten.html", curDir));
+                    break;
                 default:
                     break;
             }

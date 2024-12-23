@@ -52,7 +52,8 @@
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Personen");
             System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Ziele");
             System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Notizen");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Daten eingeben", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Kosten");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Daten eingeben", new System.Windows.Forms.TreeNode[] {
             treeNode11,
             treeNode12,
             treeNode13,
@@ -60,34 +61,35 @@
             treeNode15,
             treeNode16,
             treeNode17,
-            treeNode18});
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Streckentypen");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Geburtstage");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Touren");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Ziele");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Kalender", new System.Windows.Forms.TreeNode[] {
-            treeNode21,
+            treeNode18,
+            treeNode19});
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Streckentypen");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Geburtstage");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Touren");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Ziele");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Kalender", new System.Windows.Forms.TreeNode[] {
             treeNode22,
-            treeNode23});
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Drucken");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Statistiken", new System.Windows.Forms.TreeNode[] {
-            treeNode25});
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Export");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Import");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Bildbetrachter");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Bildbearbeitung");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Entfaltung");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Google Earth");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Einstellungen");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Speicherorte");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Hilfsmittel", new System.Windows.Forms.TreeNode[] {
-            treeNode29,
+            treeNode23,
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Drucken");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Statistiken", new System.Windows.Forms.TreeNode[] {
+            treeNode26});
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Export");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Import");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Bildbetrachter");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Bildbearbeitung");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Entfaltung");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Google Earth");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Einstellungen");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Speicherorte");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Hilfsmittel", new System.Windows.Forms.TreeNode[] {
             treeNode30,
             treeNode31,
             treeNode32,
             treeNode33,
-            treeNode34});
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Versionsgeschichte");
+            treeNode34,
+            treeNode35});
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Versionsgeschichte");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewHelpForm));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.helpSplitContainer = new System.Windows.Forms.SplitContainer();
@@ -181,55 +183,57 @@
             treeNode17.Text = "Ziele";
             treeNode18.Name = "Knoten9";
             treeNode18.Text = "Notizen";
-            treeNode19.Name = "Knoten1";
-            treeNode19.Text = "Daten eingeben";
-            treeNode20.Name = "Knoten7";
-            treeNode20.Text = "Streckentypen";
-            treeNode21.Name = "Knoten10";
-            treeNode21.Text = "Geburtstage";
-            treeNode22.Name = "Knoten11";
-            treeNode22.Text = "Touren";
-            treeNode23.Name = "Knoten12";
-            treeNode23.Text = "Ziele";
-            treeNode24.Name = "Knoten6";
-            treeNode24.Text = "Kalender";
-            treeNode25.Name = "Knoten13";
-            treeNode25.Text = "Drucken";
-            treeNode26.Name = "Knoten8";
-            treeNode26.Text = "Statistiken";
-            treeNode27.Name = "Knoten0";
-            treeNode27.Text = "Export";
-            treeNode28.Name = "Knoten1";
-            treeNode28.Text = "Import";
-            treeNode29.Name = "Knoten10";
-            treeNode29.Text = "Bildbetrachter";
-            treeNode30.Name = "Knoten2";
-            treeNode30.Text = "Bildbearbeitung";
-            treeNode31.Name = "Knoten11";
-            treeNode31.Text = "Entfaltung";
-            treeNode32.Name = "Knoten12";
-            treeNode32.Text = "Google Earth";
-            treeNode33.Name = "Knoten13";
-            treeNode33.Text = "Einstellungen";
-            treeNode34.Name = "Knoten14";
-            treeNode34.Text = "Speicherorte";
-            treeNode35.Name = "Knoten9";
-            treeNode35.Text = "Hilfsmittel";
-            treeNode36.Name = "Knoten1";
-            treeNode36.Text = "Versionsgeschichte";
+            treeNode19.Name = "Knoten0";
+            treeNode19.Text = "Kosten";
+            treeNode20.Name = "Knoten1";
+            treeNode20.Text = "Daten eingeben";
+            treeNode21.Name = "Knoten7";
+            treeNode21.Text = "Streckentypen";
+            treeNode22.Name = "Knoten10";
+            treeNode22.Text = "Geburtstage";
+            treeNode23.Name = "Knoten11";
+            treeNode23.Text = "Touren";
+            treeNode24.Name = "Knoten12";
+            treeNode24.Text = "Ziele";
+            treeNode25.Name = "Knoten6";
+            treeNode25.Text = "Kalender";
+            treeNode26.Name = "Knoten13";
+            treeNode26.Text = "Drucken";
+            treeNode27.Name = "Knoten8";
+            treeNode27.Text = "Statistiken";
+            treeNode28.Name = "Knoten0";
+            treeNode28.Text = "Export";
+            treeNode29.Name = "Knoten1";
+            treeNode29.Text = "Import";
+            treeNode30.Name = "Knoten10";
+            treeNode30.Text = "Bildbetrachter";
+            treeNode31.Name = "Knoten2";
+            treeNode31.Text = "Bildbearbeitung";
+            treeNode32.Name = "Knoten11";
+            treeNode32.Text = "Entfaltung";
+            treeNode33.Name = "Knoten12";
+            treeNode33.Text = "Google Earth";
+            treeNode34.Name = "Knoten13";
+            treeNode34.Text = "Einstellungen";
+            treeNode35.Name = "Knoten14";
+            treeNode35.Text = "Speicherorte";
+            treeNode36.Name = "Knoten9";
+            treeNode36.Text = "Hilfsmittel";
+            treeNode37.Name = "Knoten1";
+            treeNode37.Text = "Versionsgeschichte";
             this.helpTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode2,
             treeNode8,
             treeNode9,
             treeNode10,
-            treeNode19,
             treeNode20,
-            treeNode24,
-            treeNode26,
+            treeNode21,
+            treeNode25,
             treeNode27,
             treeNode28,
-            treeNode35,
-            treeNode36});
+            treeNode29,
+            treeNode36,
+            treeNode37});
             this.helpTreeView.Size = new System.Drawing.Size(164, 411);
             this.helpTreeView.TabIndex = 2;
             this.helpTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.helpTreeView_AfterSelect);

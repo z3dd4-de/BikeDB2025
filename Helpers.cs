@@ -485,39 +485,318 @@ namespace BikeDB2024
         }
         #endregion
 
-        #region Save/Load Settings
+        #region Save/Load Settings: every user can have own settings.
+        /// <summary>
+        /// Return location from a string (database table "Settings", location fields).
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         public static Point GetPointFromString(string setting)
         {
-            Point point = new Point();
+            Point point = new Point(50, 50);    // default
             string temp = GetDatabaseEntry("Settings", setting, true);
-            //TODO fertig machen
+            string[] t = temp.Split(';');
+            try
+            {
+                if (t.Length == 2)
+                {
+                    point.X = Convert.ToInt32(t[0].Trim());
+                    point.Y = Convert.ToInt32(t[1].Trim());
+                }
+            }
+            catch (Exception)
+            {
+            }
             return point;
         }
 
+        /// <summary>
+        /// Return size from a string (database table "Settings", size fields).
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         public static Size GetSizeFromString(string setting)
         {
-            Size size = new Size();
+            Size size = new Size(800, 600);     // default
             string temp = GetDatabaseEntry("Settings", setting, true);
-            //TODO fertig machen
+            string[] t = temp.Split(';');
+            try
+            {
+                if (t.Length == 2)
+                {
+                    size.Width = Convert.ToInt32(t[0].Trim());
+                    size.Height = Convert.ToInt32(t[1].Trim());
+                }
+            }
+            catch (Exception)
+            {
+            }
             return size;
         }
 
+        /// <summary>
+        /// Return bool from a tinyint value (database table "Settings", tinyint fields).
+        /// </summary>
+        /// <param name="setting"></param>
+        /// <returns></returns>
         public static bool GetBoolFromTinyInt(string setting)
         {
-            //TODO fertig machen
-            return true;
+            bool ret = false;     // default
+            string temp = GetDatabaseEntry("Settings", setting, true);
+            try
+            {
+                if (Convert.ToByte(temp) == 1) { ret = true; }
+            }
+            catch (Exception)
+            {
+            }
+            return ret;
         }
 
+        /// <summary>
+        /// Get tinyint from a bool to store value into the database.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static Byte GetTinyIntFromBool(bool value)
+        {
+            if (value) return (Byte)1;
+            else return (Byte)0;
+        }
+
+        /// <summary>
+        /// Some settings should not be null for new users, so they are initialized here.
+        /// </summary>
+        public static void InitSettings()
+        {
+            int user_id = Properties.Settings.Default.CurrentUserID;
+            if (GetDatabaseEntry("Users", "Id", "Id = " + user_id.ToString()) == "-1")
+            {
+                // User's first login
+                Properties.Settings.Default.UseAltimeter = false;
+                Properties.Settings.Default.StdVehicle = "";
+                Properties.Settings.Default.StdContinent = "Europa";
+                Properties.Settings.Default.StdCountry = "Deutschland";
+                Properties.Settings.Default.StdBundesland = "";
+                Properties.Settings.Default.StdCity = "";
+                Properties.Settings.Default.StdRoute = "";
+                Properties.Settings.Default.WindowLocation = new Point(0,0);
+                Properties.Settings.Default.WindowSize = new Size(800, 500);
+                Properties.Settings.Default.ShowBirthdays = true;
+                Properties.Settings.Default.ShowFlightDB = false;
+                Properties.Settings.Default.ShowWelcomeForm = true;
+                Properties.Settings.Default.ShowHelp = true;
+                Properties.Settings.Default.ShowNotifyIcon = true;
+                Properties.Settings.Default.ShowToolbar = true;
+                Properties.Settings.Default.ImageFolder = "";
+                Properties.Settings.Default.HelpLocation = new Point(0, 0);
+                Properties.Settings.Default.HelpSize = new Size(500, 400);
+                Properties.Settings.Default.StatLocation = new Point(50, 50);
+                Properties.Settings.Default.StatSize = new Size(500, 400);
+                Properties.Settings.Default.ToolbarLocation = new Point(4, 0);
+                Properties.Settings.Default.ToolbarSize = new Size(423, 25);
+                Properties.Settings.Default.ImageViewerLocation = new Point(50, 50);
+                Properties.Settings.Default.ImageViewerSize = new Size(750, 600);
+                Properties.Settings.Default.EntfaltungLocation = new Point(0, 0);
+                Properties.Settings.Default.EntfaltungSize = new Size(500, 400);
+                Properties.Settings.Default.ImageEditorPath = "";
+                Properties.Settings.Default.ImageEditorName = "";
+                Properties.Settings.Default.AdminLocation = new Point(100, 100);
+                Properties.Settings.Default.AdminSize = new Size(800, 500);
+                Properties.Settings.Default.NotifyTime = 5000;
+                Properties.Settings.Default.FlightDBLocation = new Point(50, 50);
+                Properties.Settings.Default.FlightDBSize = new Size(800, 500);
+                Properties.Settings.Default.UseSigmaDockingStation = false;
+                if (Properties.Settings.Default.UseAdminSettings)
+                {
+                    LoadAdminSettings();
+                }
+                else
+                {
+                    Properties.Settings.Default.GoogleEarth = "";
+                }
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                LoadUserSettings();
+            }
+        }
+
+        /// <summary>
+        /// Save all runtime Properties.Settings to database when the application closes or the user loggs off.
+        /// </summary>
         public static void SaveUserSettings()
         {
             int user_id = Properties.Settings.Default.CurrentUserID;
+            SqlConnection myConnection;
+            try
+            {
+                using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                {
+                    myConnection.Open();
+                    using (SqlCommand myCommand = new SqlCommand())
+                    {
+                        string sqlquery = "INSERT INTO Settings" +
+                        " ([User], UseAltimeter, DefaultContinent, DefaultCountry, DefaultCity, DefaultRoute, DefaultVehicle, DefaultBundesland, " +
+                        "WindowLocation, WindowSize, GoogleEarthPath, ImageEditorPath, ImageEditorName, ImageFolderPath, GpxFolderPath, " +
+                        "ShowHelp, ShowToolbar, ShowWelcome, ShowNotification, ShowLastUser, ShowBirthdays, ShowNotifyIcon, ShowFlightDB, " +
+                        "KeepLoggedIn, UseDockingStation, AdminChanged, IsMultiUser, UserLoggedIn, AdminLoggedIn, AdminLocation, AdminSize, " +
+                        "FlightDBLocation, FlightDBSize, EntfaltungLocation, EntfaltungSize, ImageViewerLocation, ImageViewerSize, HelpLocation, " +
+                        "HelpSize, StatLocation, StatSize, ToolbarLocation, ToolbarSize, MinPasswordLength, NotifyTime, LastUser, CurrentUserId, " +
+                        "CurrentUserName, InstallationType) " +
+                        "VALUES (@user, @alti, @cont, @count, @city, @route, @veh, @bl, @winloc, @winsize, @gpath, @imgedpath, @imgedname, " +
+                        "@imgfolder, @gpxfolder, @shelp, @stoolbar, @snoti, @slast, @sbd, @snotif, @sflight, @keepli, @useds, @adchg, @ismulti, " +
+                        "@uli, @ali, @adloc, @adsize, @floc, @fsize, @entloc, @entsize, @imgvloc, @imgvsize, @helploc, @helpsize, @statloc, " +
+                        "@statsize, @toolloc, @toolsize, @minpwd, @notitime, @lastu, @curui, @curun, @inst)";
+                        myCommand.Parameters.Add("@user", SqlDbType.Int).Value = user_id;
+                        myCommand.Parameters.Add("@alti", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.UseAltimeter);
+                        myCommand.Parameters.Add("@cont", SqlDbType.NVarChar).Value = Properties.Settings.Default.StdContinent;
+                        myCommand.Parameters.Add("@count", SqlDbType.NVarChar).Value = Properties.Settings.Default.StdCountry;
+                        myCommand.Parameters.Add("@city", SqlDbType.NVarChar).Value = Properties.Settings.Default.StdCity;
+                        myCommand.Parameters.Add("@route", SqlDbType.NVarChar).Value = Properties.Settings.Default.StdRoute;
+                        myCommand.Parameters.Add("@veh", SqlDbType.NVarChar).Value = Properties.Settings.Default.StdVehicle;
+                        myCommand.Parameters.Add("@bl", SqlDbType.NVarChar).Value = Properties.Settings.Default.StdBundesland;
+                        myCommand.Parameters.Add("@winloc", SqlDbType.NVarChar).Value = Properties.Settings.Default.WindowLocation.ToString();
+                        myCommand.Parameters.Add("@winsize", SqlDbType.NVarChar).Value = Properties.Settings.Default.WindowSize.ToString();
+                        myCommand.Parameters.Add("@gpath", SqlDbType.NVarChar).Value = Properties.Settings.Default.GoogleEarth;
+                        myCommand.Parameters.Add("@imgedpath", SqlDbType.NVarChar).Value = Properties.Settings.Default.ImageEditorPath;
+                        myCommand.Parameters.Add("@imgedname", SqlDbType.NVarChar).Value = Properties.Settings.Default.ImageEditorName;
+                        myCommand.Parameters.Add("@imgfolder", SqlDbType.NVarChar).Value = Properties.Settings.Default.ImageFolder;
+                        myCommand.Parameters.Add("@gpxfolder", SqlDbType.NVarChar).Value = Properties.Settings.Default.GpxFolder;
+                        myCommand.Parameters.Add("@shelp", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowHelp);
+                        myCommand.Parameters.Add("@stoolbar", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowToolbar);
+                        myCommand.Parameters.Add("@snoti", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowNotifyIcon);
+                        myCommand.Parameters.Add("@slast", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowLastUser);
+                        myCommand.Parameters.Add("@sbd", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowBirthdays);
+                        myCommand.Parameters.Add("@snotif", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowNotifyIcon);
+                        myCommand.Parameters.Add("@sflight", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowFlightDB);
+                        myCommand.Parameters.Add("@keepli", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.KeepLoggedIn);
+                        myCommand.Parameters.Add("@useds", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.UseSigmaDockingStation);
+                        myCommand.Parameters.Add("@adchg", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.AdminChanged);
+                        myCommand.Parameters.Add("@ismulti", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.IsMultiUser);
+                        myCommand.Parameters.Add("@uli", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.UserLoggedIn);
+                        myCommand.Parameters.Add("@ali", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.AdminLoggedIn);
+                        myCommand.Parameters.Add("@adloc", SqlDbType.NVarChar).Value = Properties.Settings.Default.AdminLocation.ToString();
+                        myCommand.Parameters.Add("@adsize", SqlDbType.NVarChar).Value = Properties.Settings.Default.AdminSize.ToString();
+                        myCommand.Parameters.Add("@floc", SqlDbType.NVarChar).Value = Properties.Settings.Default.FlightDBLocation.ToString();
+                        myCommand.Parameters.Add("@fsize", SqlDbType.NVarChar).Value = Properties.Settings.Default.FlightDBSize.ToString();
+                        myCommand.Parameters.Add("@entloc", SqlDbType.NVarChar).Value = Properties.Settings.Default.EntfaltungLocation.ToString();
+                        myCommand.Parameters.Add("@entsize", SqlDbType.NVarChar).Value = Properties.Settings.Default.EntfaltungSize.ToString();
+                        myCommand.Parameters.Add("@imgvloc", SqlDbType.NVarChar).Value = Properties.Settings.Default.ImageViewerLocation.ToString();
+                        myCommand.Parameters.Add("@imgvsize", SqlDbType.NVarChar).Value = Properties.Settings.Default.ImageViewerSize.ToString();
+                        myCommand.Parameters.Add("@helploc", SqlDbType.NVarChar).Value = Properties.Settings.Default.HelpLocation.ToString();
+                        myCommand.Parameters.Add("@helpsize", SqlDbType.NVarChar).Value = Properties.Settings.Default.HelpSize.ToString();
+                        myCommand.Parameters.Add("@statloc", SqlDbType.NVarChar).Value = Properties.Settings.Default.StatLocation.ToString();
+                        myCommand.Parameters.Add("@statsize", SqlDbType.NVarChar).Value = Properties.Settings.Default.StatSize.ToString();
+                        myCommand.Parameters.Add("@toolloc", SqlDbType.NVarChar).Value = Properties.Settings.Default.ToolbarLocation.ToString();
+                        myCommand.Parameters.Add("@toolsize", SqlDbType.NVarChar).Value = Properties.Settings.Default.ToolbarSize.ToString();
+                        myCommand.Parameters.Add("@minpwd", SqlDbType.Int).Value = Properties.Settings.Default.MinPasswordLength;
+                        myCommand.Parameters.Add("@notitime", SqlDbType.Int).Value = Properties.Settings.Default.NotifyTime;
+                        myCommand.Parameters.Add("@lastu", SqlDbType.NVarChar).Value = Properties.Settings.Default.LastUser;
+                        myCommand.Parameters.Add("@curui", SqlDbType.Int).Value = Properties.Settings.Default.CurrentUserID;
+                        myCommand.Parameters.Add("@curun", SqlDbType.NVarChar).Value = Properties.Settings.Default.CurrentUserName;
+                        myCommand.Parameters.Add("@inst", SqlDbType.NVarChar).Value = Properties.Settings.Default.InstallationType;
 
+                        myCommand.CommandText = sqlquery;
+                        myCommand.CommandType = CommandType.Text;
+                        myCommand.Connection = myConnection;
+                        myCommand.ExecuteNonQuery();
+                    }
+                    using (SqlCommand myCommand = new SqlCommand())
+                    {
+                        /*string sqlquery = "UPDATE Vehicles SET Entfaltung = @entf WHERE Id = " + vec_id;
+                        myCommand.Parameters.Add("@entf", SqlDbType.Int).Value = id;
+                        myCommand.CommandText = sqlquery;
+                        myCommand.CommandType = CommandType.Text;
+                        myCommand.Connection = myConnection;
+                        myCommand.ExecuteNonQuery();*/
+                    }
+                    myConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in Settings");
+            }
         }
 
-        public static void LoadUserSettings()
+        /// <summary>
+        /// Load all runtime Properties.Settings from database when the application starts.
+        /// </summary>
+        public static void LoadUserSettings()   //TODO
         {
             int user_id = Properties.Settings.Default.CurrentUserID;
+            Properties.Settings.Default.UseAltimeter = false;
+            Properties.Settings.Default.StdVehicle = "";
+            Properties.Settings.Default.StdContinent = "Europa";
+            Properties.Settings.Default.StdCountry = "Deutschland";
+            Properties.Settings.Default.StdBundesland = "";
+            Properties.Settings.Default.StdCity = "";
+            Properties.Settings.Default.StdRoute = "";
+            Properties.Settings.Default.WindowLocation = new Point(0, 0);
+            Properties.Settings.Default.WindowSize = new Size(800, 500);
+            Properties.Settings.Default.ShowBirthdays = true;
+            Properties.Settings.Default.ShowFlightDB = false;
+            Properties.Settings.Default.ShowWelcomeForm = true;
+            Properties.Settings.Default.ShowHelp = true;
+            Properties.Settings.Default.ShowNotifyIcon = true;
+            Properties.Settings.Default.ShowToolbar = true;
+            Properties.Settings.Default.ImageFolder = "";
+            Properties.Settings.Default.HelpLocation = new Point(0, 0);
+            Properties.Settings.Default.HelpSize = new Size(500, 400);
+            Properties.Settings.Default.StatLocation = new Point(50, 50);
+            Properties.Settings.Default.StatSize = new Size(500, 400);
+            Properties.Settings.Default.ToolbarLocation = new Point(4, 0);
+            Properties.Settings.Default.ToolbarSize = new Size(423, 25);
+            Properties.Settings.Default.ImageViewerLocation = new Point(50, 50);
+            Properties.Settings.Default.ImageViewerSize = new Size(750, 600);
+            Properties.Settings.Default.EntfaltungLocation = new Point(0, 0);
+            Properties.Settings.Default.EntfaltungSize = new Size(500, 400);
+            Properties.Settings.Default.ImageEditorPath = "";
+            Properties.Settings.Default.ImageEditorName = "";
+            Properties.Settings.Default.AdminLocation = new Point(100, 100);
+            Properties.Settings.Default.AdminSize = new Size(800, 500);
+            Properties.Settings.Default.NotifyTime = 5000;
+            Properties.Settings.Default.FlightDBLocation = new Point(50, 50);
+            Properties.Settings.Default.FlightDBSize = new Size(800, 500);
+            Properties.Settings.Default.UseSigmaDockingStation = false;
+            if (Properties.Settings.Default.UseAdminSettings)
+            {
+                LoadAdminSettings();
+            }
+            else
+            {
+                Properties.Settings.Default.GoogleEarth = "";
+            }
+            Properties.Settings.Default.Save();
+        }
 
+        /// <summary>
+        /// Admin settings are generally the ones stored for user = 0. All admins share these settings. Users cannot change them.
+        /// </summary>
+        public static void LoadAdminSettings()   //TODO
+        {
+            /*Properties.Settings.Default.GoogleEarth = "";
+            Properties.Settings.Default.ImageEditorPath = "";
+            Properties.Settings.Default.ImageEditorName = "";
+            Properties.Settings.Default.ShowFlightDB = true;
+            Properties.Settings.Default.ShowLastUser = "";
+            Properties.Settings.Default.AdminChanged = "";
+            Properties.Settings.Default.KeepLoggedIn = "";
+            Properties.Settings.Default.IsMultiUser = "";*/
+        }
+
+        public static void SaveAdminSettings()   //TODO
+        {
+            /*Properties.Settings.Default.GoogleEarth = "";
+            Properties.Settings.Default.ImageEditorPath = "";
+            Properties.Settings.Default.ImageEditorName = "";
+            Properties.Settings.Default.ShowFlightDB = true;
+            Properties.Settings.Default.ShowLastUser = "";
+            Properties.Settings.Default.AdminChanged = "";
+            Properties.Settings.Default.KeepLoggedIn = "";
+            Properties.Settings.Default.IsMultiUser = "";*/
         }
         #endregion
 

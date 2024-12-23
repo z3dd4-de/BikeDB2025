@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Windows.Forms;
 using static BikeDB2024.Helpers;
 
@@ -207,5 +208,473 @@ namespace BikeDB2024
             }
             Close();
         }
+
+        #region Predefined goals
+        private double daysTillEndOfWeek(DateTime date)
+        {
+            double add_days = 0.0f;
+            switch (date.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:      // Sunday is End of Week in Germany
+                    break;
+                case DayOfWeek.Monday:
+                    add_days = 6.0f;
+                    break;
+                case DayOfWeek.Tuesday:
+                    add_days = 5.0f;
+                    break;
+                case DayOfWeek.Wednesday:
+                    add_days = 4.0f;
+                    break;
+                case DayOfWeek.Thursday:
+                    add_days = 3.0f;
+                    break;
+                case DayOfWeek.Friday:
+                    add_days = 2.0f;
+                    break;
+                case DayOfWeek.Saturday:
+                    add_days = 1.0f;
+                    break;
+                default:
+                    break;
+            }
+            return add_days;
+        }
+
+        private double daysTillEndOfMonth(DateTime date)
+        {
+            double add_days = 0.0f;
+            int day = date.Day;
+            int days = DateTime.DaysInMonth(date.Year, date.Month);
+            add_days = days - day;
+            return add_days;
+        }
+
+        private DateTime getSilvester(DateTime date)
+        {
+            return new DateTime(date.Year, 12, 31);
+        }
+
+        private void EndeDerWocheToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            goalDateTimePicker.Value = dt.AddDays(daysTillEndOfWeek(DateTime.Now));
+            titleTextBox.Text = " erledigen";
+        }
+
+        private void EndeDesMonatsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            goalDateTimePicker.Value = dt.AddDays(daysTillEndOfMonth(DateTime.Now));
+            titleTextBox.Text = " erledigen";
+        }
+
+        private void EndeDesJahresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            goalDateTimePicker.Value = getSilvester(DateTime.Now);
+            titleTextBox.Text = " erledigen";
+        }
+
+        private void KmToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "20 km Fahrrad fahren";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KmToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "30 km Fahrrad fahren";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KmToolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "50 km Fahrrad fahren";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KmToolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "100 km Fahrrad fahren";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KmToolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "200 km Fahrrad fahren";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void EndeDerWocheToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            goalDateTimePicker.Value = dt.AddDays(daysTillEndOfWeek(DateTime.Now));
+            titleTextBox.Text = " km zurücklegen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void EndeDesMonatsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            goalDateTimePicker.Value = dt.AddDays(daysTillEndOfMonth(dt));
+            titleTextBox.Text = " km zurücklegen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void EndeDesJahresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            goalDateTimePicker.Value = getSilvester(DateTime.Now);
+            titleTextBox.Text = " km zurücklegen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void KmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Tour mit 20 km machen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KmToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Tour mit 30 km machen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KmToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Tour mit 50 km machen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KmToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Tour mit 100 km machen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KmToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Tour mit 200 km machen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void WandernGehenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Wandern gehen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void KonzertBesuchenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Konzert besuchen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void SchwimmenGehenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Schwimmen gehen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void JoggenGehenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Joggen gehen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void JemandenTreffenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Person treffen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void JemandenAnrufenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            titleTextBox.Text = "Person anrufen";
+            remarkRichTextBox.Text = titleTextBox.Text;
+        }
+
+        private void NToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            goalDateTimePicker.Value = dt.AddDays(daysTillEndOfMonth(dt));
+            titleTextBox.Text = " bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void MontagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            double add_days = 0.0f;
+            switch (dt.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    add_days = 1.0f;
+                    break;
+                case DayOfWeek.Monday:
+                    add_days = 7.0f;
+                    break;
+                case DayOfWeek.Tuesday:
+                    add_days = 6.0f;
+                    break;
+                case DayOfWeek.Wednesday:
+                    add_days = 5.0f;
+                    break;
+                case DayOfWeek.Thursday:
+                    add_days = 4.0f;
+                    break;
+                case DayOfWeek.Friday:
+                    add_days = 3.0f;
+                    break;
+                case DayOfWeek.Saturday:
+                    add_days = 2.0f;
+                    break;
+                default:
+                    break;
+            }
+            goalDateTimePicker.Value = dt.AddDays(add_days);
+            titleTextBox.Text = "Erledigen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void DienstagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            double add_days = 0.0f;
+            switch (dt.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    add_days = 2.0f;
+                    break;
+                case DayOfWeek.Monday:
+                    add_days = 1.0f;
+                    break;
+                case DayOfWeek.Tuesday:
+                    add_days = 7.0f;
+                    break;
+                case DayOfWeek.Wednesday:
+                    add_days = 6.0f;
+                    break;
+                case DayOfWeek.Thursday:
+                    add_days = 5.0f;
+                    break;
+                case DayOfWeek.Friday:
+                    add_days = 4.0f;
+                    break;
+                case DayOfWeek.Saturday:
+                    add_days = 3.0f;
+                    break;
+                default:
+                    break;
+            }
+            goalDateTimePicker.Value = dt.AddDays(add_days);
+            titleTextBox.Text = "Erledigen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void MittwochToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            double add_days = 0.0f;
+            switch (dt.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    add_days = 3.0f;
+                    break;
+                case DayOfWeek.Monday:
+                    add_days = 2.0f;
+                    break;
+                case DayOfWeek.Tuesday:
+                    add_days = 1.0f;
+                    break;
+                case DayOfWeek.Wednesday:
+                    add_days = 7.0f;
+                    break;
+                case DayOfWeek.Thursday:
+                    add_days = 6.0f;
+                    break;
+                case DayOfWeek.Friday:
+                    add_days = 5.0f;
+                    break;
+                case DayOfWeek.Saturday:
+                    add_days = 4.0f;
+                    break;
+                default:
+                    break;
+            }
+            goalDateTimePicker.Value = dt.AddDays(add_days);
+            titleTextBox.Text = "Erledigen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void DonnerstagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            double add_days = 0.0f;
+            switch (dt.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    add_days = 4.0f;
+                    break;
+                case DayOfWeek.Monday:
+                    add_days = 3.0f;
+                    break;
+                case DayOfWeek.Tuesday:
+                    add_days = 2.0f;
+                    break;
+                case DayOfWeek.Wednesday:
+                    add_days = 1.0f;
+                    break;
+                case DayOfWeek.Thursday:
+                    add_days = 7.0f;
+                    break;
+                case DayOfWeek.Friday:
+                    add_days = 6.0f;
+                    break;
+                case DayOfWeek.Saturday:
+                    add_days = 5.0f;
+                    break;
+                default:
+                    break;
+            }
+            goalDateTimePicker.Value = dt.AddDays(add_days);
+            titleTextBox.Text = "Erledigen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void FreitagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            double add_days = 0.0f;
+            switch (dt.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    add_days = 5.0f;
+                    break;
+                case DayOfWeek.Monday:
+                    add_days = 4.0f;
+                    break;
+                case DayOfWeek.Tuesday:
+                    add_days = 3.0f;
+                    break;
+                case DayOfWeek.Wednesday:
+                    add_days = 2.0f;
+                    break;
+                case DayOfWeek.Thursday:
+                    add_days = 1.0f;
+                    break;
+                case DayOfWeek.Friday:
+                    add_days = 7.0f;
+                    break;
+                case DayOfWeek.Saturday:
+                    add_days = 6.0f;
+                    break;
+                default:
+                    break;
+            }
+            goalDateTimePicker.Value = dt.AddDays(add_days);
+            titleTextBox.Text = "Erledigen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void SamstagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            double add_days = 0.0f;
+            switch (dt.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    add_days = 6.0f;
+                    break;
+                case DayOfWeek.Monday:
+                    add_days = 5.0f;
+                    break;
+                case DayOfWeek.Tuesday:
+                    add_days = 4.0f;
+                    break;
+                case DayOfWeek.Wednesday:
+                    add_days = 3.0f;
+                    break;
+                case DayOfWeek.Thursday:
+                    add_days = 2.0f;
+                    break;
+                case DayOfWeek.Friday:
+                    add_days = 1.0f;
+                    break;
+                case DayOfWeek.Saturday:
+                    add_days = 7.0f;
+                    break;
+                default:
+                    break;
+            }
+            goalDateTimePicker.Value = dt.AddDays(add_days);
+            titleTextBox.Text = "Erledigen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void SonntagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            double add_days = 0.0f;
+            switch (dt.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    add_days = 7.0f;
+                    break;
+                case DayOfWeek.Monday:
+                    add_days = 6.0f;
+                    break;
+                case DayOfWeek.Tuesday:
+                    add_days = 5.0f;
+                    break;
+                case DayOfWeek.Wednesday:
+                    add_days = 4.0f;
+                    break;
+                case DayOfWeek.Thursday:
+                    add_days = 3.0f;
+                    break;
+                case DayOfWeek.Friday:
+                    add_days = 2.0f;
+                    break;
+                case DayOfWeek.Saturday:
+                    add_days = 1.0f;
+                    break;
+                default:
+                    break;
+            }
+            goalDateTimePicker.Value = dt.AddDays(add_days);
+            titleTextBox.Text = "Erledigen bis " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void WeihnachtenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            DateTime val = new DateTime(dt.Year, 12, 24);
+            goalDateTimePicker.Value = val;
+            if (val < dt) goalDateTimePicker.Value = new DateTime(dt.Year + 1, 12, 24);
+            titleTextBox.Text = "Erledigen bis Weihnachten: " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void SilvesterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            goalDateTimePicker.Value = getSilvester(DateTime.Now);
+            titleTextBox.Text = "Erledigen bis Silvester: " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void NeujahrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            goalDateTimePicker.Value = new DateTime(dt.Year + 1, 1, 1);
+            titleTextBox.Text = "Erledigen bis Neujahr: " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void ValentinstagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            DateTime val = new DateTime(dt.Year, 2, 14);
+            goalDateTimePicker.Value = val;
+            if (val < dt) goalDateTimePicker.Value = new DateTime(dt.Year + 1, 2, 14);
+            titleTextBox.Text = "Erledigen bis zum Valentinstag: " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+
+        private void TagDerDtEinheitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime dt = DateTime.Now;
+            DateTime val = new DateTime(dt.Year, 10, 3);
+            goalDateTimePicker.Value = val;
+            if (val < dt) goalDateTimePicker.Value = new DateTime(dt.Year + 1, 10, 3);
+            titleTextBox.Text = "Erledigen bis zum Tag der deutschen Einheit: " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
+        }
+        #endregion
     }
 }

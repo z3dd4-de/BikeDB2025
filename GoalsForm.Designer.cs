@@ -38,30 +38,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.remarkRichTextBox = new System.Windows.Forms.RichTextBox();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.errorToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.goalsContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.zieleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bisErledigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.endeDerWocheToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.endeDesMonatsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.endeDesJahresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.xKmFahrradFahrenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kmToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kmToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kmToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kmToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kmToolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.kmZurücklegenBisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.endeDerWocheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.endeDesMonatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.endeDesJahresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tourMitXKmMachenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kmToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.kmToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.kmToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.kmToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.endeDerWocheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.endeDesMonatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.endeDesJahresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.endeDerWocheToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.endeDesMonatsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.endeDesJahresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.kmToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.kmToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.kmToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.kmToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.kmToolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.wandernGehenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.konzertBesuchenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.schwimmenGehenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,9 +81,11 @@
             this.neujahrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.valentinstagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tagDerDtEinheitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.errorToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.goalsContextMenuStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -115,8 +115,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(3, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 0;
@@ -133,8 +134,9 @@
             // 
             // doneCheckBox
             // 
+            this.doneCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.doneCheckBox.AutoSize = true;
-            this.doneCheckBox.Location = new System.Drawing.Point(3, 286);
+            this.doneCheckBox.Location = new System.Drawing.Point(3, 289);
             this.doneCheckBox.Name = "doneCheckBox";
             this.doneCheckBox.Size = new System.Drawing.Size(58, 17);
             this.doneCheckBox.TabIndex = 2;
@@ -144,6 +146,7 @@
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.saveButton.Location = new System.Drawing.Point(83, 286);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
@@ -154,15 +157,17 @@
             // 
             // goalDateTimePicker
             // 
-            this.goalDateTimePicker.Location = new System.Drawing.Point(83, 256);
+            this.goalDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.goalDateTimePicker.Location = new System.Drawing.Point(83, 258);
             this.goalDateTimePicker.Name = "goalDateTimePicker";
             this.goalDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.goalDateTimePicker.TabIndex = 3;
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 253);
+            this.label3.Location = new System.Drawing.Point(3, 261);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 5;
@@ -170,8 +175,8 @@
             // 
             // titleTextBox
             // 
-            this.titleTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleTextBox.Location = new System.Drawing.Point(83, 3);
+            this.titleTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.titleTextBox.Location = new System.Drawing.Point(83, 5);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(438, 20);
             this.titleTextBox.TabIndex = 6;
@@ -187,22 +192,6 @@
             this.remarkRichTextBox.TabIndex = 7;
             this.remarkRichTextBox.Text = "";
             this.remarkRichTextBox.TextChanged += new System.EventHandler(this.remarkRichTextBox_TextChanged);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.errorToolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 311);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(524, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // errorToolStripStatusLabel
-            // 
-            this.errorToolStripStatusLabel.Name = "errorToolStripStatusLabel";
-            this.errorToolStripStatusLabel.Size = new System.Drawing.Size(118, 17);
-            this.errorToolStripStatusLabel.Text = "toolStripStatusLabel1";
             // 
             // goalsContextMenuStrip
             // 
@@ -239,6 +228,27 @@
             this.bisErledigenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.bisErledigenToolStripMenuItem.Text = "Bis ... erledigen";
             // 
+            // endeDerWocheToolStripMenuItem1
+            // 
+            this.endeDerWocheToolStripMenuItem1.Name = "endeDerWocheToolStripMenuItem1";
+            this.endeDerWocheToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.endeDerWocheToolStripMenuItem1.Text = "Ende der Woche";
+            this.endeDerWocheToolStripMenuItem1.Click += new System.EventHandler(this.EndeDerWocheToolStripMenuItem1_Click);
+            // 
+            // endeDesMonatsToolStripMenuItem1
+            // 
+            this.endeDesMonatsToolStripMenuItem1.Name = "endeDesMonatsToolStripMenuItem1";
+            this.endeDesMonatsToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.endeDesMonatsToolStripMenuItem1.Text = "Ende des Monats";
+            this.endeDesMonatsToolStripMenuItem1.Click += new System.EventHandler(this.EndeDesMonatsToolStripMenuItem1_Click);
+            // 
+            // endeDesJahresToolStripMenuItem1
+            // 
+            this.endeDesJahresToolStripMenuItem1.Name = "endeDesJahresToolStripMenuItem1";
+            this.endeDesJahresToolStripMenuItem1.Size = new System.Drawing.Size(164, 22);
+            this.endeDesJahresToolStripMenuItem1.Text = "Ende des Jahres";
+            this.endeDesJahresToolStripMenuItem1.Click += new System.EventHandler(this.EndeDesJahresToolStripMenuItem1_Click);
+            // 
             // xKmFahrradFahrenToolStripMenuItem
             // 
             this.xKmFahrradFahrenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -251,6 +261,41 @@
             this.xKmFahrradFahrenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.xKmFahrradFahrenToolStripMenuItem.Text = "x km Fahrrad fahren";
             // 
+            // kmToolStripMenuItem5
+            // 
+            this.kmToolStripMenuItem5.Name = "kmToolStripMenuItem5";
+            this.kmToolStripMenuItem5.Size = new System.Drawing.Size(112, 22);
+            this.kmToolStripMenuItem5.Text = "20 km";
+            this.kmToolStripMenuItem5.Click += new System.EventHandler(this.KmToolStripMenuItem5_Click);
+            // 
+            // kmToolStripMenuItem6
+            // 
+            this.kmToolStripMenuItem6.Name = "kmToolStripMenuItem6";
+            this.kmToolStripMenuItem6.Size = new System.Drawing.Size(112, 22);
+            this.kmToolStripMenuItem6.Text = "30 km";
+            this.kmToolStripMenuItem6.Click += new System.EventHandler(this.KmToolStripMenuItem6_Click);
+            // 
+            // kmToolStripMenuItem7
+            // 
+            this.kmToolStripMenuItem7.Name = "kmToolStripMenuItem7";
+            this.kmToolStripMenuItem7.Size = new System.Drawing.Size(112, 22);
+            this.kmToolStripMenuItem7.Text = "50 km";
+            this.kmToolStripMenuItem7.Click += new System.EventHandler(this.KmToolStripMenuItem7_Click);
+            // 
+            // kmToolStripMenuItem8
+            // 
+            this.kmToolStripMenuItem8.Name = "kmToolStripMenuItem8";
+            this.kmToolStripMenuItem8.Size = new System.Drawing.Size(112, 22);
+            this.kmToolStripMenuItem8.Text = "100 km";
+            this.kmToolStripMenuItem8.Click += new System.EventHandler(this.KmToolStripMenuItem8_Click);
+            // 
+            // kmToolStripMenuItem9
+            // 
+            this.kmToolStripMenuItem9.Name = "kmToolStripMenuItem9";
+            this.kmToolStripMenuItem9.Size = new System.Drawing.Size(112, 22);
+            this.kmToolStripMenuItem9.Text = "200 km";
+            this.kmToolStripMenuItem9.Click += new System.EventHandler(this.KmToolStripMenuItem9_Click);
+            // 
             // kmZurücklegenBisToolStripMenuItem
             // 
             this.kmZurücklegenBisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -260,6 +305,27 @@
             this.kmZurücklegenBisToolStripMenuItem.Name = "kmZurücklegenBisToolStripMenuItem";
             this.kmZurücklegenBisToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.kmZurücklegenBisToolStripMenuItem.Text = "km zurücklegen bis...";
+            // 
+            // endeDerWocheToolStripMenuItem
+            // 
+            this.endeDerWocheToolStripMenuItem.Name = "endeDerWocheToolStripMenuItem";
+            this.endeDerWocheToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.endeDerWocheToolStripMenuItem.Text = "Ende der Woche";
+            this.endeDerWocheToolStripMenuItem.Click += new System.EventHandler(this.EndeDerWocheToolStripMenuItem_Click);
+            // 
+            // endeDesMonatsToolStripMenuItem
+            // 
+            this.endeDesMonatsToolStripMenuItem.Name = "endeDesMonatsToolStripMenuItem";
+            this.endeDesMonatsToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.endeDesMonatsToolStripMenuItem.Text = "Ende des Monats";
+            this.endeDesMonatsToolStripMenuItem.Click += new System.EventHandler(this.EndeDesMonatsToolStripMenuItem_Click);
+            // 
+            // endeDesJahresToolStripMenuItem
+            // 
+            this.endeDesJahresToolStripMenuItem.Name = "endeDesJahresToolStripMenuItem";
+            this.endeDesJahresToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.endeDesJahresToolStripMenuItem.Text = "Ende des Jahres";
+            this.endeDesJahresToolStripMenuItem.Click += new System.EventHandler(this.EndeDesJahresToolStripMenuItem_Click);
             // 
             // tourMitXKmMachenToolStripMenuItem
             // 
@@ -276,134 +342,79 @@
             // kmToolStripMenuItem
             // 
             this.kmToolStripMenuItem.Name = "kmToolStripMenuItem";
-            this.kmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.kmToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.kmToolStripMenuItem.Text = "20 km";
+            this.kmToolStripMenuItem.Click += new System.EventHandler(this.KmToolStripMenuItem_Click);
             // 
             // kmToolStripMenuItem1
             // 
             this.kmToolStripMenuItem1.Name = "kmToolStripMenuItem1";
-            this.kmToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.kmToolStripMenuItem1.Size = new System.Drawing.Size(112, 22);
             this.kmToolStripMenuItem1.Text = "30 km";
+            this.kmToolStripMenuItem1.Click += new System.EventHandler(this.KmToolStripMenuItem1_Click);
             // 
             // kmToolStripMenuItem2
             // 
             this.kmToolStripMenuItem2.Name = "kmToolStripMenuItem2";
-            this.kmToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.kmToolStripMenuItem2.Size = new System.Drawing.Size(112, 22);
             this.kmToolStripMenuItem2.Text = "50 km";
+            this.kmToolStripMenuItem2.Click += new System.EventHandler(this.KmToolStripMenuItem2_Click);
             // 
             // kmToolStripMenuItem3
             // 
             this.kmToolStripMenuItem3.Name = "kmToolStripMenuItem3";
-            this.kmToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.kmToolStripMenuItem3.Size = new System.Drawing.Size(112, 22);
             this.kmToolStripMenuItem3.Text = "100 km";
+            this.kmToolStripMenuItem3.Click += new System.EventHandler(this.KmToolStripMenuItem3_Click);
             // 
             // kmToolStripMenuItem4
             // 
             this.kmToolStripMenuItem4.Name = "kmToolStripMenuItem4";
-            this.kmToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.kmToolStripMenuItem4.Size = new System.Drawing.Size(112, 22);
             this.kmToolStripMenuItem4.Text = "200 km";
-            // 
-            // endeDerWocheToolStripMenuItem
-            // 
-            this.endeDerWocheToolStripMenuItem.Name = "endeDerWocheToolStripMenuItem";
-            this.endeDerWocheToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.endeDerWocheToolStripMenuItem.Text = "Ende der Woche";
-            // 
-            // endeDesMonatsToolStripMenuItem
-            // 
-            this.endeDesMonatsToolStripMenuItem.Name = "endeDesMonatsToolStripMenuItem";
-            this.endeDesMonatsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.endeDesMonatsToolStripMenuItem.Text = "Ende des Monats";
-            // 
-            // endeDesJahresToolStripMenuItem
-            // 
-            this.endeDesJahresToolStripMenuItem.Name = "endeDesJahresToolStripMenuItem";
-            this.endeDesJahresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.endeDesJahresToolStripMenuItem.Text = "Ende des Jahres";
-            // 
-            // endeDerWocheToolStripMenuItem1
-            // 
-            this.endeDerWocheToolStripMenuItem1.Name = "endeDerWocheToolStripMenuItem1";
-            this.endeDerWocheToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.endeDerWocheToolStripMenuItem1.Text = "Ende der Woche";
-            // 
-            // endeDesMonatsToolStripMenuItem1
-            // 
-            this.endeDesMonatsToolStripMenuItem1.Name = "endeDesMonatsToolStripMenuItem1";
-            this.endeDesMonatsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.endeDesMonatsToolStripMenuItem1.Text = "Ende des Monats";
-            // 
-            // endeDesJahresToolStripMenuItem1
-            // 
-            this.endeDesJahresToolStripMenuItem1.Name = "endeDesJahresToolStripMenuItem1";
-            this.endeDesJahresToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.endeDesJahresToolStripMenuItem1.Text = "Ende des Jahres";
-            // 
-            // kmToolStripMenuItem5
-            // 
-            this.kmToolStripMenuItem5.Name = "kmToolStripMenuItem5";
-            this.kmToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
-            this.kmToolStripMenuItem5.Text = "20 km";
-            // 
-            // kmToolStripMenuItem6
-            // 
-            this.kmToolStripMenuItem6.Name = "kmToolStripMenuItem6";
-            this.kmToolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
-            this.kmToolStripMenuItem6.Text = "30 km";
-            // 
-            // kmToolStripMenuItem7
-            // 
-            this.kmToolStripMenuItem7.Name = "kmToolStripMenuItem7";
-            this.kmToolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
-            this.kmToolStripMenuItem7.Text = "50 km";
-            // 
-            // kmToolStripMenuItem8
-            // 
-            this.kmToolStripMenuItem8.Name = "kmToolStripMenuItem8";
-            this.kmToolStripMenuItem8.Size = new System.Drawing.Size(180, 22);
-            this.kmToolStripMenuItem8.Text = "100 km";
-            // 
-            // kmToolStripMenuItem9
-            // 
-            this.kmToolStripMenuItem9.Name = "kmToolStripMenuItem9";
-            this.kmToolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
-            this.kmToolStripMenuItem9.Text = "200 km";
+            this.kmToolStripMenuItem4.Click += new System.EventHandler(this.KmToolStripMenuItem4_Click);
             // 
             // wandernGehenToolStripMenuItem
             // 
             this.wandernGehenToolStripMenuItem.Name = "wandernGehenToolStripMenuItem";
             this.wandernGehenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.wandernGehenToolStripMenuItem.Text = "Wandern gehen";
+            this.wandernGehenToolStripMenuItem.Click += new System.EventHandler(this.WandernGehenToolStripMenuItem_Click);
             // 
             // konzertBesuchenToolStripMenuItem
             // 
             this.konzertBesuchenToolStripMenuItem.Name = "konzertBesuchenToolStripMenuItem";
             this.konzertBesuchenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.konzertBesuchenToolStripMenuItem.Text = "Konzert besuchen";
+            this.konzertBesuchenToolStripMenuItem.Click += new System.EventHandler(this.KonzertBesuchenToolStripMenuItem_Click);
             // 
             // schwimmenGehenToolStripMenuItem
             // 
             this.schwimmenGehenToolStripMenuItem.Name = "schwimmenGehenToolStripMenuItem";
             this.schwimmenGehenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.schwimmenGehenToolStripMenuItem.Text = "Schwimmen gehen";
+            this.schwimmenGehenToolStripMenuItem.Click += new System.EventHandler(this.SchwimmenGehenToolStripMenuItem_Click);
             // 
             // joggenGehenToolStripMenuItem
             // 
             this.joggenGehenToolStripMenuItem.Name = "joggenGehenToolStripMenuItem";
             this.joggenGehenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.joggenGehenToolStripMenuItem.Text = "Joggen gehen";
+            this.joggenGehenToolStripMenuItem.Click += new System.EventHandler(this.JoggenGehenToolStripMenuItem_Click);
             // 
             // jemandenTreffenToolStripMenuItem
             // 
             this.jemandenTreffenToolStripMenuItem.Name = "jemandenTreffenToolStripMenuItem";
             this.jemandenTreffenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.jemandenTreffenToolStripMenuItem.Text = "Jemanden treffen";
+            this.jemandenTreffenToolStripMenuItem.Click += new System.EventHandler(this.JemandenTreffenToolStripMenuItem_Click);
             // 
             // jemandenAnrufenToolStripMenuItem
             // 
             this.jemandenAnrufenToolStripMenuItem.Name = "jemandenAnrufenToolStripMenuItem";
             this.jemandenAnrufenToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.jemandenAnrufenToolStripMenuItem.Text = "Jemanden anrufen";
+            this.jemandenAnrufenToolStripMenuItem.Click += new System.EventHandler(this.JemandenAnrufenToolStripMenuItem_Click);
             // 
             // datumSetzenToolStripMenuItem
             // 
@@ -424,6 +435,7 @@
             this.nToolStripMenuItem.Name = "nToolStripMenuItem";
             this.nToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.nToolStripMenuItem.Text = "Letzten Tag des Monats";
+            this.nToolStripMenuItem.Click += new System.EventHandler(this.NToolStripMenuItem_Click);
             // 
             // nächstenToolStripMenuItem
             // 
@@ -442,74 +454,102 @@
             // montagToolStripMenuItem
             // 
             this.montagToolStripMenuItem.Name = "montagToolStripMenuItem";
-            this.montagToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.montagToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.montagToolStripMenuItem.Text = "Montag";
+            this.montagToolStripMenuItem.Click += new System.EventHandler(this.MontagToolStripMenuItem_Click);
             // 
             // dienstagToolStripMenuItem
             // 
             this.dienstagToolStripMenuItem.Name = "dienstagToolStripMenuItem";
-            this.dienstagToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dienstagToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.dienstagToolStripMenuItem.Text = "Dienstag";
+            this.dienstagToolStripMenuItem.Click += new System.EventHandler(this.DienstagToolStripMenuItem_Click);
             // 
             // mittwochToolStripMenuItem
             // 
             this.mittwochToolStripMenuItem.Name = "mittwochToolStripMenuItem";
-            this.mittwochToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mittwochToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.mittwochToolStripMenuItem.Text = "Mittwoch";
+            this.mittwochToolStripMenuItem.Click += new System.EventHandler(this.MittwochToolStripMenuItem_Click);
             // 
             // donnerstagToolStripMenuItem
             // 
             this.donnerstagToolStripMenuItem.Name = "donnerstagToolStripMenuItem";
-            this.donnerstagToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.donnerstagToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.donnerstagToolStripMenuItem.Text = "Donnerstag";
+            this.donnerstagToolStripMenuItem.Click += new System.EventHandler(this.DonnerstagToolStripMenuItem_Click);
             // 
             // freitagToolStripMenuItem
             // 
             this.freitagToolStripMenuItem.Name = "freitagToolStripMenuItem";
-            this.freitagToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.freitagToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.freitagToolStripMenuItem.Text = "Freitag";
+            this.freitagToolStripMenuItem.Click += new System.EventHandler(this.FreitagToolStripMenuItem_Click);
             // 
             // samstagToolStripMenuItem
             // 
             this.samstagToolStripMenuItem.Name = "samstagToolStripMenuItem";
-            this.samstagToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.samstagToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.samstagToolStripMenuItem.Text = "Samstag";
+            this.samstagToolStripMenuItem.Click += new System.EventHandler(this.SamstagToolStripMenuItem_Click);
             // 
             // sonntagToolStripMenuItem
             // 
             this.sonntagToolStripMenuItem.Name = "sonntagToolStripMenuItem";
-            this.sonntagToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sonntagToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.sonntagToolStripMenuItem.Text = "Sonntag";
+            this.sonntagToolStripMenuItem.Click += new System.EventHandler(this.SonntagToolStripMenuItem_Click);
             // 
             // weihnachtenToolStripMenuItem
             // 
             this.weihnachtenToolStripMenuItem.Name = "weihnachtenToolStripMenuItem";
             this.weihnachtenToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.weihnachtenToolStripMenuItem.Text = "Weihnachten";
+            this.weihnachtenToolStripMenuItem.Click += new System.EventHandler(this.WeihnachtenToolStripMenuItem_Click);
             // 
             // silvesterToolStripMenuItem
             // 
             this.silvesterToolStripMenuItem.Name = "silvesterToolStripMenuItem";
             this.silvesterToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.silvesterToolStripMenuItem.Text = "Silvester";
+            this.silvesterToolStripMenuItem.Click += new System.EventHandler(this.SilvesterToolStripMenuItem_Click);
             // 
             // neujahrToolStripMenuItem
             // 
             this.neujahrToolStripMenuItem.Name = "neujahrToolStripMenuItem";
             this.neujahrToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.neujahrToolStripMenuItem.Text = "Neujahr";
+            this.neujahrToolStripMenuItem.Click += new System.EventHandler(this.NeujahrToolStripMenuItem_Click);
             // 
             // valentinstagToolStripMenuItem
             // 
             this.valentinstagToolStripMenuItem.Name = "valentinstagToolStripMenuItem";
             this.valentinstagToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.valentinstagToolStripMenuItem.Text = "Valentinstag";
+            this.valentinstagToolStripMenuItem.Click += new System.EventHandler(this.ValentinstagToolStripMenuItem_Click);
             // 
             // tagDerDtEinheitToolStripMenuItem
             // 
             this.tagDerDtEinheitToolStripMenuItem.Name = "tagDerDtEinheitToolStripMenuItem";
             this.tagDerDtEinheitToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.tagDerDtEinheitToolStripMenuItem.Text = "Tag der dt. Einheit";
+            this.tagDerDtEinheitToolStripMenuItem.Click += new System.EventHandler(this.TagDerDtEinheitToolStripMenuItem_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.errorToolStripStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 311);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(524, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // errorToolStripStatusLabel
+            // 
+            this.errorToolStripStatusLabel.Name = "errorToolStripStatusLabel";
+            this.errorToolStripStatusLabel.Size = new System.Drawing.Size(118, 17);
+            this.errorToolStripStatusLabel.Text = "toolStripStatusLabel1";
             // 
             // GoalsForm
             // 
@@ -528,9 +568,9 @@
             this.Load += new System.EventHandler(this.GoalsForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.goalsContextMenuStrip.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.goalsContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tourCheckBox = new System.Windows.Forms.CheckBox();
@@ -51,6 +52,10 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.allCheckBox = new System.Windows.Forms.CheckBox();
             this.openFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.costsCheckBox = new System.Windows.Forms.CheckBox();
+            this.costCatCheckBox = new System.Windows.Forms.CheckBox();
+            this.adminCheckBox = new System.Windows.Forms.CheckBox();
+            this.adminToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -73,11 +78,11 @@
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(477, 159);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(477, 182);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -94,11 +99,14 @@
             this.flowLayoutPanel1.Controls.Add(this.personsCheckBox);
             this.flowLayoutPanel1.Controls.Add(this.notesCheckBox);
             this.flowLayoutPanel1.Controls.Add(this.goalsCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.costsCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.costCatCheckBox);
+            this.flowLayoutPanel1.Controls.Add(this.adminCheckBox);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(100, 2);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(375, 70);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(375, 94);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // tourCheckBox
@@ -254,7 +262,7 @@
             // 
             this.exportButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.exportButton.Enabled = false;
-            this.exportButton.Location = new System.Drawing.Point(100, 128);
+            this.exportButton.Location = new System.Drawing.Point(100, 152);
             this.exportButton.Margin = new System.Windows.Forms.Padding(2);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(80, 24);
@@ -268,7 +276,7 @@
             this.flowLayoutPanel2.Controls.Add(this.folderTextBox);
             this.flowLayoutPanel2.Controls.Add(this.openButton);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(100, 100);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(100, 124);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(375, 24);
@@ -301,7 +309,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 98);
+            this.label2.Location = new System.Drawing.Point(2, 122);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
@@ -312,7 +320,7 @@
             // 
             this.flowLayoutPanel3.Controls.Add(this.allCheckBox);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(101, 77);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(101, 101);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(373, 18);
             this.flowLayoutPanel3.TabIndex = 11;
@@ -333,12 +341,46 @@
             // 
             this.openFolderBrowserDialog.Description = "Speicherort für Export-Dateien.";
             // 
+            // costsCheckBox
+            // 
+            this.costsCheckBox.AutoSize = true;
+            this.costsCheckBox.Location = new System.Drawing.Point(203, 47);
+            this.costsCheckBox.Name = "costsCheckBox";
+            this.costsCheckBox.Size = new System.Drawing.Size(59, 17);
+            this.costsCheckBox.TabIndex = 12;
+            this.costsCheckBox.Text = "Kosten";
+            this.costsCheckBox.UseVisualStyleBackColor = true;
+            this.costsCheckBox.CheckedChanged += new System.EventHandler(this.costsCheckBox_CheckedChanged);
+            // 
+            // costCatCheckBox
+            // 
+            this.costCatCheckBox.AutoSize = true;
+            this.costCatCheckBox.Location = new System.Drawing.Point(3, 70);
+            this.costCatCheckBox.Name = "costCatCheckBox";
+            this.costCatCheckBox.Size = new System.Drawing.Size(119, 17);
+            this.costCatCheckBox.TabIndex = 13;
+            this.costCatCheckBox.Text = "Kosten (Kategorien)";
+            this.costCatCheckBox.UseVisualStyleBackColor = true;
+            this.costCatCheckBox.CheckedChanged += new System.EventHandler(this.costCatCheckBox_CheckedChanged);
+            // 
+            // adminCheckBox
+            // 
+            this.adminCheckBox.AutoSize = true;
+            this.adminCheckBox.Location = new System.Drawing.Point(128, 70);
+            this.adminCheckBox.Name = "adminCheckBox";
+            this.adminCheckBox.Size = new System.Drawing.Size(123, 17);
+            this.adminCheckBox.TabIndex = 14;
+            this.adminCheckBox.Text = "Administrationsdaten";
+            this.adminToolTip.SetToolTip(this.adminCheckBox, "Tabellen: Clients, Log, Settings");
+            this.adminCheckBox.UseVisualStyleBackColor = true;
+            this.adminCheckBox.CheckedChanged += new System.EventHandler(this.adminCheckBox_CheckedChanged);
+            // 
             // ExportForm
             // 
             this.AcceptButton = this.exportButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 159);
+            this.ClientSize = new System.Drawing.Size(477, 182);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -386,5 +428,9 @@
         private System.Windows.Forms.CheckBox goalsCheckBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.CheckBox allCheckBox;
+        private System.Windows.Forms.CheckBox costsCheckBox;
+        private System.Windows.Forms.CheckBox costCatCheckBox;
+        private System.Windows.Forms.CheckBox adminCheckBox;
+        private System.Windows.Forms.ToolTip adminToolTip;
     }
 }

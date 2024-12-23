@@ -324,19 +324,19 @@ namespace BikeDB2024
                     e.Graphics.DrawString("Strecken: \t\t\t" + routesCountLabel.Text, printFont_small,
                         Brushes.Black, loc_x, 260);
 
-                    Image img = Image.FromFile(curDir + "/HelpPages/BikeDB2024.png");
+                    Image img = Image.FromFile(curDir + "/HelpPages/logo_bikeDB.png");
                     Point loc = new Point(650, 40);
                     e.Graphics.DrawImage(img, loc);
                     break;
                 case 1:
                     text = "Fahrzeug Statistiken für " + vehicle;
                     e.Graphics.DrawString(text, printFont_title,
-                Brushes.Black, 0, 0);
+                        Brushes.Black, 0, 0);
                     break;
                 case 2:
                     text = "Chart";
                     statChart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.All;
-                    statChart.Printing.Print(false);
+                    statChart.Printing.Print(true);
                     break;
             }
         }

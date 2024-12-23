@@ -72,6 +72,8 @@ namespace BikeDB2024
             mailserverGroupBox.Enabled = false;
 
             installationToolStripStatusLabel.Text = Properties.Settings.Default.InstallationType.ToString();
+
+            flightDbCheckBox.Checked = Properties.Settings.Default.ShowFlightDB;
         }
 
         #region Close Form
@@ -79,6 +81,7 @@ namespace BikeDB2024
         {
             Properties.Settings.Default.AdminLocation = this.Location;
             Properties.Settings.Default.AdminSize = this.Size;
+            Properties.Settings.Default.ShowFlightDB = flightDbCheckBox.Checked;
         }
 
         private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -290,6 +293,7 @@ namespace BikeDB2024
             }
         }
 
+        #region Einstellungen / Settings
         private void singleUserRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             loadDescription();
@@ -315,6 +319,9 @@ namespace BikeDB2024
             loadDescription();
         }
 
+        /// <summary>
+        /// Load description for the different types of installation modes.
+        /// </summary>
         private void loadDescription()
         {
             Installation installation = Installation.MULTI_USER;
@@ -357,5 +364,58 @@ namespace BikeDB2024
             Properties.Settings.Default.InstallationType = installation.ToString();
             installationToolStripStatusLabel.Text = installation.ToString();
         }
+
+        /// <summary>
+        /// Only admins can change if the FlightDB is available or not.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void flightDbCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowFlightDB = flightDbCheckBox.Checked;
+        }
+
+        private void setGoogleButton_Click(object sender, EventArgs e)
+        {
+            if (openGoogleFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                googleTextBox.Text = openGoogleFileDialog.FileName;
+            }
+            else
+            {
+                googleTextBox.Text = "";
+            }
+        }
+
+        private void googleInstallCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            setGoogleButton.Enabled = googleInstallCheckBox.Checked;
+            googleTextBox.Enabled = googleInstallCheckBox.Checked;
+        }
+
+        private void setImageEditorButton_Click(object sender, EventArgs e)
+        {
+            if (openImageEditorFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                imageEditorMenuTextBox.Enabled = true;
+                imageEditorTextBox.Text = openImageEditorFileDialog.FileName;
+            }
+            else
+            {
+                imageEditorMenuTextBox.Enabled = false;
+            }
+        }
+
+        private void globalSettingsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.UseAdminSettings = globalSettingsCheckBox.Checked;
+            setGoogleButton.Enabled = globalSettingsCheckBox.Checked;
+            setImageEditorButton.Enabled = globalSettingsCheckBox.Checked;
+            imageEditorTextBox.Enabled = globalSettingsCheckBox.Checked;
+            imageEditorMenuTextBox.Enabled = globalSettingsCheckBox.Checked;
+            googleInstallCheckBox.Enabled = globalSettingsCheckBox.Checked;
+            googleTextBox.Enabled = globalSettingsCheckBox.Checked;
+        }
+        #endregion
     }
 }

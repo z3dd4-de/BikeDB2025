@@ -9,7 +9,8 @@ namespace BikeDB2024
         private string filename;
         private ProgressForm progressForm;
         // Array Size needs to be changed whenever new tables for export are introduced. 
-        private Array checkboxes = new bool[12];
+        private Array checkboxes;// = new bool[12];
+        private bool admin = false;
 
         /// <summary>
         /// Constructor.
@@ -19,6 +20,17 @@ namespace BikeDB2024
             InitializeComponent();
             progressForm = new ProgressForm();
             progressForm.JobType = JobType.EXPORT;
+            if (Properties.Settings.Default.AdminLoggedIn)
+            {
+                checkboxes = new bool[17];
+                adminCheckBox.Visible = true;
+                admin = true;
+            }
+            else
+            {
+                checkboxes = new bool[14];
+                adminCheckBox.Visible = false;
+            }    
         }
 
         #region Folder
@@ -65,6 +77,13 @@ namespace BikeDB2024
                 personsCheckBox.Checked = true;
                 goalsCheckBox.Checked = true;
                 notesCheckBox.Checked = true;
+                costsCheckBox.Checked = true;
+                costCatCheckBox.Checked = true;
+                if (admin)
+                {
+                    adminCheckBox.Checked = true;
+                }
+                else { adminCheckBox.Checked = false; }
 
                 tourCheckBox.Enabled = false;
                 cityCheckBox.Enabled = false;
@@ -78,6 +97,9 @@ namespace BikeDB2024
                 personsCheckBox.Enabled = false;
                 goalsCheckBox.Enabled = false;
                 notesCheckBox.Enabled = false;
+                costsCheckBox.Enabled = false;
+                costCatCheckBox.Enabled = false;
+                adminCheckBox.Enabled = false;
             }
             else
             {
@@ -93,6 +115,7 @@ namespace BikeDB2024
                 personsCheckBox.Checked = false;
                 goalsCheckBox.Checked = false;
                 notesCheckBox.Checked = false;
+                adminCheckBox.Checked = false;
 
                 tourCheckBox.Enabled = true;
                 cityCheckBox.Enabled = true;
@@ -106,6 +129,13 @@ namespace BikeDB2024
                 personsCheckBox.Enabled = true;
                 goalsCheckBox.Enabled = true;
                 notesCheckBox.Enabled = true;
+                costsCheckBox.Enabled = true;
+                costCatCheckBox.Enabled = true;
+                if (admin)
+                {
+                    adminCheckBox.Enabled = true;
+                }
+                else { adminCheckBox.Enabled = false; }
             }
         }
 
@@ -169,6 +199,21 @@ namespace BikeDB2024
             checkButtonState();
         }
 
+        private void costsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkButtonState();
+        }
+
+        private void costCatCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkButtonState();
+        }
+
+        private void adminCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            checkButtonState();
+        }
+
         /// <summary>
         /// At least one checkbox needs to be checked and a folder is chosen for the button to be enabled.
         /// </summary>
@@ -176,7 +221,8 @@ namespace BikeDB2024
         {
             if ((tourCheckBox.Checked || countryCheckBox.Checked || cityCheckBox.Checked || routeCheckBox.Checked
                 || vehicleCheckBox.Checked || manufacturerCheckBox.Checked || entfaltungCheckBox.Checked || vectypeCheckBox.Checked
-                || routetypeCheckBox.Checked || personsCheckBox.Checked || goalsCheckBox.Checked || notesCheckBox.Checked) 
+                || routetypeCheckBox.Checked || personsCheckBox.Checked || goalsCheckBox.Checked || notesCheckBox.Checked
+                || costsCheckBox.Checked || costCatCheckBox.Checked || (admin && adminCheckBox.Checked)) 
                 && folderTextBox.Text != "")
             {
                 exportButton.Enabled = true;
@@ -212,6 +258,9 @@ namespace BikeDB2024
             checkboxes.SetValue(personsCheckBox.Checked, 9);
             checkboxes.SetValue(notesCheckBox.Checked, 10);
             checkboxes.SetValue(goalsCheckBox.Checked, 11);
+            checkboxes.SetValue(costsCheckBox.Checked, 12);
+            checkboxes.SetValue(costCatCheckBox.Checked, 13);
+            checkboxes.SetValue(adminCheckBox.Checked, 14);
 
             progressForm.Checkboxes = checkboxes;
 

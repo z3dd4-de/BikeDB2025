@@ -1,5 +1,4 @@
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.csproj.AssemblyReference.cache
-C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.csproj.SuggestedBindingRedirects.cache
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.CountryForm.resources
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.Properties.Resources.resources
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.csproj.GenerateResource.cache
@@ -46,7 +45,6 @@ C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.WelcomeForm.resource
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Willkommen.html
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\ExcelLibrary.dll
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.ImportForm.resources
-C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.csproj.CopyComplete
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.ProgressForm.resources
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Export.html
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Import.html
@@ -96,3 +94,14 @@ C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\LibUsbDotNet.LibUsbDotNet.pdb
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.SigmaDsForm.resources
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\WinUSBNet.dll
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\WinUSBNet.xml
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.csproj.Up2Date
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDBForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Kosten.html
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.AboutFlightDBForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.AirlineForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.AirportForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.FlightForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.PlaneForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.ImageViewerHelpForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\BildbetrachterHilfe.html
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\BildbetrachterHilfe_html_4bf2d051.gif

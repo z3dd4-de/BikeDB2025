@@ -137,6 +137,42 @@
     <Compile Include="ExportForm.Designer.cs">
       <DependentUpon>ExportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlightDB\AboutFlightDBForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlightDB\AboutFlightDBForm.Designer.cs">
+      <DependentUpon>AboutFlightDBForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlightDB\AirlineForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlightDB\AirlineForm.Designer.cs">
+      <DependentUpon>AirlineForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlightDB\AirportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlightDB\AirportForm.Designer.cs">
+      <DependentUpon>AirportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlightDB\FlightDBForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlightDB\FlightDBForm.Designer.cs">
+      <DependentUpon>FlightDBForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlightDB\FlightForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlightDB\FlightForm.Designer.cs">
+      <DependentUpon>FlightForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlightDB\PlaneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlightDB\PlaneForm.Designer.cs">
+      <DependentUpon>PlaneForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GoalsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +185,12 @@
     </Compile>
     <Compile Include="ImageViewerForm.Designer.cs">
       <DependentUpon>ImageViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageViewerHelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageViewerHelpForm.Designer.cs">
+      <DependentUpon>ImageViewerHelpForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportForm.cs">
       <SubType>Form</SubType>
@@ -264,11 +306,32 @@
     <EmbeddedResource Include="ExportForm.resx">
       <DependentUpon>ExportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FlightDB\AboutFlightDBForm.resx">
+      <DependentUpon>AboutFlightDBForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlightDB\AirlineForm.resx">
+      <DependentUpon>AirlineForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlightDB\AirportForm.resx">
+      <DependentUpon>AirportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlightDB\FlightDBForm.resx">
+      <DependentUpon>FlightDBForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlightDB\FlightForm.resx">
+      <DependentUpon>FlightForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlightDB\PlaneForm.resx">
+      <DependentUpon>PlaneForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GoalsForm.resx">
       <DependentUpon>GoalsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageViewerForm.resx">
       <DependentUpon>ImageViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageViewerHelpForm.resx">
+      <DependentUpon>ImageViewerHelpForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImportForm.resx">
       <DependentUpon>ImportForm.cs</DependentUpon>
@@ -379,6 +442,12 @@
     <Content Include="HelpPages\Bildbetrachter.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="HelpPages\BildbetrachterHilfe.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpPages\BildbetrachterHilfe_html_4bf2d051.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpPages\Content.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -455,6 +524,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\Kalender.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpPages\Kosten.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\Laender.html">
@@ -556,6 +628,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FlightDB\Planes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

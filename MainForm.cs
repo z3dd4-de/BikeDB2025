@@ -265,6 +265,15 @@ namespace BikeDB2024
                 toolStripSeparator1.Visible = true;
                 toolStripSeparator2.Visible = true;
 
+                if (Properties.Settings.Default.ShowFlightDB)
+                {
+                    flightDBToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    flightDBToolStripMenuItem.Visible = false;
+                }
+
                 userToolStripStatusLabel.Visible = true;
                 userToolStripStatusLabel.Text = Properties.Settings.Default.CurrentUserName +
                     " (" + Properties.Settings.Default.CurrentUserID.ToString() + ")";
@@ -309,6 +318,7 @@ namespace BikeDB2024
                 settingsToolStripButton.Visible = false;
                 calendarToolStripButton.Visible = false;
                 costsToolStripButton.Visible = false;
+                flightDBToolStripMenuItem.Visible = false;
 
                 toolStripSeparator1.Visible = false;
                 toolStripSeparator2.Visible = false;
@@ -3312,6 +3322,12 @@ namespace BikeDB2024
                 vmaxStepsLabel.Text = "Vmax";
                 vmaxTextBox.Mask = "990.09";
             }
+        }
+
+        private void flightDBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FlightDBForm form = new FlightDBForm();
+            form.Show();
         }
     }
 }

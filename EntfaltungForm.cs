@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
@@ -72,7 +71,7 @@ namespace BikeDB2024
                     con1.Open();
                     using (SqlCommand com1 = new SqlCommand())
                     {
-                        com1.CommandText = @"SELECT VehicleName FROM Vehicles WHERE VehicleType IN (1,3,4)";
+                        com1.CommandText = @"SELECT VehicleName FROM Vehicles WHERE VehicleType IN (1,3,4) AND [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
                         com1.CommandType = CommandType.Text;
                         com1.Connection = con1;
                         using (SqlDataReader reader1 = com1.ExecuteReader())
@@ -575,7 +574,7 @@ namespace BikeDB2024
         #endregion
 
         /// <summary>
-        /// Save data into the database
+        /// Save data into the database, update existing data.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -593,7 +592,6 @@ namespace BikeDB2024
                 }
                 catch (Exception)
                 {
-
                 }
                 string kettenbl = kb1MaskedTextBox.Text;
                 if (kb2MaskedTextBox.Text != "") kettenbl += ";" + kb2MaskedTextBox.Text;
@@ -642,8 +640,50 @@ namespace BikeDB2024
             }
             else
             {
-                MessageBox.Show("Update");
-                //TODO
+                int id = Convert.ToInt32(test);
+                string kettenbl = kb1MaskedTextBox.Text;
+                if (kb2MaskedTextBox.Text != "") kettenbl += ";" + kb2MaskedTextBox.Text;
+                if (kb3MaskedTextBox.Text != "") kettenbl += ";" + kb3MaskedTextBox.Text;
+                try
+                {
+                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                    {
+                        myConnection.Open();
+                        using (SqlCommand myCommand = new SqlCommand())
+                        {
+                            string sqlquery = "UPDATE Entfaltung " +
+                            "SET BikeId = @bike, Front = @front, Back = @back, Wheel = @wheel, Unit = @unit " +
+                            "WHERE Id = " + id.ToString();
+                            myCommand.Parameters.Add("@bike", SqlDbType.Int).Value = vec_id;
+                            myCommand.Parameters.Add("@front", SqlDbType.NVarChar).Value = kettenbl;
+                            myCommand.Parameters.Add("@back", SqlDbType.NVarChar).Value = ritzelMaskedTextBox.Text;
+                            myCommand.Parameters.Add("@wheel", SqlDbType.Float).Value = Convert.ToDouble(umfangToolStripComboBox.Text);
+                            myCommand.Parameters.Add("@unit", SqlDbType.NVarChar).Value = "mm";
+                            myCommand.CommandText = sqlquery;
+                            myCommand.CommandType = CommandType.Text;
+                            myCommand.Connection = myConnection;
+                            myCommand.ExecuteNonQuery();
+                        }
+                        using (SqlCommand myCommand = new SqlCommand())
+                        {
+                            string sqlquery = "UPDATE Vehicles SET Entfaltung = @entf WHERE Id = " + vec_id;
+                            myCommand.Parameters.Add("@entf", SqlDbType.Int).Value = id;
+                            myCommand.CommandText = sqlquery;
+                            myCommand.CommandType = CommandType.Text;
+                            myCommand.Connection = myConnection;
+                            myCommand.ExecuteNonQuery();
+                        }
+                        myConnection.Close();
+                        saveButton.Text = "Bearbeiten";
+                        saveButton.Enabled = false;
+                        entfaltungsToolStripStatusLabel.Text = $"Entfaltung wurde für {vehicleToolStripComboBox.Text} gespeichert!";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex.Message, "Fehler beim Bearbeiten von Daten in Entfaltung");
+                    entfaltungsToolStripStatusLabel.Text = "Fehler in den eingegebenen Daten!";
+                }
             }
         }
 
