@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
+using ExcelLibrary.BinaryFileFormat;
 using ExcelLibrary.SpreadSheet;     //https://code.google.com/archive/p/excellibrary/
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static BikeDB2024.Helpers;
 
 namespace BikeDB2024
@@ -18,7 +21,7 @@ namespace BikeDB2024
         private Workbook workbook;
         private JobType jobType;
         private string[] tables;
-        private Array array = new int[12];
+        private Array array;        // = new int[12]
         private JobStatus status;
 
         int cnt_tables = 0;
@@ -27,27 +30,62 @@ namespace BikeDB2024
         int percent = 0;
         int current_table = 0;
 
-        string version = "";
+        string version = "1.0.0.0";
+        private bool admin = false;
+        private int size = 14;
+        #endregion
+
+        #region Properties / Public variables
+        public Array Checkboxes;        // = new bool[12];
+        public string FileName { get => fileName; set => fileName = value; }
+        public string SaveFolder { get => saveFolder; set => saveFolder = value; }
+        internal JobType JobType { get => jobType; set => jobType = value; }
+        internal JobStatus Status { get => status; set => status = value; }
+        public string Version { get => version; }       //set => version = value;
         #endregion
 
         /// <summary>
-        /// Constructor.
+        /// Constructor with implicit admin.
         /// </summary>
         public ProgressForm()
         {
             InitializeComponent();
             okButton.Enabled = false;
-            Version = "1.0.0.0";
+            if (Properties.Settings.Default.AdminLoggedIn)
+            {
+                size = 17;
+                array = new int[size];
+                Checkboxes = new bool[size];
+                admin = true;
+            }
+            else
+            {
+                array = new int[size];
+                Checkboxes = new bool[size];
+            }
         }
 
-        #region Properties / Public variables
-        public Array Checkboxes = new bool[12];
-        public string FileName { get => fileName; set => fileName = value; }
-        public string SaveFolder { get => saveFolder; set => saveFolder = value; }
-        internal JobType JobType { get => jobType; set => jobType = value; }
-        internal JobStatus Status { get => status; set => status = value; }
-        public string Version { get => version; set => version = value; }
-        #endregion
+        /// <summary>
+        /// Constructor with explicit admin.
+        /// </summary>
+        public ProgressForm(bool _admin)
+        {
+            InitializeComponent();
+            okButton.Enabled = false;
+            admin = _admin;
+            if (_admin)
+            {
+                size = 17;
+                array = new int[size];
+                Checkboxes = new bool[size];
+            }
+            else
+            {
+                size = 14;
+                array = new int[size];
+                Checkboxes = new bool[size];
+            }
+        }
 
         private void exImportWorker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -65,6 +103,8 @@ namespace BikeDB2024
                 ws_ver.Cells[4, 0] = new Cell("None - original version");
                 ws_ver.Cells[6, 0] = new Cell("Created:");
                 ws_ver.Cells[7, 0] = new Cell(DateTime.Now, @"hh:mm:ss DD-MMM-YYYY");
+                if (admin)
+                    ws_ver.Cells[9, 0] = new Cell("ADMINISTRATORS ONLY - don't share with users!");
                 workbook.Worksheets.Add(ws_ver);
 
                 for (int i = 0; i < cnt_tables; i++)
@@ -113,7 +153,10 @@ namespace BikeDB2024
                                                 con1.Open();
                                                 using (SqlCommand com1 = new SqlCommand())
                                                 {
-                                                    com1.CommandText = $"SELECT * FROM Tour WHERE [User] = " + Properties.Settings.Default.CurrentUserID; 
+                                                    if (admin)
+                                                        com1.CommandText = $"SELECT * FROM Tour";
+                                                    else
+                                                        com1.CommandText = $"SELECT * FROM Tour WHERE [User] = " + Properties.Settings.Default.CurrentUserID; 
                                                     com1.CommandType = CommandType.Text;
                                                     com1.Connection = con1;
                                                     using (SqlDataReader reader1 = com1.ExecuteReader())
@@ -133,7 +176,7 @@ namespace BikeDB2024
                                                             ws_tour.Cells[j, 10] = new Cell(reader1[10].ToString());
                                                             ws_tour.Cells[j, 11] = new Cell(reader1[11].ToString());
                                                             ws_tour.Cells[j, 12] = new Cell(ReturnNowIfNull(reader1[12].ToString()));
-                                                            ws_tour.Cells[j, 13] = new Cell(ReturnNowIfNull(reader1[12].ToString()));
+                                                            ws_tour.Cells[j, 13] = new Cell(ReturnNowIfNull(reader1[13].ToString()));
                                                             ws_tour.Cells[j, 14] = new Cell(AdminIfNull(reader1[14].ToString()));
                                                             j++;
                                                         }
@@ -181,7 +224,7 @@ namespace BikeDB2024
                                                 con1.Open();
                                                 using (SqlCommand com1 = new SqlCommand())
                                                 {
-                                                    com1.CommandText = $"SELECT * FROM Countries WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
+                                                    com1.CommandText = $"SELECT * FROM Countries";      // WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
                                                     com1.Connection = con1;
                                                     using (SqlDataReader reader1 = com1.ExecuteReader())
@@ -249,7 +292,7 @@ namespace BikeDB2024
                                                 con1.Open();
                                                 using (SqlCommand com1 = new SqlCommand())
                                                 {
-                                                    com1.CommandText = $"SELECT * FROM Cities WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
+                                                    com1.CommandText = $"SELECT * FROM Cities";     // WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
                                                     com1.Connection = con1;
                                                     using (SqlDataReader reader1 = com1.ExecuteReader())
@@ -309,9 +352,10 @@ namespace BikeDB2024
                                     ws_routes.Cells[1, 9] = new Cell("Remarks");
                                     ws_routes.Cells[1, 10] = new Cell("AltProfile");
                                     ws_routes.Cells[1, 11] = new Cell("Image");
-                                    ws_routes.Cells[1, 12] = new Cell("Created");
-                                    ws_routes.Cells[1, 13] = new Cell("LastChanged");
-                                    ws_routes.Cells[1, 14] = new Cell("User");
+                                    ws_routes.Cells[1, 12] = new Cell("NotShown");
+                                    ws_routes.Cells[1, 13] = new Cell("Created");
+                                    ws_routes.Cells[1, 14] = new Cell("LastChanged");
+                                    ws_routes.Cells[1, 15] = new Cell("User");
 
                                     if ((int)array.GetValue(i) != 0)    // Table is not empty
                                     {
@@ -343,9 +387,10 @@ namespace BikeDB2024
                                                             ws_routes.Cells[j, 9] = new Cell(reader1[9].ToString());
                                                             ws_routes.Cells[j, 10] = new Cell(reader1[10].ToString());
                                                             ws_routes.Cells[j, 11] = new Cell(reader1[11].ToString());
-                                                            ws_routes.Cells[j, 12] = new Cell(ReturnNowIfNull(reader1[12].ToString()));
+                                                            ws_routes.Cells[j, 12] = new Cell(reader1[12].ToString());
                                                             ws_routes.Cells[j, 13] = new Cell(ReturnNowIfNull(reader1[13].ToString()));
-                                                            ws_routes.Cells[j, 14] = new Cell(AdminIfNull(reader1[14].ToString()));
+                                                            ws_routes.Cells[j, 14] = new Cell(ReturnNowIfNull(reader1[14].ToString()));
+                                                            ws_routes.Cells[j, 15] = new Cell(AdminIfNull(reader1[15].ToString()));
                                                             j++;
                                                         }
                                                         reader1.Close();
@@ -571,9 +616,11 @@ namespace BikeDB2024
                                     // Column names
                                     ws_vectype.Cells[1, 0] = new Cell("Id");
                                     ws_vectype.Cells[1, 1] = new Cell("VehicleType");
-                                    ws_vectype.Cells[1, 2] = new Cell("Created");
-                                    ws_vectype.Cells[1, 3] = new Cell("LastChanged");
-                                    ws_vectype.Cells[1, 4] = new Cell("User");
+                                    ws_vectype.Cells[1, 2] = new Cell("Electric");
+                                    ws_vectype.Cells[1, 3] = new Cell("Engine");
+                                    ws_vectype.Cells[1, 4] = new Cell("Created");
+                                    ws_vectype.Cells[1, 5] = new Cell("LastChanged");
+                                    ws_vectype.Cells[1, 6] = new Cell("User");
 
                                     if ((int)array.GetValue(i) != 0)    // Table is not empty
                                     {
@@ -586,7 +633,7 @@ namespace BikeDB2024
                                                 con1.Open();
                                                 using (SqlCommand com1 = new SqlCommand())
                                                 {
-                                                    com1.CommandText = $"SELECT * FROM VehicleTypes WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
+                                                    com1.CommandText = $"SELECT * FROM VehicleTypes";   // WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
                                                     com1.Connection = con1;
                                                     using (SqlDataReader reader1 = com1.ExecuteReader())
@@ -595,9 +642,11 @@ namespace BikeDB2024
                                                         {
                                                             ws_vectype.Cells[j, 0] = new Cell(reader1[0].ToString());
                                                             ws_vectype.Cells[j, 1] = new Cell(reader1[1].ToString());
-                                                            ws_vectype.Cells[j, 2] = new Cell(ReturnNowIfNull(reader1[2].ToString()));
-                                                            ws_vectype.Cells[j, 3] = new Cell(ReturnNowIfNull(reader1[3].ToString()));
-                                                            ws_vectype.Cells[j, 4] = new Cell(AdminIfNull(reader1[4].ToString()));
+                                                            ws_vectype.Cells[j, 2] = new Cell(reader1[2].ToString());
+                                                            ws_vectype.Cells[j, 3] = new Cell(reader1[3].ToString());
+                                                            ws_vectype.Cells[j, 4] = new Cell(ReturnNowIfNull(reader1[4].ToString()));
+                                                            ws_vectype.Cells[j, 5] = new Cell(ReturnNowIfNull(reader1[5].ToString()));
+                                                            ws_vectype.Cells[j, 6] = new Cell(AdminIfNull(reader1[6].ToString()));
                                                             j++;
                                                         }
                                                         reader1.Close();
@@ -687,20 +736,22 @@ namespace BikeDB2024
                                     ws_persons.Cells[1, 3] = new Cell("Name");
                                     ws_persons.Cells[1, 4] = new Cell("City");
                                     ws_persons.Cells[1, 5] = new Cell("Birthdate");
-                                    ws_persons.Cells[1, 6] = new Cell("Phone");
-                                    ws_persons.Cells[1, 7] = new Cell("Email");
-                                    ws_persons.Cells[1, 8] = new Cell("PLZ");
-                                    ws_persons.Cells[1, 9] = new Cell("Street1");
-                                    ws_persons.Cells[1, 10] = new Cell("Street2");
-                                    ws_persons.Cells[1, 11] = new Cell("Country");
-                                    ws_persons.Cells[1, 12] = new Cell("Image");
-                                    ws_persons.Cells[1, 13] = new Cell("Remark");
-                                    ws_persons.Cells[1, 14] = new Cell("Created");
-                                    ws_persons.Cells[1, 15] = new Cell("LastChanged");
-                                    ws_persons.Cells[1, 16] = new Cell("User");
-                                    ws_persons.Cells[1, 17] = new Cell("IsUser");
-                                    ws_persons.Cells[1, 18] = new Cell("IsAdmin");
-                                    ws_persons.Cells[1, 19] = new Cell("Password");                                   
+                                    ws_persons.Cells[1, 6] = new Cell("Deathdate");
+                                    ws_persons.Cells[1, 7] = new Cell("Phone");
+                                    ws_persons.Cells[1, 8] = new Cell("Email");
+                                    ws_persons.Cells[1, 9] = new Cell("PLZ");
+                                    ws_persons.Cells[1, 10] = new Cell("Street1");
+                                    ws_persons.Cells[1, 11] = new Cell("Street2");
+                                    ws_persons.Cells[1, 12] = new Cell("Country");
+                                    ws_persons.Cells[1, 13] = new Cell("Image");
+                                    ws_persons.Cells[1, 14] = new Cell("Remark");
+                                    ws_persons.Cells[1, 15] = new Cell("NotShown");
+                                    ws_persons.Cells[1, 16] = new Cell("Created");
+                                    ws_persons.Cells[1, 17] = new Cell("LastChanged");
+                                    ws_persons.Cells[1, 18] = new Cell("User");
+                                    ws_persons.Cells[1, 19] = new Cell("IsUser");
+                                    ws_persons.Cells[1, 20] = new Cell("IsAdmin");
+                                    ws_persons.Cells[1, 21] = new Cell("Password");                                   
 
                                     if ((int)array.GetValue(i) != 0)    // Table is not empty
                                     {
@@ -713,7 +764,10 @@ namespace BikeDB2024
                                                 con1.Open();
                                                 using (SqlCommand com1 = new SqlCommand())
                                                 {
-                                                    com1.CommandText = $"SELECT * FROM Persons WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
+                                                    if (admin)
+                                                        com1.CommandText = $"SELECT * FROM Persons";
+                                                    else
+                                                        com1.CommandText = $"SELECT * FROM Persons WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
                                                     com1.Connection = con1;
                                                     using (SqlDataReader reader1 = com1.ExecuteReader())
@@ -734,12 +788,14 @@ namespace BikeDB2024
                                                             ws_persons.Cells[j, 11] = new Cell(reader1[11].ToString());
                                                             ws_persons.Cells[j, 12] = new Cell(reader1[12].ToString());
                                                             ws_persons.Cells[j, 13] = new Cell(reader1[13].ToString());
-                                                            ws_persons.Cells[j, 14] = new Cell(ReturnNowIfNull(reader1[14].ToString()));
-                                                            ws_persons.Cells[j, 15] = new Cell(ReturnNowIfNull(reader1[15].ToString()));
-                                                            ws_persons.Cells[j, 16] = new Cell(AdminIfNull(reader1[16].ToString()));
-                                                            ws_persons.Cells[j, 17] = new Cell(reader1[17].ToString());
-                                                            ws_persons.Cells[j, 18] = new Cell(reader1[18].ToString());
+                                                            ws_persons.Cells[j, 14] = new Cell(reader1[14].ToString());
+                                                            ws_persons.Cells[j, 15] = new Cell(reader1[15].ToString());
+                                                            ws_persons.Cells[j, 16] = new Cell(ReturnNowIfNull(reader1[16].ToString()));
+                                                            ws_persons.Cells[j, 17] = new Cell(ReturnNowIfNull(reader1[17].ToString()));
+                                                            ws_persons.Cells[j, 18] = new Cell(AdminIfNull(reader1[18].ToString()));
                                                             ws_persons.Cells[j, 19] = new Cell(reader1[19].ToString());
+                                                            ws_persons.Cells[j, 20] = new Cell(reader1[20].ToString());
+                                                            ws_persons.Cells[j, 21] = new Cell(reader1[21].ToString());
                                                             j++;
                                                         }
                                                         reader1.Close();
@@ -880,6 +936,401 @@ namespace BikeDB2024
                                     worker.ReportProgress(percent);
                                 }
                                 break;
+                            case 12:
+                                if ((bool)Checkboxes.GetValue(i))
+                                {
+                                    Worksheet ws_costs = new Worksheet("Costs");
+                                    // Table name
+                                    ws_costs.Cells[0, 0] = new Cell("Tabelle: Costs");
+                                    // Column names
+                                    ws_costs.Cells[1, 0] = new Cell("Id");
+                                    ws_costs.Cells[1, 1] = new Cell("CostTitle");
+                                    ws_costs.Cells[1, 2] = new Cell("Date");
+                                    ws_costs.Cells[1, 3] = new Cell("CostCategory");
+                                    ws_costs.Cells[1, 4] = new Cell("Description");
+                                    ws_costs.Cells[1, 5] = new Cell("Price");
+                                    ws_costs.Cells[1, 6] = new Cell("Vehicle");
+                                    ws_costs.Cells[1, 7] = new Cell("User");
+                                    ws_costs.Cells[1, 8] = new Cell("Created");
+                                    ws_costs.Cells[1, 9] = new Cell("LastChanged");
+
+                                    if ((int)array.GetValue(i) != 0)    // Table is not empty
+                                    {
+                                        SqlConnection con1;
+                                        int j = 2;
+                                        try
+                                        {
+                                            using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                            {
+                                                con1.Open();
+                                                using (SqlCommand com1 = new SqlCommand())
+                                                {
+                                                    com1.CommandText = $"SELECT * FROM Costs WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
+                                                    com1.CommandType = CommandType.Text;
+                                                    com1.Connection = con1;
+                                                    using (SqlDataReader reader1 = com1.ExecuteReader())
+                                                    {
+                                                        while (reader1.Read())
+                                                        {
+                                                            ws_costs.Cells[j, 0] = new Cell(reader1[0].ToString());
+                                                            ws_costs.Cells[j, 1] = new Cell(reader1[1].ToString());
+                                                            ws_costs.Cells[j, 2] = new Cell(reader1[2].ToString());
+                                                            ws_costs.Cells[j, 3] = new Cell(reader1[3].ToString());
+                                                            ws_costs.Cells[j, 4] = new Cell(reader1[4].ToString());
+                                                            ws_costs.Cells[j, 5] = new Cell(reader1[5].ToString());
+                                                            ws_costs.Cells[j, 6] = new Cell(reader1[6].ToString());
+                                                            ws_costs.Cells[j, 7] = new Cell(AdminIfNull(reader1[7].ToString()));
+                                                            ws_costs.Cells[j, 8] = new Cell(ReturnNowIfNull(reader1[8].ToString()));
+                                                            ws_costs.Cells[j, 9] = new Cell(ReturnNowIfNull(reader1[9].ToString()));
+                                                            j++;
+                                                        }
+                                                        reader1.Close();
+                                                    }
+                                                }
+                                                con1.Close();
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff");
+                                        }
+                                    }
+                                    else ws_costs.Cells[2, 0] = new Cell("Tabelle enthält keine Daten! Diese Zelle kann gelöscht werden, um manuell Daten einzugeben.");
+
+                                    workbook.Worksheets.Add(ws_costs);
+                                    percent += (int)array.GetValue(i) / cnt_rows;
+                                    worker.ReportProgress(percent);
+                                }
+                                break;
+                            case 13:
+                                if ((bool)Checkboxes.GetValue(i))
+                                {
+                                    Worksheet ws_costscat = new Worksheet("CostCategories");
+                                    // Table name
+                                    ws_costscat.Cells[0, 0] = new Cell("Tabelle: CostCategories");
+                                    // Column names
+                                    ws_costscat.Cells[1, 0] = new Cell("Id");
+                                    ws_costscat.Cells[1, 1] = new Cell("CategoryName");
+                                    ws_costscat.Cells[1, 2] = new Cell("ElectricVehicles");
+                                    ws_costscat.Cells[1, 3] = new Cell("Engines");
+                                    ws_costscat.Cells[1, 4] = new Cell("User");
+                                    ws_costscat.Cells[1, 5] = new Cell("Created");
+                                    ws_costscat.Cells[1, 6] = new Cell("LastChanged");
+
+                                    if ((int)array.GetValue(i) != 0)    // Table is not empty
+                                    {
+                                        SqlConnection con1;
+                                        int j = 2;
+                                        try
+                                        {
+                                            using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                            {
+                                                con1.Open();
+                                                using (SqlCommand com1 = new SqlCommand())
+                                                {
+                                                    com1.CommandText = $"SELECT * FROM CostCategories"; // WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
+                                                    com1.CommandType = CommandType.Text;
+                                                    com1.Connection = con1;
+                                                    using (SqlDataReader reader1 = com1.ExecuteReader())
+                                                    {
+                                                        while (reader1.Read())
+                                                        {
+                                                            ws_costscat.Cells[j, 0] = new Cell(reader1[0].ToString());
+                                                            ws_costscat.Cells[j, 1] = new Cell(reader1[1].ToString());
+                                                            ws_costscat.Cells[j, 2] = new Cell(reader1[2].ToString());
+                                                            ws_costscat.Cells[j, 3] = new Cell(reader1[3].ToString());
+                                                            ws_costscat.Cells[j, 4] = new Cell(AdminIfNull(reader1[4].ToString()));
+                                                            ws_costscat.Cells[j, 5] = new Cell(ReturnNowIfNull(reader1[5].ToString()));
+                                                            ws_costscat.Cells[j, 6] = new Cell(ReturnNowIfNull(reader1[6].ToString()));
+                                                            j++;
+                                                        }
+                                                        reader1.Close();
+                                                    }
+                                                }
+                                                con1.Close();
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff");
+                                        }
+                                    }
+                                    else ws_costscat.Cells[2, 0] = new Cell("Tabelle enthält keine Daten! Diese Zelle kann gelöscht werden, um manuell Daten einzugeben.");
+
+                                    workbook.Worksheets.Add(ws_costscat);
+                                    percent += (int)array.GetValue(i) / cnt_rows;
+                                    worker.ReportProgress(percent);
+                                }
+                                break;
+                            case 14:
+                                if ((bool)Checkboxes.GetValue(i) && admin)
+                                {
+                                    Worksheet ws_clients = new Worksheet("Clients");
+                                    // Table name
+                                    ws_clients.Cells[0, 0] = new Cell("Tabelle: Clients");
+                                    // Column names
+                                    ws_clients.Cells[1, 0] = new Cell("Id");
+                                    ws_clients.Cells[1, 1] = new Cell("ClientName");
+                                    ws_clients.Cells[1, 2] = new Cell("IPv4");
+                                    ws_clients.Cells[1, 3] = new Cell("IPv6");
+                                    ws_clients.Cells[1, 4] = new Cell("LAN");
+                                    ws_clients.Cells[1, 5] = new Cell("RestrictUser");
+                                    ws_clients.Cells[1, 6] = new Cell("AllowedUser");
+                                    ws_clients.Cells[1, 7] = new Cell("User");
+                                    ws_clients.Cells[1, 8] = new Cell("Created");
+                                    ws_clients.Cells[1, 9] = new Cell("LastChanged");
+
+                                    if ((int)array.GetValue(i) != 0)    // Table is not empty
+                                    {
+                                        SqlConnection con1;
+                                        int j = 2;
+                                        try
+                                        {
+                                            using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                            {
+                                                con1.Open();
+                                                using (SqlCommand com1 = new SqlCommand())
+                                                {
+                                                    com1.CommandText = $"SELECT * FROM Clients";
+                                                    com1.CommandType = CommandType.Text;
+                                                    com1.Connection = con1;
+                                                    using (SqlDataReader reader1 = com1.ExecuteReader())
+                                                    {
+                                                        while (reader1.Read())
+                                                        {
+                                                            ws_clients.Cells[j, 0] = new Cell(reader1[0].ToString());
+                                                            ws_clients.Cells[j, 1] = new Cell(reader1[1].ToString());
+                                                            ws_clients.Cells[j, 2] = new Cell(reader1[2].ToString());
+                                                            ws_clients.Cells[j, 3] = new Cell(reader1[3].ToString());
+                                                            ws_clients.Cells[j, 4] = new Cell(reader1[4].ToString());
+                                                            ws_clients.Cells[j, 5] = new Cell(reader1[5].ToString());
+                                                            ws_clients.Cells[j, 6] = new Cell(reader1[6].ToString());
+                                                            ws_clients.Cells[j, 7] = new Cell(AdminIfNull(reader1[7].ToString()));
+                                                            ws_clients.Cells[j, 8] = new Cell(ReturnNowIfNull(reader1[8].ToString()));
+                                                            ws_clients.Cells[j, 9] = new Cell(ReturnNowIfNull(reader1[9].ToString()));
+                                                            j++;
+                                                        }
+                                                        reader1.Close();
+                                                    }
+                                                }
+                                                con1.Close();
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff");
+                                        }
+                                    }
+                                    else ws_clients.Cells[2, 0] = new Cell("Tabelle enthält keine Daten! Diese Zelle kann gelöscht werden, um manuell Daten einzugeben.");
+
+                                    workbook.Worksheets.Add(ws_clients);
+                                    percent += (int)array.GetValue(i) / cnt_rows;
+                                    worker.ReportProgress(percent);
+                                }
+                                break;
+                            case 15:
+                                if ((bool)Checkboxes.GetValue(i) && admin)
+                                {
+                                    Worksheet ws_log = new Worksheet("Log");
+                                    // Table name
+                                    ws_log.Cells[0, 0] = new Cell("Tabelle: Log");
+                                    // Column names
+                                    ws_log.Cells[1, 0] = new Cell("Id");
+                                    ws_log.Cells[1, 1] = new Cell("Type");
+                                    ws_log.Cells[1, 2] = new Cell("Remark");
+                                    ws_log.Cells[1, 3] = new Cell("User");
+                                    ws_log.Cells[1, 4] = new Cell("Created");
+
+                                    if ((int)array.GetValue(i) != 0)    // Table is not empty
+                                    {
+                                        SqlConnection con1;
+                                        int j = 2;
+                                        try
+                                        {
+                                            using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                            {
+                                                con1.Open();
+                                                using (SqlCommand com1 = new SqlCommand())
+                                                {
+                                                    com1.CommandText = $"SELECT * FROM Log";
+                                                    com1.CommandType = CommandType.Text;
+                                                    com1.Connection = con1;
+                                                    using (SqlDataReader reader1 = com1.ExecuteReader())
+                                                    {
+                                                        while (reader1.Read())
+                                                        {
+                                                            ws_log.Cells[j, 0] = new Cell(reader1[0].ToString());
+                                                            ws_log.Cells[j, 1] = new Cell(reader1[1].ToString());
+                                                            ws_log.Cells[j, 2] = new Cell(reader1[2].ToString());
+                                                            ws_log.Cells[j, 3] = new Cell(AdminIfNull(reader1[3].ToString()));
+                                                            ws_log.Cells[j, 4] = new Cell(ReturnNowIfNull(reader1[4].ToString()));
+                                                            j++;
+                                                        }
+                                                        reader1.Close();
+                                                    }
+                                                }
+                                                con1.Close();
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff");
+                                        }
+                                    }
+                                    else ws_log.Cells[2, 0] = new Cell("Tabelle enthält keine Daten! Diese Zelle kann gelöscht werden, um manuell Daten einzugeben.");
+
+                                    workbook.Worksheets.Add(ws_log);
+                                    percent += (int)array.GetValue(i) / cnt_rows;
+                                    worker.ReportProgress(percent);
+                                }
+                                break;
+                            case 16:
+                                if ((bool)Checkboxes.GetValue(i) && admin)
+                                {
+                                    Worksheet ws_settings = new Worksheet("Settings");
+                                    // Table name
+                                    ws_settings.Cells[0, 0] = new Cell("Tabelle: Settings");
+                                    // Column names
+                                    ws_settings.Cells[1, 0] = new Cell("Id");
+                                    ws_settings.Cells[1, 1] = new Cell("User");
+                                    ws_settings.Cells[1, 2] = new Cell("UseAltimeter");
+                                    ws_settings.Cells[1, 3] = new Cell("DefaultContinent");
+                                    ws_settings.Cells[1, 4] = new Cell("DefaultCountry");
+                                    ws_settings.Cells[1, 5] = new Cell("DefaultCity");
+                                    ws_settings.Cells[1, 6] = new Cell("DefaultRoute");
+                                    ws_settings.Cells[1, 7] = new Cell("DefaultVehicle");
+                                    ws_settings.Cells[1, 8] = new Cell("DefaultBundesland");
+                                    ws_settings.Cells[1, 9] = new Cell("WindowLocation");
+                                    ws_settings.Cells[1, 10] = new Cell("WindowSize");
+                                    ws_settings.Cells[1, 11] = new Cell("GoogleEarthPath");
+                                    ws_settings.Cells[1, 12] = new Cell("ImageEditorPath");
+                                    ws_settings.Cells[1, 13] = new Cell("ImageEditorName");
+                                    ws_settings.Cells[1, 14] = new Cell("ImageFolderPath");
+                                    ws_settings.Cells[1, 15] = new Cell("GpxFolderPath");
+                                    ws_settings.Cells[1, 16] = new Cell("ShowHelp");
+                                    ws_settings.Cells[1, 17] = new Cell("ShowToolbar");
+                                    ws_settings.Cells[1, 18] = new Cell("ShowWelcome");
+                                    ws_settings.Cells[1, 19] = new Cell("ShowNotification");
+                                    ws_settings.Cells[1, 20] = new Cell("ShowLastUser");
+                                    ws_settings.Cells[1, 21] = new Cell("ShowBirthdays");
+                                    ws_settings.Cells[1, 22] = new Cell("ShowNotifyIcon");
+                                    ws_settings.Cells[1, 23] = new Cell("ShowFlightDB");
+                                    ws_settings.Cells[1, 24] = new Cell("KeepLoggedIn");
+                                    ws_settings.Cells[1, 25] = new Cell("UseDockingStation");
+                                    ws_settings.Cells[1, 26] = new Cell("AdminChanged");
+                                    ws_settings.Cells[1, 27] = new Cell("IsMultiUser");
+                                    ws_settings.Cells[1, 28] = new Cell("UserLoggedIn");
+                                    ws_settings.Cells[1, 29] = new Cell("AdminLoggedIn");
+                                    ws_settings.Cells[1, 30] = new Cell("AdminLocation");
+                                    ws_settings.Cells[1, 31] = new Cell("AdminSize");
+                                    ws_settings.Cells[1, 32] = new Cell("FlightDBLocation");
+                                    ws_settings.Cells[1, 33] = new Cell("FlightDBSize");
+                                    ws_settings.Cells[1, 34] = new Cell("EntfaltungLocation");
+                                    ws_settings.Cells[1, 35] = new Cell("EntfaltungSize");
+                                    ws_settings.Cells[1, 36] = new Cell("ImageViewerLocation");
+                                    ws_settings.Cells[1, 37] = new Cell("ImageViewerSize");
+                                    ws_settings.Cells[1, 38] = new Cell("HelpLocation");
+                                    ws_settings.Cells[1, 39] = new Cell("HelpSize");
+                                    ws_settings.Cells[1, 40] = new Cell("StatLocation");
+                                    ws_settings.Cells[1, 41] = new Cell("StatSize");
+                                    ws_settings.Cells[1, 42] = new Cell("ToolbarLocation");
+                                    ws_settings.Cells[1, 43] = new Cell("ToolbarSize");
+                                    ws_settings.Cells[1, 44] = new Cell("MinPasswordLength");
+                                    ws_settings.Cells[1, 45] = new Cell("NotifyTime");
+                                    ws_settings.Cells[1, 46] = new Cell("LastUser");
+                                    ws_settings.Cells[1, 47] = new Cell("CurrentUserId");
+                                    ws_settings.Cells[1, 48] = new Cell("CurrentUserName");
+                                    ws_settings.Cells[1, 49] = new Cell("InstallationType");
+
+                                    if ((int)array.GetValue(i) != 0)    // Table is not empty
+                                    {
+                                        SqlConnection con1;
+                                        int j = 2;
+                                        try
+                                        {
+                                            using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                            {
+                                                con1.Open();
+                                                using (SqlCommand com1 = new SqlCommand())
+                                                {
+                                                    com1.CommandText = $"SELECT * FROM Settings";
+                                                    com1.CommandType = CommandType.Text;
+                                                    com1.Connection = con1;
+                                                    using (SqlDataReader reader1 = com1.ExecuteReader())
+                                                    {
+                                                        while (reader1.Read())
+                                                        {
+                                                            ws_settings.Cells[j, 0] = new Cell(reader1[0].ToString());
+                                                            ws_settings.Cells[j, 1] = new Cell(reader1[1].ToString());
+                                                            ws_settings.Cells[j, 2] = new Cell(reader1[2].ToString());
+                                                            ws_settings.Cells[j, 3] = new Cell(reader1[3].ToString());
+                                                            ws_settings.Cells[j, 4] = new Cell(reader1[4].ToString());
+                                                            ws_settings.Cells[j, 5] = new Cell(reader1[5].ToString());
+                                                            ws_settings.Cells[j, 6] = new Cell(reader1[6].ToString());
+                                                            ws_settings.Cells[j, 7] = new Cell(reader1[7].ToString());
+                                                            ws_settings.Cells[j, 8] = new Cell(reader1[8].ToString());
+                                                            ws_settings.Cells[j, 9] = new Cell(reader1[9].ToString());
+                                                            ws_settings.Cells[j, 10] = new Cell(reader1[10].ToString());
+                                                            ws_settings.Cells[j, 11] = new Cell(reader1[11].ToString());
+                                                            ws_settings.Cells[j, 12] = new Cell(reader1[12].ToString());
+                                                            ws_settings.Cells[j, 13] = new Cell(reader1[13].ToString());
+                                                            ws_settings.Cells[j, 14] = new Cell(reader1[14].ToString());
+                                                            ws_settings.Cells[j, 15] = new Cell(reader1[15].ToString());
+                                                            ws_settings.Cells[j, 16] = new Cell(reader1[16].ToString());
+                                                            ws_settings.Cells[j, 17] = new Cell(reader1[17].ToString());
+                                                            ws_settings.Cells[j, 18] = new Cell(reader1[18].ToString());
+                                                            ws_settings.Cells[j, 19] = new Cell(reader1[19].ToString());
+                                                            ws_settings.Cells[j, 20] = new Cell(reader1[20].ToString());
+                                                            ws_settings.Cells[j, 21] = new Cell(reader1[21].ToString());
+                                                            ws_settings.Cells[j, 22] = new Cell(reader1[22].ToString());
+                                                            ws_settings.Cells[j, 23] = new Cell(reader1[23].ToString());
+                                                            ws_settings.Cells[j, 24] = new Cell(reader1[24].ToString());
+                                                            ws_settings.Cells[j, 25] = new Cell(reader1[25].ToString());
+                                                            ws_settings.Cells[j, 26] = new Cell(reader1[26].ToString());
+                                                            ws_settings.Cells[j, 27] = new Cell(reader1[27].ToString());
+                                                            ws_settings.Cells[j, 28] = new Cell(reader1[28].ToString());
+                                                            ws_settings.Cells[j, 29] = new Cell(reader1[29].ToString());
+                                                            ws_settings.Cells[j, 30] = new Cell(reader1[30].ToString());
+                                                            ws_settings.Cells[j, 31] = new Cell(reader1[31].ToString());
+                                                            ws_settings.Cells[j, 32] = new Cell(reader1[32].ToString());
+                                                            ws_settings.Cells[j, 33] = new Cell(reader1[33].ToString());
+                                                            ws_settings.Cells[j, 34] = new Cell(reader1[34].ToString());
+                                                            ws_settings.Cells[j, 35] = new Cell(reader1[35].ToString());
+                                                            ws_settings.Cells[j, 36] = new Cell(reader1[36].ToString());
+                                                            ws_settings.Cells[j, 37] = new Cell(reader1[37].ToString());
+                                                            ws_settings.Cells[j, 38] = new Cell(reader1[38].ToString());
+                                                            ws_settings.Cells[j, 39] = new Cell(reader1[39].ToString());
+                                                            ws_settings.Cells[j, 40] = new Cell(reader1[40].ToString());
+                                                            ws_settings.Cells[j, 41] = new Cell(reader1[41].ToString());
+                                                            ws_settings.Cells[j, 42] = new Cell(reader1[42].ToString());
+                                                            ws_settings.Cells[j, 43] = new Cell(reader1[43].ToString());
+                                                            ws_settings.Cells[j, 44] = new Cell(reader1[44].ToString());
+                                                            ws_settings.Cells[j, 45] = new Cell(reader1[45].ToString());
+                                                            ws_settings.Cells[j, 46] = new Cell(reader1[46].ToString());
+                                                            ws_settings.Cells[j, 47] = new Cell(reader1[47].ToString());
+                                                            ws_settings.Cells[j, 48] = new Cell(reader1[48].ToString());
+                                                            ws_settings.Cells[j, 49] = new Cell(reader1[49].ToString());
+
+                                                            j++;
+                                                        }
+                                                        reader1.Close();
+                                                    }
+                                                }
+                                                con1.Close();
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff");
+                                        }
+                                    }
+                                    else ws_settings.Cells[2, 0] = new Cell("Tabelle enthält keine Daten! Diese Zelle kann gelöscht werden, um manuell Daten einzugeben.");
+
+                                    workbook.Worksheets.Add(ws_settings);
+                                    percent += (int)array.GetValue(i) / cnt_rows;
+                                    worker.ReportProgress(percent);
+                                }
+                                break;
                             default:
                                 break;
                         }
@@ -913,12 +1364,12 @@ namespace BikeDB2024
                             case "Tour":
                                 if (status == JobStatus.APPEND_TOUR || status == JobStatus.APPEND_ALL)
                                 {
-                                    result = ReadSpreadsheet(tables[current_table], 11, CountIds(tables[current_table]));
+                                    result = ReadSpreadsheet(tables[current_table], 15, CountIds(tables[current_table]));
                                 }
                                 else if (status == JobStatus.DROP_TOUR || status == JobStatus.DROP_ALL)
                                 {
                                     ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 11);
+                                    result = ReadSpreadsheet(tables[current_table], 15);
                                 }
 
                                 try
@@ -931,7 +1382,7 @@ namespace BikeDB2024
                                             using (SqlCommand myCommand = new SqlCommand())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeight, MaxAltitude, Remark, Persons, Created, LastChanged, User) " +
+                                                " (Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeight, MaxAltitude, Remark, Persons, Created, LastChanged, [User]) " +
                                                 "VALUES (@id, @Date, @Route, @Vehicle, @Km, @Time, @AvgSpeed, @MaxSpeed, @Height, @MaxAlt, @Remark @persons, @created, @last, @user)";
                                                 myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
                                                 int maxAlt = 0;
@@ -955,8 +1406,8 @@ namespace BikeDB2024
                                                 myCommand.Parameters.Add("@MaxAlt", SqlDbType.Int).Value = maxAlt;
                                                 myCommand.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = result[x][10];
                                                 myCommand.Parameters.Add("@persons", SqlDbType.NVarChar).Value = result[x][11];
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][12]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][12]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
                                                 myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][14]);
                                                 myCommand.CommandText = sqlquery;
                                                 myCommand.CommandType = CommandType.Text;
@@ -979,12 +1430,12 @@ namespace BikeDB2024
                                 }
                                 else if (status == JobStatus.APPEND_ALL)
                                 {
-                                    result = ReadSpreadsheet(tables[current_table], 5, CountIds(tables[current_table]));
+                                    result = ReadSpreadsheet(tables[current_table], 8, CountIds(tables[current_table]));
                                 }
                                 else if (status == JobStatus.DROP_ALL)
                                 {
                                     ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 5);
+                                    result = ReadSpreadsheet(tables[current_table], 8);
                                 }
 
                                 try
@@ -997,15 +1448,15 @@ namespace BikeDB2024
                                             using (SqlCommand myCommand = new SqlCommand())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, Country, Iso3166, Phone, Continent, Created, LastChanged, User) " +
+                                                " (Id, Country, Iso3166, Phone, Continent, Created, LastChanged, [User]) " +
                                                 "VALUES (@id, @country, @iso3166, @phone, @continent, @created, @last, @user)";
                                                 myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
                                                 myCommand.Parameters.Add("@country", SqlDbType.NVarChar).Value = result[x][1];
                                                 myCommand.Parameters.Add("@iso3166", SqlDbType.NVarChar).Value = (result[x][2]);
                                                 myCommand.Parameters.Add("@phone", SqlDbType.NVarChar).Value = result[x][3];
                                                 myCommand.Parameters.Add("@continent", SqlDbType.Int).Value = Convert.ToInt32(result[x][4]);
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][5]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][5]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
                                                 myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][7]);
                                                 myCommand.CommandText = sqlquery;
                                                 myCommand.CommandType = CommandType.Text;
@@ -1028,12 +1479,12 @@ namespace BikeDB2024
                                 }
                                 else if (status == JobStatus.APPEND_ALL)
                                 {
-                                    result = ReadSpreadsheet(tables[current_table], 11, CountIds(tables[current_table]));
+                                    result = ReadSpreadsheet(tables[current_table], 14, CountIds(tables[current_table]));
                                 }
                                 else if (status == JobStatus.DROP_ALL)
                                 {
                                     ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 11);
+                                    result = ReadSpreadsheet(tables[current_table], 14);
                                 }
 
                                 try
@@ -1046,7 +1497,7 @@ namespace BikeDB2024
                                             using (SqlCommand myCommand = new SqlCommand())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, CityName, Country, Bundesland, CityPrefix, Link, Kfz, Height, Remark, Image, Gps, Created, LastChanged, User) " +
+                                                " (Id, CityName, Country, Bundesland, CityPrefix, Link, Kfz, Height, Remark, Image, Gps, Created, LastChanged, [User]) " +
                                                 "VALUES (@id, @CityName, @Country, @Bundesland, @CityPrefix, @Link, @Kfz, @Height, @Remark, @Image, @Gps, @created, @last, @user)";
                                                 myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
                                                 myCommand.Parameters.Add("@CityName", SqlDbType.NVarChar).Value = result[x][1];
@@ -1059,8 +1510,8 @@ namespace BikeDB2024
                                                 myCommand.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = result[x][8];
                                                 myCommand.Parameters.Add("@Image", SqlDbType.NVarChar).Value = result[x][9];
                                                 myCommand.Parameters.Add("@Gps", SqlDbType.NVarChar).Value = result[x][10];
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][11]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][11]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
                                                 myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][13]);
                                                 myCommand.CommandText = sqlquery;
                                                 myCommand.CommandType = CommandType.Text;
@@ -1083,12 +1534,12 @@ namespace BikeDB2024
                                 }
                                 else if (status == JobStatus.APPEND_ALL)
                                 {
-                                    result = ReadSpreadsheet(tables[current_table], 12, CountIds(tables[current_table]));
+                                    result = ReadSpreadsheet(tables[current_table], 16, CountIds(tables[current_table]));
                                 }
                                 else if (status == JobStatus.DROP_ALL)
                                 {
                                     ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 12);
+                                    result = ReadSpreadsheet(tables[current_table], 16);
                                 }
 
                                 try
@@ -1101,8 +1552,8 @@ namespace BikeDB2024
                                             using (SqlCommand myCommand = new SqlCommand())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, RouteName, City, CityStart, CityEnd, Cities, RouteType, MaxAlt, Altitude, Remarks, AltProfile, Image, Created, LastChanged, User) " +
-                                                "VALUES (@id, @RouteName, @City, @CityStart, @CityEnd, @Cities, @RouteType, @MaxAlt, @Altitude, @Remarks, @AltProfile, @Image, @created, @last, @user)";
+                                                " (Id, RouteName, City, CityStart, CityEnd, Cities, RouteType, MaxAlt, Altitude, Remarks, AltProfile, Image, NotShown, Created, LastChanged, [User]) " +
+                                                "VALUES (@id, @RouteName, @City, @CityStart, @CityEnd, @Cities, @RouteType, @MaxAlt, @Altitude, @Remarks, @AltProfile, @Image, @notshown, @created, @last, @user)";
                                                 myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
                                                 myCommand.Parameters.Add("@RouteName", SqlDbType.NVarChar).Value = result[x][1];
                                                 myCommand.Parameters.Add("@City", SqlDbType.Int).Value = Convert.ToInt32(result[x][2]);
@@ -1115,9 +1566,10 @@ namespace BikeDB2024
                                                 myCommand.Parameters.Add("@Remarks", SqlDbType.NVarChar).Value = result[x][9];
                                                 myCommand.Parameters.Add("@AltProfile", SqlDbType.NVarChar).Value = result[x][10];
                                                 myCommand.Parameters.Add("@Image", SqlDbType.NVarChar).Value = result[x][11];
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][12]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
-                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][14]);
+                                                myCommand.Parameters.Add("@notshown", SqlDbType.TinyInt).Value = Convert.ToByte(result[x][12]);
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][13]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][15]);
                                                 myCommand.CommandText = sqlquery;
                                                 myCommand.CommandType = CommandType.Text;
                                                 myCommand.Connection = myConnection;
@@ -1139,12 +1591,28 @@ namespace BikeDB2024
                                 }
                                 else if (status == JobStatus.APPEND_ALL)
                                 {
-                                    result = ReadSpreadsheet(tables[current_table], 10, CountIds(tables[current_table]));
+                                    result = ReadSpreadsheet(tables[current_table], 14, CountIds(tables[current_table]));
                                 }
                                 else if (status == JobStatus.DROP_ALL)
                                 {
-                                    ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 10);
+                                    //ClearTable(tables[current_table]);
+                                    try
+                                    {
+                                        using (SqlConnection con = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                        {
+                                            con.Open();
+                                            using (SqlCommand command = new SqlCommand("DELETE FROM " + tables[current_table] + " WHERE NOT Id IN (0, 1)", con))
+                                            {
+                                                command.ExecuteNonQuery();
+                                            }
+                                            con.Close();
+                                        }
+                                    }
+                                    catch (SystemException ex)
+                                    {
+                                        ShowErrorMessage(ex.Message, "Fehler beim Löschen von Daten in " + tables[current_table]);
+                                    }
+                                    result = ReadSpreadsheet(tables[current_table], 14, 2);
                                 }
 
                                 try
@@ -1157,7 +1625,7 @@ namespace BikeDB2024
                                             using (SqlCommand myCommand = new SqlCommand())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, VehicleName, Manufacturer, VehicleType, BoughtOn, BuildYear, Price, Equipment, Image, Entfaltung, Created, LastChanged, User, LicensePlate) " +
+                                                " (Id, VehicleName, Manufacturer, VehicleType, BoughtOn, BuildYear, Price, Equipment, Image, Entfaltung, Created, LastChanged, [User], LicensePlate) " +
                                                 "VALUES (@id, @VehicleName, @Manufacturer, @VehicleType, @BoughtOn, @BuildYear, @Price, @Equipment, @Image, @Entfaltung, @created, @last, @user, @license)";
                                                 myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
                                                 myCommand.Parameters.Add("@VehicleName", SqlDbType.NVarChar).Value = result[x][1];
@@ -1168,10 +1636,10 @@ namespace BikeDB2024
                                                 myCommand.Parameters.Add("@Price", SqlDbType.Money).Value = Convert.ToDecimal(result[x][6]);
                                                 myCommand.Parameters.Add("@Equipment", SqlDbType.NVarChar).Value = result[x][7];
                                                 myCommand.Parameters.Add("@Image", SqlDbType.NVarChar).Value = result[x][8];
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][9]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
-                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][11]);
-                                                myCommand.Parameters.Add("@license", SqlDbType.NVarChar).Value = result[x][12];
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][10]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][12]);
+                                                myCommand.Parameters.Add("@license", SqlDbType.NVarChar).Value = result[x][13];
                                                 int entf = -1;
                                                 if (result[x][9] != String.Empty) entf = Convert.ToInt32(result[x][9]);
                                                 myCommand.Parameters.Add("@Entfaltung", SqlDbType.Int).Value = entf;
@@ -1196,12 +1664,12 @@ namespace BikeDB2024
                                 }
                                 else if (status == JobStatus.APPEND_ALL)
                                 {
-                                    result = ReadSpreadsheet(tables[current_table], 3, CountIds(tables[current_table]));
+                                    result = ReadSpreadsheet(tables[current_table], 6, CountIds(tables[current_table]));
                                 }
                                 else if (status == JobStatus.DROP_ALL)
                                 {
                                     ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 3);
+                                    result = ReadSpreadsheet(tables[current_table], 6);
                                 }
 
                                 try
@@ -1214,13 +1682,13 @@ namespace BikeDB2024
                                             using (SqlCommand myCommand = new SqlCommand())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, CompanyName, Link, Created, LastChanged, User) " +
+                                                " (Id, CompanyName, Link, Created, LastChanged, [User]) " +
                                                 "VALUES (@id, @company, @link, @created, @last, @user)";
                                                 myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
                                                 myCommand.Parameters.Add("@company", SqlDbType.NVarChar).Value = (result[x][1]);
                                                 myCommand.Parameters.Add("@link", SqlDbType.NVarChar).Value = (result[x][2]);
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][3]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][3]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
                                                 myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][5]);
                                                 myCommand.CommandText = sqlquery;
                                                 myCommand.CommandType = CommandType.Text;
@@ -1237,6 +1705,231 @@ namespace BikeDB2024
                                 }
                                 break;
                             case "Entfaltung":
+                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                {
+                                    break;
+                                }
+                                else if (status == JobStatus.APPEND_ALL)
+                                {
+                                    result = ReadSpreadsheet(tables[current_table], 9, CountIds(tables[current_table]));
+                                }
+                                else if (status == JobStatus.DROP_ALL)
+                                {
+                                    ClearTable(tables[current_table]);
+                                    result = ReadSpreadsheet(tables[current_table], 9);
+                                }
+
+                                try
+                                {
+                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                    {
+                                        myConnection.Open();
+                                        for (int x = 0; x < result.Count; x++)
+                                        {
+                                            using (SqlCommand myCommand = new SqlCommand())
+                                            {
+                                                string sqlquery = "INSERT INTO " + tables[current_table] +
+                                                " (Id, BikeId, Front, Back, Wheel, Unit, Created, LastChanged, [User]) " +
+                                                "VALUES (@id, @bike, @front, @back, @wheel, @unit, @created, @last, @user)";
+                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                myCommand.Parameters.Add("@bike", SqlDbType.Int).Value = Convert.ToInt32(result[x][1]);
+                                                myCommand.Parameters.Add("@front", SqlDbType.NVarChar).Value = result[x][2];
+                                                myCommand.Parameters.Add("@back", SqlDbType.NVarChar).Value = result[x][3];
+                                                myCommand.Parameters.Add("@wheel", SqlDbType.Float).Value = Convert.ToDouble(result[x][4]);
+                                                myCommand.Parameters.Add("@unit", SqlDbType.NVarChar).Value = (result[x][5]);
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][6]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][8]);
+                                                myCommand.CommandText = sqlquery;
+                                                myCommand.CommandType = CommandType.Text;
+                                                myCommand.Connection = myConnection;
+                                                myCommand.ExecuteNonQuery();
+                                            }
+                                        }
+                                        myConnection.Close();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                }
+                                break;
+                            case "VehicleTypes":
+                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                {
+                                    break;
+                                }
+                                else if (status == JobStatus.APPEND_ALL)
+                                {
+                                    result = ReadSpreadsheet(tables[current_table], 7, CountIds(tables[current_table]));
+                                }
+                                else if (status == JobStatus.DROP_ALL)
+                                {
+                                    ClearTable(tables[current_table]);
+                                    result = ReadSpreadsheet(tables[current_table], 7);
+                                }
+
+                                try
+                                {
+                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                    {
+                                        myConnection.Open();
+                                        for (int x = 0; x < result.Count; x++)
+                                        {
+                                            using (SqlCommand myCommand = new SqlCommand())
+                                            {
+                                                string sqlquery = "INSERT INTO " + tables[current_table] +
+                                                " (Id, VehicleType, Electric, Engine, Created, LastChanged, [User]) " +
+                                                "VALUES (@id, @vehicletype, @electric, @engine, @created, @last, @user)";
+                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                myCommand.Parameters.Add("@vehicletype", SqlDbType.NVarChar).Value = (result[x][1]);
+                                                myCommand.Parameters.Add("@electric", SqlDbType.TinyInt).Value = Convert.ToByte(result[x][2]);
+                                                myCommand.Parameters.Add("@engine", SqlDbType.TinyInt).Value = Convert.ToByte(result[x][3]);
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][4]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][6]);
+                                                myCommand.CommandText = sqlquery;
+                                                myCommand.CommandType = CommandType.Text;
+                                                myCommand.Connection = myConnection;
+                                                myCommand.ExecuteNonQuery();
+                                            }
+                                        }
+                                        myConnection.Close();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                }
+                                break;
+                            case "RouteTypes":
+                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                {
+                                    break;
+                                }
+                                else if (status == JobStatus.APPEND_ALL)
+                                {
+                                    result = ReadSpreadsheet(tables[current_table], 5, CountIds(tables[current_table]));
+                                }
+                                else if (status == JobStatus.DROP_ALL)
+                                {
+                                    ClearTable(tables[current_table]);
+                                    result = ReadSpreadsheet(tables[current_table], 5);
+                                }
+
+                                try
+                                {
+                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                    {
+                                        myConnection.Open();
+                                        for (int x = 0; x < result.Count; x++)
+                                        {
+                                            using (SqlCommand myCommand = new SqlCommand())
+                                            {
+                                                string sqlquery = "INSERT INTO " + tables[current_table] +
+                                                " (Id, RouteType, Created, LastChanged, [User]) " +
+                                                "VALUES (@id, @routetype, @created, @last, @user)";
+                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                myCommand.Parameters.Add("@routetype", SqlDbType.NVarChar).Value = (result[x][1]);
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][2]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][4]);
+                                                myCommand.CommandText = sqlquery;
+                                                myCommand.CommandType = CommandType.Text;
+                                                myCommand.Connection = myConnection;
+                                                myCommand.ExecuteNonQuery();
+                                            }
+                                        }
+                                        myConnection.Close();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                }
+                                break;
+                            case "Persons":
+                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                {
+                                    break;
+                                }
+                                else if (status == JobStatus.APPEND_ALL)
+                                {
+                                    result = ReadSpreadsheet(tables[current_table], 22, CountIds(tables[current_table]));
+                                }
+                                else if (status == JobStatus.DROP_ALL)
+                                {
+                                    //ClearTable(tables[current_table]);
+                                    try
+                                    {
+                                        using (SqlConnection con = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                        {
+                                            con.Open();
+                                            using (SqlCommand command = new SqlCommand("DELETE FROM " + tables[current_table] + " WHERE NOT Id = 0", con))
+                                            {
+                                                command.ExecuteNonQuery();
+                                            }
+                                            con.Close();
+                                        }
+                                    }
+                                    catch (SystemException ex)
+                                    {
+                                        ShowErrorMessage(ex.Message, "Fehler beim Löschen von Daten in " + tables[current_table]);
+                                    }
+                                    result = ReadSpreadsheet(tables[current_table], 22, 1);
+                                }
+
+                                try
+                                {
+                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                    {
+                                        myConnection.Open();
+                                        for (int x = 0; x < result.Count; x++)
+                                        {
+                                            using (SqlCommand myCommand = new SqlCommand())
+                                            {
+                                                string sqlquery = "INSERT INTO " + tables[current_table] +
+                                                " (Id, Username, Lastname, Name, City, Birthdate, Deathdate, Phone, Email, PLZ, Street1, Street2, Country, Image, " +
+                                                    "Remark, NotShown, Created, LastChanged, [User], IsUser, IsAdmin, Password) " +
+                                                    "VALUES (@id, @username, @lastname, @name, @city, @birthdate, @deathdate, @phone, @email, @plz, @str1, @str2, @country, @image, " +
+                                                    "@remark, @notshown, @created, @lastchanged, @user, @isuser, @isadmin, @pwd)";
+                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                myCommand.Parameters.Add("@username", SqlDbType.NVarChar).Value = result[x][1];
+                                                myCommand.Parameters.Add("@lastname", SqlDbType.NVarChar).Value = result[x][2];
+                                                myCommand.Parameters.Add("@name", SqlDbType.NVarChar).Value = result[x][3];
+                                                myCommand.Parameters.Add("@city", SqlDbType.Int).Value = Convert.ToInt32(result[x][4]);
+                                                myCommand.Parameters.Add("@birthdate", SqlDbType.Date).Value = Convert.ToDateTime(result[x][5]);
+                                                myCommand.Parameters.Add("@deathdate", SqlDbType.Date).Value = Convert.ToDateTime(result[x][6]);
+                                                myCommand.Parameters.Add("@phone", SqlDbType.NVarChar).Value = result[x][7];
+                                                myCommand.Parameters.Add("@email", SqlDbType.NVarChar).Value = result[x][8];
+                                                myCommand.Parameters.Add("@plz", SqlDbType.NVarChar).Value = result[x][9];
+                                                myCommand.Parameters.Add("@str1", SqlDbType.NVarChar).Value = result[x][10];
+                                                myCommand.Parameters.Add("@str2", SqlDbType.NVarChar).Value = result[x][11];
+                                                myCommand.Parameters.Add("@country", SqlDbType.Int).Value = Convert.ToInt32(result[x][12]);
+                                                myCommand.Parameters.Add("@image", SqlDbType.NVarChar).Value = result[x][13];
+                                                myCommand.Parameters.Add("@remark", SqlDbType.NVarChar).Value = result[x][14];
+                                                myCommand.Parameters.Add("@notshown", SqlDbType.NVarChar).Value = result[x][15];
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][16]);
+                                                myCommand.Parameters.Add("@lastchanged", SqlDbType.DateTime).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][18]);
+                                                myCommand.Parameters.Add("@isuser", SqlDbType.TinyInt).Value = result[x][19];
+                                                myCommand.Parameters.Add("@isadmin", SqlDbType.TinyInt).Value = result[x][20];
+                                                myCommand.Parameters.Add("@pwd", SqlDbType.NVarChar).Value = result[x][21];
+                                                myCommand.CommandText = sqlquery;
+                                                myCommand.CommandType = CommandType.Text;
+                                                myCommand.Connection = myConnection;
+                                                myCommand.ExecuteNonQuery();
+                                            }
+                                        }
+                                        myConnection.Close();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                }
+                                break;
+                            case "Notes":
                                 if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
                                 {
                                     break;
@@ -1261,212 +1954,7 @@ namespace BikeDB2024
                                             using (SqlCommand myCommand = new SqlCommand())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, BikeId, Front, Back, Wheel, Unit, Created, LastChanged, User) " +
-                                                "VALUES (@id, @bike, @front, @back, @wheel, @unit, @created, @last, @user)";
-                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
-                                                myCommand.Parameters.Add("@bike", SqlDbType.Int).Value = Convert.ToInt32(result[x][1]);
-                                                myCommand.Parameters.Add("@front", SqlDbType.NVarChar).Value = result[x][2];
-                                                myCommand.Parameters.Add("@back", SqlDbType.NVarChar).Value = result[x][3];
-                                                myCommand.Parameters.Add("@wheel", SqlDbType.Float).Value = Convert.ToDouble(result[x][4]);
-                                                myCommand.Parameters.Add("@unit", SqlDbType.NVarChar).Value = (result[x][5]);
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][6]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
-                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][8]);
-                                                myCommand.CommandText = sqlquery;
-                                                myCommand.CommandType = CommandType.Text;
-                                                myCommand.Connection = myConnection;
-                                                myCommand.ExecuteNonQuery();
-                                            }
-                                        }
-                                        myConnection.Close();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
-                                }
-                                break;
-                            case "VehicleTypes":
-                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
-                                {
-                                    break;
-                                }
-                                else if (status == JobStatus.APPEND_ALL)
-                                {
-                                    result = ReadSpreadsheet(tables[current_table], 2, CountIds(tables[current_table]));
-                                }
-                                else if (status == JobStatus.DROP_ALL)
-                                {
-                                    ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 2);
-                                }
-
-                                try
-                                {
-                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
-                                    {
-                                        myConnection.Open();
-                                        for (int x = 0; x < result.Count; x++)
-                                        {
-                                            using (SqlCommand myCommand = new SqlCommand())
-                                            {
-                                                string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, VehicleType, Created, LastChanged, User) " +
-                                                "VALUES (@id, @vehicletype, @created, @last, @user)";
-                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
-                                                myCommand.Parameters.Add("@vehicletype", SqlDbType.NVarChar).Value = (result[x][1]);
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][2]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
-                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][4]);
-                                                myCommand.CommandText = sqlquery;
-                                                myCommand.CommandType = CommandType.Text;
-                                                myCommand.Connection = myConnection;
-                                                myCommand.ExecuteNonQuery();
-                                            }
-                                        }
-                                        myConnection.Close();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
-                                }
-                                break;
-                            case "RouteTypes":
-                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
-                                {
-                                    break;
-                                }
-                                else if (status == JobStatus.APPEND_ALL)
-                                {
-                                    result = ReadSpreadsheet(tables[current_table], 2, CountIds(tables[current_table]));
-                                }
-                                else if (status == JobStatus.DROP_ALL)
-                                {
-                                    ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 2);
-                                }
-
-                                try
-                                {
-                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
-                                    {
-                                        myConnection.Open();
-                                        for (int x = 0; x < result.Count; x++)
-                                        {
-                                            using (SqlCommand myCommand = new SqlCommand())
-                                            {
-                                                string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, RouteType, Created, LastChanged, User) " +
-                                                "VALUES (@id, @routetype, @created, @last, @user)";
-                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
-                                                myCommand.Parameters.Add("@routetype", SqlDbType.NVarChar).Value = (result[x][1]);
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][2]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
-                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][4]);
-                                                myCommand.CommandText = sqlquery;
-                                                myCommand.CommandType = CommandType.Text;
-                                                myCommand.Connection = myConnection;
-                                                myCommand.ExecuteNonQuery();
-                                            }
-                                        }
-                                        myConnection.Close();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
-                                }
-                                break;
-                            case "Persons":
-                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
-                                {
-                                    break;
-                                }
-                                else if (status == JobStatus.APPEND_ALL)
-                                {
-                                    result = ReadSpreadsheet(tables[current_table], 2, CountIds(tables[current_table]));
-                                }
-                                else if (status == JobStatus.DROP_ALL)
-                                {
-                                    ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 2);
-                                }
-
-                                try
-                                {
-                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
-                                    {
-                                        myConnection.Open();
-                                        for (int x = 0; x < result.Count; x++)
-                                        {
-                                            using (SqlCommand myCommand = new SqlCommand())
-                                            {
-                                                string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, Username, Lastname, Name, City, Birthdate, Phone, Email, PLZ, Street1, Street2, Country, Image, " +
-                                                    "Remark, Created, LastChanged, User, IsUser, IsAdmin, Password) " +
-                                                    "VALUES (@id, @username, @lastname, @name, @city, @birthdate, @phone, @email, @plz, @str1, @str2, @country, @image, " +
-                                                    "@remark, @created, @lastchanged, @user, @isuser, @isadmin, @pwd)";
-                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
-                                                myCommand.Parameters.Add("@username", SqlDbType.NVarChar).Value = result[x][1];
-                                                myCommand.Parameters.Add("@lastname", SqlDbType.NVarChar).Value = result[x][2];
-                                                myCommand.Parameters.Add("@name", SqlDbType.NVarChar).Value = result[x][3];
-                                                myCommand.Parameters.Add("@city", SqlDbType.Int).Value = Convert.ToInt32(result[x][4]);
-                                                myCommand.Parameters.Add("@birthdate", SqlDbType.Date).Value = Convert.ToDateTime(result[x][5]);
-                                                myCommand.Parameters.Add("@phone", SqlDbType.NVarChar).Value = result[x][6];
-                                                myCommand.Parameters.Add("@email", SqlDbType.NVarChar).Value = result[x][7];
-                                                myCommand.Parameters.Add("@plz", SqlDbType.NVarChar).Value = result[x][8];
-                                                myCommand.Parameters.Add("@str1", SqlDbType.NVarChar).Value = result[x][9];
-                                                myCommand.Parameters.Add("@str2", SqlDbType.NVarChar).Value = result[x][10];
-                                                myCommand.Parameters.Add("@country", SqlDbType.Int).Value = Convert.ToInt32(result[x][11]);
-                                                myCommand.Parameters.Add("@image", SqlDbType.NVarChar).Value = result[x][12];
-                                                myCommand.Parameters.Add("@remark", SqlDbType.NVarChar).Value = result[x][13];
-                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][14]);
-                                                myCommand.Parameters.Add("@lastchanged", SqlDbType.DateTime).Value = DateTime.Now;
-                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][16]);
-                                                myCommand.Parameters.Add("@isuser", SqlDbType.TinyInt).Value = result[x][17];
-                                                myCommand.Parameters.Add("@isadmin", SqlDbType.TinyInt).Value = result[x][18];
-                                                myCommand.Parameters.Add("@pwd", SqlDbType.NVarChar).Value = result[x][19];
-                                                myCommand.CommandText = sqlquery;
-                                                myCommand.CommandType = CommandType.Text;
-                                                myCommand.Connection = myConnection;
-                                                myCommand.ExecuteNonQuery();
-                                            }
-                                        }
-                                        myConnection.Close();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
-                                }
-                                break;
-                            case "Notes":
-                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
-                                {
-                                    break;
-                                }
-                                else if (status == JobStatus.APPEND_ALL)
-                                {
-                                    result = ReadSpreadsheet(tables[current_table], 2, CountIds(tables[current_table]));
-                                }
-                                else if (status == JobStatus.DROP_ALL)
-                                {
-                                    ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 2);
-                                }
-
-                                try
-                                {
-                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
-                                    {
-                                        myConnection.Open();
-                                        for (int x = 0; x < result.Count; x++)
-                                        {
-                                            using (SqlCommand myCommand = new SqlCommand())
-                                            {
-                                                string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, Title, Remark, Created, LastChanged, User) " +
+                                                " (Id, Title, Remark, Created, LastChanged, [User]) " +
                                                 "VALUES (@id, @title, @remark, @created, @last, @user)";
                                                 myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
                                                 myCommand.Parameters.Add("@title", SqlDbType.NVarChar).Value = (result[x][1]);
@@ -1495,12 +1983,12 @@ namespace BikeDB2024
                                 }
                                 else if (status == JobStatus.APPEND_ALL)
                                 {
-                                    result = ReadSpreadsheet(tables[current_table], 2, CountIds(tables[current_table]));
+                                    result = ReadSpreadsheet(tables[current_table], 8, CountIds(tables[current_table]));
                                 }
                                 else if (status == JobStatus.DROP_ALL)
                                 {
                                     ClearTable(tables[current_table]);
-                                    result = ReadSpreadsheet(tables[current_table], 2);
+                                    result = ReadSpreadsheet(tables[current_table], 8);
                                 }
 
                                 try
@@ -1513,15 +2001,15 @@ namespace BikeDB2024
                                             using (SqlCommand myCommand = new SqlCommand())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
-                                                " (Id, Title, Remark, Date, Achieved, Created, LastChanged, User) " +
+                                                " (Id, Title, Remark, Date, Achieved, Created, LastChanged, [User]) " +
                                                 "VALUES (@id, @title, @remark, @date, @achieved, @created, @last, @user)";
                                                 myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
                                                 myCommand.Parameters.Add("@title", SqlDbType.NVarChar).Value = (result[x][1]);
                                                 myCommand.Parameters.Add("@remark", SqlDbType.NVarChar).Value = (result[x][2]);
                                                 myCommand.Parameters.Add("@date", SqlDbType.Date).Value = Convert.ToDateTime(result[x][3]);
                                                 myCommand.Parameters.Add("@achieved", SqlDbType.Int).Value = Convert.ToInt32(result[x][4]);
-                                                myCommand.Parameters.Add("@created", SqlDbType.Date).Value = Convert.ToDateTime(result[x][5]);
-                                                myCommand.Parameters.Add("@last", SqlDbType.Date).Value = DateTime.Now;
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][5]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
                                                 myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][7]);
                                                 myCommand.CommandText = sqlquery;
                                                 myCommand.CommandType = CommandType.Text;
@@ -1535,6 +2023,311 @@ namespace BikeDB2024
                                 catch (Exception ex)
                                 {
                                     ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                }
+                                break;
+                            case "CostCategories":
+                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                {
+                                    break;
+                                }
+                                else if (status == JobStatus.APPEND_ALL)
+                                {
+                                    result = ReadSpreadsheet(tables[current_table], 7, CountIds(tables[current_table]));
+                                }
+                                else if (status == JobStatus.DROP_ALL)
+                                {
+                                    ClearTable(tables[current_table]);
+                                    result = ReadSpreadsheet(tables[current_table], 7);
+                                }
+
+                                try
+                                {
+                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                    {
+                                        myConnection.Open();
+                                        for (int x = 0; x < result.Count; x++)
+                                        {
+                                            using (SqlCommand myCommand = new SqlCommand())
+                                            {
+                                                string sqlquery = "INSERT INTO " + tables[current_table] +
+                                                " (Id, CategoryName, ElectricVehicles, Engines, [User], Created, LastChanged) " +
+                                                "VALUES (@id, @catname, @electric, @engines, @user, @created, @last)";
+                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                myCommand.Parameters.Add("@catname", SqlDbType.NVarChar).Value = (result[x][1]);
+                                                myCommand.Parameters.Add("@electric", SqlDbType.TinyInt).Value = Convert.ToByte(result[x][2]);
+                                                myCommand.Parameters.Add("@engines", SqlDbType.TinyInt).Value = Convert.ToByte(result[x][3]);
+                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][4]);
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][5]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                                                myCommand.CommandText = sqlquery;
+                                                myCommand.CommandType = CommandType.Text;
+                                                myCommand.Connection = myConnection;
+                                                myCommand.ExecuteNonQuery();
+                                            }
+                                        }
+                                        myConnection.Close();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                }
+                                break;
+                            case "Costs":
+                                if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                {
+                                    break;
+                                }
+                                else if (status == JobStatus.APPEND_ALL)
+                                {
+                                    result = ReadSpreadsheet(tables[current_table], 10, CountIds(tables[current_table]));
+                                }
+                                else if (status == JobStatus.DROP_ALL)
+                                {
+                                    ClearTable(tables[current_table]);
+                                    result = ReadSpreadsheet(tables[current_table], 10);
+                                }
+
+                                try
+                                {
+                                    using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                    {
+                                        myConnection.Open();
+                                        for (int x = 0; x < result.Count; x++)
+                                        {
+                                            using (SqlCommand myCommand = new SqlCommand())
+                                            {
+                                                string sqlquery = "INSERT INTO " + tables[current_table] +
+                                                " (Id, CostTitle, Date, CostCategory, Description, Price, Vehicle, [User], Created, LastChanged) " +
+                                                "VALUES (@id, @title, @date, @cat, @descr, @price, @vehicle, @user, @created, @last)";
+                                                myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                myCommand.Parameters.Add("@title", SqlDbType.NVarChar).Value = result[x][1];
+                                                myCommand.Parameters.Add("@date", SqlDbType.Date).Value = Convert.ToDateTime(result[x][2]);
+                                                myCommand.Parameters.Add("@cat", SqlDbType.Int).Value = Convert.ToInt32(result[x][3]);
+                                                myCommand.Parameters.Add("@descr", SqlDbType.NVarChar).Value = result[x][4];
+                                                myCommand.Parameters.Add("@price", SqlDbType.Money).Value = Convert.ToDecimal(result[x][5]);
+                                                myCommand.Parameters.Add("@vehicle", SqlDbType.Int).Value = Convert.ToInt32(result[x][6]);
+                                                myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][7]);
+                                                myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][8]);
+                                                myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                                                myCommand.CommandText = sqlquery;
+                                                myCommand.CommandType = CommandType.Text;
+                                                myCommand.Connection = myConnection;
+                                                myCommand.ExecuteNonQuery();
+                                            }
+                                        }
+                                        myConnection.Close();
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                }
+                                break;
+                            case "Clients":
+                                if (admin)
+                                {
+                                    if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                    {
+                                        break;
+                                    }
+                                    else if (status == JobStatus.APPEND_ALL)
+                                    {
+                                        result = ReadSpreadsheet(tables[current_table], 10, CountIds(tables[current_table]));
+                                    }
+                                    else if (status == JobStatus.DROP_ALL)
+                                    {
+                                        ClearTable(tables[current_table]);
+                                        result = ReadSpreadsheet(tables[current_table], 10);
+                                    }
+
+                                    try
+                                    {
+                                        using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                        {
+                                            myConnection.Open();
+                                            for (int x = 0; x < result.Count; x++)
+                                            {
+                                                using (SqlCommand myCommand = new SqlCommand())
+                                                {
+                                                    string sqlquery = "INSERT INTO " + tables[current_table] +
+                                                    " (Id, ClientName, IPv4, IPv6, LAN, RestrictUser, AllowedUser, [User], Created, LastChanged) " +
+                                                    "VALUES (@id, @name, @ip4, @ip6, @lan, @ruser, @auser, @user, @created, @last)";
+                                                    myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                    myCommand.Parameters.Add("@name", SqlDbType.NVarChar).Value = result[x][1];
+                                                    myCommand.Parameters.Add("@ip4", SqlDbType.NChar).Value = result[x][2];
+                                                    myCommand.Parameters.Add("@ip6", SqlDbType.NVarChar).Value = result[x][3];
+                                                    myCommand.Parameters.Add("@lan", SqlDbType.TinyInt).Value = Convert.ToByte(result[x][4]);
+                                                    myCommand.Parameters.Add("@ruser", SqlDbType.TinyInt).Value = Convert.ToByte(result[x][5]);
+                                                    myCommand.Parameters.Add("@auser", SqlDbType.NVarChar).Value = result[x][6];
+                                                    myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][7]);
+                                                    myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][8]);
+                                                    myCommand.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                                                    myCommand.CommandText = sqlquery;
+                                                    myCommand.CommandType = CommandType.Text;
+                                                    myCommand.Connection = myConnection;
+                                                    myCommand.ExecuteNonQuery();
+                                                }
+                                            }
+                                            myConnection.Close();
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                    }
+                                }
+                                break;
+                            case "Log":
+                                if (admin)
+                                {
+                                    if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                    {
+                                        break;
+                                    }
+                                    else if (status == JobStatus.APPEND_ALL)
+                                    {
+                                        result = ReadSpreadsheet(tables[current_table], 5, CountIds(tables[current_table]));
+                                    }
+                                    else if (status == JobStatus.DROP_ALL)
+                                    {
+                                        ClearTable(tables[current_table]);
+                                        result = ReadSpreadsheet(tables[current_table], 5);
+                                    }
+
+                                    try
+                                    {
+                                        using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                        {
+                                            myConnection.Open();
+                                            for (int x = 0; x < result.Count; x++)
+                                            {
+                                                using (SqlCommand myCommand = new SqlCommand())
+                                                {
+                                                    string sqlquery = "INSERT INTO " + tables[current_table] +
+                                                    " (Id, Type, Remark, [User], Created) " +
+                                                    "VALUES (@id, @type, @remark, @user, @created)";
+                                                    myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                    myCommand.Parameters.Add("@type", SqlDbType.NVarChar).Value = result[x][1];
+                                                    myCommand.Parameters.Add("@remark", SqlDbType.NVarChar).Value = result[x][2];
+                                                    myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][3]);
+                                                    myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = Convert.ToDateTime(result[x][4]);
+                                                    myCommand.CommandText = sqlquery;
+                                                    myCommand.CommandType = CommandType.Text;
+                                                    myCommand.Connection = myConnection;
+                                                    myCommand.ExecuteNonQuery();
+                                                }
+                                            }
+                                            myConnection.Close();
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                    }
+                                }
+                                break;
+                            case "Settings":
+                                if (admin)
+                                {
+                                    if (status == JobStatus.APPEND_TOUR || status == JobStatus.DROP_TOUR)
+                                    {
+                                        break;
+                                    }
+                                    else if (status == JobStatus.APPEND_ALL)
+                                    {
+                                        result = ReadSpreadsheet(tables[current_table], 5, CountIds(tables[current_table]));
+                                    }
+                                    else if (status == JobStatus.DROP_ALL)
+                                    {
+                                        ClearTable(tables[current_table]);
+                                        result = ReadSpreadsheet(tables[current_table], 5);
+                                    }
+
+                                    try
+                                    {
+                                        using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                        {
+                                            myConnection.Open();
+                                            for (int x = 0; x < result.Count; x++)
+                                            {
+                                                using (SqlCommand myCommand = new SqlCommand())
+                                                {
+                                                    string sqlquery = "INSERT INTO Settings" +
+                                                        " (Id, [User], UseAltimeter, DefaultContinent, DefaultCountry, DefaultCity, DefaultRoute, DefaultVehicle, DefaultBundesland, " +
+                                                        "WindowLocation, WindowSize, GoogleEarthPath, ImageEditorPath, ImageEditorName, ImageFolderPath, GpxFolderPath, " +
+                                                        "ShowHelp, ShowToolbar, ShowWelcome, ShowNotification, ShowLastUser, ShowBirthdays, ShowNotifyIcon, ShowFlightDB, " +
+                                                        "KeepLoggedIn, UseDockingStation, AdminChanged, IsMultiUser, UserLoggedIn, AdminLoggedIn, AdminLocation, AdminSize, " +
+                                                        "FlightDBLocation, FlightDBSize, EntfaltungLocation, EntfaltungSize, ImageViewerLocation, ImageViewerSize, HelpLocation, " +
+                                                        "HelpSize, StatLocation, StatSize, ToolbarLocation, ToolbarSize, MinPasswordLength, NotifyTime, LastUser, CurrentUserId, " +
+                                                        "CurrentUserName, InstallationType) " +
+                                                        "VALUES (@id, @user, @alti, @cont, @count, @city, @route, @veh, @bl, @winloc, @winsize, @gpath, @imgedpath, @imgedname, " +
+                                                        "@imgfolder, @gpxfolder, @shelp, @stoolbar, @swelcome, @snoti, @slast, @sbd, @snotif, @sflight, @keepli, @useds, @adchg, @ismulti, " +
+                                                        "@uli, @ali, @adloc, @adsize, @floc, @fsize, @entloc, @entsize, @imgvloc, @imgvsize, @helploc, @helpsize, @statloc, " +
+                                                        "@statsize, @toolloc, @toolsize, @minpwd, @notitime, @lastu, @curui, @curun, @inst)";
+                                                    myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Convert.ToInt32(result[x][0]);
+                                                    myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Convert.ToInt32(result[x][1]);
+                                                    myCommand.Parameters.Add("@alti", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][2]));
+                                                    myCommand.Parameters.Add("@cont", SqlDbType.NVarChar).Value = result[x][3];
+                                                    myCommand.Parameters.Add("@count", SqlDbType.NVarChar).Value = result[x][4];
+                                                    myCommand.Parameters.Add("@city", SqlDbType.NVarChar).Value = result[x][5];
+                                                    myCommand.Parameters.Add("@route", SqlDbType.NVarChar).Value = result[x][6];
+                                                    myCommand.Parameters.Add("@veh", SqlDbType.NVarChar).Value = result[x][7];
+                                                    myCommand.Parameters.Add("@bl", SqlDbType.NVarChar).Value = result[x][8];
+                                                    myCommand.Parameters.Add("@winloc", SqlDbType.NVarChar).Value = result[x][9];
+                                                    myCommand.Parameters.Add("@winsize", SqlDbType.NVarChar).Value = result[x][10];
+                                                    myCommand.Parameters.Add("@gpath", SqlDbType.NVarChar).Value = result[x][11];
+                                                    myCommand.Parameters.Add("@imgedpath", SqlDbType.NVarChar).Value = result[x][12];
+                                                    myCommand.Parameters.Add("@imgedname", SqlDbType.NVarChar).Value = result[x][13];
+                                                    myCommand.Parameters.Add("@imgfolder", SqlDbType.NVarChar).Value = result[x][14];
+                                                    myCommand.Parameters.Add("@gpxfolder", SqlDbType.NVarChar).Value = result[x][15];
+                                                    myCommand.Parameters.Add("@shelp", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][16]));
+                                                    myCommand.Parameters.Add("@stoolbar", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][17]));
+                                                    myCommand.Parameters.Add("@swelcome", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][18]));
+                                                    myCommand.Parameters.Add("@snoti", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][19]));
+                                                    myCommand.Parameters.Add("@slast", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][20]));
+                                                    myCommand.Parameters.Add("@sbd", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][21]));
+                                                    myCommand.Parameters.Add("@snotif", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][22]));
+                                                    myCommand.Parameters.Add("@sflight", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][23]));
+                                                    myCommand.Parameters.Add("@keepli", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][24]));
+                                                    myCommand.Parameters.Add("@useds", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][25]));
+                                                    myCommand.Parameters.Add("@adchg", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][26]));
+                                                    myCommand.Parameters.Add("@ismulti", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][27]));
+                                                    myCommand.Parameters.Add("@uli", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][28]));
+                                                    myCommand.Parameters.Add("@ali", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Convert.ToBoolean(result[x][29]));
+                                                    myCommand.Parameters.Add("@adloc", SqlDbType.NVarChar).Value = result[x][30];
+                                                    myCommand.Parameters.Add("@adsize", SqlDbType.NVarChar).Value = result[x][31];
+                                                    myCommand.Parameters.Add("@floc", SqlDbType.NVarChar).Value = result[x][32];
+                                                    myCommand.Parameters.Add("@fsize", SqlDbType.NVarChar).Value = result[x][33];
+                                                    myCommand.Parameters.Add("@entloc", SqlDbType.NVarChar).Value = result[x][34];
+                                                    myCommand.Parameters.Add("@entsize", SqlDbType.NVarChar).Value = result[x][35];
+                                                    myCommand.Parameters.Add("@imgvloc", SqlDbType.NVarChar).Value = result[x][36];
+                                                    myCommand.Parameters.Add("@imgvsize", SqlDbType.NVarChar).Value = result[x][37];
+                                                    myCommand.Parameters.Add("@helploc", SqlDbType.NVarChar).Value = result[x][38];
+                                                    myCommand.Parameters.Add("@helpsize", SqlDbType.NVarChar).Value = result[x][39];
+                                                    myCommand.Parameters.Add("@statloc", SqlDbType.NVarChar).Value = result[x][40];
+                                                    myCommand.Parameters.Add("@statsize", SqlDbType.NVarChar).Value = result[x][41];
+                                                    myCommand.Parameters.Add("@toolloc", SqlDbType.NVarChar).Value = result[x][42];
+                                                    myCommand.Parameters.Add("@toolsize", SqlDbType.NVarChar).Value = result[x][43];
+                                                    myCommand.Parameters.Add("@minpwd", SqlDbType.Int).Value = Convert.ToInt32(result[x][44]);
+                                                    myCommand.Parameters.Add("@notitime", SqlDbType.Int).Value = Convert.ToInt32(result[x][45]);
+                                                    myCommand.Parameters.Add("@lastu", SqlDbType.NVarChar).Value = result[x][46];
+                                                    myCommand.Parameters.Add("@curui", SqlDbType.Int).Value = Convert.ToInt32(result[x][47]);
+                                                    myCommand.Parameters.Add("@curun", SqlDbType.NVarChar).Value = result[x][48];
+                                                    myCommand.Parameters.Add("@inst", SqlDbType.NVarChar).Value = result[x][49];
+                                                    myCommand.CommandText = sqlquery;
+                                                    myCommand.CommandType = CommandType.Text;
+                                                    myCommand.Connection = myConnection;
+                                                    myCommand.ExecuteNonQuery();
+                                                }
+                                            }
+                                            myConnection.Close();
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        ShowErrorMessage(ex.Message, "Fehler beim Einfügen von Daten in " + tables[current_table]);
+                                    }
                                 }
                                 break;
                         }
@@ -1822,6 +2615,64 @@ namespace BikeDB2024
                 {
                     array.SetValue(0, 11);
                 }
+                if ((bool)Checkboxes.GetValue(12))
+                {
+                    cnt_tables++;
+                    tmp = CountIds("Costs");
+                    array.SetValue(tmp, 12);
+                    cnt_rows += tmp;
+                }
+                else
+                {
+                    array.SetValue(0, 12);
+                }
+                if ((bool)Checkboxes.GetValue(13))
+                {
+                    cnt_tables++;
+                    tmp = CountIds("CostCategories");
+                    array.SetValue(tmp, 13);
+                    cnt_rows += tmp;
+                }
+                else
+                {
+                    array.SetValue(0, 13);
+                }
+                if (admin)
+                {
+                    if ((bool)Checkboxes.GetValue(14))
+                    {
+                        cnt_tables++;
+                        tmp = CountIds("Clients");
+                        array.SetValue(tmp, 14);
+                        cnt_rows += tmp;
+                    }
+                    else
+                    {
+                        array.SetValue(0, 14);
+                    }
+                    if ((bool)Checkboxes.GetValue(15))
+                    {
+                        cnt_tables++;
+                        tmp = CountIds("Log");
+                        array.SetValue(tmp, 15);
+                        cnt_rows += tmp;
+                    }
+                    else
+                    {
+                        array.SetValue(0, 15);
+                    }
+                    if ((bool)Checkboxes.GetValue(16))
+                    {
+                        cnt_tables++;
+                        tmp = CountIds("Settings");
+                        array.SetValue(tmp, 16);
+                        cnt_rows += tmp;
+                    }
+                    else
+                    {
+                        array.SetValue(0, 16);
+                    }
+                }
 
                 jobRichTextBox.Text = "Starte Export\n";
                 jobRichTextBox.Text += "Datei: " + FileName;
@@ -1921,7 +2772,7 @@ namespace BikeDB2024
                 }
                 catch (Exception ex)
                 {
-                    ShowErrorMessage(ex.Message, "Fehler beim Import von Datei");
+                    ShowErrorMessage(ex.Message, $"Fehler beim Import von Datei");
                 }
             }
         }
@@ -1938,7 +2789,7 @@ namespace BikeDB2024
         }
 
         /// <summary>
-        /// 
+        /// If a Null value is imported for a datetime field, it will be assigned to DateTime.Now (created/last changed).
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -1955,7 +2806,7 @@ namespace BikeDB2024
         }
 
         /// <summary>
-        /// 
+        /// If a Null value is imported for a user field, it will be assigned to User = 0 (Admin).
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>

@@ -43,7 +43,6 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.planeTypeComboBox = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.subtypeComboBox = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.regTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,6 +54,7 @@
             this.imageButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.subTypeTextBox = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -223,20 +223,12 @@
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.subtypeComboBox);
+            this.flowLayoutPanel3.Controls.Add(this.subTypeTextBox);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(103, 63);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(303, 24);
             this.flowLayoutPanel3.TabIndex = 2;
-            // 
-            // subtypeComboBox
-            // 
-            this.subtypeComboBox.FormattingEnabled = true;
-            this.subtypeComboBox.Location = new System.Drawing.Point(3, 3);
-            this.subtypeComboBox.Name = "subtypeComboBox";
-            this.subtypeComboBox.Size = new System.Drawing.Size(295, 21);
-            this.subtypeComboBox.TabIndex = 2;
             // 
             // flowLayoutPanel4
             // 
@@ -250,6 +242,7 @@
             // regTextBox
             // 
             this.regTextBox.Location = new System.Drawing.Point(3, 3);
+            this.regTextBox.MaxLength = 6;
             this.regTextBox.Name = "regTextBox";
             this.regTextBox.Size = new System.Drawing.Size(100, 20);
             this.regTextBox.TabIndex = 3;
@@ -266,6 +259,7 @@
             // seatsTextBox
             // 
             this.seatsTextBox.Location = new System.Drawing.Point(3, 3);
+            this.seatsTextBox.MaxLength = 4;
             this.seatsTextBox.Name = "seatsTextBox";
             this.seatsTextBox.Size = new System.Drawing.Size(100, 20);
             this.seatsTextBox.TabIndex = 4;
@@ -340,6 +334,15 @@
     "*";
             this.openImageFileDialog.Title = "Flugzeugbild auswählen";
             // 
+            // subTypeTextBox
+            // 
+            this.subTypeTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subTypeTextBox.Location = new System.Drawing.Point(3, 3);
+            this.subTypeTextBox.MaxLength = 50;
+            this.subTypeTextBox.Name = "subTypeTextBox";
+            this.subTypeTextBox.Size = new System.Drawing.Size(295, 20);
+            this.subTypeTextBox.TabIndex = 2;
+            // 
             // PlaneForm
             // 
             this.AcceptButton = this.addButton;
@@ -364,6 +367,7 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
             this.flowLayoutPanel5.ResumeLayout(false);
@@ -393,7 +397,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.ComboBox planeTypeComboBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.ComboBox subtypeComboBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.TextBox regTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
@@ -405,5 +408,6 @@
         private System.Windows.Forms.Button imageButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.OpenFileDialog openImageFileDialog;
+        private System.Windows.Forms.TextBox subTypeTextBox;
     }
 }

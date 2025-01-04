@@ -7,7 +7,7 @@
     <ProjectGuid>{630A2E2F-38B1-4698-8E6E-226F3838A7E7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>BikeDB2024</RootNamespace>
-    <AssemblyName>BikeDB2024</AssemblyName>
+    <AssemblyName>BikeDB2025</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,10 +23,15 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>BikeDB 2025</ProductName>
+    <PublisherName>Z3DN3T</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,8 +63,8 @@
     <Reference Include="ExcelLibrary">
       <HintPath>..\..\..\Downloads\ExcelLibrary_20110730\ExcelLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="LibUsbDotNet.LibUsbDotNet, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c677239abe1e02a9, processorArchitecture=MSIL">
-      <HintPath>packages\LibUsbDotNet.2.2.29\lib\net45\LibUsbDotNet.LibUsbDotNet.dll</HintPath>
+    <Reference Include="LibUsbDotNet">
+      <HintPath>..\..\..\..\..\Program Files\LibUsbDotNet\LibUsbDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -69,7 +74,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Drawing.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -90,6 +97,13 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs" />
     <Compile Include="CostCategory.cs" />
     <Compile Include="CityForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +123,7 @@
     <Compile Include="CostsForm.Designer.cs">
       <DependentUpon>CostsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Country.cs" />
     <Compile Include="CountryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,6 +140,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DefaultComboBoxes.cs" />
     <Compile Include="EntfaltungForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,12 +159,14 @@
     <Compile Include="FlightDB\AboutFlightDBForm.Designer.cs">
       <DependentUpon>AboutFlightDBForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlightDB\Airline.cs" />
     <Compile Include="FlightDB\AirlineForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FlightDB\AirlineForm.Designer.cs">
       <DependentUpon>AirlineForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlightDB\Airport.cs" />
     <Compile Include="FlightDB\AirportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,11 +185,19 @@
     <Compile Include="FlightDB\FlightForm.Designer.cs">
       <DependentUpon>FlightForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlightDB\Manufacturer.cs" />
+    <Compile Include="FlightDB\Plane.cs" />
     <Compile Include="FlightDB\PlaneForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FlightDB\PlaneForm.Designer.cs">
       <DependentUpon>PlaneForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FlightDB\PlaneManufacturersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FlightDB\PlaneManufacturersForm.Designer.cs">
+      <DependentUpon>PlaneManufacturersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GoalsForm.cs">
       <SubType>Form</SubType>
@@ -288,6 +314,9 @@
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CityForm.resx">
       <DependentUpon>CityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FlightDB\PlaneForm.resx">
       <DependentUpon>PlaneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FlightDB\PlaneManufacturersForm.resx">
+      <DependentUpon>PlaneManufacturersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GoalsForm.resx">
       <DependentUpon>GoalsForm.cs</DependentUpon>
@@ -429,16 +461,39 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Elegantthemes-Beautiful-Flat-One-Color-Bike.ico" />
+    <Content Include="FlightDB\Logos\Airberlin_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FlightDB\Logos\Airbus_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FlightDB\Logos\Boeing_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FlightDB\Logos\Condor_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FlightDB\Logos\El_Al_Israel_Airlines_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FlightDB\Logos\Lufthansa_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FlightDB\Logos\Turkish_Airlines_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpPages\Administratoren.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\Ansicht.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HelpPages\BikeDB2024.png">
+    <Content Include="HelpPages\Ansicht_html_8dcd120f.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HelpPages\Bildbearbeitung.html" />
+    <Content Include="HelpPages\Bildbearbeitung.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpPages\Bildbetrachter.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -446,6 +501,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\BildbetrachterHilfe_html_4bf2d051.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpPages\Bildbetrachter_html_374cddbb.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\Content.html">
@@ -532,6 +590,9 @@
     <Content Include="HelpPages\Laender.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="HelpPages\logo_bikeDB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpPages\Motivation.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -591,6 +652,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\ZieleKalender.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Install\LibUsbDotNet_Setup.2.2.8.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Install\ReadMe.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="NoImage.png" />

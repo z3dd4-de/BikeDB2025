@@ -13,6 +13,7 @@ namespace BikeDB2024
         public string Name { get; set; }
         public string Type { get; set; }
         public VehicleType Vehiclemode { get; set; }
+        public bool NotShown { get; set; }
         public int Value { get => GetId(); }
         public string Text { get => ToString(); }
         #endregion
@@ -62,6 +63,7 @@ namespace BikeDB2024
             Name = GetDatabaseEntry("Vehicles", "VehicleName", Id);
             int vt = Convert.ToInt32(GetDatabaseEntry("Vehicles", "VehicleType", Id));
             Type = GetDatabaseEntry("VehicleTypes", "VehicleType", vt);
+            NotShown = GetBoolFromTinyInt(GetDatabaseEntry("Vehicles", "NotShown", Id));
 
             try
             {

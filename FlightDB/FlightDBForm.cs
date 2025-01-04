@@ -140,10 +140,15 @@ namespace BikeDB2024
 
         private void kostenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            showCosts();
         }
 
         private void costToolStripButton_Click(object sender, EventArgs e)
+        {
+            showCosts();
+        }
+
+        private void showCosts()
         {
 
         }
@@ -200,6 +205,25 @@ namespace BikeDB2024
         {
             AirlineForm airlineForm = new AirlineForm();
             if (airlineForm.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void flugzeugherstellerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showConstructorForm();
+        }
+
+        private void manufacturerToolStripButton_Click(object sender, EventArgs e)
+        {
+            showConstructorForm();
+        }
+
+        private void showConstructorForm()
+        {
+            PlaneManufacturersForm planeManufacturersForm = new PlaneManufacturersForm();
+            if (planeManufacturersForm.ShowDialog() == DialogResult.OK)
             {
 
             }

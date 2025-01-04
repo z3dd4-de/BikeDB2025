@@ -36,13 +36,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.countryComboBox = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.linkTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.logoTextBox = new System.Windows.Forms.TextBox();
             this.openLogoButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.openLogoDialog = new System.Windows.Forms.OpenFileDialog();
@@ -138,56 +138,56 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
+            this.flowLayoutPanel1.Controls.Add(this.nameTextBox);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(83, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(325, 24);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // textBox1
+            // nameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(313, 20);
-            this.textBox1.TabIndex = 0;
+            this.nameTextBox.Location = new System.Drawing.Point(3, 3);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(313, 20);
+            this.nameTextBox.TabIndex = 0;
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Controls.Add(this.comboBox1);
+            this.flowLayoutPanel2.Controls.Add(this.countryComboBox);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(83, 33);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(325, 24);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
-            // comboBox1
+            // countryComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(3, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(313, 21);
-            this.comboBox1.TabIndex = 1;
+            this.countryComboBox.FormattingEnabled = true;
+            this.countryComboBox.Location = new System.Drawing.Point(3, 3);
+            this.countryComboBox.Name = "countryComboBox";
+            this.countryComboBox.Size = new System.Drawing.Size(313, 21);
+            this.countryComboBox.TabIndex = 1;
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.textBox2);
+            this.flowLayoutPanel3.Controls.Add(this.linkTextBox);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(83, 63);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(325, 24);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
-            // textBox2
+            // linkTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(313, 20);
-            this.textBox2.TabIndex = 2;
+            this.linkTextBox.Location = new System.Drawing.Point(3, 3);
+            this.linkTextBox.Name = "linkTextBox";
+            this.linkTextBox.Size = new System.Drawing.Size(313, 20);
+            this.linkTextBox.TabIndex = 2;
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.Controls.Add(this.textBox3);
+            this.flowLayoutPanel4.Controls.Add(this.logoTextBox);
             this.flowLayoutPanel4.Controls.Add(this.openLogoButton);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(83, 93);
@@ -195,13 +195,13 @@
             this.flowLayoutPanel4.Size = new System.Drawing.Size(325, 24);
             this.flowLayoutPanel4.TabIndex = 3;
             // 
-            // textBox3
+            // logoTextBox
             // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox3.Location = new System.Drawing.Point(3, 4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(229, 20);
-            this.textBox3.TabIndex = 3;
+            this.logoTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.logoTextBox.Location = new System.Drawing.Point(3, 4);
+            this.logoTextBox.Name = "logoTextBox";
+            this.logoTextBox.Size = new System.Drawing.Size(229, 20);
+            this.logoTextBox.TabIndex = 3;
             // 
             // openLogoButton
             // 
@@ -212,6 +212,7 @@
             this.openLogoButton.TabIndex = 4;
             this.openLogoButton.Text = "Öffnen";
             this.openLogoButton.UseVisualStyleBackColor = true;
+            this.openLogoButton.Click += new System.EventHandler(this.openLogoButton_Click);
             // 
             // addButton
             // 
@@ -221,6 +222,7 @@
             this.addButton.TabIndex = 5;
             this.addButton.Text = "Speichern";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // openLogoDialog
             // 
@@ -269,13 +271,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox countryComboBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox linkTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox logoTextBox;
         private System.Windows.Forms.Button openLogoButton;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.OpenFileDialog openLogoDialog;

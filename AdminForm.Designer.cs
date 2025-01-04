@@ -48,8 +48,8 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
+            this.countUserLabel = new System.Windows.Forms.Label();
+            this.countAdminsLabel = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.richTextBox5 = new System.Windows.Forms.RichTextBox();
@@ -373,6 +373,10 @@
             this.imageEditorTextBox = new System.Windows.Forms.TextBox();
             this.setImageEditorButton = new System.Windows.Forms.Button();
             this.flightDbCheckBox = new System.Windows.Forms.CheckBox();
+            this.globalSettingsCheckBox = new System.Windows.Forms.CheckBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
+            this.imageEditorMenuTextBox = new System.Windows.Forms.TextBox();
             this.adminMenuStrip = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -407,13 +411,18 @@
             this.notesTableAdapter = new BikeDB2024.DataSetTableAdapters.NotesTableAdapter();
             this.goalsTableAdapter = new BikeDB2024.DataSetTableAdapters.GoalsTableAdapter();
             this.clientsTableAdapter = new BikeDB2024.DataSetTableAdapters.ClientsTableAdapter();
-            this.globalSettingsCheckBox = new System.Windows.Forms.CheckBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.openGoogleFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.openImageEditorFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
-            this.imageEditorMenuTextBox = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.addClientButton = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            this.localHostRadioButton = new System.Windows.Forms.RadioButton();
+            this.lanRadioButton = new System.Windows.Forms.RadioButton();
+            this.whitelistRadioButton = new System.Windows.Forms.RadioButton();
+            this.allRadioButton = new System.Windows.Forms.RadioButton();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.adminStatusStrip.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -513,11 +522,14 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.flowLayoutPanel8.SuspendLayout();
             this.flowLayoutPanel9.SuspendLayout();
+            this.flowLayoutPanel10.SuspendLayout();
             this.adminMenuStrip.SuspendLayout();
             this.adminToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSetBindingSource)).BeginInit();
-            this.flowLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.flowLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // adminStatusStrip
@@ -640,8 +652,8 @@
             this.tableLayoutPanel12.Controls.Add(this.label30, 1, 4);
             this.tableLayoutPanel12.Controls.Add(this.label32, 1, 5);
             this.tableLayoutPanel12.Controls.Add(this.label31, 1, 6);
-            this.tableLayoutPanel12.Controls.Add(this.label33, 1, 0);
-            this.tableLayoutPanel12.Controls.Add(this.label34, 1, 1);
+            this.tableLayoutPanel12.Controls.Add(this.countUserLabel, 1, 0);
+            this.tableLayoutPanel12.Controls.Add(this.countAdminsLabel, 1, 1);
             this.tableLayoutPanel12.Controls.Add(this.label35, 1, 2);
             this.tableLayoutPanel12.Controls.Add(this.label36, 1, 3);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -661,8 +673,9 @@
             // 
             // label25
             // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(3, 0);
+            this.label25.Location = new System.Drawing.Point(3, 6);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(84, 13);
             this.label25.TabIndex = 0;
@@ -670,8 +683,9 @@
             // 
             // label26
             // 
+            this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(3, 25);
+            this.label26.Location = new System.Drawing.Point(3, 31);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(114, 13);
             this.label26.TabIndex = 1;
@@ -679,8 +693,9 @@
             // 
             // label27
             // 
+            this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(3, 50);
+            this.label27.Location = new System.Drawing.Point(3, 56);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(68, 13);
             this.label27.TabIndex = 2;
@@ -688,8 +703,9 @@
             // 
             // label28
             // 
+            this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(3, 75);
+            this.label28.Location = new System.Drawing.Point(3, 81);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(71, 13);
             this.label28.TabIndex = 3;
@@ -697,8 +713,9 @@
             // 
             // label29
             // 
+            this.label29.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(3, 100);
+            this.label29.Location = new System.Drawing.Point(3, 106);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(48, 13);
             this.label29.TabIndex = 4;
@@ -706,8 +723,9 @@
             // 
             // label30
             // 
+            this.label30.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(123, 100);
+            this.label30.Location = new System.Drawing.Point(123, 106);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(38, 13);
             this.label30.TabIndex = 5;
@@ -715,8 +733,9 @@
             // 
             // label32
             // 
+            this.label32.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(123, 125);
+            this.label32.Location = new System.Drawing.Point(123, 131);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(42, 13);
             this.label32.TabIndex = 7;
@@ -724,35 +743,39 @@
             // 
             // label31
             // 
+            this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(123, 150);
+            this.label31.Location = new System.Drawing.Point(123, 156);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(81, 13);
             this.label31.TabIndex = 6;
             this.label31.Text = "Datenbank-Typ";
             // 
-            // label33
+            // countUserLabel
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(123, 0);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(41, 13);
-            this.label33.TabIndex = 8;
-            this.label33.Text = "label33";
+            this.countUserLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.countUserLabel.AutoSize = true;
+            this.countUserLabel.Location = new System.Drawing.Point(123, 6);
+            this.countUserLabel.Name = "countUserLabel";
+            this.countUserLabel.Size = new System.Drawing.Size(82, 13);
+            this.countUserLabel.TabIndex = 8;
+            this.countUserLabel.Text = "countUserLabel";
             // 
-            // label34
+            // countAdminsLabel
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(123, 25);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(41, 13);
-            this.label34.TabIndex = 9;
-            this.label34.Text = "label34";
+            this.countAdminsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.countAdminsLabel.AutoSize = true;
+            this.countAdminsLabel.Location = new System.Drawing.Point(123, 31);
+            this.countAdminsLabel.Name = "countAdminsLabel";
+            this.countAdminsLabel.Size = new System.Drawing.Size(94, 13);
+            this.countAdminsLabel.TabIndex = 9;
+            this.countAdminsLabel.Text = "countAdminsLabel";
             // 
             // label35
             // 
+            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(123, 50);
+            this.label35.Location = new System.Drawing.Point(123, 56);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(41, 13);
             this.label35.TabIndex = 10;
@@ -760,8 +783,9 @@
             // 
             // label36
             // 
+            this.label36.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(123, 75);
+            this.label36.Location = new System.Drawing.Point(123, 81);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(41, 13);
             this.label36.TabIndex = 11;
@@ -3160,7 +3184,7 @@
             // 
             // tabPage35
             // 
-            this.tabPage35.Controls.Add(this.dataGridView12);
+            this.tabPage35.Controls.Add(this.tableLayoutPanel13);
             this.tabPage35.Location = new System.Drawing.Point(4, 22);
             this.tabPage35.Name = "tabPage35";
             this.tabPage35.Size = new System.Drawing.Size(884, 418);
@@ -3185,9 +3209,9 @@
             this.lastChangedDataGridViewTextBoxColumn12});
             this.dataGridView12.DataSource = this.clientsBindingSource;
             this.dataGridView12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView12.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView12.Location = new System.Drawing.Point(3, 53);
             this.dataGridView12.Name = "dataGridView12";
-            this.dataGridView12.Size = new System.Drawing.Size(884, 418);
+            this.dataGridView12.Size = new System.Drawing.Size(878, 362);
             this.dataGridView12.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn13
@@ -3336,6 +3360,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.Controls.Add(this.groupBox4, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel11, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.groupBox6, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -3621,7 +3646,6 @@
             // 
             this.flightDbCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.flightDbCheckBox.AutoSize = true;
-            this.flightDbCheckBox.Enabled = false;
             this.flightDbCheckBox.Location = new System.Drawing.Point(103, 114);
             this.flightDbCheckBox.Name = "flightDbCheckBox";
             this.flightDbCheckBox.Size = new System.Drawing.Size(37, 17);
@@ -3629,6 +3653,48 @@
             this.flightDbCheckBox.Text = "Ja";
             this.flightDbCheckBox.UseVisualStyleBackColor = true;
             this.flightDbCheckBox.CheckedChanged += new System.EventHandler(this.flightDbCheckBox_CheckedChanged);
+            // 
+            // globalSettingsCheckBox
+            // 
+            this.globalSettingsCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.globalSettingsCheckBox.AutoSize = true;
+            this.globalSettingsCheckBox.Location = new System.Drawing.Point(103, 139);
+            this.globalSettingsCheckBox.Name = "globalSettingsCheckBox";
+            this.globalSettingsCheckBox.Size = new System.Drawing.Size(128, 17);
+            this.globalSettingsCheckBox.TabIndex = 12;
+            this.globalSettingsCheckBox.Text = "Globale Einstellungen";
+            this.globalSettingsCheckBox.UseVisualStyleBackColor = true;
+            this.globalSettingsCheckBox.CheckedChanged += new System.EventHandler(this.globalSettingsCheckBox_CheckedChanged);
+            // 
+            // label24
+            // 
+            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(3, 141);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(67, 13);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Verwenden?";
+            // 
+            // flowLayoutPanel10
+            // 
+            this.flowLayoutPanel10.Controls.Add(this.imageEditorMenuTextBox);
+            this.flowLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(103, 88);
+            this.flowLayoutPanel10.Name = "flowLayoutPanel10";
+            this.flowLayoutPanel10.Size = new System.Drawing.Size(522, 19);
+            this.flowLayoutPanel10.TabIndex = 14;
+            // 
+            // imageEditorMenuTextBox
+            // 
+            this.imageEditorMenuTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.imageEditorMenuTextBox.Enabled = false;
+            this.imageEditorMenuTextBox.Location = new System.Drawing.Point(3, 3);
+            this.imageEditorMenuTextBox.Name = "imageEditorMenuTextBox";
+            this.imageEditorMenuTextBox.Size = new System.Drawing.Size(200, 20);
+            this.imageEditorMenuTextBox.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.imageEditorMenuTextBox, "Ein Menüeintrag sollte vergeben werden, wenn ein Bildeditor ausgewählt wurde. \"&\"" +
+        " verwenden, um Keybord-Shortcut zu definieren.");
             // 
             // adminMenuStrip
             // 
@@ -3864,28 +3930,6 @@
             // 
             this.clientsTableAdapter.ClearBeforeFill = true;
             // 
-            // globalSettingsCheckBox
-            // 
-            this.globalSettingsCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.globalSettingsCheckBox.AutoSize = true;
-            this.globalSettingsCheckBox.Location = new System.Drawing.Point(103, 139);
-            this.globalSettingsCheckBox.Name = "globalSettingsCheckBox";
-            this.globalSettingsCheckBox.Size = new System.Drawing.Size(128, 17);
-            this.globalSettingsCheckBox.TabIndex = 12;
-            this.globalSettingsCheckBox.Text = "Globale Einstellungen";
-            this.globalSettingsCheckBox.UseVisualStyleBackColor = true;
-            this.globalSettingsCheckBox.CheckedChanged += new System.EventHandler(this.globalSettingsCheckBox_CheckedChanged);
-            // 
-            // label24
-            // 
-            this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(3, 141);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(67, 13);
-            this.label24.TabIndex = 13;
-            this.label24.Text = "Verwenden?";
-            // 
             // openGoogleFileDialog
             // 
             this.openGoogleFileDialog.Filter = "Anwendung|*.exe|Alle Dateien|*.*";
@@ -3896,30 +3940,106 @@
             this.openImageEditorFileDialog.Filter = "Anwendung|*.exe|Alle Dateien|*.*";
             this.openImageEditorFileDialog.Title = "Bildbearbeitung auswählen";
             // 
-            // flowLayoutPanel10
-            // 
-            this.flowLayoutPanel10.Controls.Add(this.imageEditorMenuTextBox);
-            this.flowLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel10.Location = new System.Drawing.Point(103, 88);
-            this.flowLayoutPanel10.Name = "flowLayoutPanel10";
-            this.flowLayoutPanel10.Size = new System.Drawing.Size(522, 19);
-            this.flowLayoutPanel10.TabIndex = 14;
-            // 
-            // imageEditorMenuTextBox
-            // 
-            this.imageEditorMenuTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.imageEditorMenuTextBox.Enabled = false;
-            this.imageEditorMenuTextBox.Location = new System.Drawing.Point(3, 3);
-            this.imageEditorMenuTextBox.Name = "imageEditorMenuTextBox";
-            this.imageEditorMenuTextBox.Size = new System.Drawing.Size(200, 20);
-            this.imageEditorMenuTextBox.TabIndex = 11;
-            this.toolTip1.SetToolTip(this.imageEditorMenuTextBox, "Ein Menüeintrag sollte vergeben werden, wenn ein Bildeditor ausgewählt wurde. \"&\"" +
-        " verwenden, um Keybord-Shortcut zu definieren.");
-            // 
             // toolTip1
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Bildbearbeitung Menüeintrag";
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Controls.Add(this.dataGridView12, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.addClientButton, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(884, 418);
+            this.tableLayoutPanel13.TabIndex = 1;
+            // 
+            // addClientButton
+            // 
+            this.addClientButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addClientButton.Image = ((System.Drawing.Image)(resources.GetObject("addClientButton.Image")));
+            this.addClientButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addClientButton.Location = new System.Drawing.Point(3, 8);
+            this.addClientButton.Name = "addClientButton";
+            this.addClientButton.Size = new System.Drawing.Size(132, 34);
+            this.addClientButton.TabIndex = 1;
+            this.addClientButton.Text = "Client hinzufügen";
+            this.addClientButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.addClientButton.UseVisualStyleBackColor = true;
+            this.addClientButton.Click += new System.EventHandler(this.addClientButton_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.flowLayoutPanel11);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Location = new System.Drawing.Point(3, 253);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(244, 162);
+            this.groupBox6.TabIndex = 2;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Clients";
+            // 
+            // flowLayoutPanel11
+            // 
+            this.flowLayoutPanel11.Controls.Add(this.localHostRadioButton);
+            this.flowLayoutPanel11.Controls.Add(this.lanRadioButton);
+            this.flowLayoutPanel11.Controls.Add(this.whitelistRadioButton);
+            this.flowLayoutPanel11.Controls.Add(this.allRadioButton);
+            this.flowLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel11.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel11.Name = "flowLayoutPanel11";
+            this.flowLayoutPanel11.Size = new System.Drawing.Size(238, 143);
+            this.flowLayoutPanel11.TabIndex = 0;
+            // 
+            // localHostRadioButton
+            // 
+            this.localHostRadioButton.AutoSize = true;
+            this.localHostRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.localHostRadioButton.Name = "localHostRadioButton";
+            this.localHostRadioButton.Size = new System.Drawing.Size(71, 17);
+            this.localHostRadioButton.TabIndex = 0;
+            this.localHostRadioButton.TabStop = true;
+            this.localHostRadioButton.Text = "Localhost";
+            this.localHostRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // lanRadioButton
+            // 
+            this.lanRadioButton.AutoSize = true;
+            this.lanRadioButton.Location = new System.Drawing.Point(80, 3);
+            this.lanRadioButton.Name = "lanRadioButton";
+            this.lanRadioButton.Size = new System.Drawing.Size(46, 17);
+            this.lanRadioButton.TabIndex = 1;
+            this.lanRadioButton.TabStop = true;
+            this.lanRadioButton.Text = "LAN";
+            this.lanRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // whitelistRadioButton
+            // 
+            this.whitelistRadioButton.AutoSize = true;
+            this.whitelistRadioButton.Location = new System.Drawing.Point(132, 3);
+            this.whitelistRadioButton.Name = "whitelistRadioButton";
+            this.whitelistRadioButton.Size = new System.Drawing.Size(85, 17);
+            this.whitelistRadioButton.TabIndex = 2;
+            this.whitelistRadioButton.TabStop = true;
+            this.whitelistRadioButton.Text = "Nur Whitelist";
+            this.whitelistRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // allRadioButton
+            // 
+            this.allRadioButton.AutoSize = true;
+            this.allRadioButton.Location = new System.Drawing.Point(3, 26);
+            this.allRadioButton.Name = "allRadioButton";
+            this.allRadioButton.Size = new System.Drawing.Size(164, 17);
+            this.allRadioButton.TabIndex = 3;
+            this.allRadioButton.TabStop = true;
+            this.allRadioButton.Text = "Unbegrenzt (nicht empfohlen)";
+            this.allRadioButton.UseVisualStyleBackColor = true;
             // 
             // AdminForm
             // 
@@ -4055,14 +4175,18 @@
             this.flowLayoutPanel8.PerformLayout();
             this.flowLayoutPanel9.ResumeLayout(false);
             this.flowLayoutPanel9.PerformLayout();
+            this.flowLayoutPanel10.ResumeLayout(false);
+            this.flowLayoutPanel10.PerformLayout();
             this.adminMenuStrip.ResumeLayout(false);
             this.adminMenuStrip.PerformLayout();
             this.adminToolStrip.ResumeLayout(false);
             this.adminToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSetBindingSource)).EndInit();
-            this.flowLayoutPanel10.ResumeLayout(false);
-            this.flowLayoutPanel10.PerformLayout();
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.flowLayoutPanel11.ResumeLayout(false);
+            this.flowLayoutPanel11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4274,8 +4398,8 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label countUserLabel;
+        private System.Windows.Forms.Label countAdminsLabel;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.RichTextBox richTextBox5;
@@ -4454,5 +4578,14 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private System.Windows.Forms.TextBox imageEditorMenuTextBox;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private System.Windows.Forms.Button addClientButton;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
+        private System.Windows.Forms.RadioButton localHostRadioButton;
+        private System.Windows.Forms.RadioButton lanRadioButton;
+        private System.Windows.Forms.RadioButton whitelistRadioButton;
+        private System.Windows.Forms.RadioButton allRadioButton;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }

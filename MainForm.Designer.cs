@@ -88,7 +88,7 @@
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.mainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.springToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.userToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainTabControl = new System.Windows.Forms.TabControl();
             this.startPage = new System.Windows.Forms.TabPage();
@@ -903,7 +903,7 @@
             // 
             this.bildbetrachterToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("bildbetrachterToolStripMenuItem.Image")));
             this.bildbetrachterToolStripMenuItem.Name = "bildbetrachterToolStripMenuItem";
-            this.bildbetrachterToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.bildbetrachterToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.bildbetrachterToolStripMenuItem.Text = "&Bildbetrachter";
             this.bildbetrachterToolStripMenuItem.Click += new System.EventHandler(this.bildbetrachterToolStripMenuItem_Click);
             // 
@@ -911,7 +911,7 @@
             // 
             this.bildbearbeitungToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("bildbearbeitungToolStripMenuItem.Image")));
             this.bildbearbeitungToolStripMenuItem.Name = "bildbearbeitungToolStripMenuItem";
-            this.bildbearbeitungToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.bildbearbeitungToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.bildbearbeitungToolStripMenuItem.Text = "Bildbe&arbeitung";
             this.bildbearbeitungToolStripMenuItem.Click += new System.EventHandler(this.bildbearbeitungToolStripMenuItem_Click);
             // 
@@ -919,7 +919,7 @@
             // 
             this.entfaltungToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("entfaltungToolStripMenuItem.Image")));
             this.entfaltungToolStripMenuItem.Name = "entfaltungToolStripMenuItem";
-            this.entfaltungToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.entfaltungToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.entfaltungToolStripMenuItem.Text = "&Entfaltung";
             this.entfaltungToolStripMenuItem.Click += new System.EventHandler(this.entfaltungToolStripMenuItem_Click);
             // 
@@ -927,7 +927,7 @@
             // 
             this.flightDBToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("flightDBToolStripMenuItem.Image")));
             this.flightDBToolStripMenuItem.Name = "flightDBToolStripMenuItem";
-            this.flightDBToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.flightDBToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.flightDBToolStripMenuItem.Text = "&FlightDB";
             this.flightDBToolStripMenuItem.Click += new System.EventHandler(this.flightDBToolStripMenuItem_Click);
             // 
@@ -938,7 +938,7 @@
             this.startenToolStripMenuItem});
             this.googleEarthToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("googleEarthToolStripMenuItem.Image")));
             this.googleEarthToolStripMenuItem.Name = "googleEarthToolStripMenuItem";
-            this.googleEarthToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.googleEarthToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.googleEarthToolStripMenuItem.Text = "&Google Earth";
             // 
             // installierenToolStripMenuItem
@@ -959,40 +959,40 @@
             // 
             this.ausgabenUndKostenToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ausgabenUndKostenToolStripMenuItem.Image")));
             this.ausgabenUndKostenToolStripMenuItem.Name = "ausgabenUndKostenToolStripMenuItem";
-            this.ausgabenUndKostenToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.ausgabenUndKostenToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.ausgabenUndKostenToolStripMenuItem.Text = "Ausgaben und &Kosten";
             this.ausgabenUndKostenToolStripMenuItem.Click += new System.EventHandler(this.ausgabenUndKostenToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(191, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(187, 6);
             // 
             // einstellungenToolStripMenuItem
             // 
             this.einstellungenToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("einstellungenToolStripMenuItem.Image")));
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
-            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.einstellungenToolStripMenuItem.Text = "Ein&stellungen";
             this.einstellungenToolStripMenuItem.Click += new System.EventHandler(this.einstellungenToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(191, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(187, 6);
             // 
             // administrationToolStripMenuItem
             // 
             this.administrationToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("administrationToolStripMenuItem.Image")));
             this.administrationToolStripMenuItem.Name = "administrationToolStripMenuItem";
-            this.administrationToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.administrationToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.administrationToolStripMenuItem.Text = "&Administration";
             this.administrationToolStripMenuItem.Click += new System.EventHandler(this.administrationToolStripMenuItem_Click);
             // 
             // sigmaConnectToolStripMenuItem
             // 
             this.sigmaConnectToolStripMenuItem.Name = "sigmaConnectToolStripMenuItem";
-            this.sigmaConnectToolStripMenuItem.Size = new System.Drawing.Size(194, 26);
+            this.sigmaConnectToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.sigmaConnectToolStripMenuItem.Text = "Sigma &Connect";
             this.sigmaConnectToolStripMenuItem.Click += new System.EventHandler(this.sigmaConnectToolStripMenuItem_Click);
             // 
@@ -1023,12 +1023,12 @@
             // 
             // mainStatusStrip
             // 
-            this.mainStatusStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.mainStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainStatusLabel,
-            this.toolStripStatusLabel1,
+            this.springToolStripStatusLabel,
             this.userToolStripStatusLabel});
+            this.mainStatusStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.mainStatusStrip.Location = new System.Drawing.Point(0, 0);
             this.mainStatusStrip.Name = "mainStatusStrip";
             this.mainStatusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
@@ -1042,18 +1042,20 @@
             this.mainStatusLabel.Size = new System.Drawing.Size(94, 20);
             this.mainStatusLabel.Text = "mainStatusLabel";
             // 
-            // toolStripStatusLabel1
+            // springToolStripStatusLabel
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(881, 20);
-            this.toolStripStatusLabel1.Spring = true;
+            this.springToolStripStatusLabel.Name = "springToolStripStatusLabel";
+            this.springToolStripStatusLabel.Size = new System.Drawing.Size(0, 20);
+            this.springToolStripStatusLabel.Spring = true;
             // 
             // userToolStripStatusLabel
             // 
+            this.userToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedInner;
             this.userToolStripStatusLabel.Image = ((System.Drawing.Image)(resources.GetObject("userToolStripStatusLabel.Image")));
             this.userToolStripStatusLabel.Name = "userToolStripStatusLabel";
             this.userToolStripStatusLabel.Size = new System.Drawing.Size(136, 20);
             this.userToolStripStatusLabel.Text = "Niemand eingeloggt";
+            this.userToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // mainTabControl
             // 
@@ -3913,7 +3915,7 @@
             this.setupTabControl.Margin = new System.Windows.Forms.Padding(2);
             this.setupTabControl.Name = "setupTabControl";
             this.setupTabControl.SelectedIndex = 0;
-            this.setupTabControl.Size = new System.Drawing.Size(341, 348);
+            this.setupTabControl.Size = new System.Drawing.Size(654, 348);
             this.setupTabControl.TabIndex = 13;
             // 
             // setupPage
@@ -3923,7 +3925,7 @@
             this.setupPage.Margin = new System.Windows.Forms.Padding(2);
             this.setupPage.Name = "setupPage";
             this.setupPage.Padding = new System.Windows.Forms.Padding(2);
-            this.setupPage.Size = new System.Drawing.Size(333, 322);
+            this.setupPage.Size = new System.Drawing.Size(646, 322);
             this.setupPage.TabIndex = 0;
             this.setupPage.Text = "Einstellungen";
             this.setupPage.UseVisualStyleBackColor = true;
@@ -3978,7 +3980,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(329, 318);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(642, 318);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -3989,7 +3991,7 @@
             this.flowLayoutPanel3.Location = new System.Drawing.Point(137, 218);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(190, 20);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(503, 20);
             this.flowLayoutPanel3.TabIndex = 18;
             // 
             // imageEditorPath
@@ -3997,12 +3999,12 @@
             this.imageEditorPath.Location = new System.Drawing.Point(2, 2);
             this.imageEditorPath.Margin = new System.Windows.Forms.Padding(2);
             this.imageEditorPath.Name = "imageEditorPath";
-            this.imageEditorPath.Size = new System.Drawing.Size(126, 20);
+            this.imageEditorPath.Size = new System.Drawing.Size(436, 20);
             this.imageEditorPath.TabIndex = 11;
             // 
             // imageEditorButton
             // 
-            this.imageEditorButton.Location = new System.Drawing.Point(132, 2);
+            this.imageEditorButton.Location = new System.Drawing.Point(442, 2);
             this.imageEditorButton.Margin = new System.Windows.Forms.Padding(2);
             this.imageEditorButton.Name = "imageEditorButton";
             this.imageEditorButton.Size = new System.Drawing.Size(56, 19);
@@ -4031,8 +4033,9 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(2, 0);
+            this.label11.Location = new System.Drawing.Point(2, 5);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 13);
@@ -4041,8 +4044,9 @@
             // 
             // useAltimeterCheckBox
             // 
+            this.useAltimeterCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.useAltimeterCheckBox.AutoSize = true;
-            this.useAltimeterCheckBox.Location = new System.Drawing.Point(137, 2);
+            this.useAltimeterCheckBox.Location = new System.Drawing.Point(137, 3);
             this.useAltimeterCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.useAltimeterCheckBox.Name = "useAltimeterCheckBox";
             this.useAltimeterCheckBox.Size = new System.Drawing.Size(37, 17);
@@ -4053,8 +4057,9 @@
             // 
             // label12
             // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(2, 24);
+            this.label12.Location = new System.Drawing.Point(2, 29);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(97, 13);
@@ -4063,8 +4068,9 @@
             // 
             // label15
             // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(2, 48);
+            this.label15.Location = new System.Drawing.Point(2, 53);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(98, 13);
@@ -4103,8 +4109,9 @@
             // 
             // label17
             // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(2, 72);
+            this.label17.Location = new System.Drawing.Point(2, 77);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(77, 13);
@@ -4113,8 +4120,9 @@
             // 
             // label14
             // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(2, 144);
+            this.label14.Location = new System.Drawing.Point(2, 149);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(90, 13);
@@ -4152,8 +4160,9 @@
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(2, 120);
+            this.label13.Location = new System.Drawing.Point(2, 125);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(78, 13);
@@ -4162,8 +4171,9 @@
             // 
             // label18
             // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(2, 96);
+            this.label18.Location = new System.Drawing.Point(2, 101);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(109, 13);
@@ -4188,8 +4198,9 @@
             // 
             // label16
             // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(2, 192);
+            this.label16.Location = new System.Drawing.Point(2, 197);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(69, 13);
@@ -4204,7 +4215,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(137, 194);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(190, 20);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(503, 20);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // googleEarthPath
@@ -4212,12 +4223,12 @@
             this.googleEarthPath.Location = new System.Drawing.Point(2, 2);
             this.googleEarthPath.Margin = new System.Windows.Forms.Padding(2);
             this.googleEarthPath.Name = "googleEarthPath";
-            this.googleEarthPath.Size = new System.Drawing.Size(126, 20);
+            this.googleEarthPath.Size = new System.Drawing.Size(436, 20);
             this.googleEarthPath.TabIndex = 11;
             // 
             // folderSearchButton
             // 
-            this.folderSearchButton.Location = new System.Drawing.Point(132, 2);
+            this.folderSearchButton.Location = new System.Drawing.Point(442, 2);
             this.folderSearchButton.Margin = new System.Windows.Forms.Padding(2);
             this.folderSearchButton.Name = "folderSearchButton";
             this.folderSearchButton.Size = new System.Drawing.Size(56, 19);
@@ -4228,8 +4239,9 @@
             // 
             // label19
             // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(2, 168);
+            this.label19.Location = new System.Drawing.Point(2, 173);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(63, 13);
@@ -4244,7 +4256,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(137, 170);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(190, 20);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(503, 20);
             this.flowLayoutPanel2.TabIndex = 7;
             // 
             // imageFolderPath
@@ -4252,12 +4264,12 @@
             this.imageFolderPath.Location = new System.Drawing.Point(2, 2);
             this.imageFolderPath.Margin = new System.Windows.Forms.Padding(2);
             this.imageFolderPath.Name = "imageFolderPath";
-            this.imageFolderPath.Size = new System.Drawing.Size(126, 20);
+            this.imageFolderPath.Size = new System.Drawing.Size(436, 20);
             this.imageFolderPath.TabIndex = 8;
             // 
             // imageFolderButton
             // 
-            this.imageFolderButton.Location = new System.Drawing.Point(132, 2);
+            this.imageFolderButton.Location = new System.Drawing.Point(442, 2);
             this.imageFolderButton.Margin = new System.Windows.Forms.Padding(2);
             this.imageFolderButton.Name = "imageFolderButton";
             this.imageFolderButton.Size = new System.Drawing.Size(56, 19);
@@ -4268,8 +4280,9 @@
             // 
             // label41
             // 
+            this.label41.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(2, 216);
+            this.label41.Location = new System.Drawing.Point(2, 221);
             this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(80, 13);
@@ -4278,8 +4291,9 @@
             // 
             // label42
             // 
+            this.label42.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(2, 240);
+            this.label42.Location = new System.Drawing.Point(2, 245);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(117, 13);
@@ -4297,8 +4311,9 @@
             // 
             // label53
             // 
+            this.label53.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(3, 264);
+            this.label53.Location = new System.Drawing.Point(3, 269);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(90, 13);
             this.label53.TabIndex = 21;
@@ -4306,8 +4321,9 @@
             // 
             // label57
             // 
+            this.label57.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(3, 288);
+            this.label57.Location = new System.Drawing.Point(3, 293);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(71, 13);
             this.label57.TabIndex = 22;
@@ -4315,6 +4331,7 @@
             // 
             // notificationCheckBox
             // 
+            this.notificationCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.notificationCheckBox.AutoSize = true;
             this.notificationCheckBox.Checked = true;
             this.notificationCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -4331,7 +4348,7 @@
             this.timerMaskedTextBox.Location = new System.Drawing.Point(138, 291);
             this.timerMaskedTextBox.Mask = "90";
             this.timerMaskedTextBox.Name = "timerMaskedTextBox";
-            this.timerMaskedTextBox.Size = new System.Drawing.Size(100, 20);
+            this.timerMaskedTextBox.Size = new System.Drawing.Size(64, 20);
             this.timerMaskedTextBox.TabIndex = 24;
             this.timerMaskedTextBox.Text = " 5";
             this.timerMaskedTextBox.Leave += new System.EventHandler(this.timerMaskedTextBox_Leave);
@@ -5384,7 +5401,7 @@
         private System.Windows.Forms.MonthCalendar mainCalendar;
         private System.Windows.Forms.ToolStripMenuItem kalenderToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton calendarToolStripButton;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel springToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel userToolStripStatusLabel;
         private System.Windows.Forms.BindingSource vehiclesBindingSource3;
         private System.Windows.Forms.NotifyIcon mainNotifyIcon;

@@ -34,41 +34,41 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.iataTextBox = new System.Windows.Forms.TextBox();
+            this.icaoTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.gpsTextBox = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.countryComboBox = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cityComboBox = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.linkTextBox = new System.Windows.Forms.TextBox();
+            this.addButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             this.imageTextBox = new System.Windows.Forms.TextBox();
             this.imageButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
-            this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
-            this.icaoTextBox = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.linkTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cityComboBox = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.countryComboBox = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.heightTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.openImageDialog = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
             this.flowLayoutPanel7.SuspendLayout();
+            this.flowLayoutPanel6.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel8.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,46 +156,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "GPS-Koordinaten";
             // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 128);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Land";
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 158);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Stadt";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 188);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Link";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 218);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(24, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Bild";
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.nameTextBox);
@@ -229,6 +189,13 @@
             this.iataTextBox.Size = new System.Drawing.Size(152, 20);
             this.iataTextBox.TabIndex = 1;
             // 
+            // icaoTextBox
+            // 
+            this.icaoTextBox.Location = new System.Drawing.Point(161, 3);
+            this.icaoTextBox.Name = "icaoTextBox";
+            this.icaoTextBox.Size = new System.Drawing.Size(152, 20);
+            this.icaoTextBox.TabIndex = 2;
+            // 
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.gpsTextBox);
@@ -245,55 +212,45 @@
             this.gpsTextBox.Size = new System.Drawing.Size(310, 20);
             this.gpsTextBox.TabIndex = 3;
             // 
-            // flowLayoutPanel4
+            // addButton
             // 
-            this.flowLayoutPanel4.Controls.Add(this.countryComboBox);
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(103, 123);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(398, 24);
-            this.flowLayoutPanel4.TabIndex = 5;
+            this.addButton.Location = new System.Drawing.Point(103, 243);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 10;
+            this.addButton.Text = "Speichern";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // countryComboBox
+            // label7
             // 
-            this.countryComboBox.FormattingEnabled = true;
-            this.countryComboBox.Location = new System.Drawing.Point(3, 3);
-            this.countryComboBox.Name = "countryComboBox";
-            this.countryComboBox.Size = new System.Drawing.Size(391, 21);
-            this.countryComboBox.TabIndex = 5;
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 218);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(24, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Bild";
             // 
-            // flowLayoutPanel5
+            // label6
             // 
-            this.flowLayoutPanel5.Controls.Add(this.cityComboBox);
-            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(103, 153);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(398, 24);
-            this.flowLayoutPanel5.TabIndex = 6;
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 188);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Link";
             // 
-            // cityComboBox
+            // label5
             // 
-            this.cityComboBox.FormattingEnabled = true;
-            this.cityComboBox.Location = new System.Drawing.Point(3, 3);
-            this.cityComboBox.Name = "cityComboBox";
-            this.cityComboBox.Size = new System.Drawing.Size(391, 21);
-            this.cityComboBox.TabIndex = 6;
-            // 
-            // flowLayoutPanel6
-            // 
-            this.flowLayoutPanel6.Controls.Add(this.linkTextBox);
-            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(103, 183);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(398, 24);
-            this.flowLayoutPanel6.TabIndex = 7;
-            // 
-            // linkTextBox
-            // 
-            this.linkTextBox.Location = new System.Drawing.Point(3, 3);
-            this.linkTextBox.Name = "linkTextBox";
-            this.linkTextBox.Size = new System.Drawing.Size(391, 20);
-            this.linkTextBox.TabIndex = 7;
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 158);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Stadt";
             // 
             // flowLayoutPanel7
             // 
@@ -324,26 +281,65 @@
             this.imageButton.UseVisualStyleBackColor = true;
             this.imageButton.Click += new System.EventHandler(this.imageButton_Click);
             // 
-            // addButton
+            // flowLayoutPanel6
             // 
-            this.addButton.Location = new System.Drawing.Point(103, 243);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 10;
-            this.addButton.Text = "Speichern";
-            this.addButton.UseVisualStyleBackColor = true;
+            this.flowLayoutPanel6.Controls.Add(this.linkTextBox);
+            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(103, 183);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(398, 24);
+            this.flowLayoutPanel6.TabIndex = 7;
             // 
-            // openImageDialog
+            // linkTextBox
             // 
-            this.openImageDialog.Filter = "PNG-Bilddatei|*.png|JPG-Bilddatei|*.jpg|GIF-Bilddatei|*.gif|Alle Dateien (*.*)|*." +
-    "*";
+            this.linkTextBox.Location = new System.Drawing.Point(3, 3);
+            this.linkTextBox.Name = "linkTextBox";
+            this.linkTextBox.Size = new System.Drawing.Size(391, 20);
+            this.linkTextBox.TabIndex = 7;
             // 
-            // icaoTextBox
+            // label4
             // 
-            this.icaoTextBox.Location = new System.Drawing.Point(161, 3);
-            this.icaoTextBox.Name = "icaoTextBox";
-            this.icaoTextBox.Size = new System.Drawing.Size(152, 20);
-            this.icaoTextBox.TabIndex = 2;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 128);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Land";
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.cityComboBox);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(103, 153);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(398, 24);
+            this.flowLayoutPanel5.TabIndex = 6;
+            // 
+            // cityComboBox
+            // 
+            this.cityComboBox.FormattingEnabled = true;
+            this.cityComboBox.Location = new System.Drawing.Point(3, 3);
+            this.cityComboBox.Name = "cityComboBox";
+            this.cityComboBox.Size = new System.Drawing.Size(391, 21);
+            this.cityComboBox.TabIndex = 6;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.countryComboBox);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(103, 123);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(398, 24);
+            this.flowLayoutPanel4.TabIndex = 5;
+            // 
+            // countryComboBox
+            // 
+            this.countryComboBox.FormattingEnabled = true;
+            this.countryComboBox.Location = new System.Drawing.Point(3, 3);
+            this.countryComboBox.Name = "countryComboBox";
+            this.countryComboBox.Size = new System.Drawing.Size(391, 21);
+            this.countryComboBox.TabIndex = 5;
             // 
             // label8
             // 
@@ -357,7 +353,7 @@
             // 
             // flowLayoutPanel8
             // 
-            this.flowLayoutPanel8.Controls.Add(this.textBox1);
+            this.flowLayoutPanel8.Controls.Add(this.heightTextBox);
             this.flowLayoutPanel8.Controls.Add(this.label9);
             this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel8.Location = new System.Drawing.Point(103, 93);
@@ -365,13 +361,13 @@
             this.flowLayoutPanel8.Size = new System.Drawing.Size(398, 24);
             this.flowLayoutPanel8.TabIndex = 4;
             // 
-            // textBox1
+            // heightTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.MaxLength = 5;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.heightTextBox.Location = new System.Drawing.Point(3, 3);
+            this.heightTextBox.MaxLength = 5;
+            this.heightTextBox.Name = "heightTextBox";
+            this.heightTextBox.Size = new System.Drawing.Size(100, 20);
+            this.heightTextBox.TabIndex = 4;
             // 
             // label9
             // 
@@ -382,6 +378,11 @@
             this.label9.Size = new System.Drawing.Size(15, 13);
             this.label9.TabIndex = 1;
             this.label9.Text = "m";
+            // 
+            // openImageDialog
+            // 
+            this.openImageDialog.Filter = "PNG-Bilddatei|*.png|JPG-Bilddatei|*.jpg|GIF-Bilddatei|*.gif|Alle Dateien (*.*)|*." +
+    "*";
             // 
             // AirportForm
             // 
@@ -410,12 +411,12 @@
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel6.ResumeLayout(false);
-            this.flowLayoutPanel6.PerformLayout();
             this.flowLayoutPanel7.ResumeLayout(false);
             this.flowLayoutPanel7.PerformLayout();
+            this.flowLayoutPanel6.ResumeLayout(false);
+            this.flowLayoutPanel6.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel8.ResumeLayout(false);
             this.flowLayoutPanel8.PerformLayout();
             this.ResumeLayout(false);
@@ -455,7 +456,7 @@
         private System.Windows.Forms.TextBox icaoTextBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox heightTextBox;
         private System.Windows.Forms.Label label9;
     }
 }

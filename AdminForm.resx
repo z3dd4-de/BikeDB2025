@@ -443,6 +443,9 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   <metadata name="logBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>188, 54</value>
   </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>339, 202</value>
+  </metadata>
   <data name="dashboardToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -668,8 +671,20 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>339, 202</value>
   </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>339, 202</value>
+  <data name="addClientButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAFNSURBVFhH7ZO7LkVBGEZ3o0KlcXkYJKJxGu/iklBS8TBE
+        J+L0Op5DiFtBIXxrMpP8Zva/N7GJyKxkJWfm+2Zm305Tqfwl3n7ZgrbST1rgBgNTL+B/XMBInssn+Rh/
+        r8nP8O0L2Jepm7sn+0jdAjcwcOd0nuWGnItuxjmyvifhnuMGhrGkw+E5W5KM19GFe44bGHjfdGbD6CPM
+        kT2EkY97jhsY7iUdHnvOgiS7CyMf9xw3MJxJOrzznG1JdhpGPu45bmBYlXT44Hjn81EOf5FkK7IL9xw3
+        yDiUqZt7IPtI3QI3MKzLa5m6uWR0ukjdAruR9VJOSP7fr3HuSC7KyeiSPJZkdOiy5irOtVnQVkI2m5F8
+        3YzbPsBE+hDpsoa1di/rl9iVLOLO+ziRdHfCaCAuJJvy2PtYlnRZMxi3kk2nwqibaUn3JowqlUonTfMO
+        CfTYHdP4sssAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="toolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>436, 202</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>228</value>

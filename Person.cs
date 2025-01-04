@@ -16,6 +16,7 @@ namespace BikeDB2024
         public string FirstName { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsUser { get; set; }
+        public bool NotShown { get; set; }
 
         public int Value { get => GetId(); }
         public string Text { get => GetLastnameFirst(); }
@@ -89,22 +90,9 @@ namespace BikeDB2024
                                 UserName = reader1.GetString(1);
                                 LastName = reader1.GetString(2);
                                 FirstName = reader1.GetString(3);
-                                if (reader1.GetByte(20) == 1)
-                                {
-                                    IsAdmin = true;
-                                }
-                                else
-                                {
-                                    IsAdmin = false;
-                                }
-                                if (reader1.GetByte(19) == 1)
-                                {
-                                    IsUser = true;
-                                }
-                                else
-                                {
-                                    IsUser = false;
-                                }
+                                NotShown = GetBoolFromTinyInt(reader1.GetString(8));
+                                IsUser = GetBoolFromTinyInt(reader1.GetString(19));
+                                IsAdmin = GetBoolFromTinyInt(reader1.GetString(20));
                             }
                             reader1.Close();
                         }

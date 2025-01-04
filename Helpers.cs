@@ -26,7 +26,7 @@ namespace BikeDB2024
         /// Simple function to return number of entries in database table "tablename".
         /// </summary>
         /// <param name="tablename">Name of table to be queried.</param>
-        /// <returns>Number of entries (int) in table, "0" if empty.</returns>
+        /// <returns>Number of entries (int) in table, "-1" if empty.</returns>
         public static int CountIds(string tablename, bool user = true)
         {
             SqlConnection myConnection;
@@ -38,7 +38,6 @@ namespace BikeDB2024
                     myConnection.Open();
                     using (SqlCommand myCommand = new SqlCommand())
                     {
-
                         string sqlquery = "";
                         if (user)
                         {
@@ -48,6 +47,43 @@ namespace BikeDB2024
                         else
                         {
                             sqlquery = "SELECT COUNT(Id) FROM " + tablename;
+                        }
+                        myCommand.CommandText = sqlquery;
+                        myCommand.CommandType = CommandType.Text;
+                        myCommand.Connection = myConnection;
+                        result = Convert.ToInt32(myCommand.ExecuteScalar());
+                    }
+                    myConnection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message, "Fehler beim Zählen von Einträgen");
+            }
+            return result;
+        }
+
+        public static int CountIds(string tablename, string where, bool user = true)
+        {
+            SqlConnection myConnection;
+            int result = -1;
+            try
+            {
+                using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                {
+                    myConnection.Open();
+                    using (SqlCommand myCommand = new SqlCommand())
+                    {
+                        string sqlquery = "";
+                        if (user)
+                        {
+                            sqlquery = "SELECT COUNT(Id) FROM " + tablename +
+                            " WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString() +
+                            " AND " + where;
+                        }
+                        else
+                        {
+                            sqlquery = "SELECT COUNT(Id) FROM " + tablename + " WHERE " + where;
                         }
                         myCommand.CommandText = sqlquery;
                         myCommand.CommandType = CommandType.Text;
@@ -378,6 +414,86 @@ namespace BikeDB2024
         }
 
         /// <summary>
+        /// A given ComboBox is filled with Countries.
+        /// </summary>
+        /// <param name="comboBox"></param>
+        /// <param name="sorted"></param>
+        public static void InitCountryComboBox(ComboBox comboBox, bool sorted = true)
+        {
+            comboBox.Sorted = sorted;
+            comboBox.Items.Clear();
+            SqlConnection con1;
+            try
+            {
+                using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                {
+                    con1.Open();
+                    using (SqlCommand com1 = new SqlCommand())
+                    {
+                        com1.CommandText = $"SELECT Id FROM Countries";
+                        com1.CommandType = CommandType.Text;
+                        com1.Connection = con1;
+
+                        using (SqlDataReader reader1 = com1.ExecuteReader())
+                        {
+                            while (reader1.Read())
+                            {
+                                Country c = new Country(reader1.GetInt32(0));
+                                comboBox.Items.Add(c);
+                            }
+                            reader1.Close();
+                        }
+                    }
+                    con1.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff (Countries)");
+            }
+        }
+
+        /// <summary>
+        /// A given ComboBox is filled with Cities.
+        /// </summary>
+        /// <param name="comboBox"></param>
+        /// <param name="sorted"></param>
+        public static void InitCityComboBox(ComboBox comboBox, bool sorted = true)
+        {
+            comboBox.Sorted = sorted;
+            comboBox.Items.Clear();
+            SqlConnection con1;
+            try
+            {
+                using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                {
+                    con1.Open();
+                    using (SqlCommand com1 = new SqlCommand())
+                    {
+                        com1.CommandText = $"SELECT Id FROM Cities";
+                        com1.CommandType = CommandType.Text;
+                        com1.Connection = con1;
+
+                        using (SqlDataReader reader1 = com1.ExecuteReader())
+                        {
+                            while (reader1.Read())
+                            {
+                                City c = new City(reader1.GetInt32(0));
+                                comboBox.Items.Add(c);
+                            }
+                            reader1.Close();
+                        }
+                    }
+                    con1.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff (Cities)");
+            }
+        }
+
+        /// <summary>
         /// For navigation purposes the ids of objects (vehicles, routes...) need to be known in MainForm.
         /// </summary>
         /// <param name="table"></param>
@@ -646,7 +762,7 @@ namespace BikeDB2024
                         "HelpSize, StatLocation, StatSize, ToolbarLocation, ToolbarSize, MinPasswordLength, NotifyTime, LastUser, CurrentUserId, " +
                         "CurrentUserName, InstallationType) " +
                         "VALUES (@user, @alti, @cont, @count, @city, @route, @veh, @bl, @winloc, @winsize, @gpath, @imgedpath, @imgedname, " +
-                        "@imgfolder, @gpxfolder, @shelp, @stoolbar, @snoti, @slast, @sbd, @snotif, @sflight, @keepli, @useds, @adchg, @ismulti, " +
+                        "@imgfolder, @gpxfolder, @shelp, @stoolbar, @swelcome, @snoti, @slast, @sbd, @snotif, @sflight, @keepli, @useds, @adchg, @ismulti, " +
                         "@uli, @ali, @adloc, @adsize, @floc, @fsize, @entloc, @entsize, @imgvloc, @imgvsize, @helploc, @helpsize, @statloc, " +
                         "@statsize, @toolloc, @toolsize, @minpwd, @notitime, @lastu, @curui, @curun, @inst)";
                         myCommand.Parameters.Add("@user", SqlDbType.Int).Value = user_id;
@@ -666,6 +782,7 @@ namespace BikeDB2024
                         myCommand.Parameters.Add("@gpxfolder", SqlDbType.NVarChar).Value = Properties.Settings.Default.GpxFolder;
                         myCommand.Parameters.Add("@shelp", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowHelp);
                         myCommand.Parameters.Add("@stoolbar", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowToolbar);
+                        myCommand.Parameters.Add("@swelcome", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowWelcomeForm);
                         myCommand.Parameters.Add("@snoti", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowNotifyIcon);
                         myCommand.Parameters.Add("@slast", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowLastUser);
                         myCommand.Parameters.Add("@sbd", SqlDbType.TinyInt).Value = GetTinyIntFromBool(Properties.Settings.Default.ShowBirthdays);

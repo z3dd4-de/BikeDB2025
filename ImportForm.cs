@@ -27,7 +27,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void ImportForm_Load(object sender, EventArgs e)
         {
-            progressForm = new ProgressForm();
+            progressForm = new ProgressForm(Properties.Settings.Default.AdminLoggedIn);
             progressForm.JobType = JobType.IMPORT;
             status = JobStatus.NONE;
             openImportFileDialog.InitialDirectory = Properties.Settings.Default.ImageFolder;

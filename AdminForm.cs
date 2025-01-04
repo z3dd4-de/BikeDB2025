@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static BikeDB2024.Helpers;
+using BikeDB2024.Admin;
 
 namespace BikeDB2024
 {
@@ -74,6 +75,9 @@ namespace BikeDB2024
             installationToolStripStatusLabel.Text = Properties.Settings.Default.InstallationType.ToString();
 
             flightDbCheckBox.Checked = Properties.Settings.Default.ShowFlightDB;
+
+            countUserLabel.Text = CountIds("Users", "IsUser = 1", false).ToString();
+            countAdminsLabel.Text = CountIds("Users", "IsAdmin = 1", false).ToString();
         }
 
         #region Close Form
@@ -417,5 +421,14 @@ namespace BikeDB2024
             googleTextBox.Enabled = globalSettingsCheckBox.Checked;
         }
         #endregion
+
+        private void addClientButton_Click(object sender, EventArgs e)
+        {
+            ClientForm clientForm = new ClientForm();
+            if (clientForm.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

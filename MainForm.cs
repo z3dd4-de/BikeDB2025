@@ -376,6 +376,7 @@ namespace BikeDB2024
                 WelcomeForm welcomeForm = new WelcomeForm();
                 welcomeForm.ShowDialog();
             }
+            springToolStripStatusLabel.Text = String.Empty;
         }
 
         /// <summary>

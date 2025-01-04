@@ -18,7 +18,7 @@ namespace BikeDB2024
         public ExportForm()
         {
             InitializeComponent();
-            progressForm = new ProgressForm();
+            progressForm = new ProgressForm(Properties.Settings.Default.AdminLoggedIn);
             progressForm.JobType = JobType.EXPORT;
             if (Properties.Settings.Default.AdminLoggedIn)
             {
@@ -243,7 +243,10 @@ namespace BikeDB2024
         {
             DateTime dt = DateTime.Now;
             string today = dt.ToString("yyyyMMdd");
-            filename = @"bike_db_export_" + today + ".xls";
+            if (admin)
+                filename = @"bike_db_export_admin_" + today + ".xls";
+            else
+                filename = @"bike_db_export_" + today + ".xls";
             progressForm.FileName = filename;
 
             checkboxes.SetValue(tourCheckBox.Checked, 0);
@@ -260,7 +263,12 @@ namespace BikeDB2024
             checkboxes.SetValue(goalsCheckBox.Checked, 11);
             checkboxes.SetValue(costsCheckBox.Checked, 12);
             checkboxes.SetValue(costCatCheckBox.Checked, 13);
-            checkboxes.SetValue(adminCheckBox.Checked, 14);
+            if (admin)
+            {
+                checkboxes.SetValue(adminCheckBox.Checked, 14);
+                checkboxes.SetValue(adminCheckBox.Checked, 15);
+                checkboxes.SetValue(adminCheckBox.Checked, 16);
+            }
 
             progressForm.Checkboxes = checkboxes;
 

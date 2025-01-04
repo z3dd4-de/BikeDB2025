@@ -69,7 +69,6 @@ C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.PersonsForm.resource
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.AdminForm.resources
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.GoalsForm.resources
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.NotesForm.resources
-C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\BikeDB2024.png
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\Data.mdf
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\Data_log.ldf
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Administratoren.html
@@ -89,8 +88,6 @@ C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\ZieleKalender.html
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Passwort.html
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Passwort_html_77c8f0e0.gif
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.CostsForm.resources
-C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\LibUsbDotNet.LibUsbDotNet.dll
-C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\LibUsbDotNet.LibUsbDotNet.pdb
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.SigmaDsForm.resources
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\WinUSBNet.dll
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\WinUSBNet.xml
@@ -105,3 +102,12 @@ C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.PlaneForm.r
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.ImageViewerHelpForm.resources
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\BildbetrachterHilfe.html
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\BildbetrachterHilfe_html_4bf2d051.gif
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Bildbearbeitung.html
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Bildbetrachter_html_374cddbb.png
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\logo_bikeDB.png
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\HelpPages\Ansicht_html_8dcd120f.gif
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\Install\LibUsbDotNet_Setup.2.2.8.exe
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\Install\ReadMe.txt
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\LibUsbDotNet.dll
+C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\LibUsbDotNet.xml
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.Admin.ClientForm.resources

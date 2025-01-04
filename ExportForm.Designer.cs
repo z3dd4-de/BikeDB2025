@@ -43,6 +43,9 @@
             this.personsCheckBox = new System.Windows.Forms.CheckBox();
             this.notesCheckBox = new System.Windows.Forms.CheckBox();
             this.goalsCheckBox = new System.Windows.Forms.CheckBox();
+            this.costsCheckBox = new System.Windows.Forms.CheckBox();
+            this.costCatCheckBox = new System.Windows.Forms.CheckBox();
+            this.adminCheckBox = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.exportButton = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -52,9 +55,6 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.allCheckBox = new System.Windows.Forms.CheckBox();
             this.openFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.costsCheckBox = new System.Windows.Forms.CheckBox();
-            this.costCatCheckBox = new System.Windows.Forms.CheckBox();
-            this.adminCheckBox = new System.Windows.Forms.CheckBox();
             this.adminToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -248,13 +248,48 @@
             this.goalsCheckBox.UseVisualStyleBackColor = true;
             this.goalsCheckBox.CheckedChanged += new System.EventHandler(this.goalsCheckBox_CheckedChanged);
             // 
+            // costsCheckBox
+            // 
+            this.costsCheckBox.AutoSize = true;
+            this.costsCheckBox.Location = new System.Drawing.Point(203, 47);
+            this.costsCheckBox.Name = "costsCheckBox";
+            this.costsCheckBox.Size = new System.Drawing.Size(59, 17);
+            this.costsCheckBox.TabIndex = 12;
+            this.costsCheckBox.Text = "Kosten";
+            this.costsCheckBox.UseVisualStyleBackColor = true;
+            this.costsCheckBox.CheckedChanged += new System.EventHandler(this.costsCheckBox_CheckedChanged);
+            // 
+            // costCatCheckBox
+            // 
+            this.costCatCheckBox.AutoSize = true;
+            this.costCatCheckBox.Location = new System.Drawing.Point(3, 70);
+            this.costCatCheckBox.Name = "costCatCheckBox";
+            this.costCatCheckBox.Size = new System.Drawing.Size(119, 17);
+            this.costCatCheckBox.TabIndex = 13;
+            this.costCatCheckBox.Text = "Kosten (Kategorien)";
+            this.costCatCheckBox.UseVisualStyleBackColor = true;
+            this.costCatCheckBox.CheckedChanged += new System.EventHandler(this.costCatCheckBox_CheckedChanged);
+            // 
+            // adminCheckBox
+            // 
+            this.adminCheckBox.AutoSize = true;
+            this.adminCheckBox.Location = new System.Drawing.Point(128, 70);
+            this.adminCheckBox.Name = "adminCheckBox";
+            this.adminCheckBox.Size = new System.Drawing.Size(123, 17);
+            this.adminCheckBox.TabIndex = 14;
+            this.adminCheckBox.Text = "Administrationsdaten";
+            this.adminToolTip.SetToolTip(this.adminCheckBox, "Tabellen: Clients, Log, Settings");
+            this.adminCheckBox.UseVisualStyleBackColor = true;
+            this.adminCheckBox.CheckedChanged += new System.EventHandler(this.adminCheckBox_CheckedChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(2, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.label1.Size = new System.Drawing.Size(48, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tabellen";
             // 
@@ -293,9 +328,7 @@
             // 
             // openButton
             // 
-            this.openButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.openButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.openButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.openButton.Location = new System.Drawing.Point(312, 2);
             this.openButton.Margin = new System.Windows.Forms.Padding(2);
@@ -308,8 +341,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 122);
+            this.label2.Location = new System.Drawing.Point(2, 129);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
@@ -340,40 +374,6 @@
             // openFolderBrowserDialog
             // 
             this.openFolderBrowserDialog.Description = "Speicherort für Export-Dateien.";
-            // 
-            // costsCheckBox
-            // 
-            this.costsCheckBox.AutoSize = true;
-            this.costsCheckBox.Location = new System.Drawing.Point(203, 47);
-            this.costsCheckBox.Name = "costsCheckBox";
-            this.costsCheckBox.Size = new System.Drawing.Size(59, 17);
-            this.costsCheckBox.TabIndex = 12;
-            this.costsCheckBox.Text = "Kosten";
-            this.costsCheckBox.UseVisualStyleBackColor = true;
-            this.costsCheckBox.CheckedChanged += new System.EventHandler(this.costsCheckBox_CheckedChanged);
-            // 
-            // costCatCheckBox
-            // 
-            this.costCatCheckBox.AutoSize = true;
-            this.costCatCheckBox.Location = new System.Drawing.Point(3, 70);
-            this.costCatCheckBox.Name = "costCatCheckBox";
-            this.costCatCheckBox.Size = new System.Drawing.Size(119, 17);
-            this.costCatCheckBox.TabIndex = 13;
-            this.costCatCheckBox.Text = "Kosten (Kategorien)";
-            this.costCatCheckBox.UseVisualStyleBackColor = true;
-            this.costCatCheckBox.CheckedChanged += new System.EventHandler(this.costCatCheckBox_CheckedChanged);
-            // 
-            // adminCheckBox
-            // 
-            this.adminCheckBox.AutoSize = true;
-            this.adminCheckBox.Location = new System.Drawing.Point(128, 70);
-            this.adminCheckBox.Name = "adminCheckBox";
-            this.adminCheckBox.Size = new System.Drawing.Size(123, 17);
-            this.adminCheckBox.TabIndex = 14;
-            this.adminCheckBox.Text = "Administrationsdaten";
-            this.adminToolTip.SetToolTip(this.adminCheckBox, "Tabellen: Clients, Log, Settings");
-            this.adminCheckBox.UseVisualStyleBackColor = true;
-            this.adminCheckBox.CheckedChanged += new System.EventHandler(this.adminCheckBox_CheckedChanged);
             // 
             // ExportForm
             // 
