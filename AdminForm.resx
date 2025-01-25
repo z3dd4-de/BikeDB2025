@@ -136,25 +136,8 @@
         4n+l3IECnc5voS3EVqpYmOYAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Achtung: Sobald diese globalen Einstellungen verwendet werden, stehen sie dem Anwender nicht mehr zur Verfügung. 
-Damit kann man bei lokalen Installationen erreichen, dass der korrekte Pfad für die Anwendungen Google Earth oder ein einheitlicher Bild-Editor verwendet werden.
-Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen diese globalen Einstellungen zu verwenden!</value>
-  </data>
-  <metadata name="adminMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>238, 17</value>
-  </metadata>
-  <metadata name="adminToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>133, 17</value>
-  </metadata>
   <metadata name="tourBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>610, 17</value>
-  </metadata>
-  <metadata name="tourBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>610, 17</value>
-  </metadata>
-  <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>517, 17</value>
   </metadata>
   <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>517, 17</value>
@@ -162,17 +145,8 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   <metadata name="countriesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 128</value>
   </metadata>
-  <metadata name="countriesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 128</value>
-  </metadata>
   <metadata name="citiesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>476, 54</value>
-  </metadata>
-  <metadata name="citiesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>476, 54</value>
-  </metadata>
-  <metadata name="routesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>369, 128</value>
   </metadata>
   <metadata name="routesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>369, 128</value>
@@ -180,17 +154,8 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   <metadata name="personsBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>784, 54</value>
   </metadata>
-  <metadata name="personsBindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>784, 54</value>
-  </metadata>
   <metadata name="companiesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>392, 91</value>
-  </metadata>
-  <metadata name="companiesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>392, 91</value>
-  </metadata>
-  <metadata name="notesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>616, 165</value>
   </metadata>
   <metadata name="notesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>616, 165</value>
@@ -198,17 +163,8 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   <metadata name="goalsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>928, 165</value>
   </metadata>
-  <metadata name="goalsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>928, 165</value>
-  </metadata>
   <metadata name="vehiclesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>689, 128</value>
-  </metadata>
-  <metadata name="vehiclesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>689, 128</value>
-  </metadata>
-  <metadata name="vehicleTypesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1027, 128</value>
   </metadata>
   <metadata name="vehicleTypesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1027, 128</value>
@@ -216,17 +172,8 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   <metadata name="entfaltungBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>962, 54</value>
   </metadata>
-  <metadata name="entfaltungBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>962, 54</value>
-  </metadata>
   <metadata name="costCategoriesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>206, 165</value>
-  </metadata>
-  <metadata name="costCategoriesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>206, 165</value>
-  </metadata>
-  <metadata name="personsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>910, 17</value>
   </metadata>
   <metadata name="personsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>910, 17</value>
@@ -434,17 +381,34 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   <metadata name="clientsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 202</value>
   </metadata>
-  <metadata name="clientsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 202</value>
-  </metadata>
+  <data name="addClientButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EQAACxEBf2RfkQAAAU1JREFUWEftk7suRUEYRnejQqVxeRgkonEa7+KSUFLxMEQn4vQ6nkOIW0EhfGsy
+        k/xm9r83sYnIrGQlZ+b7ZmbfTlOp/CXeftmCttJPWuAGA1Mv4H9cwEieyyf5GH+vyc/w7QvYl6mbuyf7
+        SN0CNzBw53Se5Yaci27GObK+J+Ge4waGsaTD4TlbkozX0YV7jhsYeN90ZsPoI8yRPYSRj3uOGxjuJR0e
+        e86CJLsLIx/3HDcwnEk6vPOcbUl2GkY+7jluYFiVdPjgeOfzUQ5/kWQrsgv3HDfIOJSpm3sg+0jdAjcw
+        rMtrmbq5ZHS6SN0Cu5H1Uk5I/t+vce5ILsrJ6JI8lmR06LLmKs61WdBWQjabkXzdjNs+wET6EOmyhrV2
+        L+uX2JUs4s77OJF0d8JoIC4km/LY+1iWdFkzGLeSTafCqJtpSfcmjCqVSidN8w4J9Ngd0/iyywAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
   <metadata name="logBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>188, 54</value>
   </metadata>
-  <metadata name="logBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>188, 54</value>
-  </metadata>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Achtung: Sobald diese globalen Einstellungen verwendet werden, stehen sie dem Anwender nicht mehr zur Verfügung. 
+Damit kann man bei lokalen Installationen erreichen, dass der korrekte Pfad für die Anwendungen Google Earth oder ein einheitlicher Bild-Editor verwendet werden.
+Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen diese globalen Einstellungen zu verwenden!</value>
+  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>339, 202</value>
+  </metadata>
+  <metadata name="adminMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>238, 17</value>
+  </metadata>
+  <metadata name="adminToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>133, 17</value>
   </metadata>
   <data name="dashboardToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -668,21 +632,6 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   <metadata name="openImageEditorFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 91</value>
   </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>339, 202</value>
-  </metadata>
-  <data name="addClientButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAFNSURBVFhH7ZO7LkVBGEZ3o0KlcXkYJKJxGu/iklBS8TBE
-        J+L0Op5DiFtBIXxrMpP8Zva/N7GJyKxkJWfm+2Zm305Tqfwl3n7ZgrbST1rgBgNTL+B/XMBInssn+Rh/
-        r8nP8O0L2Jepm7sn+0jdAjcwcOd0nuWGnItuxjmyvifhnuMGhrGkw+E5W5KM19GFe44bGHjfdGbD6CPM
-        kT2EkY97jhsY7iUdHnvOgiS7CyMf9xw3MJxJOrzznG1JdhpGPu45bmBYlXT44Hjn81EOf5FkK7IL9xw3
-        yDiUqZt7IPtI3QI3MKzLa5m6uWR0ukjdAruR9VJOSP7fr3HuSC7KyeiSPJZkdOiy5irOtVnQVkI2m5F8
-        3YzbPsBE+hDpsoa1di/rl9iVLOLO+ziRdHfCaCAuJJvy2PtYlnRZMxi3kk2nwqibaUn3JowqlUonTfMO
-        CfTYHdP4sssAAAAASUVORK5CYII=
-</value>
-  </data>
   <metadata name="toolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>436, 202</value>
   </metadata>

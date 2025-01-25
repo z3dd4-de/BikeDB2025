@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Windows.Forms;
@@ -18,7 +20,7 @@ namespace BikeDB2024
         public enum JobStatus { NONE, DROP_ALL, APPEND_ALL, DROP_TOUR, APPEND_TOUR };
         public enum LogType { ERROR, INFO, WARNING, LOGIN, LOGOUT, EXPORT, IMPORT, NEW_ENTRY };
         public enum Installation { SINGLE_USER, MULTI_USER, QUICK_LOGIN, STRICT, SINGLE_ADMIN };
-        public enum VehicleType { BIKE, FOSSIL, ELECTRIC }
+        public enum VehicleType { BIKE, FOSSIL, ELECTRIC, FLIGHTS }
         #endregion
 
         #region Database Helper Functions
@@ -1055,5 +1057,264 @@ namespace BikeDB2024
             }*/
         }
         #endregion
+
+        #region Methods to change the table entry "NotShown" of available objects
+        public enum VisibilityObject { AIRLINE, AIRPORT, CITY, COMPANY, COST, COUNTRY, FLIGHT, PERSON, PLANEMANUFACTURER,
+            PLANE, ROUTE, VEHICLE } 
+        public static void ChangeComboBoxVisibility(VisibilityObject vobject, bool shown, int id)
+        {
+            string table = "";
+            byte bshown = GetTinyIntFromBool(shown);
+            string sshown = bshown.ToString();
+            switch (vobject)
+            {
+                case VisibilityObject.AIRLINE:
+                    table = "Airlines";
+                    break;
+                case VisibilityObject.AIRPORT:
+                    table = "Airport";
+                    break;
+                case VisibilityObject.CITY:
+                    table = "Cities";
+                    break;
+                case VisibilityObject.COMPANY:
+                    table = "Companies";
+                    break;
+                case VisibilityObject.COST:
+                    table = "Costs";
+                    break;
+                case VisibilityObject.COUNTRY:
+                    table = "Countries";
+                    break;
+                case VisibilityObject.FLIGHT:
+                    table = "Flights";
+                    break;
+                case VisibilityObject.PERSON:
+                    table = "Persons";
+                    break;
+                case VisibilityObject.PLANEMANUFACTURER:
+                    table = "PlaneManufacturers";
+                    break;
+                case VisibilityObject.PLANE:
+                    table = "Planes";
+                    break;
+                case VisibilityObject.ROUTE:
+                    table = "Routes";
+                    break;
+                case VisibilityObject.VEHICLE:
+                    table = "Vehicles";
+                    break;
+                default:
+                    break;
+            }
+            string sql = $"UPDATE {table} SET NotShown = {sshown} WHERE Id = {id}";
+            MessageBox.Show(sql);   //TODO
+        }
+
+        public static void LoadVisibilty(VisibilityObject vobject, int id)
+        {
+            string table = "";
+            switch (vobject)
+            {
+                case VisibilityObject.AIRLINE:
+                    table = "Airlines";
+                    break;
+                case VisibilityObject.AIRPORT:
+                    table = "Airport";
+                    break;
+                case VisibilityObject.CITY:
+                    table = "Cities";
+                    break;
+                case VisibilityObject.COMPANY:
+                    table = "Companies";
+                    break;
+                case VisibilityObject.COST:
+                    table = "Costs";
+                    break;
+                case VisibilityObject.COUNTRY:
+                    table = "Countries";
+                    break;
+                case VisibilityObject.FLIGHT:
+                    table = "Flights";
+                    break;
+                case VisibilityObject.PERSON:
+                    table = "Persons";
+                    break;
+                case VisibilityObject.PLANEMANUFACTURER:
+                    table = "PlaneManufacturers";
+                    break;
+                case VisibilityObject.PLANE:
+                    table = "Planes";
+                    break;
+                case VisibilityObject.ROUTE:
+                    table = "Routes";
+                    break;
+                case VisibilityObject.VEHICLE:
+                    table = "Vehicles";
+                    break;
+                default:
+                    break;
+            }
+            string sshown = GetDatabaseEntry(table, "NotShown", id, true);
+            if (sshown == "0")  //TODO
+            {
+
+            }
+            else if (sshown == "1")
+            {
+
+            }
+        }
+        #endregion
+
+        #region Image Galeries
+        /// <summary>
+        /// Check if a given path is a file or a folder.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private static (string, bool) GetFileOrFolder(string path)
+        {
+            bool is_file = true;
+            if (path == null || path == String.Empty)
+            {
+                return ("", false);
+            }
+            else 
+            {
+                if (File.Exists(path))
+                {
+
+                }
+                else if (Directory.Exists(path))
+                {
+                    is_file = false;
+                }
+            }
+            return (path, is_file);
+        }
+
+        public enum LocalDirectories { AIRPORTS, LOGOS, PLANES, USER, APP }
+
+        /// <summary>
+        /// Get the real path of certain built-in directories.
+        /// </summary>
+        /// <param name="directories"></param>
+        /// <returns></returns>
+        public static string GetDirectoryName(LocalDirectories directories)
+        {
+            string dir = "";
+            switch (directories)
+            {
+                case LocalDirectories.AIRPORTS:
+                    dir = Application.StartupPath + "/FlightDB/Airports/";
+                    break;
+                case LocalDirectories.LOGOS:
+                    dir = Application.StartupPath + "/FlightDB/Logos/";
+                    break;
+                case LocalDirectories.PLANES:
+                    dir = Application.StartupPath + "/FlightDB/Planes/";
+                    break;
+                case LocalDirectories.USER:
+                    dir = Properties.Settings.Default.ImageFolder;
+                    break;
+                case LocalDirectories.APP:
+                    dir = Application.StartupPath;
+                    break;
+                default:
+                    break;
+            }
+            return dir;
+        }
+
+        /// <summary>
+        /// Test if a path contains a reference for a built-in directory.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private static string TestFileOrFolderPath(string path)
+        {
+            if (File.Exists(path))
+            {
+                return path;
+            }
+            string dir = "";
+            if (path.StartsWith("<airports>"))
+            {
+                dir = GetDirectoryName(LocalDirectories.AIRPORTS);
+                path.Replace("<airports>", dir);
+            }
+            if (path.StartsWith("<logo>"))
+            {
+                dir = GetDirectoryName(LocalDirectories.LOGOS);
+                path.Replace("<logo>", dir);
+            }
+            else if (path.StartsWith("<plane>"))
+            {
+                dir = GetDirectoryName(LocalDirectories.PLANES);
+                path.Replace("<plane>", dir);
+            }
+            else if (path.StartsWith("<user>"))
+            {
+                dir = GetDirectoryName(LocalDirectories.USER);
+                path.Replace("<user>", dir);
+            }
+            else if (path.StartsWith("<app>"))
+            {
+                dir = GetDirectoryName(LocalDirectories.APP);
+                path.Replace("<app>", dir);
+            }
+            else if (path.StartsWith("<help>"))
+            {
+                dir = GetDirectoryName(LocalDirectories.APP) + "HelpPages/";
+                path.Replace("<help>", dir);
+            }
+            if (!Directory.Exists(path))
+            {
+                path = "";
+            }
+            return path;
+        }
+
+        /// <summary>
+        /// Open a file in the internal ImageViewer or a folder in explorer.exe.
+        /// </summary>
+        /// <param name="path"></param>
+        public static void OpenFileOrFolder(string path)
+        {
+            path = TestFileOrFolderPath(path);
+            (string s, bool b) = GetFileOrFolder(path);
+            if (b)
+            {
+                ImageViewerForm imageViewerForm = new ImageViewerForm();
+                imageViewerForm.Filename = s;
+                imageViewerForm.Show();
+            }
+            else
+            {
+                if (path != String.Empty)
+                    Process.Start(new ProcessStartInfo(path));
+            }
+        }
+        #endregion
+
+        /// <summary>
+        /// Use for e.g. to load logos of plane manufacturers in FlightDB.
+        /// Can use internal directories, switches visibility of the picture box if no image is given.
+        /// </summary>
+        /// <param name="pb"></param>
+        /// <param name="image"></param>
+        public static void ShowImageInPicureBox(PictureBox pb, string image)
+        {
+            if (image == null || image == String.Empty || !File.Exists(image))
+            {
+                pb.Visible = false;
+            }
+            else
+            {
+                pb.Image = Image.FromFile(TestFileOrFolderPath(image)); 
+                pb.Visible = true;
+            }
+        }
     }
 }

@@ -327,6 +327,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.tabPage35 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView12 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -339,6 +340,7 @@
             this.createdDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastChangedDataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.addClientButton = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.logDataGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -377,6 +379,12 @@
             this.label24 = new System.Windows.Forms.Label();
             this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.imageEditorMenuTextBox = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            this.localHostRadioButton = new System.Windows.Forms.RadioButton();
+            this.lanRadioButton = new System.Windows.Forms.RadioButton();
+            this.whitelistRadioButton = new System.Windows.Forms.RadioButton();
+            this.allRadioButton = new System.Windows.Forms.RadioButton();
             this.adminMenuStrip = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beendenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -414,14 +422,6 @@
             this.openGoogleFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.openImageEditorFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.addClientButton = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
-            this.localHostRadioButton = new System.Windows.Forms.RadioButton();
-            this.lanRadioButton = new System.Windows.Forms.RadioButton();
-            this.whitelistRadioButton = new System.Windows.Forms.RadioButton();
-            this.allRadioButton = new System.Windows.Forms.RadioButton();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.adminStatusStrip.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -509,6 +509,7 @@
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tabPage35.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
             this.tabPage7.SuspendLayout();
@@ -523,13 +524,12 @@
             this.flowLayoutPanel8.SuspendLayout();
             this.flowLayoutPanel9.SuspendLayout();
             this.flowLayoutPanel10.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.flowLayoutPanel11.SuspendLayout();
             this.adminMenuStrip.SuspendLayout();
             this.adminToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSetBindingSource)).BeginInit();
-            this.tableLayoutPanel13.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.flowLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // adminStatusStrip
@@ -3192,6 +3192,21 @@
             this.tabPage35.Text = "Clients";
             this.tabPage35.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Controls.Add(this.dataGridView12, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.addClientButton, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(884, 418);
+            this.tableLayoutPanel13.TabIndex = 1;
+            // 
             // dataGridView12
             // 
             this.dataGridView12.AutoGenerateColumns = false;
@@ -3278,6 +3293,20 @@
             // 
             this.clientsBindingSource.DataMember = "Clients";
             this.clientsBindingSource.DataSource = this.dataSet;
+            // 
+            // addClientButton
+            // 
+            this.addClientButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.addClientButton.Image = ((System.Drawing.Image)(resources.GetObject("addClientButton.Image")));
+            this.addClientButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addClientButton.Location = new System.Drawing.Point(3, 8);
+            this.addClientButton.Name = "addClientButton";
+            this.addClientButton.Size = new System.Drawing.Size(132, 34);
+            this.addClientButton.TabIndex = 1;
+            this.addClientButton.Text = "Client hinzufügen";
+            this.addClientButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.addClientButton.UseVisualStyleBackColor = true;
+            this.addClientButton.Click += new System.EventHandler(this.addClientButton_Click);
             // 
             // tabPage7
             // 
@@ -3696,6 +3725,73 @@
             this.toolTip1.SetToolTip(this.imageEditorMenuTextBox, "Ein Menüeintrag sollte vergeben werden, wenn ein Bildeditor ausgewählt wurde. \"&\"" +
         " verwenden, um Keybord-Shortcut zu definieren.");
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.flowLayoutPanel11);
+            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.Location = new System.Drawing.Point(3, 253);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(244, 162);
+            this.groupBox6.TabIndex = 2;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Clients";
+            // 
+            // flowLayoutPanel11
+            // 
+            this.flowLayoutPanel11.Controls.Add(this.localHostRadioButton);
+            this.flowLayoutPanel11.Controls.Add(this.lanRadioButton);
+            this.flowLayoutPanel11.Controls.Add(this.whitelistRadioButton);
+            this.flowLayoutPanel11.Controls.Add(this.allRadioButton);
+            this.flowLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel11.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel11.Name = "flowLayoutPanel11";
+            this.flowLayoutPanel11.Size = new System.Drawing.Size(238, 143);
+            this.flowLayoutPanel11.TabIndex = 0;
+            // 
+            // localHostRadioButton
+            // 
+            this.localHostRadioButton.AutoSize = true;
+            this.localHostRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.localHostRadioButton.Name = "localHostRadioButton";
+            this.localHostRadioButton.Size = new System.Drawing.Size(71, 17);
+            this.localHostRadioButton.TabIndex = 0;
+            this.localHostRadioButton.TabStop = true;
+            this.localHostRadioButton.Text = "Localhost";
+            this.localHostRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // lanRadioButton
+            // 
+            this.lanRadioButton.AutoSize = true;
+            this.lanRadioButton.Location = new System.Drawing.Point(80, 3);
+            this.lanRadioButton.Name = "lanRadioButton";
+            this.lanRadioButton.Size = new System.Drawing.Size(46, 17);
+            this.lanRadioButton.TabIndex = 1;
+            this.lanRadioButton.TabStop = true;
+            this.lanRadioButton.Text = "LAN";
+            this.lanRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // whitelistRadioButton
+            // 
+            this.whitelistRadioButton.AutoSize = true;
+            this.whitelistRadioButton.Location = new System.Drawing.Point(132, 3);
+            this.whitelistRadioButton.Name = "whitelistRadioButton";
+            this.whitelistRadioButton.Size = new System.Drawing.Size(85, 17);
+            this.whitelistRadioButton.TabIndex = 2;
+            this.whitelistRadioButton.TabStop = true;
+            this.whitelistRadioButton.Text = "Nur Whitelist";
+            this.whitelistRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // allRadioButton
+            // 
+            this.allRadioButton.AutoSize = true;
+            this.allRadioButton.Location = new System.Drawing.Point(3, 26);
+            this.allRadioButton.Name = "allRadioButton";
+            this.allRadioButton.Size = new System.Drawing.Size(164, 17);
+            this.allRadioButton.TabIndex = 3;
+            this.allRadioButton.TabStop = true;
+            this.allRadioButton.Text = "Unbegrenzt (nicht empfohlen)";
+            this.allRadioButton.UseVisualStyleBackColor = true;
+            // 
             // adminMenuStrip
             // 
             this.adminMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -3945,102 +4041,6 @@
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Bildbearbeitung Menüeintrag";
             // 
-            // tableLayoutPanel13
-            // 
-            this.tableLayoutPanel13.ColumnCount = 1;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.Controls.Add(this.dataGridView12, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.addClientButton, 0, 0);
-            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 2;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(884, 418);
-            this.tableLayoutPanel13.TabIndex = 1;
-            // 
-            // addClientButton
-            // 
-            this.addClientButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.addClientButton.Image = ((System.Drawing.Image)(resources.GetObject("addClientButton.Image")));
-            this.addClientButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addClientButton.Location = new System.Drawing.Point(3, 8);
-            this.addClientButton.Name = "addClientButton";
-            this.addClientButton.Size = new System.Drawing.Size(132, 34);
-            this.addClientButton.TabIndex = 1;
-            this.addClientButton.Text = "Client hinzufügen";
-            this.addClientButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addClientButton.UseVisualStyleBackColor = true;
-            this.addClientButton.Click += new System.EventHandler(this.addClientButton_Click);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.flowLayoutPanel11);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(3, 253);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(244, 162);
-            this.groupBox6.TabIndex = 2;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Clients";
-            // 
-            // flowLayoutPanel11
-            // 
-            this.flowLayoutPanel11.Controls.Add(this.localHostRadioButton);
-            this.flowLayoutPanel11.Controls.Add(this.lanRadioButton);
-            this.flowLayoutPanel11.Controls.Add(this.whitelistRadioButton);
-            this.flowLayoutPanel11.Controls.Add(this.allRadioButton);
-            this.flowLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel11.Location = new System.Drawing.Point(3, 16);
-            this.flowLayoutPanel11.Name = "flowLayoutPanel11";
-            this.flowLayoutPanel11.Size = new System.Drawing.Size(238, 143);
-            this.flowLayoutPanel11.TabIndex = 0;
-            // 
-            // localHostRadioButton
-            // 
-            this.localHostRadioButton.AutoSize = true;
-            this.localHostRadioButton.Location = new System.Drawing.Point(3, 3);
-            this.localHostRadioButton.Name = "localHostRadioButton";
-            this.localHostRadioButton.Size = new System.Drawing.Size(71, 17);
-            this.localHostRadioButton.TabIndex = 0;
-            this.localHostRadioButton.TabStop = true;
-            this.localHostRadioButton.Text = "Localhost";
-            this.localHostRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // lanRadioButton
-            // 
-            this.lanRadioButton.AutoSize = true;
-            this.lanRadioButton.Location = new System.Drawing.Point(80, 3);
-            this.lanRadioButton.Name = "lanRadioButton";
-            this.lanRadioButton.Size = new System.Drawing.Size(46, 17);
-            this.lanRadioButton.TabIndex = 1;
-            this.lanRadioButton.TabStop = true;
-            this.lanRadioButton.Text = "LAN";
-            this.lanRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // whitelistRadioButton
-            // 
-            this.whitelistRadioButton.AutoSize = true;
-            this.whitelistRadioButton.Location = new System.Drawing.Point(132, 3);
-            this.whitelistRadioButton.Name = "whitelistRadioButton";
-            this.whitelistRadioButton.Size = new System.Drawing.Size(85, 17);
-            this.whitelistRadioButton.TabIndex = 2;
-            this.whitelistRadioButton.TabStop = true;
-            this.whitelistRadioButton.Text = "Nur Whitelist";
-            this.whitelistRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // allRadioButton
-            // 
-            this.allRadioButton.AutoSize = true;
-            this.allRadioButton.Location = new System.Drawing.Point(3, 26);
-            this.allRadioButton.Name = "allRadioButton";
-            this.allRadioButton.Size = new System.Drawing.Size(164, 17);
-            this.allRadioButton.TabIndex = 3;
-            this.allRadioButton.TabStop = true;
-            this.allRadioButton.Text = "Unbegrenzt (nicht empfohlen)";
-            this.allRadioButton.UseVisualStyleBackColor = true;
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4158,6 +4158,7 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tabPage35.ResumeLayout(false);
+            this.tableLayoutPanel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).EndInit();
             this.tabPage7.ResumeLayout(false);
@@ -4177,16 +4178,15 @@
             this.flowLayoutPanel9.PerformLayout();
             this.flowLayoutPanel10.ResumeLayout(false);
             this.flowLayoutPanel10.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.flowLayoutPanel11.ResumeLayout(false);
+            this.flowLayoutPanel11.PerformLayout();
             this.adminMenuStrip.ResumeLayout(false);
             this.adminMenuStrip.PerformLayout();
             this.adminToolStrip.ResumeLayout(false);
             this.adminToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.countryDataSetBindingSource)).EndInit();
-            this.tableLayoutPanel13.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.flowLayoutPanel11.ResumeLayout(false);
-            this.flowLayoutPanel11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

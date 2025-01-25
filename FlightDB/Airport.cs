@@ -5,22 +5,22 @@ using static BikeDB2024.Helpers;
 
 namespace BikeDB2024.FlightDB
 {
-    internal class Airport
+    internal class Airport : Location
     {
         #region Properties
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Country { get; set; }
+        //public int Id { get; set; }
+        //public string Name { get; set; }
+        //public string Country { get; set; }
         public string City { get; set; }
         public string Icao { get; set; }
         public string Iata { get; set; }
-        public int Height { get; set; }
-        public string Image { get; set; }
-        public string Gps { get; set; }
-        public bool NotShown { get; set; }
+        //public int Height { get; set; }
+        //public string Image { get; set; }
+        //public string Gps { get; set; }
+        //public bool NotShown { get; set; }
 
-        public int Value { get => GetId(); }
-        public string Text { get => ToString(); }
+        //public int Value { get => GetId(); }
+        //public string Text { get => ToString(); }
         #endregion
 
         /// <summary>
@@ -32,14 +32,15 @@ namespace BikeDB2024.FlightDB
             Id = id;
             load();
         }
+
         /// <summary>
         /// Value (e.g. for ListBox).
         /// </summary>
         /// <returns></returns>
-        public int GetId()
+        /*public int GetId()
         {
             return Id;
-        }
+        }*/
 
         /// <summary>
         /// For general purposes.

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -127,11 +128,17 @@ namespace BikeDB2024
         /// <param name="types"></param>
         public void LoadComboBoxItems(string[] types)
         {
+            List<object> data = new List<object>(); 
+            DefaultComboBox.DataSource = null;
             DefaultComboBox.Items.Clear();
+            DefaultComboBox.DisplayMember = "Text";
+            DefaultComboBox.ValueMember = "Text";
             foreach (string type in types)
             {
-                DefaultComboBox.Items.Add(type);
+                data.Add(type);
             }
+            DefaultComboBox.DataSource = data;
+            DefaultComboBox.Sorted = Sorted;
         }
 
         /// <summary>
@@ -140,10 +147,14 @@ namespace BikeDB2024
         /// <param name="types"></param>
         public void LoadComboBoxItems(CB_Types types)
         {
+            List<object> data = new List<object>();
+            DefaultComboBox.DataSource = null;
             DefaultComboBox.Items.Clear();
+            DefaultComboBox.DisplayMember = "Text";
+            DefaultComboBox.ValueMember = "Value";
+
             SqlConnection myConnection;
             string sqlquery = "";
-
             try
             {
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
@@ -198,7 +209,8 @@ namespace BikeDB2024
                                         default:
                                             break;
                                     }
-                                    DefaultComboBox.Items.Add(Item);
+                                    data.Add(Item);
+                                    //DefaultComboBox.Items.Add(Item);
                                 }
                                 else
                                 {
@@ -215,6 +227,8 @@ namespace BikeDB2024
                         }
                     }
                     myConnection.Close();
+                    DefaultComboBox.DataSource = data;
+                    DefaultComboBox.Sorted = Sorted;
                 }
             }
             catch (Exception ex)

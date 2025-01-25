@@ -11,6 +11,7 @@ namespace BikeDB2024
     {
         public bool Edit { get; set; }
         public int EditId { get; set; }
+        public bool IsFlight { get; set; }
 
         /// <summary>
         /// Constructor.
@@ -39,8 +40,19 @@ namespace BikeDB2024
                 addButton.Text = "Hinzufügen";
                 this.Text = "Kosten und Ausgaben hinzufügen";
             }
-            loadVehicles();
-            loadCategories();
+            if (IsFlight)
+            {
+                vehicleComboBox.Items.Clear();
+                vehicleComboBox.Items.Add("Flüge");
+                vehicleComboBox.SelectedIndex = 0;
+                vehicleComboBox.Enabled = false;
+                loadCategories(VehicleType.FLIGHTS);
+            }
+            else
+            {
+                loadVehicles();
+                loadCategories();
+            }
         }
 
         /// <summary>
@@ -79,6 +91,10 @@ namespace BikeDB2024
                 case VehicleType.ELECTRIC:
                     sqlquery = @"SELECT * FROM CostCategories WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString() +
                             " AND (ElectricVehicles IS NULL OR ElectricVehicles = 1) AND Engines IS NULL ORDER BY CategoryName";
+                    break;
+                case VehicleType.FLIGHTS:
+                    sqlquery = @"SELECT * FROM CostCategories WHERE " +
+                            "ElectricVehicles IS NULL AND Engines IS NULL AND Flights = 1 ORDER BY CategoryName";
                     break;
             }
 
@@ -122,7 +138,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void vehicleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (vehicleComboBox.SelectedIndex != -1)
+            if (vehicleComboBox.SelectedIndex != -1 && !IsFlight)
             {
                 var veh = vehicleComboBox.SelectedItem as Vehicle;
                 loadCategories(veh.Vehiclemode);

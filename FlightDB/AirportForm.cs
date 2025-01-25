@@ -135,7 +135,7 @@ namespace BikeDB2024.FlightDB
                         {
                             int id = NextId("Airports");
                             string sqlquery = "INSERT INTO Airports " +
-                            "(Id, Name, City, Country, ICAO, IATA, GPS, Height, Link, Image, Created, LastChanged, [User]) " +
+                            "(Id, Name, City, Country, ICAO, IATA, Gps, Height, Link, Image, Created, LastChanged, [User]) " +
                             "VALUES (@id, @name, @city, @country, @icao, @iata, @gps, height, link, image, @created, @lastchanged, @user)";
                             myCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
                             myCommand.Parameters.Add("@name", SqlDbType.NVarChar).Value = nameTextBox.Text;
@@ -169,7 +169,7 @@ namespace BikeDB2024.FlightDB
             else
             {
                 var sql = @"UPDATE Airports SET Name = @name, City = @city, Country = @country, ICAO = @icao, " +
-                        "IATA = @iata, GPS = @gps, Link = @link, Image = @image, [User] = @user, LastChanged = @lastchanged " +
+                        "IATA = @iata, Gps = @gps, Link = @link, Image = @image, [User] = @user, LastChanged = @lastchanged " +
                         "WHERE Id = " + EditId.ToString();
                 try
                 {

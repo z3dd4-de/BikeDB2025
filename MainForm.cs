@@ -9,7 +9,11 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using ExcelLibrary.BinaryFileFormat;
+using LibUsbDotNet;
+using LibUsbDotNet.DeviceNotify;
+using LibUsbDotNet.Main;
 using static BikeDB2024.Helpers;
 
 namespace BikeDB2024
@@ -50,6 +54,14 @@ namespace BikeDB2024
         private int tour_id = 0;
         private int[] note_ids = null;
         private int note_id = 0;
+        // Sigma Docking Station
+        #region SET YOUR USB Vendor and Product ID!
+        private const int vid = 7581;
+        private const int pid = 4113;
+        private UsbDeviceFinder MyUsbFinder = new UsbDeviceFinder(vid, pid);
+        private IDeviceNotifier UsbDeviceNotifier = DeviceNotifier.OpenDeviceNotifier();
+        private UsbDevice MyUsbDevice;
+        #endregion
         #endregion
 
         #region MainForm: Constructor, Settings...
@@ -216,6 +228,7 @@ namespace BikeDB2024
                 adminToolStripButton.Visible = true;
             }
             setMenuItemsAvailability();
+            checkDockingStation();
         }
 
         /// <summary>
@@ -274,6 +287,15 @@ namespace BikeDB2024
                     flightDBToolStripMenuItem.Visible = false;
                 }
 
+                if (Properties.Settings.Default.UseSigmaDockingStation)
+                {
+
+                }
+                else
+                {
+
+                }
+
                 userToolStripStatusLabel.Visible = true;
                 userToolStripStatusLabel.Text = Properties.Settings.Default.CurrentUserName +
                     " (" + Properties.Settings.Default.CurrentUserID.ToString() + ")";
@@ -323,6 +345,69 @@ namespace BikeDB2024
                 toolStripSeparator1.Visible = false;
                 toolStripSeparator2.Visible = false;
                 adminToolStripButton.Visible = false;
+            }
+        }
+
+        /// <summary>
+        /// If the docking station use is enabled in settings, it will be set up here.
+        /// </summary>
+        private void checkDockingStation()
+        {
+            if (logged_in)
+            {
+                if (Properties.Settings.Default.UseSigmaDockingStation)
+                {
+                    UsbDeviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
+                    UsbRegDeviceList regList = UsbDevice.AllDevices.FindAll(MyUsbFinder);
+                    if (regList.Count > 0)
+                    {
+                        testConnection(true);
+                    }
+                    else if (regList.Count == 0)
+                    {
+                        testConnection(false);
+                    }
+                }
+            }
+            else
+            {
+                dsConnectedToolStripStatusLabel.Visible = false;
+                dsNotConnectedToolStripStatusLabel.Visible = false;
+            }
+        }
+
+        private void OnDeviceNotifyEvent(object sender, DeviceNotifyEventArgs e)
+        {
+            // A Device system-level event has occured
+            if (e.EventType == EventType.DeviceArrival)
+            {
+                if (e.Device != null && e.Device.Name.Contains("USB#VID_1D9D&PID_1011"))
+                {
+                    testConnection(true);
+                    NotifyMessage notifyMessage = new NotifyMessage();
+                    notifyMessage.ShowMessage("Sigma Docking Station", "wurde angeschlossen");
+                }
+            }
+            else if (e.EventType == EventType.DeviceRemoveComplete)
+            {
+                if (e.Device != null && e.Device.Name.Contains("USB#VID_1D9D&PID_1011"))
+                {
+                    testConnection(false);
+                    NotifyMessage notifyMessage = new NotifyMessage();
+                    notifyMessage.ShowMessage("Sigma Docking Station", "Verbindung wurde getrennt");
+                }
+            }
+        }
+
+        private void testConnection(bool connect)
+        {
+            if (connect)
+            {
+                dsConnectedToolStripStatusLabel.Visible = true;
+            }
+            else
+            {
+                dsConnectedToolStripStatusLabel.Visible = false;
             }
         }
 
@@ -486,6 +571,18 @@ namespace BikeDB2024
             Properties.Settings.Default.ShowNotifyIcon = notificationCheckBox.Checked;
             Properties.Settings.Default.NotifyTime = Convert.ToInt32(timerMaskedTextBox.Text);
             Properties.Settings.Default.Save();
+
+            if (Properties.Settings.Default.UseSigmaDockingStation)
+            {
+                UsbDeviceNotifier.Enabled = false;  // Disable the device notifier
+                // Unhook the device notifier event
+                UsbDeviceNotifier.OnDeviceNotify -= OnDeviceNotifyEvent;
+                if (MyUsbDevice != null)
+                {
+                    MyUsbDevice.Close();
+                    MyUsbDevice = null;
+                }
+            }
         }
         #endregion
 
@@ -1415,11 +1512,6 @@ namespace BikeDB2024
                                 if (current_city == -1)
                                 {
                                     city_ids = GetObjectIds("Cities", "CityName", false);
-                                    /*string test = "";
-                                    foreach (int id in city_ids)
-                                    {
-                                        test += id.ToString() + ", ";
-                                    }*/
                                     if (city_ids.Length > 0)
                                     {
                                         city_id = 0;
@@ -2186,7 +2278,7 @@ namespace BikeDB2024
                                                 {
                                                     cityPictureBox.Image = Image.FromFile(reader[9].ToString());
                                                 }
-                                                else cityPictureBox.Image = null;
+                                                else cityPictureBox.Image = cityPictureBox.ErrorImage;
                                                 gpsLabel.Text = reader[10].ToString();
                                                 break;
                                             case 5:
@@ -3317,18 +3409,90 @@ namespace BikeDB2024
             {
                 vmaxStepsLabel.Text = "Schritte";
                 vmaxTextBox.Mask = "999000";
+                vehicleLabel.Text = "Zu Fuß";
             }
             else
             {
                 vmaxStepsLabel.Text = "Vmax";
                 vmaxTextBox.Mask = "990.09";
+                vehicleLabel.Text = "Fahrzeug";
             }
         }
 
+        /// <summary>
+        /// Show FlightDB.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void flightDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FlightDBForm form = new FlightDBForm();
             form.Show();
+        }
+
+        /// <summary>
+        /// Change visibility of certain objects on main tab pages.
+        /// Attention: logic is !NotShown = visible (value 0), NotShown = not visible (value 1).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// Route
+        private void showToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == "checkedToolStripMenuItem")
+            {
+                ChangeComboBoxVisibility(VisibilityObject.ROUTE, false, current_route);
+            }
+            else if (e.ClickedItem.Name == "notCheckedToolStripMenuItem")
+            {
+                ChangeComboBoxVisibility(VisibilityObject.ROUTE, true, current_route);
+            }
+            showToolStripSplitButton.Image = e.ClickedItem.Image;
+        }
+
+        // Vehicle
+        private void showVecToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //showVecNotCheckedToolStripMenuItem
+            if (e.ClickedItem.Name == "showVecCheckedToolStripMenuItem")
+            {
+                ChangeComboBoxVisibility(VisibilityObject.VEHICLE, false, current_vehicle);
+            }
+            else if (e.ClickedItem.Name == "showVecNotCheckedToolStripMenuItem")
+            {
+                ChangeComboBoxVisibility(VisibilityObject.VEHICLE, true, current_vehicle);
+            }
+            showVecToolStripSplitButton.Image = e.ClickedItem.Image;
+        }
+
+        // City
+        private void showCityToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //showCityNotCheckedToolStripMenuItem
+            if (e.ClickedItem.Name == "showCityCheckedToolStripMenuItem")
+            {
+                ChangeComboBoxVisibility(VisibilityObject.CITY, false, current_city);
+            }
+            else if (e.ClickedItem.Name == "showCityNotCheckedToolStripMenuItem")
+            {
+                ChangeComboBoxVisibility(VisibilityObject.CITY, true, current_city);
+            }
+            showCityToolStripSplitButton.Image = e.ClickedItem.Image;
+        }
+
+        // Person
+        private void personToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            //showPersonNotCheckedToolStripMenuItem
+            if (e.ClickedItem.Name == "showPersonCheckedToolStripMenuItem")
+            {
+                ChangeComboBoxVisibility(VisibilityObject.PERSON, false, current_person);
+            }
+            else if (e.ClickedItem.Name == "showPersonNotCheckedToolStripMenuItem")
+            {
+                ChangeComboBoxVisibility(VisibilityObject.PERSON, true, current_person);
+            }
+            personToolStripSplitButton.Image = e.ClickedItem.Image;
         }
     }
 }

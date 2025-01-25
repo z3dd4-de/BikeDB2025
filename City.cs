@@ -5,22 +5,22 @@ using static BikeDB2024.Helpers;
 
 namespace BikeDB2024
 {
-    internal class City
+    internal class City : Location
     {
         #region Properties
-        public int Id { get; set; }
-        public string Country { get; set; }
-        public string Name { get; set; }
+        //public int Id { get; set; }
+        //public string Country { get; set; }
+        //public string Name { get; set; }
         public string Bundesland { get; set; }
         public string Kfz { get; set; }
         public string Prefix { get; set; }
-        public int Height { get; set; }
-        public string Image { get; set; }
-        public string Gps { get; set; }
-        public bool NotShown { get; set; }
+        //public int Height { get; set; }
+        //public string Image { get; set; }
+        //public string Gps { get; set; }
+        //public bool NotShown { get; set; }
 
-        public int Value { get => GetId(); }
-        public string Text { get => ToString(); }
+        //public int Value { get => GetId(); }
+        //public string Text { get => ToString(); }
         #endregion
 
         /// <summary>
@@ -37,10 +37,10 @@ namespace BikeDB2024
         /// Value (e.g. for ListBox).
         /// </summary>
         /// <returns></returns>
-        public int GetId()
+        /*public int GetId()
         {
             return Id;
-        }
+        }*/
 
         /// <summary>
         /// For general purposes.
