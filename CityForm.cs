@@ -75,13 +75,14 @@ namespace BikeDB2024
                             nameTextBox.Text = reader1[1].ToString();
                             countryComboBox.SelectedIndex = Convert.ToInt32(reader1[2]);
                             bundeslandComboBox.SelectedIndex = Convert.ToInt32(reader1[3]);
-                            prefixTextBox.Text = reader1[4].ToString();
-                            linkTextBox.Text = reader1[5].ToString();
-                            kfzTextBox.Text = reader1[6].ToString();
-                            heightTextBox.Text = reader1[7].ToString();
-                            remarkRichTextBox.Text = reader1[8].ToString();
-                            imageTextBox.Text = reader1[9].ToString();
-                            gpsTextBox.Text = reader1[10].ToString();
+                            codeTextBox.Text = reader1[4].ToString();
+                            prefixTextBox.Text = reader1[5].ToString();
+                            linkTextBox.Text = reader1[6].ToString();
+                            kfzTextBox.Text = reader1[7].ToString();
+                            heightTextBox.Text = reader1[8].ToString();
+                            remarkRichTextBox.Text = reader1[9].ToString();
+                            imageTextBox.Text = reader1[10].ToString();
+                            gpsTextBox.Text = reader1[11].ToString();
                             addButton.Enabled = true;
                             addButton.Text = "Bearbeiten";
                             errorToolStripStatusLabel.Text = "Bearbeiten: Cities - Datensatz " + CityId.ToString();
@@ -133,15 +134,16 @@ namespace BikeDB2024
                     DataSetTableAdapters.CitiesTableAdapter adapter = new DataSetTableAdapters.CitiesTableAdapter();
                     adapter.Insert(id, nameTextBox.Text,
                         con,
-                        bl,
+                        bl, codeTextBox.Text,
                         prefixTextBox.Text, linkTextBox.Text,
-                        kfzTextBox.Text, height, remarkRichTextBox.Text, imageTextBox.Text, gpsTextBox.Text,
+                        kfzTextBox.Text, height, remarkRichTextBox.Text, imageTextBox.Text, gpsTextBox.Text, 0,
                         DateTime.Now, DateTime.Now, Properties.Settings.Default.CurrentUserID);
                     this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    var sql = @"UPDATE Cities SET CityName = @CityName, Country = @Country, Bundesland = @Bundesland, CityPrefix = @CityPrefix, Link = @Link, " +
+                    var sql = @"UPDATE Cities SET CityName = @CityName, Country = @Country, Bundesland = @Bundesland, "
+                        + "CityCode = @CityCode, CityPrefix = @CityPrefix, Link = @Link, " +
                         "Kfz = @Kfz, Height = @Height, Remark = @Remark, Image = @Image, Gps = @Gps, LastChanged = @last " +
                         "WHERE Id = " + CityId.ToString();
                     try
@@ -153,6 +155,7 @@ namespace BikeDB2024
                                 command.Parameters.Add("@CityName", SqlDbType.NVarChar).Value = nameTextBox.Text;
                                 command.Parameters.Add("@Country", SqlDbType.Int).Value = (int)countryComboBox.SelectedValue;
                                 command.Parameters.Add("@Bundesland", SqlDbType.Int).Value = (int)bundeslandComboBox.SelectedValue;
+                                command.Parameters.Add("@CityCode", SqlDbType.NVarChar).Value = codeTextBox.Text;
                                 command.Parameters.Add("@CityPrefix", SqlDbType.NVarChar).Value = prefixTextBox.Text;
                                 command.Parameters.Add("@Link", SqlDbType.NVarChar).Value = linkTextBox.Text;
                                 command.Parameters.Add("@Kfz", SqlDbType.NVarChar).Value = kfzTextBox.Text;

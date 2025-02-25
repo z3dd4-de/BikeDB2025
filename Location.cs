@@ -8,7 +8,7 @@
         public string Country { get; set; }
         public int Height { get; set; }
         public string Image { get; set; }
-        public string Gps { get; set; }
+        protected string Gps { get; set; }
         public bool NotShown { get; set; }
 
         public int Value { get => GetId(); }
@@ -20,12 +20,12 @@
         /// Value (e.g. for ListBox).
         /// </summary>
         /// <returns></returns>
-        public int GetId()
+        protected int GetId()
         {
             return Id;
         }
 
-        public string GetGps()
+        protected string GetGps()
         {
             return Gps;
         }

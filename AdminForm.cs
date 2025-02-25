@@ -33,6 +33,8 @@ namespace BikeDB2024
 
         private void AdminForm_Load(object sender, EventArgs e)
         {
+            // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet.ImageGalleries". Sie können sie bei Bedarf verschieben oder entfernen.
+            this.imageGalleriesTableAdapter.Fill(this.dataSet.ImageGalleries);
             // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet.Clients". Sie können sie bei Bedarf verschieben oder entfernen.
             this.clientsTableAdapter.Fill(this.dataSet.Clients);
             // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet.Goals". Sie können sie bei Bedarf verschieben oder entfernen.
@@ -429,6 +431,11 @@ namespace BikeDB2024
             {
 
             }
+        }
+
+        private void dataGridView13_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

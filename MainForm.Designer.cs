@@ -72,6 +72,7 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bildbetrachterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bildbearbeitungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bildergalerienToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entfaltungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flightDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.googleEarthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -128,6 +129,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.editToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.deleteToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.galleryToolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.showGalleryToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.dataTitleLabel = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -238,22 +241,24 @@
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.cityRemarkRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.countryLabel = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.bundeslandLabel = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.prefixLabel = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.kfzLabel = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.cityLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.label56 = new System.Windows.Forms.Label();
-            this.heightLabel = new System.Windows.Forms.Label();
+            this.cityRemarkRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.label54 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.gpsLabel = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.heightLabel = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.cityLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.label48 = new System.Windows.Forms.Label();
+            this.kfzLabel = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.prefixLabel = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.postCodeLabel = new System.Windows.Forms.Label();
             this.tabPage13 = new System.Windows.Forms.TabPage();
             this.cityPictureBox = new System.Windows.Forms.PictureBox();
             this.tabPage14 = new System.Windows.Forms.TabPage();
@@ -423,8 +428,10 @@
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.homeToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.imageViewerToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.galleryToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.statisticsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.entfaltungToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.flightDbToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.earthToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.costsToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.calendarToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -900,6 +907,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bildbetrachterToolStripMenuItem,
             this.bildbearbeitungToolStripMenuItem,
+            this.bildergalerienToolStripMenuItem,
             this.entfaltungToolStripMenuItem,
             this.flightDBToolStripMenuItem,
             this.googleEarthToolStripMenuItem,
@@ -928,6 +936,14 @@
             this.bildbearbeitungToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.bildbearbeitungToolStripMenuItem.Text = "Bildbe&arbeitung";
             this.bildbearbeitungToolStripMenuItem.Click += new System.EventHandler(this.bildbearbeitungToolStripMenuItem_Click);
+            // 
+            // bildergalerienToolStripMenuItem
+            // 
+            this.bildergalerienToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("bildergalerienToolStripMenuItem.Image")));
+            this.bildergalerienToolStripMenuItem.Name = "bildergalerienToolStripMenuItem";
+            this.bildergalerienToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.bildergalerienToolStripMenuItem.Text = "Bilderga&lerien";
+            this.bildergalerienToolStripMenuItem.Click += new System.EventHandler(this.bildergalerienToolStripMenuItem_Click);
             // 
             // entfaltungToolStripMenuItem
             // 
@@ -1447,7 +1463,9 @@
             this.lastToolStripButton,
             this.toolStripSeparator4,
             this.editToolStripButton,
-            this.deleteToolStripButton});
+            this.deleteToolStripButton,
+            this.galleryToolStripSeparator,
+            this.showGalleryToolStripButton});
             this.dbNavToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.dbNavToolStrip.Location = new System.Drawing.Point(0, 0);
             this.dbNavToolStrip.Name = "dbNavToolStrip";
@@ -1522,6 +1540,21 @@
             this.deleteToolStripButton.Text = "Datensatz löschen";
             this.deleteToolStripButton.Visible = false;
             this.deleteToolStripButton.Click += new System.EventHandler(this.deleteToolStripButton_Click);
+            // 
+            // galleryToolStripSeparator
+            // 
+            this.galleryToolStripSeparator.Name = "galleryToolStripSeparator";
+            this.galleryToolStripSeparator.Size = new System.Drawing.Size(6, 39);
+            // 
+            // showGalleryToolStripButton
+            // 
+            this.showGalleryToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.showGalleryToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("showGalleryToolStripButton.Image")));
+            this.showGalleryToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.showGalleryToolStripButton.Name = "showGalleryToolStripButton";
+            this.showGalleryToolStripButton.Size = new System.Drawing.Size(36, 36);
+            this.showGalleryToolStripButton.Text = "Bildergalerie";
+            this.showGalleryToolStripButton.Click += new System.EventHandler(this.showGalleryToolStripButton_Click);
             // 
             // dataTitleLabel
             // 
@@ -2777,26 +2810,28 @@
             this.tableLayoutPanel10.ColumnCount = 2;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Controls.Add(this.cityRemarkRichTextBox, 1, 7);
             this.tableLayoutPanel10.Controls.Add(this.label45, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.countryLabel, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.label46, 0, 1);
             this.tableLayoutPanel10.Controls.Add(this.bundeslandLabel, 1, 1);
-            this.tableLayoutPanel10.Controls.Add(this.label47, 0, 2);
-            this.tableLayoutPanel10.Controls.Add(this.prefixLabel, 1, 2);
-            this.tableLayoutPanel10.Controls.Add(this.label48, 0, 3);
-            this.tableLayoutPanel10.Controls.Add(this.kfzLabel, 1, 3);
-            this.tableLayoutPanel10.Controls.Add(this.label55, 0, 4);
-            this.tableLayoutPanel10.Controls.Add(this.cityLinkLabel, 1, 4);
-            this.tableLayoutPanel10.Controls.Add(this.label56, 0, 5);
-            this.tableLayoutPanel10.Controls.Add(this.heightLabel, 1, 5);
-            this.tableLayoutPanel10.Controls.Add(this.label43, 0, 6);
-            this.tableLayoutPanel10.Controls.Add(this.gpsLabel, 1, 6);
-            this.tableLayoutPanel10.Controls.Add(this.label54, 0, 7);
+            this.tableLayoutPanel10.Controls.Add(this.cityRemarkRichTextBox, 1, 8);
+            this.tableLayoutPanel10.Controls.Add(this.label54, 0, 8);
+            this.tableLayoutPanel10.Controls.Add(this.label43, 0, 7);
+            this.tableLayoutPanel10.Controls.Add(this.gpsLabel, 1, 7);
+            this.tableLayoutPanel10.Controls.Add(this.label56, 0, 6);
+            this.tableLayoutPanel10.Controls.Add(this.heightLabel, 1, 6);
+            this.tableLayoutPanel10.Controls.Add(this.label55, 0, 5);
+            this.tableLayoutPanel10.Controls.Add(this.cityLinkLabel, 1, 5);
+            this.tableLayoutPanel10.Controls.Add(this.label48, 0, 4);
+            this.tableLayoutPanel10.Controls.Add(this.kfzLabel, 1, 4);
+            this.tableLayoutPanel10.Controls.Add(this.label47, 0, 3);
+            this.tableLayoutPanel10.Controls.Add(this.prefixLabel, 1, 3);
+            this.tableLayoutPanel10.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel10.Controls.Add(this.postCodeLabel, 1, 2);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 8;
+            this.tableLayoutPanel10.RowCount = 9;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -2805,18 +2840,9 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(563, 365);
             this.tableLayoutPanel10.TabIndex = 0;
-            // 
-            // cityRemarkRichTextBox
-            // 
-            this.cityRemarkRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cityRemarkRichTextBox.Location = new System.Drawing.Point(103, 213);
-            this.cityRemarkRichTextBox.Name = "cityRemarkRichTextBox";
-            this.cityRemarkRichTextBox.ReadOnly = true;
-            this.cityRemarkRichTextBox.Size = new System.Drawing.Size(457, 149);
-            this.cityRemarkRichTextBox.TabIndex = 22;
-            this.cityRemarkRichTextBox.Text = "";
             // 
             // label45
             // 
@@ -2858,72 +2884,49 @@
             this.bundeslandLabel.TabIndex = 8;
             this.bundeslandLabel.Text = "Bundesland";
             // 
-            // label47
+            // cityRemarkRichTextBox
             // 
-            this.label47.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(3, 68);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(45, 13);
-            this.label47.TabIndex = 3;
-            this.label47.Text = "Vorwahl";
+            this.cityRemarkRichTextBox.Location = new System.Drawing.Point(103, 243);
+            this.cityRemarkRichTextBox.Name = "cityRemarkRichTextBox";
+            this.cityRemarkRichTextBox.ReadOnly = true;
+            this.cityRemarkRichTextBox.Size = new System.Drawing.Size(457, 119);
+            this.cityRemarkRichTextBox.TabIndex = 22;
+            this.cityRemarkRichTextBox.Text = "";
             // 
-            // prefixLabel
+            // label54
             // 
-            this.prefixLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.prefixLabel.AutoSize = true;
-            this.prefixLabel.Location = new System.Drawing.Point(103, 68);
-            this.prefixLabel.Name = "prefixLabel";
-            this.prefixLabel.Size = new System.Drawing.Size(45, 13);
-            this.prefixLabel.TabIndex = 9;
-            this.prefixLabel.Text = "Vorwahl";
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(3, 240);
+            this.label54.Name = "label54";
+            this.label54.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.label54.Size = new System.Drawing.Size(61, 18);
+            this.label54.TabIndex = 5;
+            this.label54.Text = "Anmerkung";
             // 
-            // label48
+            // label43
             // 
-            this.label48.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(3, 98);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(87, 13);
-            this.label48.TabIndex = 4;
-            this.label48.Text = "Kfz-Kennzeichen";
+            this.label43.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(3, 218);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(89, 13);
+            this.label43.TabIndex = 18;
+            this.label43.Text = "GPS-Koordinaten";
             // 
-            // kfzLabel
+            // gpsLabel
             // 
-            this.kfzLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.kfzLabel.AutoSize = true;
-            this.kfzLabel.Location = new System.Drawing.Point(103, 98);
-            this.kfzLabel.Name = "kfzLabel";
-            this.kfzLabel.Size = new System.Drawing.Size(22, 13);
-            this.kfzLabel.TabIndex = 10;
-            this.kfzLabel.Text = "Kfz";
-            // 
-            // label55
-            // 
-            this.label55.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(2, 128);
-            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(27, 13);
-            this.label55.TabIndex = 12;
-            this.label55.Text = "Link";
-            // 
-            // cityLinkLabel
-            // 
-            this.cityLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cityLinkLabel.AutoSize = true;
-            this.cityLinkLabel.Location = new System.Drawing.Point(103, 128);
-            this.cityLinkLabel.Name = "cityLinkLabel";
-            this.cityLinkLabel.Size = new System.Drawing.Size(55, 13);
-            this.cityLinkLabel.TabIndex = 17;
-            this.cityLinkLabel.TabStop = true;
-            this.cityLinkLabel.Text = "linkLabel1";
+            this.gpsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.gpsLabel.AutoSize = true;
+            this.gpsLabel.Location = new System.Drawing.Point(103, 218);
+            this.gpsLabel.Name = "gpsLabel";
+            this.gpsLabel.Size = new System.Drawing.Size(26, 13);
+            this.gpsLabel.TabIndex = 19;
+            this.gpsLabel.Text = "Gps";
             // 
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(2, 150);
+            this.label56.Location = new System.Drawing.Point(2, 180);
             this.label56.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(68, 26);
@@ -2934,42 +2937,94 @@
             // 
             this.heightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.heightLabel.AutoSize = true;
-            this.heightLabel.Location = new System.Drawing.Point(102, 158);
+            this.heightLabel.Location = new System.Drawing.Point(102, 188);
             this.heightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(33, 13);
             this.heightLabel.TabIndex = 15;
             this.heightLabel.Text = "Höhe";
             // 
-            // label43
+            // label55
             // 
-            this.label43.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(3, 188);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(89, 13);
-            this.label43.TabIndex = 18;
-            this.label43.Text = "GPS-Koordinaten";
+            this.label55.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(2, 158);
+            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(27, 13);
+            this.label55.TabIndex = 12;
+            this.label55.Text = "Link";
             // 
-            // gpsLabel
+            // cityLinkLabel
             // 
-            this.gpsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.gpsLabel.AutoSize = true;
-            this.gpsLabel.Location = new System.Drawing.Point(103, 188);
-            this.gpsLabel.Name = "gpsLabel";
-            this.gpsLabel.Size = new System.Drawing.Size(26, 13);
-            this.gpsLabel.TabIndex = 19;
-            this.gpsLabel.Text = "Gps";
+            this.cityLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cityLinkLabel.AutoSize = true;
+            this.cityLinkLabel.Location = new System.Drawing.Point(103, 158);
+            this.cityLinkLabel.Name = "cityLinkLabel";
+            this.cityLinkLabel.Size = new System.Drawing.Size(55, 13);
+            this.cityLinkLabel.TabIndex = 17;
+            this.cityLinkLabel.TabStop = true;
+            this.cityLinkLabel.Text = "linkLabel1";
             // 
-            // label54
+            // label48
             // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(3, 210);
-            this.label54.Name = "label54";
-            this.label54.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label54.Size = new System.Drawing.Size(61, 18);
-            this.label54.TabIndex = 5;
-            this.label54.Text = "Anmerkung";
+            this.label48.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(3, 128);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(87, 13);
+            this.label48.TabIndex = 4;
+            this.label48.Text = "Kfz-Kennzeichen";
+            // 
+            // kfzLabel
+            // 
+            this.kfzLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.kfzLabel.AutoSize = true;
+            this.kfzLabel.Location = new System.Drawing.Point(103, 128);
+            this.kfzLabel.Name = "kfzLabel";
+            this.kfzLabel.Size = new System.Drawing.Size(22, 13);
+            this.kfzLabel.TabIndex = 10;
+            this.kfzLabel.Text = "Kfz";
+            // 
+            // label47
+            // 
+            this.label47.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(3, 98);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(45, 13);
+            this.label47.TabIndex = 3;
+            this.label47.Text = "Vorwahl";
+            // 
+            // prefixLabel
+            // 
+            this.prefixLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prefixLabel.AutoSize = true;
+            this.prefixLabel.Location = new System.Drawing.Point(103, 98);
+            this.prefixLabel.Name = "prefixLabel";
+            this.prefixLabel.Size = new System.Drawing.Size(45, 13);
+            this.prefixLabel.TabIndex = 9;
+            this.prefixLabel.Text = "Vorwahl";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Postleitzahl(en)";
+            // 
+            // postCodeLabel
+            // 
+            this.postCodeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.postCodeLabel.AutoSize = true;
+            this.postCodeLabel.Location = new System.Drawing.Point(103, 68);
+            this.postCodeLabel.Name = "postCodeLabel";
+            this.postCodeLabel.Size = new System.Drawing.Size(78, 13);
+            this.postCodeLabel.TabIndex = 24;
+            this.postCodeLabel.Text = "postCodeLabel";
             // 
             // tabPage13
             // 
@@ -4680,8 +4735,10 @@
             this.toolStripLabel2,
             this.homeToolStripButton,
             this.imageViewerToolStripButton,
+            this.galleryToolStripButton,
             this.statisticsToolStripButton,
             this.entfaltungToolStripButton,
+            this.flightDbToolStripButton,
             this.earthToolStripButton,
             this.costsToolStripButton,
             this.calendarToolStripButton,
@@ -4694,7 +4751,7 @@
             this.exitToolStripButton});
             this.mainToolStrip.Location = new System.Drawing.Point(3, 0);
             this.mainToolStrip.Name = "mainToolStrip";
-            this.mainToolStrip.Size = new System.Drawing.Size(813, 39);
+            this.mainToolStrip.Size = new System.Drawing.Size(885, 39);
             this.mainToolStrip.TabIndex = 15;
             this.mainToolStrip.Text = "toolStrip1";
             // 
@@ -4816,6 +4873,16 @@
             this.imageViewerToolStripButton.Text = "Bildbetrachter";
             this.imageViewerToolStripButton.Click += new System.EventHandler(this.imageViewerToolStripButton_Click);
             // 
+            // galleryToolStripButton
+            // 
+            this.galleryToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.galleryToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("galleryToolStripButton.Image")));
+            this.galleryToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.galleryToolStripButton.Name = "galleryToolStripButton";
+            this.galleryToolStripButton.Size = new System.Drawing.Size(36, 36);
+            this.galleryToolStripButton.Text = "Bildergalerien";
+            this.galleryToolStripButton.Click += new System.EventHandler(this.galleryToolStripButton_Click);
+            // 
             // statisticsToolStripButton
             // 
             this.statisticsToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -4835,6 +4902,16 @@
             this.entfaltungToolStripButton.Size = new System.Drawing.Size(36, 36);
             this.entfaltungToolStripButton.Text = "Entfaltung";
             this.entfaltungToolStripButton.Click += new System.EventHandler(this.entfaltungToolStripButton_Click);
+            // 
+            // flightDbToolStripButton
+            // 
+            this.flightDbToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.flightDbToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("flightDbToolStripButton.Image")));
+            this.flightDbToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.flightDbToolStripButton.Name = "flightDbToolStripButton";
+            this.flightDbToolStripButton.Size = new System.Drawing.Size(36, 36);
+            this.flightDbToolStripButton.Text = "FlightDB";
+            this.flightDbToolStripButton.Click += new System.EventHandler(this.flightDbToolStripButton_Click);
             // 
             // earthToolStripButton
             // 
@@ -5674,6 +5751,13 @@
         private System.Windows.Forms.ToolStripSplitButton personToolStripSplitButton;
         private System.Windows.Forms.ToolStripMenuItem showPersonCheckedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showPersonNotCheckedToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label postCodeLabel;
+        private System.Windows.Forms.ToolStripButton flightDbToolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem bildergalerienToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton galleryToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator galleryToolStripSeparator;
+        private System.Windows.Forms.ToolStripButton showGalleryToolStripButton;
     }
 }
 

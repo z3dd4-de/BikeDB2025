@@ -609,5 +609,53 @@ namespace BikeDB2024.Properties {
                 this["GpxFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("80, 80")]
+        public global::System.Drawing.Point ImageGalleryLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["ImageGalleryLocation"]));
+            }
+            set {
+                this["ImageGalleryLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("800, 500")]
+        public global::System.Drawing.Size ImageGallerySize {
+            get {
+                return ((global::System.Drawing.Size)(this["ImageGallerySize"]));
+            }
+            set {
+                this["ImageGallerySize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ImageViewer")]
+        public string ImageGalleryViewer {
+            get {
+                return ((string)(this["ImageGalleryViewer"]));
+            }
+            set {
+                this["ImageGalleryViewer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte ThumbnailSize {
+            get {
+                return ((byte)(this["ThumbnailSize"]));
+            }
+            set {
+                this["ThumbnailSize"] = value;
+            }
+        }
     }
 }

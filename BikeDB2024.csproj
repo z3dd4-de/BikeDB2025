@@ -109,6 +109,7 @@
     <Compile Include="Admin\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BikeDbObject.cs" />
     <Compile Include="CheckboxItem.cs" />
     <Compile Include="City.cs" />
     <Compile Include="CostCategory.cs" />
@@ -160,6 +161,8 @@
     <Compile Include="ExportForm.Designer.cs">
       <DependentUpon>ExportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Flight.cs" />
     <Compile Include="FlightDB\AboutFlightDBForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +208,11 @@
     <Compile Include="FlightDB\GpsDistanceForm.Designer.cs">
       <DependentUpon>GpsDistanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FlightDB\ImageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="FlightDB\Manufacturer.cs" />
     <Compile Include="FlightDB\Plane.cs" />
     <Compile Include="FlightDB\PlaneForm.cs">
@@ -219,6 +227,11 @@
     <Compile Include="FlightDB\PlaneManufacturersForm.Designer.cs">
       <DependentUpon>PlaneManufacturersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GalleryResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GalleryResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="GoalsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +239,12 @@
       <DependentUpon>GoalsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers.cs" />
+    <Compile Include="ImageGalleryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageGalleryForm.Designer.cs">
+      <DependentUpon>ImageGalleryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,6 +335,7 @@
     <Compile Include="StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tour.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleForm.cs">
       <SubType>Form</SubType>
@@ -377,14 +397,25 @@
     <EmbeddedResource Include="FlightDB\GpsDistanceForm.resx">
       <DependentUpon>GpsDistanceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FlightDB\ImageResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FlightDB\PlaneForm.resx">
       <DependentUpon>PlaneForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FlightDB\PlaneManufacturersForm.resx">
       <DependentUpon>PlaneManufacturersForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GalleryResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="GoalsForm.resx">
       <DependentUpon>GoalsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageGalleryForm.resx">
+      <DependentUpon>ImageGalleryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageViewerForm.resx">
       <DependentUpon>ImageViewerForm.cs</DependentUpon>

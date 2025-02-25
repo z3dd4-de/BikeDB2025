@@ -8,19 +8,9 @@ namespace BikeDB2024.FlightDB
     internal class Airport : Location
     {
         #region Properties
-        //public int Id { get; set; }
-        //public string Name { get; set; }
-        //public string Country { get; set; }
         public string City { get; set; }
         public string Icao { get; set; }
         public string Iata { get; set; }
-        //public int Height { get; set; }
-        //public string Image { get; set; }
-        //public string Gps { get; set; }
-        //public bool NotShown { get; set; }
-
-        //public int Value { get => GetId(); }
-        //public string Text { get => ToString(); }
         #endregion
 
         /// <summary>
@@ -32,15 +22,6 @@ namespace BikeDB2024.FlightDB
             Id = id;
             load();
         }
-
-        /// <summary>
-        /// Value (e.g. for ListBox).
-        /// </summary>
-        /// <returns></returns>
-        /*public int GetId()
-        {
-            return Id;
-        }*/
 
         /// <summary>
         /// For general purposes.
@@ -82,12 +63,12 @@ namespace BikeDB2024.FlightDB
                             while (reader.Read())
                             {
                                 Name = reader.GetString(1);
-                                Icao = reader.GetString(4);
-                                Iata = reader.GetString(5);
-                                Height = reader.GetInt32(7);
-                                Image = reader.GetString(9);
-                                Gps = reader.GetString(6);
-                                NotShown = GetBoolFromTinyInt(reader.GetString(10));
+                                Icao = reader[4].ToString() != "" ? reader.GetString(4) : "";
+                                Iata = reader[5].ToString() != "" ? reader.GetString(5) : "";
+                                Gps = reader[6].ToString() != "" ? reader.GetString(6) : "";
+                                Height = reader[7].ToString() != "" ? reader.GetInt32(7) : -1;
+                                Image = reader[10].ToString() != "" ? reader.GetString(10) : "";
+                                NotShown = GetBoolFromTinyInt(reader.GetByte(11));
                             }
                         }
                     }

@@ -79,7 +79,7 @@ namespace BikeDB2024.FlightDB
                             {
                                 while (reader1.Read())
                                 {
-                                    nameTextBox.Text = reader1.GetString(1);
+                                    nameTextBox.Text = reader1[1].ToString();
                                     cityComboBox.SelectedValue = reader1.GetInt32(2);
                                     countryComboBox.SelectedValue = reader1.GetInt32(3);
                                     icaoTextBox.Text = reader1.GetString(4);

@@ -5,19 +5,19 @@ using static BikeDB2024.Helpers;
 
 namespace BikeDB2024
 {
-    internal class Route
+    internal class Route : BikeDbObject
     {
         #region Properties
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string City { get; set; }
         public string CityStart { get; set; }
         public string CityEnd { get; set; }
-        public string Name { get; set; }
+        //public string Name { get; set; }
         public string Type { get; set; }
-        public bool NotShown { get; set; }
+        //public bool NotShown { get; set; }
 
-        public int Value { get => GetId(); }
-        public string Text { get => ToString(); }
+        //public int Value { get => GetId(); }
+        //public string Text { get => ToString(); }
         #endregion
 
         /// <summary>
@@ -27,6 +27,7 @@ namespace BikeDB2024
         public Route(int id)
         {
             Id = id;
+            table = "Routes";
             load();
         }
 
@@ -34,19 +35,19 @@ namespace BikeDB2024
         /// Value (e.g. for ListBox).
         /// </summary>
         /// <returns></returns>
-        public int GetId()
+        /*public int GetId()
         {
             return Id;
-        }
+        }*/
 
         /// <summary>
         /// For general purposes.
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
+        /*public override string ToString()
         {
             return Name;
-        }
+        }*/
 
         /// <summary>
         /// Loads the route from the database. Is called internally by Route(id).
@@ -57,7 +58,7 @@ namespace BikeDB2024
                 GetDatabaseEntry("Routes", "RouteType", Id)));
             
             SqlConnection con1, myConnection;
-            string sqlquery = @"SELECT * FROM Routes WHERE Id = @id";
+            sqlquery = $"SELECT * FROM {table} WHERE Id = @id";
             SqlParameter sqlParameter = new SqlParameter();
             sqlParameter.ParameterName = "@id";
             

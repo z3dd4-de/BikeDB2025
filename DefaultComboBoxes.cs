@@ -11,7 +11,7 @@ namespace BikeDB2024
     internal class DefaultComboBoxes
     {
         #region Properties
-        public enum CB_Types { AIRLINES, AIRPORTS, CITIES, COUNTRIES, MANUFACTURERS, PERSONS, PLANES, PLANE_TYPES, ROUTES, VEHICLES }
+        public enum CB_Types { AIRLINES, AIRPORTS, CITIES, COUNTRIES, FLIGHTS, MANUFACTURERS, PERSONS, PLANES, PLANE_TYPES, ROUTES, TOUR, VEHICLES }
         public ComboBox DefaultComboBox { get; set; }
         public object Item { get; set; }
         public CB_Types Type { get; set; }
@@ -64,6 +64,9 @@ namespace BikeDB2024
                 case CB_Types.COUNTRIES:
                     table = "Countries";
                     break;
+                case CB_Types.FLIGHTS:
+                    table = "Flights";
+                    break;
                 case CB_Types.MANUFACTURERS:
                     table = "PlaneManufacturers";
                     break;
@@ -80,6 +83,9 @@ namespace BikeDB2024
                     break;
                 case CB_Types.ROUTES:
                     table = "Routes";
+                    break;
+                case CB_Types.TOUR:
+                    table = "Tour";
                     break;
                 case CB_Types.VEHICLES:
                     table = "Vehicles";

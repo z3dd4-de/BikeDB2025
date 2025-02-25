@@ -37,6 +37,7 @@ namespace BikeDB2024
         private int current_person = -1;
         private int current_goal = -1;
         private int current_note = -1;
+        private int current_gallery = -1;
         private bool edit_data = false;
         private bool logged_in = false;
         // Ids as Arrays for navigation
@@ -274,6 +275,7 @@ namespace BikeDB2024
                 settingsToolStripButton.Visible = true;
                 calendarToolStripButton.Visible = true;
                 costsToolStripButton.Visible = true;
+                galleryToolStripButton.Visible = true;
 
                 toolStripSeparator1.Visible = true;
                 toolStripSeparator2.Visible = true;
@@ -281,10 +283,12 @@ namespace BikeDB2024
                 if (Properties.Settings.Default.ShowFlightDB)
                 {
                     flightDBToolStripMenuItem.Visible = true;
+                    flightDbToolStripButton.Visible = true;
                 }
                 else
                 {
                     flightDBToolStripMenuItem.Visible = false;
+                    flightDbToolStripButton.Visible = false;
                 }
 
                 if (Properties.Settings.Default.UseSigmaDockingStation)
@@ -341,6 +345,8 @@ namespace BikeDB2024
                 calendarToolStripButton.Visible = false;
                 costsToolStripButton.Visible = false;
                 flightDBToolStripMenuItem.Visible = false;
+                flightDbToolStripButton.Visible = false;
+                galleryToolStripButton.Visible = false;
 
                 toolStripSeparator1.Visible = false;
                 toolStripSeparator2.Visible = false;
@@ -1339,6 +1345,7 @@ namespace BikeDB2024
                         alt,
                         maxAlt,
                         remarkRichTextBox.Text,
+                        null,
                         persons,
                         DateTime.Now,
                         DateTime.Now,
@@ -1630,6 +1637,9 @@ namespace BikeDB2024
                                     lastToolStripButton.Enabled = false;
                                     editToolStripButton.Enabled = false;
                                     deleteToolStripButton.Enabled = false;
+                                    galleryToolStripSeparator.Visible = false;
+                                    showGalleryToolStripButton.Visible = false;
+                                    current_gallery = -1;
                                     if (result == 0)
                                     {
                                         dataTitleLabel.Text = "Keine Tagestouren vorhanden!";
@@ -2100,7 +2110,19 @@ namespace BikeDB2024
                                                 dataRemarkRichTextBox.Text = reader[10].ToString();
                                                 if (!reader.IsDBNull(11))
                                                 {
-                                                    string[] tmp_pers = reader[11].ToString().Split(';');
+                                                    galleryToolStripSeparator.Visible = true;
+                                                    showGalleryToolStripButton.Visible = true;
+                                                    current_gallery = Convert.ToInt32(reader[11]);
+                                                }
+                                                else
+                                                {
+                                                    galleryToolStripSeparator.Visible = false;
+                                                    showGalleryToolStripButton.Visible = false;
+                                                    current_gallery = -1;
+                                                }
+                                                if (!reader.IsDBNull(12))
+                                                {
+                                                    string[] tmp_pers = reader[12].ToString().Split(';');
                                                     foreach (string person in tmp_pers)
                                                     {
                                                         if (person.Length > 0)
@@ -2263,23 +2285,22 @@ namespace BikeDB2024
                                                 }
                                                 countryLabel.Text = land;
                                                 bundeslandLabel.Text = bland;
-                                                prefixLabel.Text = reader[4].ToString();
-                                                cityLinkLabel.Text = reader[5].ToString();
-                                                kfzLabel.Text = reader[6].ToString();
-                                                heightLabel.Text = reader[7].ToString();
-                                                if (reader[7].ToString() != String.Empty)
+                                                plzCityLabel.Text = reader[4].ToString();
+                                                prefixLabel.Text = reader[5].ToString();
+                                                cityLinkLabel.Text = reader[6].ToString();
+                                                kfzLabel.Text = reader[7].ToString();
+                                                if (reader[8].ToString() != String.Empty)
                                                 {
-                                                    heightLabel.Text = reader[7].ToString() + " m ü. NHN";
+                                                    heightLabel.Text = reader[8].ToString() + " m ü. NHN";
                                                 }
                                                 else { heightLabel.Text = ""; }
-                                                cityRemarkRichTextBox.Text = reader[8].ToString();
-
-                                                if (reader[9].ToString() != String.Empty)
+                                                cityRemarkRichTextBox.Text = reader[9].ToString();
+                                                if (reader[10].ToString() != String.Empty)
                                                 {
-                                                    cityPictureBox.Image = Image.FromFile(reader[9].ToString());
+                                                    cityPictureBox.Image = Image.FromFile(reader[10].ToString());
                                                 }
                                                 else cityPictureBox.Image = cityPictureBox.ErrorImage;
-                                                gpsLabel.Text = reader[10].ToString();
+                                                gpsLabel.Text = reader[11].ToString();
                                                 break;
                                             case 5:
                                                 string city = "";
@@ -3419,6 +3440,7 @@ namespace BikeDB2024
             }
         }
 
+        #region Show FlightDB
         /// <summary>
         /// Show FlightDB.
         /// </summary>
@@ -3426,9 +3448,20 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void flightDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            showFlightDb();
+        }
+
+        private void flightDbToolStripButton_Click(object sender, EventArgs e)
+        {
+            showFlightDb();
+        }
+
+        private void showFlightDb()
+        {
             FlightDBForm form = new FlightDBForm();
             form.Show();
         }
+        #endregion
 
         /// <summary>
         /// Change visibility of certain objects on main tab pages.
@@ -3453,7 +3486,6 @@ namespace BikeDB2024
         // Vehicle
         private void showVecToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //showVecNotCheckedToolStripMenuItem
             if (e.ClickedItem.Name == "showVecCheckedToolStripMenuItem")
             {
                 ChangeComboBoxVisibility(VisibilityObject.VEHICLE, false, current_vehicle);
@@ -3468,7 +3500,6 @@ namespace BikeDB2024
         // City
         private void showCityToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //showCityNotCheckedToolStripMenuItem
             if (e.ClickedItem.Name == "showCityCheckedToolStripMenuItem")
             {
                 ChangeComboBoxVisibility(VisibilityObject.CITY, false, current_city);
@@ -3483,7 +3514,6 @@ namespace BikeDB2024
         // Person
         private void personToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //showPersonNotCheckedToolStripMenuItem
             if (e.ClickedItem.Name == "showPersonCheckedToolStripMenuItem")
             {
                 ChangeComboBoxVisibility(VisibilityObject.PERSON, false, current_person);
@@ -3494,5 +3524,38 @@ namespace BikeDB2024
             }
             personToolStripSplitButton.Image = e.ClickedItem.Image;
         }
+
+        #region Show image galleries
+        private void galleryToolStripButton_Click(object sender, EventArgs e)
+        {
+            showGalleries();
+        }
+
+        private void bildergalerienToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showGalleries();
+        }
+
+        private void showGalleries()
+        {
+            ImageGalleryForm imageGalleryForm = new ImageGalleryForm();
+            imageGalleryForm.Show();
+        }       
+
+        /// <summary>
+        /// Show the image gallery if current_gallery != -1, i.e. tour data has a gallery Id associated with it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void showGalleryToolStripButton_Click(object sender, EventArgs e)
+        {
+            if (current_gallery != -1)
+            {
+                ImageGalleryForm imageGallery = new ImageGalleryForm();
+                imageGallery.Id = current_gallery;
+                imageGallery.Show();
+            }
+        }
+        #endregion
     }
 }

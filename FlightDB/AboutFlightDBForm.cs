@@ -8,6 +8,7 @@ namespace BikeDB2024.FlightDB
         public AboutFlightDBForm()
         {
             InitializeComponent();
+            okButton.Focus();
         }
 
         private void okButton_Click(object sender, EventArgs e)

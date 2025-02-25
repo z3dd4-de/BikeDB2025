@@ -122,3 +122,6 @@ C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2025.pdb
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\QRCoder.dll
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.FlightDBStatistics.resources
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.GpsDistanceForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.ImageGalleryForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.ImageResources.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.GalleryResources.resources

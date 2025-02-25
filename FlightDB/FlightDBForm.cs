@@ -1869,23 +1869,22 @@ namespace BikeDB2024
                                                 }
                                                 countryLabel.Text = land;
                                                 bundeslandLabel.Text = bland;
-                                                prefixLabel.Text = reader[4].ToString();
-                                                cityLinkLabel.Text = reader[5].ToString();
-                                                kfzLabel.Text = reader[6].ToString();
-                                                heightLabel.Text = reader[7].ToString();
-                                                if (reader[7].ToString() != String.Empty)
+                                                codeLabel.Text = reader[4].ToString();
+                                                prefixLabel.Text = reader[5].ToString();
+                                                cityLinkLabel.Text = reader[6].ToString();
+                                                kfzLabel.Text = reader[7].ToString();
+                                                if (reader[8].ToString() != String.Empty)
                                                 {
-                                                    heightLabel.Text = reader[7].ToString() + " m ü. NHN";
+                                                    heightLabel.Text = reader[8].ToString() + " m ü. NHN";
                                                 }
                                                 else { heightLabel.Text = ""; }
-                                                cityRemarkRichTextBox.Text = reader[8].ToString();
-
-                                                if (reader[9].ToString() != String.Empty)
+                                                cityRemarkRichTextBox.Text = reader[9].ToString();
+                                                if (reader[10].ToString() != String.Empty)
                                                 {
-                                                    cityPictureBox.Image = System.Drawing.Image.FromFile(reader[9].ToString());
+                                                    cityPictureBox.Image = System.Drawing.Image.FromFile(reader[10].ToString());
                                                 }
                                                 else cityPictureBox.Image = cityPictureBox.ErrorImage;
-                                                gpsLabel.Text = reader[10].ToString();
+                                                gpsLabel.Text = reader[11].ToString();
                                                 airportLabel.Text = "";
                                                 break;
                                         }

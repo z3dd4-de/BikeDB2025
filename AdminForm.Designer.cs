@@ -226,6 +226,20 @@
             this.createdDataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastChangedDataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costCategoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPage39 = new System.Windows.Forms.TabPage();
+            this.dataGridView13 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pathTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pathDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.linkIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remarkDataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdDataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastChangedDataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userDataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageGalleriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -423,6 +437,7 @@
             this.openImageEditorFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.imageGalleriesTableAdapter = new BikeDB2024.DataSetTableAdapters.ImageGalleriesTableAdapter();
             this.adminStatusStrip.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -470,6 +485,9 @@
             this.tabPage38.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.costCategoriesBindingSource)).BeginInit();
+            this.tabPage39.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageGalleriesBindingSource)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -827,6 +845,7 @@
             this.tabControl1.Controls.Add(this.tabPage28);
             this.tabControl1.Controls.Add(this.tabPage37);
             this.tabControl1.Controls.Add(this.tabPage38);
+            this.tabControl1.Controls.Add(this.tabPage39);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
@@ -2106,6 +2125,111 @@
             // 
             this.costCategoriesBindingSource.DataMember = "CostCategories";
             this.costCategoriesBindingSource.DataSource = this.dataSet;
+            // 
+            // tabPage39
+            // 
+            this.tabPage39.Controls.Add(this.dataGridView13);
+            this.tabPage39.Location = new System.Drawing.Point(4, 22);
+            this.tabPage39.Name = "tabPage39";
+            this.tabPage39.Size = new System.Drawing.Size(870, 386);
+            this.tabPage39.TabIndex = 14;
+            this.tabPage39.Text = "Bildergalerien";
+            this.tabPage39.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView13
+            // 
+            this.dataGridView13.AutoGenerateColumns = false;
+            this.dataGridView13.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView13.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn14,
+            this.linkTypeDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn1,
+            this.pathTypeDataGridViewTextBoxColumn,
+            this.pathDataGridViewTextBoxColumn,
+            this.dateDataGridViewTextBoxColumn2,
+            this.linkIdDataGridViewTextBoxColumn,
+            this.remarkDataGridViewTextBoxColumn6,
+            this.createdDataGridViewTextBoxColumn14,
+            this.lastChangedDataGridViewTextBoxColumn13,
+            this.userDataGridViewTextBoxColumn14});
+            this.dataGridView13.DataSource = this.imageGalleriesBindingSource;
+            this.dataGridView13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView13.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView13.Name = "dataGridView13";
+            this.dataGridView13.Size = new System.Drawing.Size(870, 386);
+            this.dataGridView13.TabIndex = 0;
+            this.dataGridView13.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView13_CellEndEdit);
+            // 
+            // idDataGridViewTextBoxColumn14
+            // 
+            this.idDataGridViewTextBoxColumn14.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn14.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn14.Name = "idDataGridViewTextBoxColumn14";
+            // 
+            // linkTypeDataGridViewTextBoxColumn
+            // 
+            this.linkTypeDataGridViewTextBoxColumn.DataPropertyName = "LinkType";
+            this.linkTypeDataGridViewTextBoxColumn.HeaderText = "LinkType";
+            this.linkTypeDataGridViewTextBoxColumn.Name = "linkTypeDataGridViewTextBoxColumn";
+            // 
+            // typeDataGridViewTextBoxColumn1
+            // 
+            this.typeDataGridViewTextBoxColumn1.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn1.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn1.Name = "typeDataGridViewTextBoxColumn1";
+            // 
+            // pathTypeDataGridViewTextBoxColumn
+            // 
+            this.pathTypeDataGridViewTextBoxColumn.DataPropertyName = "PathType";
+            this.pathTypeDataGridViewTextBoxColumn.HeaderText = "PathType";
+            this.pathTypeDataGridViewTextBoxColumn.Name = "pathTypeDataGridViewTextBoxColumn";
+            // 
+            // pathDataGridViewTextBoxColumn
+            // 
+            this.pathDataGridViewTextBoxColumn.DataPropertyName = "Path";
+            this.pathDataGridViewTextBoxColumn.HeaderText = "Path";
+            this.pathDataGridViewTextBoxColumn.Name = "pathDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn2
+            // 
+            this.dateDataGridViewTextBoxColumn2.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn2.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn2.Name = "dateDataGridViewTextBoxColumn2";
+            // 
+            // linkIdDataGridViewTextBoxColumn
+            // 
+            this.linkIdDataGridViewTextBoxColumn.DataPropertyName = "LinkId";
+            this.linkIdDataGridViewTextBoxColumn.HeaderText = "LinkId";
+            this.linkIdDataGridViewTextBoxColumn.Name = "linkIdDataGridViewTextBoxColumn";
+            // 
+            // remarkDataGridViewTextBoxColumn6
+            // 
+            this.remarkDataGridViewTextBoxColumn6.DataPropertyName = "Remark";
+            this.remarkDataGridViewTextBoxColumn6.HeaderText = "Remark";
+            this.remarkDataGridViewTextBoxColumn6.Name = "remarkDataGridViewTextBoxColumn6";
+            // 
+            // createdDataGridViewTextBoxColumn14
+            // 
+            this.createdDataGridViewTextBoxColumn14.DataPropertyName = "Created";
+            this.createdDataGridViewTextBoxColumn14.HeaderText = "Created";
+            this.createdDataGridViewTextBoxColumn14.Name = "createdDataGridViewTextBoxColumn14";
+            // 
+            // lastChangedDataGridViewTextBoxColumn13
+            // 
+            this.lastChangedDataGridViewTextBoxColumn13.DataPropertyName = "LastChanged";
+            this.lastChangedDataGridViewTextBoxColumn13.HeaderText = "LastChanged";
+            this.lastChangedDataGridViewTextBoxColumn13.Name = "lastChangedDataGridViewTextBoxColumn13";
+            // 
+            // userDataGridViewTextBoxColumn14
+            // 
+            this.userDataGridViewTextBoxColumn14.DataPropertyName = "User";
+            this.userDataGridViewTextBoxColumn14.HeaderText = "User";
+            this.userDataGridViewTextBoxColumn14.Name = "userDataGridViewTextBoxColumn14";
+            // 
+            // imageGalleriesBindingSource
+            // 
+            this.imageGalleriesBindingSource.DataMember = "ImageGalleries";
+            this.imageGalleriesBindingSource.DataSource = this.dataSet;
             // 
             // tabPage2
             // 
@@ -4041,6 +4165,10 @@
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Bildbearbeitung Menüeintrag";
             // 
+            // imageGalleriesTableAdapter
+            // 
+            this.imageGalleriesTableAdapter.ClearBeforeFill = true;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4109,6 +4237,9 @@
             this.tabPage38.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.costCategoriesBindingSource)).EndInit();
+            this.tabPage39.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageGalleriesBindingSource)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
@@ -4587,5 +4718,20 @@
         private System.Windows.Forms.RadioButton whitelistRadioButton;
         private System.Windows.Forms.RadioButton allRadioButton;
         private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.TabPage tabPage39;
+        private System.Windows.Forms.DataGridView dataGridView13;
+        private System.Windows.Forms.BindingSource imageGalleriesBindingSource;
+        private DataSetTableAdapters.ImageGalleriesTableAdapter imageGalleriesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn linkTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pathTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pathDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn linkIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createdDataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastChangedDataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userDataGridViewTextBoxColumn14;
     }
 }

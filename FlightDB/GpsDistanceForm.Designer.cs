@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.startComboBox = new System.Windows.Forms.ComboBox();
             this.endComboBox = new System.Windows.Forms.ComboBox();
             this.lat1TextBox = new System.Windows.Forms.TextBox();
@@ -42,10 +42,10 @@
             this.distanceLabel = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
             this.city1RadioButton = new System.Windows.Forms.RadioButton();
             this.airport1RadioButton = new System.Windows.Forms.RadioButton();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.city2RadioButton = new System.Windows.Forms.RadioButton();
             this.airport2RadioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
@@ -86,15 +86,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(514, 187);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // label3
+            // label5
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 68);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Breitengrad";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 150);
+            this.label5.Name = "label5";
+            this.label5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.label5.Size = new System.Drawing.Size(59, 18);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Entfernung";
             // 
             // label4
             // 
@@ -106,15 +106,15 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Längengrad";
             // 
-            // label5
+            // label3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 150);
-            this.label5.Name = "label5";
-            this.label5.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label5.Size = new System.Drawing.Size(59, 18);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Entfernung";
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Breitengrad";
             // 
             // startComboBox
             // 
@@ -186,10 +186,11 @@
             // distanceLabel
             // 
             this.distanceLabel.AutoSize = true;
+            this.distanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.distanceLabel.Location = new System.Drawing.Point(103, 150);
             this.distanceLabel.Name = "distanceLabel";
             this.distanceLabel.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.distanceLabel.Size = new System.Drawing.Size(21, 18);
+            this.distanceLabel.Size = new System.Drawing.Size(37, 29);
             this.distanceLabel.TabIndex = 12;
             this.distanceLabel.Text = "km";
             // 
@@ -214,27 +215,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Start";
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.label2);
-            this.flowLayoutPanel2.Controls.Add(this.city2RadioButton);
-            this.flowLayoutPanel2.Controls.Add(this.airport2RadioButton);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(303, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(194, 24);
-            this.flowLayoutPanel2.TabIndex = 14;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(24, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Ziel";
-            // 
             // city1RadioButton
             // 
             this.city1RadioButton.AutoSize = true;
@@ -258,6 +238,27 @@
             this.airport1RadioButton.Text = "Flughafen";
             this.airport1RadioButton.UseVisualStyleBackColor = true;
             this.airport1RadioButton.CheckedChanged += new System.EventHandler(this.airport1RadioButton_CheckedChanged);
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.label2);
+            this.flowLayoutPanel2.Controls.Add(this.city2RadioButton);
+            this.flowLayoutPanel2.Controls.Add(this.airport2RadioButton);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(303, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(194, 24);
+            this.flowLayoutPanel2.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Ziel";
             // 
             // city2RadioButton
             // 

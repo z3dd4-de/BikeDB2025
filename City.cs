@@ -8,19 +8,10 @@ namespace BikeDB2024
     internal class City : Location
     {
         #region Properties
-        //public int Id { get; set; }
-        //public string Country { get; set; }
-        //public string Name { get; set; }
         public string Bundesland { get; set; }
         public string Kfz { get; set; }
         public string Prefix { get; set; }
-        //public int Height { get; set; }
-        //public string Image { get; set; }
-        //public string Gps { get; set; }
-        //public bool NotShown { get; set; }
-
-        //public int Value { get => GetId(); }
-        //public string Text { get => ToString(); }
+        public string Code { get; set; }    // Postleitzahl Varchar 20
         #endregion
 
         /// <summary>
@@ -32,15 +23,6 @@ namespace BikeDB2024
             Id = id;
             load();
         }
-
-        /// <summary>
-        /// Value (e.g. for ListBox).
-        /// </summary>
-        /// <returns></returns>
-        /*public int GetId()
-        {
-            return Id;
-        }*/
 
         /// <summary>
         /// For general purposes.
@@ -76,18 +58,19 @@ namespace BikeDB2024
                         myCommand.CommandType = CommandType.Text;
                         myCommand.Connection = myConnection;
                         myCommand.Parameters.Add("@id", SqlDbType.Int).Value = Id;
-
+                        
                         using (SqlDataReader reader = myCommand.ExecuteReader())
                         {
                             while (reader.Read())
                             {
                                 Name = reader.GetString(1);
-                                Kfz = reader.GetString(6);
-                                Prefix = reader.GetString(4);
-                                Height = reader.GetInt32(7);
-                                Image = reader.GetString(9);
-                                Gps = reader.GetString(10);
-                                NotShown = GetBoolFromTinyInt(reader.GetString(11));
+                                Code = reader[4].ToString() != "" ? reader.GetString(4) : "";
+                                Prefix = reader[5].ToString() != "" ? reader.GetString(5) : "";
+                                Kfz = reader[7].ToString() != "" ? reader.GetString(7) : "";
+                                Height = reader[8].ToString() != "" ? reader.GetInt32(8) : -1; 
+                                Image = reader[10].ToString() != "" ? reader.GetString(10) : "";
+                                Gps = reader[11].ToString() != "" ? reader.GetString(11) : "";
+                                NotShown = GetBoolFromTinyInt(reader.GetByte(12));
                             }
                         }
                     }

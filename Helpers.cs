@@ -8,8 +8,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using static BikeDB2024.Helpers;
+//using System.Runtime.InteropServices;
 
 namespace BikeDB2024
 {
@@ -465,6 +467,7 @@ namespace BikeDB2024
             comboBox.Sorted = sorted;
             comboBox.Items.Clear();
             SqlConnection con1;
+
             try
             {
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
@@ -668,6 +671,13 @@ namespace BikeDB2024
             catch (Exception)
             {
             }
+            return ret;
+        }
+
+        public static bool GetBoolFromTinyInt(byte value)
+        {
+            bool ret = value == 1 ? true : false;
+
             return ret;
         }
 
@@ -1061,6 +1071,111 @@ namespace BikeDB2024
         #region Methods to change the table entry "NotShown" of available objects
         public enum VisibilityObject { AIRLINE, AIRPORT, CITY, COMPANY, COST, COUNTRY, FLIGHT, PERSON, PLANEMANUFACTURER,
             PLANE, ROUTE, VEHICLE } 
+
+        /// <summary>
+        /// Return a List of ints with all objects that are not shown for a user.
+        /// </summary>
+        /// <param name="vobject"></param>
+        /// <returns></returns>
+        public static List<int> GetNotShownObjects(VisibilityObject vobject)
+        {
+            int user_id = Properties.Settings.Default.CurrentUserID;
+            string column = "";
+            List<int> result_ints = new List<int>();
+            switch (vobject)
+            {
+                case VisibilityObject.AIRLINE:
+                    column = "Airlines";
+                    break;
+                case VisibilityObject.AIRPORT:
+                    column = "Airports";
+                    break;
+                case VisibilityObject.CITY:
+                    column = "Cities";
+                    break;
+                case VisibilityObject.COMPANY:
+                    column = "Companies";
+                    break;
+                case VisibilityObject.COST:
+                    column = "Costs";
+                    break;
+                case VisibilityObject.COUNTRY:
+                    column = "Countries";
+                    break;
+                case VisibilityObject.FLIGHT:
+                    column = "Flights";
+                    break;
+                case VisibilityObject.PERSON:
+                    column = "Persons";
+                    break;
+                case VisibilityObject.PLANEMANUFACTURER:
+                    column = "PlaneManufacturers";
+                    break;
+                case VisibilityObject.PLANE:
+                    column = "Planes";
+                    break;
+                case VisibilityObject.ROUTE:
+                    column = "Routes";
+                    break;
+                case VisibilityObject.VEHICLE:
+                    column = "Vehicles";
+                    break;
+                default:
+                    break;
+            }
+            SqlConnection con1;
+            string result = "";
+            try
+            {
+                using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                {
+                    con1.Open();
+                    using (SqlCommand com1 = new SqlCommand())
+                    {
+                        com1.CommandText = $"SELECT {column} FROM NotShownObjects WHERE User = {user_id}";
+                        com1.CommandType = CommandType.Text;
+                        com1.Connection = con1;
+
+                        using (SqlDataReader reader1 = com1.ExecuteReader())
+                        {
+                            while (reader1.Read())
+                            {
+                                if (reader1[0].ToString() != "")
+                                    result = reader1.GetString(0);
+                            }
+                            reader1.Close();
+                        }
+                    }
+                    con1.Close();
+                }
+                if (result.Length >= 1)
+                {
+                    try
+                    {
+                        if (result.Contains(";"))
+                        {
+                            string[] tmp = result.Split(';');
+                            foreach (string s in tmp)
+                            {
+                                string s_new = s.Trim();
+                                if (s_new.Length > 0 && Convert.ToInt32(s_new) >= 0)
+                                    result_ints.Add(Convert.ToInt32(s_new));
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex.Message, "Fehler bei Konvertierung zu int (NotShownObjects)");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff (NotShownObjects)");
+            }
+            return result_ints;
+        }
+
         public static void ChangeComboBoxVisibility(VisibilityObject vobject, bool shown, int id)
         {
             string table = "";
@@ -1296,6 +1411,93 @@ namespace BikeDB2024
                     Process.Start(new ProcessStartInfo(path));
             }
         }
+
+        /// <summary>
+        /// Create a thumbnail in the same location as the original image (if thumbnail doesn't exist).
+        /// </summary>
+        /// <param name="path"></param>
+        public static void CreateThumbnail(string path)
+        {
+            int max_size = 350;     // size of thumbnails with setting "large"
+            if (!ThumbnailExists(path))
+            {
+                Bitmap img = new Bitmap(path);
+                img = ScaleImage(img, max_size, max_size);
+                img.Save(GetThumbnailFilename(path));
+                img.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Scale image correctly.
+        /// https://efundies.com/scale-an-image-in-c-sharp-preserving-aspect-ratio/
+        /// </summary>
+        /// <param name="bmp"></param>
+        /// <param name="maxWidth"></param>
+        /// <param name="maxHeight"></param>
+        /// <returns></returns>
+        static Bitmap ScaleImage(Bitmap bmp, int maxWidth, int maxHeight)
+        {
+            var ratioX = (double)maxWidth / bmp.Width;
+            var ratioY = (double)maxHeight / bmp.Height;
+            var ratio = Math.Min(ratioX, ratioY);
+
+            var newWidth = (int)(bmp.Width * ratio);
+            var newHeight = (int)(bmp.Height * ratio);
+
+            var newImage = new Bitmap(newWidth, newHeight);
+
+            using (var graphics = Graphics.FromImage(newImage))
+            {
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+
+                graphics.DrawImage(bmp, 0, 0, newWidth, newHeight);
+            }
+
+            return newImage;
+        }
+
+        /// <summary>
+        /// Check if a thumbnail already exists (contains "_tn").
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static bool ThumbnailExists(string path)
+        {
+            bool exists = false;
+            string tn_filename = GetThumbnailFilename(path);
+            if (tn_filename == "") { exists = true; }
+            FileInfo fileInfo = new FileInfo(tn_filename);
+            if (fileInfo.Exists)
+            {
+                exists = true;
+            }
+            return exists;
+        }
+
+        /// <summary>
+        /// Get thumbnail filename for a given file: directory\filename + "_tn" + extension
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>Empty string for directories or already existing thumbnails, otherwise TN filename.</returns>
+        public static string GetThumbnailFilename(string path)
+        {
+            string filename = "";
+            FileInfo fileInfo = new FileInfo(path);
+            if (fileInfo.Exists)
+            {
+                // If "path" is already a thumbnail, return
+                if (fileInfo.Name.Contains("_tn"))
+                {
+                    return filename;
+                }
+                string fn = Path.GetFileNameWithoutExtension(fileInfo.Name);
+                filename = Path.GetDirectoryName(path) + "\\" + fn + "_tn" + fileInfo.Extension;
+            }
+            return filename;
+        }
         #endregion
 
         /// <summary>
@@ -1314,6 +1516,61 @@ namespace BikeDB2024
             {
                 pb.Image = Image.FromFile(TestFileOrFolderPath(image)); 
                 pb.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// http://www.csharphelper.com/howtos/howto_file_size_in_words.html
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ToFileSize(/*this*/ double value)
+        {
+            string[] suffixes = { "bytes", "KB", "MB", "GB",
+                "TB", "PB", "EB", "ZB", "YB"};
+            for (int i = 0; i < suffixes.Length; i++)
+            {
+                if (value <= (Math.Pow(1024, i + 1)))
+                {
+                    return ThreeNonZeroDigits(value /
+                        Math.Pow(1024, i)) +
+                        " " + suffixes[i];
+                }
+            }
+
+            return ThreeNonZeroDigits(value /
+                Math.Pow(1024, suffixes.Length - 1)) +
+                " " + suffixes[suffixes.Length - 1];
+        }
+
+        /// <summary>
+        /// Return the value formatted to include at most three
+        /// non-zero digits and at most two digits after the decimal point. 
+        /// Examples:
+        ///         1
+        ///       123
+        ///        12.3 
+        ///         1.23 
+        ///         0.12 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private static string ThreeNonZeroDigits(double value)
+        {
+            if (value >= 100)
+            {
+                // No digits after the decimal.
+                return value.ToString("0,0");
+            }
+            else if (value >= 10)
+            {
+                // One digit after the decimal.
+                return value.ToString("0.0");
+            }
+            else
+            {
+                // Two digits after the decimal.
+                return value.ToString("0.00");
             }
         }
     }

@@ -161,8 +161,9 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 120);
+            this.label4.Location = new System.Drawing.Point(3, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 3;
@@ -170,8 +171,9 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 90);
+            this.label3.Location = new System.Drawing.Point(3, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 2;
@@ -179,8 +181,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 60);
+            this.label2.Location = new System.Drawing.Point(3, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 1;
@@ -188,8 +191,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 30);
+            this.label1.Location = new System.Drawing.Point(3, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
@@ -197,18 +201,20 @@
             // 
             // boughtDateTimePicker
             // 
+            this.boughtDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.boughtDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.boughtDateTimePicker.Location = new System.Drawing.Point(143, 123);
+            this.boughtDateTimePicker.Location = new System.Drawing.Point(143, 125);
             this.boughtDateTimePicker.Name = "boughtDateTimePicker";
             this.boughtDateTimePicker.Size = new System.Drawing.Size(121, 20);
             this.boughtDateTimePicker.TabIndex = 4;
             // 
             // typeComboBox
             // 
+            this.typeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.typeComboBox.DataSource = this.vehicleTypesBindingSource;
             this.typeComboBox.DisplayMember = "VehicleType";
             this.typeComboBox.FormattingEnabled = true;
-            this.typeComboBox.Location = new System.Drawing.Point(143, 93);
+            this.typeComboBox.Location = new System.Drawing.Point(143, 94);
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(267, 21);
             this.typeComboBox.TabIndex = 3;
@@ -226,10 +232,11 @@
             // 
             // constructorComboBox
             // 
+            this.constructorComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.constructorComboBox.DataSource = this.companiesBindingSource;
             this.constructorComboBox.DisplayMember = "CompanyName";
             this.constructorComboBox.FormattingEnabled = true;
-            this.constructorComboBox.Location = new System.Drawing.Point(143, 63);
+            this.constructorComboBox.Location = new System.Drawing.Point(143, 64);
             this.constructorComboBox.Name = "constructorComboBox";
             this.constructorComboBox.Size = new System.Drawing.Size(267, 21);
             this.constructorComboBox.TabIndex = 2;
@@ -242,7 +249,8 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(143, 33);
+            this.nameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.nameTextBox.Location = new System.Drawing.Point(143, 35);
             this.nameTextBox.MaxLength = 50;
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(267, 20);
@@ -251,8 +259,9 @@
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 0);
+            this.label8.Location = new System.Drawing.Point(3, 8);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 13);
             this.label8.TabIndex = 18;
@@ -260,10 +269,11 @@
             // 
             // vehiclesComboBox
             // 
+            this.vehiclesComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.vehiclesComboBox.DataSource = this.vehiclesBindingSource;
             this.vehiclesComboBox.DisplayMember = "VehicleName";
             this.vehiclesComboBox.FormattingEnabled = true;
-            this.vehiclesComboBox.Location = new System.Drawing.Point(143, 3);
+            this.vehiclesComboBox.Location = new System.Drawing.Point(143, 4);
             this.vehiclesComboBox.Name = "vehiclesComboBox";
             this.vehiclesComboBox.Size = new System.Drawing.Size(267, 21);
             this.vehiclesComboBox.TabIndex = 0;
@@ -276,8 +286,9 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 180);
+            this.label5.Location = new System.Drawing.Point(3, 188);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 4;
@@ -285,8 +296,9 @@
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 150);
+            this.label9.Location = new System.Drawing.Point(3, 158);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(43, 13);
             this.label9.TabIndex = 22;
@@ -323,7 +335,8 @@
             // 
             // buildYearTextBox
             // 
-            this.buildYearTextBox.Location = new System.Drawing.Point(143, 153);
+            this.buildYearTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buildYearTextBox.Location = new System.Drawing.Point(143, 155);
             this.buildYearTextBox.MaxLength = 4;
             this.buildYearTextBox.Name = "buildYearTextBox";
             this.buildYearTextBox.Size = new System.Drawing.Size(121, 20);
@@ -341,8 +354,9 @@
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 356);
+            this.label10.Location = new System.Drawing.Point(3, 364);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 13);
             this.label10.TabIndex = 23;
@@ -359,8 +373,9 @@
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 210);
+            this.label11.Location = new System.Drawing.Point(3, 218);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(69, 13);
             this.label11.TabIndex = 28;
@@ -368,7 +383,8 @@
             // 
             // licenseTextBox
             // 
-            this.licenseTextBox.Location = new System.Drawing.Point(143, 213);
+            this.licenseTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.licenseTextBox.Location = new System.Drawing.Point(143, 215);
             this.licenseTextBox.MaxLength = 10;
             this.licenseTextBox.Name = "licenseTextBox";
             this.licenseTextBox.Size = new System.Drawing.Size(121, 20);

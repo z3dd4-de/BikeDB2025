@@ -32,22 +32,22 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.countriesComboBox = new System.Windows.Forms.ComboBox();
             this.countriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new BikeDB2024.DataSet();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.addButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.continentComboBox = new System.Windows.Forms.ComboBox();
             this.continentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.prefixTextBox = new System.Windows.Forms.TextBox();
-            this.addButton = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.iso3166TextBox = new System.Windows.Forms.TextBox();
             this.continentsTableAdapter = new BikeDB2024.DataSetTableAdapters.ContinentsTableAdapter();
             this.countriesTableAdapter = new BikeDB2024.DataSetTableAdapters.CountriesTableAdapter();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.errorToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.iso3166TextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.countriesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
@@ -88,8 +88,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 0);
+            this.label1.Location = new System.Drawing.Point(2, 8);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
@@ -98,40 +99,22 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 30);
+            this.label2.Location = new System.Drawing.Point(2, 38);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 90);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Ländervorwahl";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 120);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Kontinent";
-            // 
             // countriesComboBox
             // 
+            this.countriesComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.countriesComboBox.DataSource = this.countriesBindingSource;
             this.countriesComboBox.DisplayMember = "Country";
             this.countriesComboBox.FormattingEnabled = true;
-            this.countriesComboBox.Location = new System.Drawing.Point(137, 2);
+            this.countriesComboBox.Location = new System.Drawing.Point(137, 4);
             this.countriesComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.countriesComboBox.Name = "countriesComboBox";
             this.countriesComboBox.Size = new System.Drawing.Size(228, 21);
@@ -148,39 +131,15 @@
             this.dataSet.DataSetName = "DataSet";
             this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // continentComboBox
-            // 
-            this.continentComboBox.DataSource = this.continentsBindingSource;
-            this.continentComboBox.DisplayMember = "Continent";
-            this.continentComboBox.FormattingEnabled = true;
-            this.continentComboBox.Location = new System.Drawing.Point(137, 122);
-            this.continentComboBox.Margin = new System.Windows.Forms.Padding(2);
-            this.continentComboBox.Name = "continentComboBox";
-            this.continentComboBox.Size = new System.Drawing.Size(228, 21);
-            this.continentComboBox.TabIndex = 4;
-            this.continentComboBox.ValueMember = "Id";
-            // 
-            // continentsBindingSource
-            // 
-            this.continentsBindingSource.DataMember = "Continents";
-            this.continentsBindingSource.DataSource = this.dataSet;
-            // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(137, 32);
+            this.nameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.nameTextBox.Location = new System.Drawing.Point(137, 35);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(228, 20);
             this.nameTextBox.TabIndex = 1;
             this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
-            // 
-            // prefixTextBox
-            // 
-            this.prefixTextBox.Location = new System.Drawing.Point(137, 92);
-            this.prefixTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.prefixTextBox.Name = "prefixTextBox";
-            this.prefixTextBox.Size = new System.Drawing.Size(228, 20);
-            this.prefixTextBox.TabIndex = 3;
             // 
             // addButton
             // 
@@ -192,6 +151,75 @@
             this.addButton.Text = "Hinzufügen";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(2, 128);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Kontinent";
+            // 
+            // continentComboBox
+            // 
+            this.continentComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.continentComboBox.DataSource = this.continentsBindingSource;
+            this.continentComboBox.DisplayMember = "Continent";
+            this.continentComboBox.FormattingEnabled = true;
+            this.continentComboBox.Location = new System.Drawing.Point(137, 124);
+            this.continentComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.continentComboBox.Name = "continentComboBox";
+            this.continentComboBox.Size = new System.Drawing.Size(228, 21);
+            this.continentComboBox.TabIndex = 4;
+            this.continentComboBox.ValueMember = "Id";
+            // 
+            // continentsBindingSource
+            // 
+            this.continentsBindingSource.DataMember = "Continents";
+            this.continentsBindingSource.DataSource = this.dataSet;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(2, 98);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Ländervorwahl";
+            // 
+            // prefixTextBox
+            // 
+            this.prefixTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prefixTextBox.Location = new System.Drawing.Point(137, 95);
+            this.prefixTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.prefixTextBox.Name = "prefixTextBox";
+            this.prefixTextBox.Size = new System.Drawing.Size(228, 20);
+            this.prefixTextBox.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Ländercode (Alpha-2)";
+            // 
+            // iso3166TextBox
+            // 
+            this.iso3166TextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.iso3166TextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.iso3166TextBox.Location = new System.Drawing.Point(138, 65);
+            this.iso3166TextBox.MaxLength = 2;
+            this.iso3166TextBox.Name = "iso3166TextBox";
+            this.iso3166TextBox.Size = new System.Drawing.Size(227, 20);
+            this.iso3166TextBox.TabIndex = 2;
             // 
             // continentsTableAdapter
             // 
@@ -216,24 +244,6 @@
             // 
             this.errorToolStripStatusLabel.Name = "errorToolStripStatusLabel";
             this.errorToolStripStatusLabel.Size = new System.Drawing.Size(0, 17);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 60);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Ländercode (Alpha-2)";
-            // 
-            // iso3166TextBox
-            // 
-            this.iso3166TextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.iso3166TextBox.Location = new System.Drawing.Point(138, 63);
-            this.iso3166TextBox.MaxLength = 2;
-            this.iso3166TextBox.Name = "iso3166TextBox";
-            this.iso3166TextBox.Size = new System.Drawing.Size(227, 20);
-            this.iso3166TextBox.TabIndex = 2;
             // 
             // CountryForm
             // 

@@ -71,7 +71,7 @@ namespace BikeDB2024
                     con1.Open();
                     using (SqlCommand com1 = new SqlCommand())
                     {
-                        com1.CommandText = @"SELECT VehicleName FROM Vehicles WHERE VehicleType IN (1,3,4) AND [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
+                        com1.CommandText = @"SELECT VehicleName FROM Vehicles WHERE VehicleType IN (1,3,4,5,9,10,18) AND [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
                         com1.CommandType = CommandType.Text;
                         com1.Connection = con1;
                         using (SqlDataReader reader1 = com1.ExecuteReader())

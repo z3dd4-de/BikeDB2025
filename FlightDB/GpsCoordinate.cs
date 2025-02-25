@@ -1,9 +1,6 @@
 ﻿// Source: https://www.csharphelper.com/howtos/howto_great_circle_distance.html
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BikeDB2024.FlightDB
 {
@@ -15,13 +12,19 @@ namespace BikeDB2024.FlightDB
         public double LatitudeValue;
         public double LongitudeValue;
 
-        //51° 43′ N, 8° 45′ O
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="coord"></param>
         public GpsCoordinate(string coord) 
         { 
             Coordinate = coord;
             getParts();
         }
 
+        /// <summary>
+        /// Extract latitude and longitude from GPS Coordinate.
+        /// </summary>
         private void getParts()
         {
             if (Coordinate != String.Empty)
@@ -42,17 +45,19 @@ namespace BikeDB2024.FlightDB
 
         private const string Deg = "°";
 
-        /*1° 14' N
-        1 14' 0" N
-        1° 14 0N
-        1 14 0 N*/
         /// <summary>
         /// Parse a latitude or longitude.
+        /// Allowed values:
+        /// 1° 14' N
+        /// 1 14' 0" N   
+        /// 1° 14 0N
+        /// 1 14 0 N
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
         public double ParseLatLon(string str)
         {
+            str = str.Replace("′", "'").Replace("″", "\"");
             str = str.ToUpper().Replace(Deg, " ").Replace("'", " ").Replace("\"", " ");
             str = str.Replace("S", " S").Replace("N", " N");
             str = str.Replace("E", " E").Replace("W", " W");
@@ -71,12 +76,24 @@ namespace BikeDB2024.FlightDB
             return result;
         }
 
+        /// <summary>
+        /// Convert degrees to radians.
+        /// </summary>
+        /// <param name="degrees"></param>
+        /// <returns></returns>
         private double DegreesToRadians(double degrees)
         {
             return degrees * Math.PI / 180.0;
         }
 
-        // Calculate the great circle distance between two points.
+        /// <summary>
+        /// Calculate the great circle distance between two points.
+        /// </summary>
+        /// <param name="lat1"></param>
+        /// <param name="lon1"></param>
+        /// <param name="lat2"></param>
+        /// <param name="lon2"></param>
+        /// <returns></returns>
         public double GreatCircleDistance(
             double lat1, double lon1, double lat2, double lon2)
         {

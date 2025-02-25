@@ -175,6 +175,9 @@
   <metadata name="costCategoriesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>206, 165</value>
   </metadata>
+  <metadata name="imageGalleriesBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>533, 202</value>
+  </metadata>
   <metadata name="personsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>910, 17</value>
   </metadata>
@@ -384,7 +387,7 @@
   <data name="addClientButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAAU1JREFUWEftk7suRUEYRnejQqVxeRgkonEa7+KSUFLxMEQn4vQ6nkOIW0EhfGsy
+        DAAACwwBP0AiyAAAAU1JREFUWEftk7suRUEYRnejQqVxeRgkonEa7+KSUFLxMEQn4vQ6nkOIW0EhfGsy
         k/xm9r83sYnIrGQlZ+b7ZmbfTlOp/CXeftmCttJPWuAGA1Mv4H9cwEieyyf5GH+vyc/w7QvYl6mbuyf7
         SN0CNzBw53Se5Yaci27GObK+J+Ge4waGsaTD4TlbkozX0YV7jhsYeN90ZsPoI8yRPYSRj3uOGxjuJR0e
         e86CJLsLIx/3HDcwnEk6vPOcbUl2GkY+7jluYFiVdPjgeOfzUQ5/kWQrsgv3HDfIOJSpm3sg+0jdAjcw
@@ -634,6 +637,9 @@ Sollten unterschiedliche Clients auf BikeDB zugreifen, wird nicht empfohlen dies
   </metadata>
   <metadata name="toolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>436, 202</value>
+  </metadata>
+  <metadata name="imageGalleriesTableAdapter.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>741, 202</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>228</value>

@@ -36,7 +36,7 @@
             this.flightDbTabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,8 +52,17 @@
             this.planeComboBox = new System.Windows.Forms.ComboBox();
             this.seatTextBox = new System.Windows.Forms.TextBox();
             this.classComboBox = new System.Windows.Forms.ComboBox();
-            this.descRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.unknownCheckBox = new System.Windows.Forms.CheckBox();
+            this.datestrTextBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.descRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.fileTextBox = new System.Windows.Forms.TextBox();
+            this.fileTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.fileButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flightTitleLabel = new System.Windows.Forms.Label();
@@ -201,14 +210,14 @@
             this.tabControl5 = new System.Windows.Forms.TabControl();
             this.tabPage22 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.costRemarkRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.costVehicleLabel = new System.Windows.Forms.Label();
+            this.costPriceLabel = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
-            this.costVehicleLabel = new System.Windows.Forms.Label();
-            this.costPriceLabel = new System.Windows.Forms.Label();
             this.costCategoryLabel = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
+            this.costRemarkRichTextBox = new System.Windows.Forms.RichTextBox();
             this.costTitleLabel = new System.Windows.Forms.Label();
             this.toolStrip5 = new System.Windows.Forms.ToolStrip();
             this.cost0ToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -303,6 +312,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.schließenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statistikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.distanzberechnungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anzeigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -322,19 +332,11 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.closeToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.flightDbBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.datestrTextBox = new System.Windows.Forms.TextBox();
-            this.unknownCheckBox = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label14 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.fileTextBox = new System.Windows.Forms.TextBox();
-            this.fileButton = new System.Windows.Forms.Button();
-            this.fileTypeComboBox = new System.Windows.Forms.ComboBox();
             this.flightFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFlightFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.distanzberechnungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label15 = new System.Windows.Forms.Label();
+            this.codeLabel = new System.Windows.Forms.Label();
             this.flightStatusStrip.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -342,6 +344,8 @@
             this.flightDbTabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -402,8 +406,6 @@
             this.toolStrip7.SuspendLayout();
             this.flightMenuStrip.SuspendLayout();
             this.flightToolStrip.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // flightStatusStrip
@@ -519,15 +521,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(853, 483);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // label8
+            // label14
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 280);
-            this.label8.Name = "label8";
-            this.label8.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label8.Size = new System.Drawing.Size(61, 18);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Anmerkung";
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(3, 256);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(69, 13);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Datei/Ordner";
             // 
             // label7
             // 
@@ -675,14 +677,47 @@
             this.classComboBox.Size = new System.Drawing.Size(272, 21);
             this.classComboBox.TabIndex = 10;
             // 
-            // descRichTextBox
+            // flowLayoutPanel2
             // 
-            this.descRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.descRichTextBox.Location = new System.Drawing.Point(103, 283);
-            this.descRichTextBox.Name = "descRichTextBox";
-            this.descRichTextBox.Size = new System.Drawing.Size(747, 167);
-            this.descRichTextBox.TabIndex = 15;
-            this.descRichTextBox.Text = "";
+            this.flowLayoutPanel2.Controls.Add(this.dateTimePicker);
+            this.flowLayoutPanel2.Controls.Add(this.unknownCheckBox);
+            this.flowLayoutPanel2.Controls.Add(this.datestrTextBox);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(103, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(747, 29);
+            this.flowLayoutPanel2.TabIndex = 0;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dateTimePicker.Location = new System.Drawing.Point(3, 3);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker.TabIndex = 1;
+            // 
+            // unknownCheckBox
+            // 
+            this.unknownCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.unknownCheckBox.AutoSize = true;
+            this.unknownCheckBox.Location = new System.Drawing.Point(209, 4);
+            this.unknownCheckBox.Name = "unknownCheckBox";
+            this.unknownCheckBox.Size = new System.Drawing.Size(157, 17);
+            this.unknownCheckBox.TabIndex = 2;
+            this.unknownCheckBox.Text = "Genaues Datum unbekannt";
+            this.unknownCheckBox.UseVisualStyleBackColor = true;
+            this.unknownCheckBox.CheckedChanged += new System.EventHandler(this.unknownCheckBox_CheckedChanged);
+            // 
+            // datestrTextBox
+            // 
+            this.datestrTextBox.Enabled = false;
+            this.datestrTextBox.Location = new System.Drawing.Point(372, 3);
+            this.datestrTextBox.MaxLength = 20;
+            this.datestrTextBox.Name = "datestrTextBox";
+            this.datestrTextBox.Size = new System.Drawing.Size(108, 20);
+            this.datestrTextBox.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.datestrTextBox, "Wenn man das genaue Datum eines Fluges nicht kennt, \r\nkann man hier z.B. \"August " +
+        "2007\" eintippen.");
             // 
             // addButton
             // 
@@ -693,6 +728,69 @@
             this.addButton.Text = "Speichern";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 280);
+            this.label8.Name = "label8";
+            this.label8.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.label8.Size = new System.Drawing.Size(61, 18);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Anmerkung";
+            // 
+            // descRichTextBox
+            // 
+            this.descRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descRichTextBox.Location = new System.Drawing.Point(103, 283);
+            this.descRichTextBox.Name = "descRichTextBox";
+            this.descRichTextBox.Size = new System.Drawing.Size(747, 167);
+            this.descRichTextBox.TabIndex = 15;
+            this.descRichTextBox.Text = "";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.fileTextBox);
+            this.flowLayoutPanel3.Controls.Add(this.fileTypeComboBox);
+            this.flowLayoutPanel3.Controls.Add(this.fileButton);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(103, 248);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(747, 29);
+            this.flowLayoutPanel3.TabIndex = 11;
+            // 
+            // fileTextBox
+            // 
+            this.fileTextBox.Location = new System.Drawing.Point(3, 3);
+            this.fileTextBox.Name = "fileTextBox";
+            this.fileTextBox.Size = new System.Drawing.Size(269, 20);
+            this.fileTextBox.TabIndex = 12;
+            // 
+            // fileTypeComboBox
+            // 
+            this.fileTypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fileTypeComboBox.FormattingEnabled = true;
+            this.fileTypeComboBox.Items.AddRange(new object[] {
+            "Bild",
+            "Galerie",
+            "Link",
+            "Video"});
+            this.fileTypeComboBox.Location = new System.Drawing.Point(278, 4);
+            this.fileTypeComboBox.Name = "fileTypeComboBox";
+            this.fileTypeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.fileTypeComboBox.TabIndex = 13;
+            this.fileTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.fileTypeComboBox_SelectedIndexChanged);
+            // 
+            // fileButton
+            // 
+            this.fileButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fileButton.Location = new System.Drawing.Point(405, 3);
+            this.fileButton.Name = "fileButton";
+            this.fileButton.Size = new System.Drawing.Size(75, 23);
+            this.fileButton.TabIndex = 14;
+            this.fileButton.Text = "Öffnen";
+            this.fileButton.UseVisualStyleBackColor = true;
+            this.fileButton.Click += new System.EventHandler(this.fileButton_Click);
             // 
             // tabPage2
             // 
@@ -1489,14 +1587,14 @@
             // 
             this.showAirportCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showAirportCheckedToolStripMenuItem.Image")));
             this.showAirportCheckedToolStripMenuItem.Name = "showAirportCheckedToolStripMenuItem";
-            this.showAirportCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showAirportCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showAirportCheckedToolStripMenuItem.Text = "Anzeigen";
             // 
             // showAirportNotCheckedToolStripMenuItem
             // 
             this.showAirportNotCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showAirportNotCheckedToolStripMenuItem.Image")));
             this.showAirportNotCheckedToolStripMenuItem.Name = "showAirportNotCheckedToolStripMenuItem";
-            this.showAirportNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showAirportNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showAirportNotCheckedToolStripMenuItem.Text = "Nicht anzeigen";
             // 
             // tabPage4
@@ -1913,14 +2011,14 @@
             // 
             this.showPlanesCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showPlanesCheckedToolStripMenuItem.Image")));
             this.showPlanesCheckedToolStripMenuItem.Name = "showPlanesCheckedToolStripMenuItem";
-            this.showPlanesCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showPlanesCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showPlanesCheckedToolStripMenuItem.Text = "Anzeigen";
             // 
             // showPlanesNotCheckedToolStripMenuItem
             // 
             this.showPlanesNotCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showPlanesNotCheckedToolStripMenuItem.Image")));
             this.showPlanesNotCheckedToolStripMenuItem.Name = "showPlanesNotCheckedToolStripMenuItem";
-            this.showPlanesNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showPlanesNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showPlanesNotCheckedToolStripMenuItem.Text = "Nicht anzeigen";
             // 
             // tabPage8
@@ -2315,14 +2413,14 @@
             // 
             this.showAirlineCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showAirlineCheckedToolStripMenuItem.Image")));
             this.showAirlineCheckedToolStripMenuItem.Name = "showAirlineCheckedToolStripMenuItem";
-            this.showAirlineCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showAirlineCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showAirlineCheckedToolStripMenuItem.Text = "Anzeigen";
             // 
             // showAirlineNotCheckedToolStripMenuItem
             // 
             this.showAirlineNotCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showAirlineNotCheckedToolStripMenuItem.Image")));
             this.showAirlineNotCheckedToolStripMenuItem.Name = "showAirlineNotCheckedToolStripMenuItem";
-            this.showAirlineNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showAirlineNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showAirlineNotCheckedToolStripMenuItem.Text = "Nicht anzeigen";
             // 
             // tabPage9
@@ -2397,15 +2495,25 @@
             this.tableLayoutPanel13.Size = new System.Drawing.Size(839, 371);
             this.tableLayoutPanel13.TabIndex = 0;
             // 
-            // costRemarkRichTextBox
+            // costVehicleLabel
             // 
-            this.costRemarkRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.costRemarkRichTextBox.Location = new System.Drawing.Point(103, 93);
-            this.costRemarkRichTextBox.Name = "costRemarkRichTextBox";
-            this.costRemarkRichTextBox.ReadOnly = true;
-            this.costRemarkRichTextBox.Size = new System.Drawing.Size(733, 275);
-            this.costRemarkRichTextBox.TabIndex = 16;
-            this.costRemarkRichTextBox.Text = "";
+            this.costVehicleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.costVehicleLabel.AutoSize = true;
+            this.costVehicleLabel.Location = new System.Drawing.Point(103, 38);
+            this.costVehicleLabel.Name = "costVehicleLabel";
+            this.costVehicleLabel.Size = new System.Drawing.Size(88, 13);
+            this.costVehicleLabel.TabIndex = 7;
+            this.costVehicleLabel.Text = "costVehicleLabel";
+            // 
+            // costPriceLabel
+            // 
+            this.costPriceLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.costPriceLabel.AutoSize = true;
+            this.costPriceLabel.Location = new System.Drawing.Point(103, 68);
+            this.costPriceLabel.Name = "costPriceLabel";
+            this.costPriceLabel.Size = new System.Drawing.Size(77, 13);
+            this.costPriceLabel.TabIndex = 8;
+            this.costPriceLabel.Text = "costPriceLabel";
             // 
             // label70
             // 
@@ -2437,26 +2545,6 @@
             this.label72.TabIndex = 3;
             this.label72.Text = "Preis";
             // 
-            // costVehicleLabel
-            // 
-            this.costVehicleLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.costVehicleLabel.AutoSize = true;
-            this.costVehicleLabel.Location = new System.Drawing.Point(103, 38);
-            this.costVehicleLabel.Name = "costVehicleLabel";
-            this.costVehicleLabel.Size = new System.Drawing.Size(88, 13);
-            this.costVehicleLabel.TabIndex = 7;
-            this.costVehicleLabel.Text = "costVehicleLabel";
-            // 
-            // costPriceLabel
-            // 
-            this.costPriceLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.costPriceLabel.AutoSize = true;
-            this.costPriceLabel.Location = new System.Drawing.Point(103, 68);
-            this.costPriceLabel.Name = "costPriceLabel";
-            this.costPriceLabel.Size = new System.Drawing.Size(77, 13);
-            this.costPriceLabel.TabIndex = 8;
-            this.costPriceLabel.Text = "costPriceLabel";
-            // 
             // costCategoryLabel
             // 
             this.costCategoryLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -2476,6 +2564,16 @@
             this.label79.Size = new System.Drawing.Size(61, 18);
             this.label79.TabIndex = 5;
             this.label79.Text = "Anmerkung";
+            // 
+            // costRemarkRichTextBox
+            // 
+            this.costRemarkRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.costRemarkRichTextBox.Location = new System.Drawing.Point(103, 93);
+            this.costRemarkRichTextBox.Name = "costRemarkRichTextBox";
+            this.costRemarkRichTextBox.ReadOnly = true;
+            this.costRemarkRichTextBox.Size = new System.Drawing.Size(733, 275);
+            this.costRemarkRichTextBox.TabIndex = 16;
+            this.costRemarkRichTextBox.Text = "";
             // 
             // costTitleLabel
             // 
@@ -2598,14 +2696,14 @@
             // 
             this.showCostsCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showCostsCheckedToolStripMenuItem.Image")));
             this.showCostsCheckedToolStripMenuItem.Name = "showCostsCheckedToolStripMenuItem";
-            this.showCostsCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showCostsCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showCostsCheckedToolStripMenuItem.Text = "Anzeigen";
             // 
             // showCostsNotCheckedToolStripMenuItem
             // 
             this.showCostsNotCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showCostsNotCheckedToolStripMenuItem.Image")));
             this.showCostsNotCheckedToolStripMenuItem.Name = "showCostsNotCheckedToolStripMenuItem";
-            this.showCostsNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showCostsNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showCostsNotCheckedToolStripMenuItem.Text = "Nicht anzeigen";
             // 
             // tabPage5
@@ -2904,14 +3002,14 @@
             // 
             this.showCountriesCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showCountriesCheckedToolStripMenuItem.Image")));
             this.showCountriesCheckedToolStripMenuItem.Name = "showCountriesCheckedToolStripMenuItem";
-            this.showCountriesCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showCountriesCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showCountriesCheckedToolStripMenuItem.Text = "Anzeigen";
             // 
             // showCountriesNotCheckedToolStripMenuItem
             // 
             this.showCountriesNotCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showCountriesNotCheckedToolStripMenuItem.Image")));
             this.showCountriesNotCheckedToolStripMenuItem.Name = "showCountriesNotCheckedToolStripMenuItem";
-            this.showCountriesNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showCountriesNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showCountriesNotCheckedToolStripMenuItem.Text = "Nicht anzeigen";
             // 
             // tabPage6
@@ -2972,24 +3070,27 @@
             this.tableLayoutPanel15.Controls.Add(this.countryLabel, 1, 0);
             this.tableLayoutPanel15.Controls.Add(this.label46, 0, 1);
             this.tableLayoutPanel15.Controls.Add(this.bundeslandLabel, 1, 1);
-            this.tableLayoutPanel15.Controls.Add(this.label47, 0, 2);
-            this.tableLayoutPanel15.Controls.Add(this.prefixLabel, 1, 2);
-            this.tableLayoutPanel15.Controls.Add(this.label48, 0, 3);
-            this.tableLayoutPanel15.Controls.Add(this.kfzLabel, 1, 3);
-            this.tableLayoutPanel15.Controls.Add(this.label10, 0, 4);
-            this.tableLayoutPanel15.Controls.Add(this.cityLinkLabel, 1, 4);
-            this.tableLayoutPanel15.Controls.Add(this.label11, 0, 5);
-            this.tableLayoutPanel15.Controls.Add(this.heightLabel, 1, 5);
-            this.tableLayoutPanel15.Controls.Add(this.label12, 0, 6);
-            this.tableLayoutPanel15.Controls.Add(this.gpsLabel, 1, 6);
-            this.tableLayoutPanel15.Controls.Add(this.label13, 0, 8);
-            this.tableLayoutPanel15.Controls.Add(this.cityRemarkRichTextBox, 1, 8);
-            this.tableLayoutPanel15.Controls.Add(this.label24, 0, 7);
-            this.tableLayoutPanel15.Controls.Add(this.airportLabel, 1, 7);
+            this.tableLayoutPanel15.Controls.Add(this.label13, 0, 9);
+            this.tableLayoutPanel15.Controls.Add(this.cityRemarkRichTextBox, 1, 9);
+            this.tableLayoutPanel15.Controls.Add(this.label24, 0, 8);
+            this.tableLayoutPanel15.Controls.Add(this.airportLabel, 1, 8);
+            this.tableLayoutPanel15.Controls.Add(this.label12, 0, 7);
+            this.tableLayoutPanel15.Controls.Add(this.gpsLabel, 1, 7);
+            this.tableLayoutPanel15.Controls.Add(this.label11, 0, 6);
+            this.tableLayoutPanel15.Controls.Add(this.heightLabel, 1, 6);
+            this.tableLayoutPanel15.Controls.Add(this.label10, 0, 5);
+            this.tableLayoutPanel15.Controls.Add(this.cityLinkLabel, 1, 5);
+            this.tableLayoutPanel15.Controls.Add(this.label48, 0, 4);
+            this.tableLayoutPanel15.Controls.Add(this.kfzLabel, 1, 4);
+            this.tableLayoutPanel15.Controls.Add(this.label47, 0, 3);
+            this.tableLayoutPanel15.Controls.Add(this.prefixLabel, 1, 3);
+            this.tableLayoutPanel15.Controls.Add(this.label15, 0, 2);
+            this.tableLayoutPanel15.Controls.Add(this.codeLabel, 1, 2);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel15.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 9;
+            this.tableLayoutPanel15.RowCount = 10;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -3046,7 +3147,7 @@
             // 
             this.label47.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(3, 68);
+            this.label47.Location = new System.Drawing.Point(3, 98);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(45, 13);
             this.label47.TabIndex = 3;
@@ -3056,7 +3157,7 @@
             // 
             this.prefixLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.prefixLabel.AutoSize = true;
-            this.prefixLabel.Location = new System.Drawing.Point(103, 68);
+            this.prefixLabel.Location = new System.Drawing.Point(103, 98);
             this.prefixLabel.Name = "prefixLabel";
             this.prefixLabel.Size = new System.Drawing.Size(45, 13);
             this.prefixLabel.TabIndex = 9;
@@ -3066,7 +3167,7 @@
             // 
             this.label48.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(3, 98);
+            this.label48.Location = new System.Drawing.Point(3, 128);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(87, 13);
             this.label48.TabIndex = 4;
@@ -3076,7 +3177,7 @@
             // 
             this.kfzLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.kfzLabel.AutoSize = true;
-            this.kfzLabel.Location = new System.Drawing.Point(103, 98);
+            this.kfzLabel.Location = new System.Drawing.Point(103, 128);
             this.kfzLabel.Name = "kfzLabel";
             this.kfzLabel.Size = new System.Drawing.Size(22, 13);
             this.kfzLabel.TabIndex = 10;
@@ -3086,7 +3187,7 @@
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(2, 128);
+            this.label10.Location = new System.Drawing.Point(2, 158);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(27, 13);
@@ -3097,7 +3198,7 @@
             // 
             this.cityLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cityLinkLabel.AutoSize = true;
-            this.cityLinkLabel.Location = new System.Drawing.Point(103, 128);
+            this.cityLinkLabel.Location = new System.Drawing.Point(103, 158);
             this.cityLinkLabel.Name = "cityLinkLabel";
             this.cityLinkLabel.Size = new System.Drawing.Size(55, 13);
             this.cityLinkLabel.TabIndex = 17;
@@ -3107,7 +3208,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(2, 150);
+            this.label11.Location = new System.Drawing.Point(2, 180);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(68, 26);
@@ -3118,7 +3219,7 @@
             // 
             this.heightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.heightLabel.AutoSize = true;
-            this.heightLabel.Location = new System.Drawing.Point(102, 158);
+            this.heightLabel.Location = new System.Drawing.Point(102, 188);
             this.heightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.heightLabel.Name = "heightLabel";
             this.heightLabel.Size = new System.Drawing.Size(33, 13);
@@ -3129,7 +3230,7 @@
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 188);
+            this.label12.Location = new System.Drawing.Point(3, 218);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(89, 13);
             this.label12.TabIndex = 18;
@@ -3139,7 +3240,7 @@
             // 
             this.gpsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.gpsLabel.AutoSize = true;
-            this.gpsLabel.Location = new System.Drawing.Point(103, 188);
+            this.gpsLabel.Location = new System.Drawing.Point(103, 218);
             this.gpsLabel.Name = "gpsLabel";
             this.gpsLabel.Size = new System.Drawing.Size(26, 13);
             this.gpsLabel.TabIndex = 19;
@@ -3148,7 +3249,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 240);
+            this.label13.Location = new System.Drawing.Point(3, 270);
             this.label13.Name = "label13";
             this.label13.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.label13.Size = new System.Drawing.Size(61, 18);
@@ -3158,10 +3259,10 @@
             // cityRemarkRichTextBox
             // 
             this.cityRemarkRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cityRemarkRichTextBox.Location = new System.Drawing.Point(103, 243);
+            this.cityRemarkRichTextBox.Location = new System.Drawing.Point(103, 273);
             this.cityRemarkRichTextBox.Name = "cityRemarkRichTextBox";
             this.cityRemarkRichTextBox.ReadOnly = true;
-            this.cityRemarkRichTextBox.Size = new System.Drawing.Size(733, 125);
+            this.cityRemarkRichTextBox.Size = new System.Drawing.Size(733, 95);
             this.cityRemarkRichTextBox.TabIndex = 22;
             this.cityRemarkRichTextBox.Text = "";
             // 
@@ -3169,7 +3270,7 @@
             // 
             this.label24.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(3, 218);
+            this.label24.Location = new System.Drawing.Point(3, 248);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(54, 13);
             this.label24.TabIndex = 23;
@@ -3179,7 +3280,7 @@
             // 
             this.airportLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.airportLabel.AutoSize = true;
-            this.airportLabel.Location = new System.Drawing.Point(103, 218);
+            this.airportLabel.Location = new System.Drawing.Point(103, 248);
             this.airportLabel.Name = "airportLabel";
             this.airportLabel.Size = new System.Drawing.Size(62, 13);
             this.airportLabel.TabIndex = 24;
@@ -3329,14 +3430,14 @@
             // 
             this.showCitiesCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showCitiesCheckedToolStripMenuItem.Image")));
             this.showCitiesCheckedToolStripMenuItem.Name = "showCitiesCheckedToolStripMenuItem";
-            this.showCitiesCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showCitiesCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showCitiesCheckedToolStripMenuItem.Text = "Anzeigen";
             // 
             // showCitiesNotCheckedToolStripMenuItem
             // 
             this.showCitiesNotCheckedToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("showCitiesNotCheckedToolStripMenuItem.Image")));
             this.showCitiesNotCheckedToolStripMenuItem.Name = "showCitiesNotCheckedToolStripMenuItem";
-            this.showCitiesNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showCitiesNotCheckedToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.showCitiesNotCheckedToolStripMenuItem.Text = "Nicht anzeigen";
             // 
             // tabPage7
@@ -3494,11 +3595,19 @@
             this.statistikToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.statistikToolStripMenuItem.Text = "&Statistik";
             // 
+            // distanzberechnungToolStripMenuItem
+            // 
+            this.distanzberechnungToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("distanzberechnungToolStripMenuItem.Image")));
+            this.distanzberechnungToolStripMenuItem.Name = "distanzberechnungToolStripMenuItem";
+            this.distanzberechnungToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.distanzberechnungToolStripMenuItem.Text = "&Distanzberechnung";
+            this.distanzberechnungToolStripMenuItem.Click += new System.EventHandler(this.distanzberechnungToolStripMenuItem_Click);
+            // 
             // anzeigenToolStripMenuItem
             // 
             this.anzeigenToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("anzeigenToolStripMenuItem.Image")));
             this.anzeigenToolStripMenuItem.Name = "anzeigenToolStripMenuItem";
-            this.anzeigenToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.anzeigenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.anzeigenToolStripMenuItem.Text = "&Zeigen";
             // 
             // hilfeToolStripMenuItem
@@ -3674,114 +3783,30 @@
             this.flightDbBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.flightDbBackgroundWorker_DoWork);
             this.flightDbBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.flightDbBackgroundWorker_RunWorkerCompleted);
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.dateTimePicker);
-            this.flowLayoutPanel2.Controls.Add(this.unknownCheckBox);
-            this.flowLayoutPanel2.Controls.Add(this.datestrTextBox);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(103, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(747, 29);
-            this.flowLayoutPanel2.TabIndex = 0;
-            // 
-            // dateTimePicker
-            // 
-            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dateTimePicker.Location = new System.Drawing.Point(3, 3);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker.TabIndex = 1;
-            // 
-            // datestrTextBox
-            // 
-            this.datestrTextBox.Enabled = false;
-            this.datestrTextBox.Location = new System.Drawing.Point(372, 3);
-            this.datestrTextBox.MaxLength = 20;
-            this.datestrTextBox.Name = "datestrTextBox";
-            this.datestrTextBox.Size = new System.Drawing.Size(108, 20);
-            this.datestrTextBox.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.datestrTextBox, "Wenn man das genaue Datum eines Fluges nicht kennt, \r\nkann man hier z.B. \"August " +
-        "2007\" eintippen.");
-            // 
-            // unknownCheckBox
-            // 
-            this.unknownCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.unknownCheckBox.AutoSize = true;
-            this.unknownCheckBox.Location = new System.Drawing.Point(209, 4);
-            this.unknownCheckBox.Name = "unknownCheckBox";
-            this.unknownCheckBox.Size = new System.Drawing.Size(157, 17);
-            this.unknownCheckBox.TabIndex = 2;
-            this.unknownCheckBox.Text = "Genaues Datum unbekannt";
-            this.unknownCheckBox.UseVisualStyleBackColor = true;
-            this.unknownCheckBox.CheckedChanged += new System.EventHandler(this.unknownCheckBox_CheckedChanged);
-            // 
             // toolTip1
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Unbekanntes Datum";
             // 
-            // label14
+            // label15
             // 
-            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(3, 256);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(69, 13);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "Datei/Ordner";
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 68);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(78, 13);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Postleitzahl(en)";
             // 
-            // flowLayoutPanel3
+            // codeLabel
             // 
-            this.flowLayoutPanel3.Controls.Add(this.fileTextBox);
-            this.flowLayoutPanel3.Controls.Add(this.fileTypeComboBox);
-            this.flowLayoutPanel3.Controls.Add(this.fileButton);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(103, 248);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(747, 29);
-            this.flowLayoutPanel3.TabIndex = 11;
-            // 
-            // fileTextBox
-            // 
-            this.fileTextBox.Location = new System.Drawing.Point(3, 3);
-            this.fileTextBox.Name = "fileTextBox";
-            this.fileTextBox.Size = new System.Drawing.Size(269, 20);
-            this.fileTextBox.TabIndex = 12;
-            // 
-            // fileButton
-            // 
-            this.fileButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.fileButton.Location = new System.Drawing.Point(405, 3);
-            this.fileButton.Name = "fileButton";
-            this.fileButton.Size = new System.Drawing.Size(75, 23);
-            this.fileButton.TabIndex = 14;
-            this.fileButton.Text = "Öffnen";
-            this.fileButton.UseVisualStyleBackColor = true;
-            this.fileButton.Click += new System.EventHandler(this.fileButton_Click);
-            // 
-            // fileTypeComboBox
-            // 
-            this.fileTypeComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.fileTypeComboBox.FormattingEnabled = true;
-            this.fileTypeComboBox.Items.AddRange(new object[] {
-            "Bild",
-            "Galerie",
-            "Link",
-            "Video"});
-            this.fileTypeComboBox.Location = new System.Drawing.Point(278, 4);
-            this.fileTypeComboBox.Name = "fileTypeComboBox";
-            this.fileTypeComboBox.Size = new System.Drawing.Size(121, 21);
-            this.fileTypeComboBox.TabIndex = 13;
-            this.fileTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.fileTypeComboBox_SelectedIndexChanged);
-            // 
-            // distanzberechnungToolStripMenuItem
-            // 
-            this.distanzberechnungToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("distanzberechnungToolStripMenuItem.Image")));
-            this.distanzberechnungToolStripMenuItem.Name = "distanzberechnungToolStripMenuItem";
-            this.distanzberechnungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.distanzberechnungToolStripMenuItem.Text = "&Distanzberechnung";
-            this.distanzberechnungToolStripMenuItem.Click += new System.EventHandler(this.distanzberechnungToolStripMenuItem_Click);
+            this.codeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.codeLabel.AutoSize = true;
+            this.codeLabel.Location = new System.Drawing.Point(103, 68);
+            this.codeLabel.Name = "codeLabel";
+            this.codeLabel.Size = new System.Drawing.Size(57, 13);
+            this.codeLabel.TabIndex = 26;
+            this.codeLabel.Text = "codeLabel";
             // 
             // FlightDBForm
             // 
@@ -3810,6 +3835,10 @@
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -3894,10 +3923,6 @@
             this.flightMenuStrip.PerformLayout();
             this.flightToolStrip.ResumeLayout(false);
             this.flightToolStrip.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4210,5 +4235,7 @@
         private System.Windows.Forms.FolderBrowserDialog flightFolderBrowserDialog;
         private System.Windows.Forms.OpenFileDialog openFlightFileDialog;
         private System.Windows.Forms.ToolStripMenuItem distanzberechnungToolStripMenuItem;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label codeLabel;
     }
 }
