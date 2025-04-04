@@ -43,6 +43,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.planeTypeComboBox = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.subTypeTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.regTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
@@ -54,7 +55,6 @@
             this.imageButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.openImageFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.subTypeTextBox = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -230,6 +230,15 @@
             this.flowLayoutPanel3.Size = new System.Drawing.Size(303, 24);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
+            // subTypeTextBox
+            // 
+            this.subTypeTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subTypeTextBox.Location = new System.Drawing.Point(3, 3);
+            this.subTypeTextBox.MaxLength = 50;
+            this.subTypeTextBox.Name = "subTypeTextBox";
+            this.subTypeTextBox.Size = new System.Drawing.Size(295, 20);
+            this.subTypeTextBox.TabIndex = 2;
+            // 
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Controls.Add(this.regTextBox);
@@ -309,7 +318,6 @@
             // 
             // imageButton
             // 
-            this.imageButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.imageButton.Location = new System.Drawing.Point(224, 3);
             this.imageButton.Name = "imageButton";
             this.imageButton.Size = new System.Drawing.Size(75, 23);
@@ -333,15 +341,6 @@
             this.openImageFileDialog.Filter = "PNG-Bilddatei|*.png|JPG-Bilddatei|*.jpg|GIF-Bilddatei|*.gif|Alle Dateien (*.*)|*." +
     "*";
             this.openImageFileDialog.Title = "Flugzeugbild auswählen";
-            // 
-            // subTypeTextBox
-            // 
-            this.subTypeTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subTypeTextBox.Location = new System.Drawing.Point(3, 3);
-            this.subTypeTextBox.MaxLength = 50;
-            this.subTypeTextBox.Name = "subTypeTextBox";
-            this.subTypeTextBox.Size = new System.Drawing.Size(295, 20);
-            this.subTypeTextBox.TabIndex = 2;
             // 
             // PlaneForm
             // 

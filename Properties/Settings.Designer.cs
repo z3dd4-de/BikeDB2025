@@ -657,5 +657,137 @@ namespace BikeDB2024.Properties {
                 this["ThumbnailSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool GPSCoordAngle {
+            get {
+                return ((bool)(this["GPSCoordAngle"]));
+            }
+            set {
+                this["GPSCoordAngle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int FDBAirportSetting {
+            get {
+                return ((int)(this["FDBAirportSetting"]));
+            }
+            set {
+                this["FDBAirportSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int FDBAirlineSetting {
+            get {
+                return ((int)(this["FDBAirlineSetting"]));
+            }
+            set {
+                this["FDBAirlineSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int FDBPlaneSetting {
+            get {
+                return ((int)(this["FDBPlaneSetting"]));
+            }
+            set {
+                this["FDBPlaneSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Economy")]
+        public string FDBClassSetting {
+            get {
+                return ((string)(this["FDBClassSetting"]));
+            }
+            set {
+                this["FDBClassSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int FDBTakeOffSetting {
+            get {
+                return ((int)(this["FDBTakeOffSetting"]));
+            }
+            set {
+                this["FDBTakeOffSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int FDBLandingSetting {
+            get {
+                return ((int)(this["FDBLandingSetting"]));
+            }
+            set {
+                this["FDBLandingSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int FDBStartTypeSetting {
+            get {
+                return ((int)(this["FDBStartTypeSetting"]));
+            }
+            set {
+                this["FDBStartTypeSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string FDBStartSetting {
+            get {
+                return ((string)(this["FDBStartSetting"]));
+            }
+            set {
+                this["FDBStartSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int FDBZoomSetting {
+            get {
+                return ((int)(this["FDBZoomSetting"]));
+            }
+            set {
+                this["FDBZoomSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("280")]
+        public int FDBSplitterSetting {
+            get {
+                return ((int)(this["FDBSplitterSetting"]));
+            }
+            set {
+                this["FDBSplitterSetting"] = value;
+            }
+        }
     }
 }

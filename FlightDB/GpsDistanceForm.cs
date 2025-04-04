@@ -18,78 +18,11 @@ namespace BikeDB2024.FlightDB
         GpsCoordinate coord2;
 
         /// <summary>
-        /// Enumeration for Location objects.
-        /// </summary>
-        enum GpsType { AIRPORT, CITY };
-
-        /// <summary>
         /// Constructor.
         /// </summary>
         public GpsDistanceForm()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Load a Location object (airport or city) into a ComboBox. 
-        /// </summary>
-        /// <param name="cb"></param>
-        /// <param name="type"></param>
-        private void fillComboBox(ComboBox cb, GpsType type)
-        {
-            SqlConnection con1;
-            List<Location> data = new List<Location>();
-            cb.DataSource = null;
-            cb.Sorted = true;
-            cb.Items.Clear();
-            cb.DisplayMember = "Text";
-            cb.ValueMember = "Value";
-
-            try
-            {
-                using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
-                {
-                    con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
-                    {
-                        switch (type)
-                        {
-                            case GpsType.AIRPORT:
-                                com1.CommandText = @"SELECT * FROM Airports WHERE GPS IS NOT NULL";    //[User] = " + Properties.Settings.Default.CurrentUserID.ToString();
-                                com1.CommandType = CommandType.Text;
-                                com1.Connection = con1;
-                                using (SqlDataReader reader1 = com1.ExecuteReader())
-                                {
-                                    while (reader1.Read())
-                                    {
-                                        data.Add(new Airport(reader1.GetInt32(0)));
-                                    }
-                                    reader1.Close();
-                                }
-                                break;
-                            case GpsType.CITY:
-                                com1.CommandText = @"SELECT * FROM Cities WHERE Gps IS NOT NULL";    //[User] = " + Properties.Settings.Default.CurrentUserID.ToString();
-                                com1.CommandType = CommandType.Text;
-                                com1.Connection = con1;
-                                using (SqlDataReader reader1 = com1.ExecuteReader())
-                                {
-                                    while (reader1.Read())
-                                    {
-                                        data.Add(new City(reader1.GetInt32(0)));
-                                    }
-                                    reader1.Close();
-                                }
-                                break;
-                        }
-                    }
-                    con1.Close();
-                }
-                cb.DataSource = data;
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex.Message, "Fehler beim Laden des Ortes");
-            }
         }
 
         /// <summary>
@@ -100,8 +33,8 @@ namespace BikeDB2024.FlightDB
         private void GpsDistanceForm_Load(object sender, EventArgs e)
         {
             distanceLabel.Text = "";
-            fillComboBox(startComboBox, GpsType.CITY);
-            fillComboBox(endComboBox, GpsType.CITY);
+            FillLocationComboBox(startComboBox, GpsType.CITY);
+            FillLocationComboBox(endComboBox, GpsType.CITY);
         }
 
         /// <summary>
@@ -209,23 +142,23 @@ namespace BikeDB2024.FlightDB
         {
             if (city1RadioButton.Checked)
             {
-                fillComboBox(startComboBox, GpsType.CITY);
+                FillLocationComboBox(startComboBox, GpsType.CITY);
             }
         }
 
         private void airport1RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            fillComboBox(startComboBox, GpsType.AIRPORT);
+            FillLocationComboBox(startComboBox, GpsType.AIRPORT);
         }
 
         private void city2RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            fillComboBox(endComboBox, GpsType.CITY);
+            FillLocationComboBox(endComboBox, GpsType.CITY);
         }
 
         private void airport2RadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            fillComboBox(endComboBox, GpsType.AIRPORT);
+            FillLocationComboBox(endComboBox, GpsType.AIRPORT);
         }
         #endregion
     }

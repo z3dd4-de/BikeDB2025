@@ -38,7 +38,7 @@ namespace BikeDB2024.FlightDB
         /// <param name="e"></param>
         private void PlaneForm_Load(object sender, EventArgs e)
         {
-            manu = new DefaultComboBoxes(constructorComboBox, DefaultComboBoxes.CB_Types.PLANE_TYPES, false);
+            manu = new DefaultComboBoxes(constructorComboBox, DefaultComboBoxes.CB_Types.MANUFACTURERS, false);
             cats = new DefaultComboBoxes(planeTypeComboBox, DefaultComboBoxes.CB_Types.PLANE_TYPES, false);
 
             modeComboBox.SelectedIndex = 2;

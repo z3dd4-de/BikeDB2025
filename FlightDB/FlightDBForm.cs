@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using BikeDB2024.FlightDB;
+using GMap.NET;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static BikeDB2024.Helpers;
 
@@ -54,6 +57,12 @@ namespace BikeDB2024
 
         public int CurrentUserId { get; set; }
         public string CurrentUserName { get; set; }
+
+        // Map Settings
+        private Marker StartMarker { get; set; }
+        private Marker EndMarker { get; set; }
+        private List<PointLatLng> FlightLocations = new List<PointLatLng>();
+        GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
         #endregion
 
         /// <summary>
@@ -71,21 +80,38 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void FlightDBForm_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.FlightDBLocation != new Point(100, 100))
-                this.Location = Properties.Settings.Default.FlightDBLocation;
-            else this.Location = new Point(100, 100);
-            if (Properties.Settings.Default.FlightDBSize != new Size(800, 500))
-                this.Size = Properties.Settings.Default.FlightDBSize;
-            else this.Size = new Size(800, 500);
-            if (CurrentUserId >= 0 && CurrentUserName != String.Empty)
-            {
-                logged_in = true;
-                flightDbToolStripStatusLabel.Text = 
-                    Properties.Settings.Default.CurrentUserName + " (" + CurrentUserId.ToString() + ")";
-            }
-            else
-                logged_in = false;
             checkLogin();
+            if (logged_in) 
+            { 
+                if (Properties.Settings.Default.FlightDBLocation != new Point(100, 100))
+                    this.Location = Properties.Settings.Default.FlightDBLocation;
+                else this.Location = new Point(100, 100);
+                if (Properties.Settings.Default.FlightDBSize != new Size(800, 500))
+                    this.Size = Properties.Settings.Default.FlightDBSize;
+                else this.Size = new Size(800, 500);
+                mapSplitContainer.SplitterDistance = Properties.Settings.Default.FDBSplitterSetting;
+
+                if (Properties.Settings.Default.FDBTakeOffSetting >= 0)
+                {
+                    Marker test = new Marker(Properties.Settings.Default.FDBTakeOffSetting);
+                    takeoffLayoutComboBox.SelectedValue = test.Value;
+                    //takeoffLayoutComboBox.SelectedText = Properties.Settings.Default.FDBTakeOffSetting;
+                }
+                StartMarker = (Marker)takeoffLayoutComboBox.SelectedItem;
+
+                if (Properties.Settings.Default.FDBLandingSetting >= 0)
+                {
+                    Marker test = new Marker(Properties.Settings.Default.FDBLandingSetting);
+                    landingLayoutComboBox.SelectedValue = test.Value;
+                    //landingLayoutComboBox.SelectedText = Properties.Settings.Default.FDBLandingSetting;
+                }
+                EndMarker = (Marker)landingLayoutComboBox.SelectedItem;
+
+                zoomTrackBar.Minimum = 1;
+                zoomTrackBar.Maximum = 20;
+                zoomTrackBar.Value = Properties.Settings.Default.FDBZoomSetting;
+                initMap();
+            }
         }
 
         /// <summary>
@@ -93,6 +119,15 @@ namespace BikeDB2024
         /// </summary>
         private void checkLogin()
         {
+            flightDbToolStripStatusLabel.Text = "";
+            if (CurrentUserId >= 0 && CurrentUserName != String.Empty)
+            {
+                logged_in = true;
+                flightDbToolStripStatusLabel.Text =
+                    Properties.Settings.Default.CurrentUserName + " (" + CurrentUserId.ToString() + ")";
+            }
+            else
+                logged_in = false;
             if (logged_in)
             {
                 neuToolStripMenuItem.Visible = true;
@@ -111,6 +146,13 @@ namespace BikeDB2024
                 cityToolStripButton.Visible = true;
                 toolStripSeparator2.Visible = true;
                 flightDbTabControl.Visible = true;
+                optionenToolStripMenuItem.Visible = true;
+                setupToolStripButton.Visible = true;
+                FillGoogleMarkerTypeComboBox(takeoffLayoutComboBox);
+                FillGoogleMarkerTypeComboBox(landingLayoutComboBox);
+                FillLocationComboBox(takeoffComboBox, GpsType.AIRPORT);
+                FillLocationComboBox(landingCoordComboBox, GpsType.AIRPORT);
+                FillLocationComboBox(cityCoordComboBox, GpsType.CITY);
             }
             else
             {
@@ -130,6 +172,8 @@ namespace BikeDB2024
                 cityToolStripButton.Visible = false;
                 toolStripSeparator2.Visible = false;
                 flightDbTabControl.Visible = false;
+                optionenToolStripMenuItem.Visible = false;
+                setupToolStripButton.Visible = false;
             }
         }
 
@@ -1098,7 +1142,7 @@ namespace BikeDB2024
         {
             try
             {
-                if (tabPage != 0)
+                if (tabPage != 0 && tabPage != 8)
                 {
                     int result = -1;
                     switch (tabPage)
@@ -1223,7 +1267,7 @@ namespace BikeDB2024
         private void flightDbBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             int result = (int)e.Result;
-            if (tabPage != 0)
+            if (tabPage != 0 && tabPage != 8)
             {
                 SqlConnection myConnection, con1;
                 SqlParameter idParam;
@@ -1909,5 +1953,165 @@ namespace BikeDB2024
             GpsDistanceForm gpsForm = new GpsDistanceForm();
             gpsForm.ShowDialog();
         }
+
+        #region World map
+        /// <summary>
+        /// Initialize the OpenStreetMap.
+        /// </summary>
+        private void initMap()
+        {
+            mapControl.DragButton = MouseButtons.Left;
+            mapControl.CanDragMap = true;
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+            mapControl.MapProvider = GMap.NET.MapProviders.OpenStreetMapProvider.Instance;
+            mapControl.ShowCenter = false;
+            mapControl.MinZoom = 0;
+            mapControl.MaxZoom = 20;
+            mapControl.Zoom = zoomTrackBar.Value;
+            zoomToolTip.SetToolTip(zoomTrackBar, zoomTrackBar.Value.ToString());
+            mapControl.AutoScroll = true;
+            mapControl.Refresh();
+        }
+
+        /// <summary>
+        /// Switch to world map tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mapToolStripButton_Click(object sender, EventArgs e)
+        {
+            flightDbTabControl.SelectedIndex = 8;
+        }
+
+        /// <summary>
+        /// Save splitter layout to be restored when reloaded.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void mapSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+            Properties.Settings.Default.FDBSplitterSetting = mapSplitContainer.SplitterDistance;
+        }
+
+        private void takeoffLayoutComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Marker test = (Marker)takeoffLayoutComboBox.SelectedItem;
+            if (test != null)
+            {
+                MessageBox.Show(test.ToString());
+                //Marker m = new Marker((int)takeoffComboBox.SelectedValue);
+                MessageBox.Show(test.Value.ToString());
+                StartMarker = (Marker)takeoffLayoutComboBox.SelectedItem;
+            }
+        }
+
+        private void setLocation(Location loc, FlightLocation fl = FlightLocation.CITY)
+        {
+            if (loc == null || loc.GpsString == "") { return; }
+            // 50° 51′ 57″ N, 7° 8′ 34″ O
+            GpsCoordinate map_loc = null;
+            Marker t_marker = null;
+
+            if (loc.GpsString.Contains("°"))
+            {
+                map_loc = new GpsCoordinate(loc.GpsString);
+            }
+            else if (loc.GpsString.Contains("."))
+            {
+                map_loc = new GpsCoordinate(SexagesimalAngle.FromDouble(Convert.ToDouble(loc.GpsString)).ToString());
+            }
+            var gps_loc = new GMap.NET.PointLatLng(map_loc.LatitudeValue, map_loc.LongitudeValue);
+
+            if (fl == FlightLocation.TAKEOFF)
+            {
+                t_marker = (Marker)takeoffLayoutComboBox.SelectedItem;
+            }
+            else if (fl == FlightLocation.LANDING)
+            {
+                t_marker = (Marker)landingLayoutComboBox.SelectedItem;
+            }
+            else    // FlightLocation.CITY
+            {
+                t_marker = (Marker)takeoffLayoutComboBox.SelectedItem;
+            }
+            GMarkerGoogle loc_marker = new GMarkerGoogle(gps_loc, t_marker.Type);
+            loc_marker.ToolTipText = loc.Name;
+            loc_marker.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+            markers.Markers.Add(loc_marker);
+            mapControl.Position = gps_loc;
+            mapControl.Refresh();
+        }
+
+        private void landingLayoutComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Marker test = (Marker)landingLayoutComboBox.SelectedItem;
+            if (test != null)
+            {
+                EndMarker = test;
+            }  
+        }
+
+        private void flightComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void takeoffComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Airport airport = (Airport)takeoffComboBox.SelectedItem;
+            setLocation(airport, FlightLocation.TAKEOFF);
+        }
+
+        private void landingCoordComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Airport airport = (Airport)landingCoordComboBox.SelectedItem;
+            setLocation(airport, FlightLocation.LANDING);
+        }
+
+        private void cityCoordComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            City city = (City)cityCoordComboBox.SelectedItem;
+            setLocation(city, FlightLocation.CITY);
+        }
+
+        private void loadPositionButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void zoomTrackBar_Scroll(object sender, EventArgs e)
+        {
+            mapControl.Zoom = zoomTrackBar.Value;
+            zoomToolTip.SetToolTip(zoomTrackBar, zoomTrackBar.Value.ToString());
+        }
+        #endregion
+
+        #region Setup
+        private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            showSetup();
+        }
+
+        private void setupToolStripButton_Click(object sender, EventArgs e)
+        {
+            showSetup();
+        }
+
+        private void showSetup()
+        {
+            SettingsFlightDBForm settings = new SettingsFlightDBForm();
+            if (settings.ShowDialog() == DialogResult.OK)
+            {
+                refreshSettings();
+            }
+        }
+
+        private void refreshSettings()
+        {
+            //MessageBox.Show("Settings closed");
+            zoomTrackBar.Value = Properties.Settings.Default.FDBZoomSetting;
+            classComboBox.SelectedText = Properties.Settings.Default.FDBClassSetting;
+        }
+        #endregion
     }
 }

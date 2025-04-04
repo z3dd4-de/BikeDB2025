@@ -266,20 +266,22 @@
             this.countryLabel = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.bundeslandLabel = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.prefixLabel = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.kfzLabel = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cityLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.heightLabel = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.gpsLabel = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.cityRemarkRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.airportLabel = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.gpsLabel = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.heightLabel = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cityLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.label48 = new System.Windows.Forms.Label();
+            this.kfzLabel = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.prefixLabel = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.codeLabel = new System.Windows.Forms.Label();
             this.tabPage29 = new System.Windows.Forms.TabPage();
             this.cityPictureBox = new System.Windows.Forms.PictureBox();
             this.cityTitleLabel = new System.Windows.Forms.Label();
@@ -295,6 +297,31 @@
             this.showCitiesCheckedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showCitiesNotCheckedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.mapSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.flightComboBox = new System.Windows.Forms.ComboBox();
+            this.takeoffComboBox = new System.Windows.Forms.ComboBox();
+            this.landingCoordComboBox = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.takeoffLayoutComboBox = new System.Windows.Forms.ComboBox();
+            this.landingLayoutComboBox = new System.Windows.Forms.ComboBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.cityCoordComboBox = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.latitudeTextBox = new System.Windows.Forms.TextBox();
+            this.longitudeTextBox = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.gradRadioButton = new System.Windows.Forms.RadioButton();
+            this.decRadioButton = new System.Windows.Forms.RadioButton();
+            this.loadPositionButton = new System.Windows.Forms.Button();
+            this.label52 = new System.Windows.Forms.Label();
+            this.mapControl = new GMap.NET.WindowsForms.GMapControl();
             this.flightMenuStrip = new System.Windows.Forms.MenuStrip();
             this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -314,6 +341,8 @@
             this.statistikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.distanzberechnungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anzeigenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hilfeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -326,6 +355,8 @@
             this.costToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.countryToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.cityToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.mapToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.setupToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.infoToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -335,8 +366,9 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.flightFolderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openFlightFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.label15 = new System.Windows.Forms.Label();
-            this.codeLabel = new System.Windows.Forms.Label();
+            this.zoomTrackBar = new System.Windows.Forms.TrackBar();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.zoomToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.flightStatusStrip.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -404,18 +436,29 @@
             this.tabPage29.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cityPictureBox)).BeginInit();
             this.toolStrip7.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mapSplitContainer)).BeginInit();
+            this.mapSplitContainer.Panel1.SuspendLayout();
+            this.mapSplitContainer.Panel2.SuspendLayout();
+            this.mapSplitContainer.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel16.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.flightMenuStrip.SuspendLayout();
             this.flightToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBar)).BeginInit();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // flightStatusStrip
             // 
+            this.flightStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.flightStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.flightDbToolStripStatusLabel});
-            this.flightStatusStrip.Location = new System.Drawing.Point(0, 578);
+            this.flightStatusStrip.Location = new System.Drawing.Point(0, 575);
             this.flightStatusStrip.Name = "flightStatusStrip";
             this.flightStatusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.flightStatusStrip.Size = new System.Drawing.Size(867, 22);
+            this.flightStatusStrip.Size = new System.Drawing.Size(867, 25);
             this.flightStatusStrip.TabIndex = 0;
             this.flightStatusStrip.Text = "statusStrip1";
             // 
@@ -423,7 +466,7 @@
             // 
             this.flightDbToolStripStatusLabel.Image = ((System.Drawing.Image)(resources.GetObject("flightDbToolStripStatusLabel.Image")));
             this.flightDbToolStripStatusLabel.Name = "flightDbToolStripStatusLabel";
-            this.flightDbToolStripStatusLabel.Size = new System.Drawing.Size(172, 17);
+            this.flightDbToolStripStatusLabel.Size = new System.Drawing.Size(176, 20);
             this.flightDbToolStripStatusLabel.Text = "flightDbToolStripStatusLabel";
             // 
             // toolStripContainer1
@@ -434,12 +477,12 @@
             this.toolStripContainer1.ContentPanel.Controls.Add(this.flightDbTabControl);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.flightMenuStrip);
             this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(867, 539);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(867, 536);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(867, 578);
+            this.toolStripContainer1.Size = new System.Drawing.Size(867, 575);
             this.toolStripContainer1.TabIndex = 1;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -462,7 +505,7 @@
             this.flightDbTabControl.Location = new System.Drawing.Point(0, 24);
             this.flightDbTabControl.Name = "flightDbTabControl";
             this.flightDbTabControl.SelectedIndex = 0;
-            this.flightDbTabControl.Size = new System.Drawing.Size(867, 515);
+            this.flightDbTabControl.Size = new System.Drawing.Size(867, 512);
             this.flightDbTabControl.TabIndex = 1;
             this.flightDbTabControl.SelectedIndexChanged += new System.EventHandler(this.flightDbTabControl_SelectedIndexChanged);
             // 
@@ -472,7 +515,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(859, 489);
+            this.tabPage1.Size = new System.Drawing.Size(859, 486);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Neuer Flug";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -518,7 +561,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(853, 483);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(853, 480);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label14
@@ -721,7 +764,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(103, 456);
+            this.addButton.Location = new System.Drawing.Point(103, 453);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
             this.addButton.TabIndex = 16;
@@ -744,7 +787,7 @@
             this.descRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.descRichTextBox.Location = new System.Drawing.Point(103, 283);
             this.descRichTextBox.Name = "descRichTextBox";
-            this.descRichTextBox.Size = new System.Drawing.Size(747, 167);
+            this.descRichTextBox.Size = new System.Drawing.Size(747, 164);
             this.descRichTextBox.TabIndex = 15;
             this.descRichTextBox.Text = "";
             // 
@@ -798,7 +841,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(859, 489);
+            this.tabPage2.Size = new System.Drawing.Size(859, 486);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Bisherige Flüge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -817,7 +860,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(853, 483);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(853, 480);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // flightTitleLabel
@@ -960,7 +1003,7 @@
             this.flightsTabControl.Location = new System.Drawing.Point(3, 83);
             this.flightsTabControl.Name = "flightsTabControl";
             this.flightsTabControl.SelectedIndex = 0;
-            this.flightsTabControl.Size = new System.Drawing.Size(847, 397);
+            this.flightsTabControl.Size = new System.Drawing.Size(847, 394);
             this.flightsTabControl.TabIndex = 4;
             // 
             // tabPage10
@@ -969,7 +1012,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(839, 371);
+            this.tabPage10.Size = new System.Drawing.Size(839, 368);
             this.tabPage10.TabIndex = 0;
             this.tabPage10.Text = "Daten";
             this.tabPage10.UseVisualStyleBackColor = true;
@@ -1007,7 +1050,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(833, 365);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(833, 362);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // flightRemarkRichTextBox
@@ -1016,7 +1059,7 @@
             this.flightRemarkRichTextBox.Location = new System.Drawing.Point(103, 213);
             this.flightRemarkRichTextBox.Name = "flightRemarkRichTextBox";
             this.flightRemarkRichTextBox.ReadOnly = true;
-            this.flightRemarkRichTextBox.Size = new System.Drawing.Size(727, 149);
+            this.flightRemarkRichTextBox.Size = new System.Drawing.Size(727, 146);
             this.flightRemarkRichTextBox.TabIndex = 16;
             this.flightRemarkRichTextBox.Text = "";
             // 
@@ -1180,7 +1223,7 @@
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(839, 371);
+            this.tabPage11.Size = new System.Drawing.Size(839, 368);
             this.tabPage11.TabIndex = 1;
             this.tabPage11.Text = "Flugroute";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -1192,7 +1235,7 @@
             this.routePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("routePictureBox.Image")));
             this.routePictureBox.Location = new System.Drawing.Point(3, 3);
             this.routePictureBox.Name = "routePictureBox";
-            this.routePictureBox.Size = new System.Drawing.Size(833, 365);
+            this.routePictureBox.Size = new System.Drawing.Size(833, 362);
             this.routePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.routePictureBox.TabIndex = 1;
             this.routePictureBox.TabStop = false;
@@ -1202,7 +1245,7 @@
             this.tabPage12.Controls.Add(this.planePictureBox);
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Size = new System.Drawing.Size(839, 371);
+            this.tabPage12.Size = new System.Drawing.Size(839, 368);
             this.tabPage12.TabIndex = 2;
             this.tabPage12.Text = "Flugzeug";
             this.tabPage12.UseVisualStyleBackColor = true;
@@ -1214,7 +1257,7 @@
             this.planePictureBox.Image = ((System.Drawing.Image)(resources.GetObject("planePictureBox.Image")));
             this.planePictureBox.Location = new System.Drawing.Point(0, 0);
             this.planePictureBox.Name = "planePictureBox";
-            this.planePictureBox.Size = new System.Drawing.Size(839, 371);
+            this.planePictureBox.Size = new System.Drawing.Size(839, 368);
             this.planePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.planePictureBox.TabIndex = 2;
             this.planePictureBox.TabStop = false;
@@ -1224,7 +1267,7 @@
             this.tabPage3.Controls.Add(this.tableLayoutPanel3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(859, 489);
+            this.tabPage3.Size = new System.Drawing.Size(859, 486);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Flughäfen";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1243,7 +1286,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(859, 489);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(859, 486);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tabControl2
@@ -1254,7 +1297,7 @@
             this.tabControl2.Location = new System.Drawing.Point(3, 83);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(853, 403);
+            this.tabControl2.Size = new System.Drawing.Size(853, 400);
             this.tabControl2.TabIndex = 8;
             // 
             // tabPage13
@@ -1263,7 +1306,7 @@
             this.tabPage13.Location = new System.Drawing.Point(4, 22);
             this.tabPage13.Name = "tabPage13";
             this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage13.Size = new System.Drawing.Size(845, 377);
+            this.tabPage13.Size = new System.Drawing.Size(845, 374);
             this.tabPage13.TabIndex = 0;
             this.tabPage13.Text = "Daten";
             this.tabPage13.UseVisualStyleBackColor = true;
@@ -1298,7 +1341,7 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(839, 371);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(839, 368);
             this.tableLayoutPanel10.TabIndex = 0;
             // 
             // label16
@@ -1429,7 +1472,7 @@
             this.airportRemarkRichTextBox.Location = new System.Drawing.Point(103, 183);
             this.airportRemarkRichTextBox.Name = "airportRemarkRichTextBox";
             this.airportRemarkRichTextBox.ReadOnly = true;
-            this.airportRemarkRichTextBox.Size = new System.Drawing.Size(733, 185);
+            this.airportRemarkRichTextBox.Size = new System.Drawing.Size(733, 182);
             this.airportRemarkRichTextBox.TabIndex = 16;
             this.airportRemarkRichTextBox.Text = "";
             // 
@@ -1449,7 +1492,7 @@
             this.tabPage14.Location = new System.Drawing.Point(4, 22);
             this.tabPage14.Name = "tabPage14";
             this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage14.Size = new System.Drawing.Size(845, 377);
+            this.tabPage14.Size = new System.Drawing.Size(845, 374);
             this.tabPage14.TabIndex = 1;
             this.tabPage14.Text = "Bild";
             this.tabPage14.UseVisualStyleBackColor = true;
@@ -1461,7 +1504,7 @@
             this.airportPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("airportPictureBox.Image")));
             this.airportPictureBox.Location = new System.Drawing.Point(3, 3);
             this.airportPictureBox.Name = "airportPictureBox";
-            this.airportPictureBox.Size = new System.Drawing.Size(839, 371);
+            this.airportPictureBox.Size = new System.Drawing.Size(839, 368);
             this.airportPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.airportPictureBox.TabIndex = 1;
             this.airportPictureBox.TabStop = false;
@@ -1602,7 +1645,7 @@
             this.tabPage4.Controls.Add(this.tableLayoutPanel4);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(859, 489);
+            this.tabPage4.Size = new System.Drawing.Size(859, 486);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Flugzeuge";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1621,7 +1664,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(859, 489);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(859, 486);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // tabControl3
@@ -1632,7 +1675,7 @@
             this.tabControl3.Location = new System.Drawing.Point(3, 83);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(853, 403);
+            this.tabControl3.Size = new System.Drawing.Size(853, 400);
             this.tabControl3.TabIndex = 8;
             // 
             // tabPage16
@@ -1641,7 +1684,7 @@
             this.tabPage16.Location = new System.Drawing.Point(4, 22);
             this.tabPage16.Name = "tabPage16";
             this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage16.Size = new System.Drawing.Size(845, 377);
+            this.tabPage16.Size = new System.Drawing.Size(845, 374);
             this.tabPage16.TabIndex = 0;
             this.tabPage16.Text = "Daten";
             this.tabPage16.UseVisualStyleBackColor = true;
@@ -1679,7 +1722,7 @@
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(839, 371);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(839, 368);
             this.tableLayoutPanel11.TabIndex = 0;
             // 
             // planeRemarkRichTextBox
@@ -1688,7 +1731,7 @@
             this.planeRemarkRichTextBox.Location = new System.Drawing.Point(103, 213);
             this.planeRemarkRichTextBox.Name = "planeRemarkRichTextBox";
             this.planeRemarkRichTextBox.ReadOnly = true;
-            this.planeRemarkRichTextBox.Size = new System.Drawing.Size(733, 155);
+            this.planeRemarkRichTextBox.Size = new System.Drawing.Size(733, 152);
             this.planeRemarkRichTextBox.TabIndex = 16;
             this.planeRemarkRichTextBox.Text = "";
             // 
@@ -1873,7 +1916,7 @@
             this.tabPage17.Location = new System.Drawing.Point(4, 22);
             this.tabPage17.Name = "tabPage17";
             this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage17.Size = new System.Drawing.Size(845, 377);
+            this.tabPage17.Size = new System.Drawing.Size(845, 374);
             this.tabPage17.TabIndex = 1;
             this.tabPage17.Text = "Bild";
             this.tabPage17.UseVisualStyleBackColor = true;
@@ -1885,7 +1928,7 @@
             this.planesPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("planesPictureBox.Image")));
             this.planesPictureBox.Location = new System.Drawing.Point(3, 3);
             this.planesPictureBox.Name = "planesPictureBox";
-            this.planesPictureBox.Size = new System.Drawing.Size(839, 371);
+            this.planesPictureBox.Size = new System.Drawing.Size(839, 368);
             this.planesPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.planesPictureBox.TabIndex = 1;
             this.planesPictureBox.TabStop = false;
@@ -2026,7 +2069,7 @@
             this.tabPage8.Controls.Add(this.tableLayoutPanel5);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(859, 489);
+            this.tabPage8.Size = new System.Drawing.Size(859, 486);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Fluggesellschaften";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -2045,7 +2088,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(859, 489);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(859, 486);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // tabControl4
@@ -2056,7 +2099,7 @@
             this.tabControl4.Location = new System.Drawing.Point(3, 83);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(853, 403);
+            this.tabControl4.Size = new System.Drawing.Size(853, 400);
             this.tabControl4.TabIndex = 8;
             // 
             // tabPage19
@@ -2065,7 +2108,7 @@
             this.tabPage19.Location = new System.Drawing.Point(4, 22);
             this.tabPage19.Name = "tabPage19";
             this.tabPage19.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage19.Size = new System.Drawing.Size(845, 377);
+            this.tabPage19.Size = new System.Drawing.Size(845, 374);
             this.tabPage19.TabIndex = 0;
             this.tabPage19.Text = "Daten";
             this.tabPage19.UseVisualStyleBackColor = true;
@@ -2103,7 +2146,7 @@
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(839, 371);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(839, 368);
             this.tableLayoutPanel12.TabIndex = 0;
             // 
             // airlineRemarkRichTextBox
@@ -2112,7 +2155,7 @@
             this.airlineRemarkRichTextBox.Location = new System.Drawing.Point(103, 213);
             this.airlineRemarkRichTextBox.Name = "airlineRemarkRichTextBox";
             this.airlineRemarkRichTextBox.ReadOnly = true;
-            this.airlineRemarkRichTextBox.Size = new System.Drawing.Size(733, 155);
+            this.airlineRemarkRichTextBox.Size = new System.Drawing.Size(733, 152);
             this.airlineRemarkRichTextBox.TabIndex = 16;
             this.airlineRemarkRichTextBox.Text = "";
             // 
@@ -2275,7 +2318,7 @@
             this.tabPage20.Location = new System.Drawing.Point(4, 22);
             this.tabPage20.Name = "tabPage20";
             this.tabPage20.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage20.Size = new System.Drawing.Size(845, 377);
+            this.tabPage20.Size = new System.Drawing.Size(845, 374);
             this.tabPage20.TabIndex = 1;
             this.tabPage20.Text = "Bild";
             this.tabPage20.UseVisualStyleBackColor = true;
@@ -2287,7 +2330,7 @@
             this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
             this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(839, 371);
+            this.logoPictureBox.Size = new System.Drawing.Size(839, 368);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logoPictureBox.TabIndex = 1;
             this.logoPictureBox.TabStop = false;
@@ -2428,7 +2471,7 @@
             this.tabPage9.Controls.Add(this.tableLayoutPanel6);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(859, 489);
+            this.tabPage9.Size = new System.Drawing.Size(859, 486);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Kosten";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -2447,7 +2490,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(859, 489);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(859, 486);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // tabControl5
@@ -2457,7 +2500,7 @@
             this.tabControl5.Location = new System.Drawing.Point(3, 83);
             this.tabControl5.Name = "tabControl5";
             this.tabControl5.SelectedIndex = 0;
-            this.tabControl5.Size = new System.Drawing.Size(853, 403);
+            this.tabControl5.Size = new System.Drawing.Size(853, 400);
             this.tabControl5.TabIndex = 8;
             // 
             // tabPage22
@@ -2466,7 +2509,7 @@
             this.tabPage22.Location = new System.Drawing.Point(4, 22);
             this.tabPage22.Name = "tabPage22";
             this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage22.Size = new System.Drawing.Size(845, 377);
+            this.tabPage22.Size = new System.Drawing.Size(845, 374);
             this.tabPage22.TabIndex = 0;
             this.tabPage22.Text = "Daten";
             this.tabPage22.UseVisualStyleBackColor = true;
@@ -2492,7 +2535,7 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(839, 371);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(839, 368);
             this.tableLayoutPanel13.TabIndex = 0;
             // 
             // costVehicleLabel
@@ -2571,7 +2614,7 @@
             this.costRemarkRichTextBox.Location = new System.Drawing.Point(103, 93);
             this.costRemarkRichTextBox.Name = "costRemarkRichTextBox";
             this.costRemarkRichTextBox.ReadOnly = true;
-            this.costRemarkRichTextBox.Size = new System.Drawing.Size(733, 275);
+            this.costRemarkRichTextBox.Size = new System.Drawing.Size(733, 272);
             this.costRemarkRichTextBox.TabIndex = 16;
             this.costRemarkRichTextBox.Text = "";
             // 
@@ -2711,7 +2754,7 @@
             this.tabPage5.Controls.Add(this.tableLayoutPanel7);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(859, 489);
+            this.tabPage5.Size = new System.Drawing.Size(859, 486);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Länder";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2730,7 +2773,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(859, 489);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(859, 486);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // tabControl6
@@ -2741,7 +2784,7 @@
             this.tabControl6.Location = new System.Drawing.Point(3, 83);
             this.tabControl6.Name = "tabControl6";
             this.tabControl6.SelectedIndex = 0;
-            this.tabControl6.Size = new System.Drawing.Size(853, 403);
+            this.tabControl6.Size = new System.Drawing.Size(853, 400);
             this.tabControl6.TabIndex = 8;
             // 
             // tabPage25
@@ -2750,7 +2793,7 @@
             this.tabPage25.Location = new System.Drawing.Point(4, 22);
             this.tabPage25.Name = "tabPage25";
             this.tabPage25.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage25.Size = new System.Drawing.Size(845, 377);
+            this.tabPage25.Size = new System.Drawing.Size(845, 374);
             this.tabPage25.TabIndex = 0;
             this.tabPage25.Text = "Daten";
             this.tabPage25.UseVisualStyleBackColor = true;
@@ -2776,7 +2819,7 @@
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(839, 371);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(839, 368);
             this.tableLayoutPanel14.TabIndex = 0;
             // 
             // label84
@@ -2854,7 +2897,7 @@
             this.countryRemarkRichTextBox.Location = new System.Drawing.Point(103, 93);
             this.countryRemarkRichTextBox.Name = "countryRemarkRichTextBox";
             this.countryRemarkRichTextBox.ReadOnly = true;
-            this.countryRemarkRichTextBox.Size = new System.Drawing.Size(733, 275);
+            this.countryRemarkRichTextBox.Size = new System.Drawing.Size(733, 272);
             this.countryRemarkRichTextBox.TabIndex = 16;
             this.countryRemarkRichTextBox.Text = "";
             // 
@@ -2864,7 +2907,7 @@
             this.tabPage26.Location = new System.Drawing.Point(4, 22);
             this.tabPage26.Name = "tabPage26";
             this.tabPage26.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage26.Size = new System.Drawing.Size(845, 377);
+            this.tabPage26.Size = new System.Drawing.Size(845, 374);
             this.tabPage26.TabIndex = 1;
             this.tabPage26.Text = "Bild";
             this.tabPage26.UseVisualStyleBackColor = true;
@@ -2876,7 +2919,7 @@
             this.countryPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("countryPictureBox.Image")));
             this.countryPictureBox.Location = new System.Drawing.Point(3, 3);
             this.countryPictureBox.Name = "countryPictureBox";
-            this.countryPictureBox.Size = new System.Drawing.Size(839, 371);
+            this.countryPictureBox.Size = new System.Drawing.Size(839, 368);
             this.countryPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.countryPictureBox.TabIndex = 1;
             this.countryPictureBox.TabStop = false;
@@ -3017,7 +3060,7 @@
             this.tabPage6.Controls.Add(this.tableLayoutPanel9);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(859, 489);
+            this.tabPage6.Size = new System.Drawing.Size(859, 486);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Städte";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -3036,7 +3079,7 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(859, 489);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(859, 486);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
             // tabControl7
@@ -3047,7 +3090,7 @@
             this.tabControl7.Location = new System.Drawing.Point(3, 83);
             this.tabControl7.Name = "tabControl7";
             this.tabControl7.SelectedIndex = 0;
-            this.tabControl7.Size = new System.Drawing.Size(853, 403);
+            this.tabControl7.Size = new System.Drawing.Size(853, 400);
             this.tabControl7.TabIndex = 8;
             // 
             // tabPage28
@@ -3056,7 +3099,7 @@
             this.tabPage28.Location = new System.Drawing.Point(4, 22);
             this.tabPage28.Name = "tabPage28";
             this.tabPage28.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage28.Size = new System.Drawing.Size(845, 377);
+            this.tabPage28.Size = new System.Drawing.Size(845, 374);
             this.tabPage28.TabIndex = 0;
             this.tabPage28.Text = "Daten";
             this.tabPage28.UseVisualStyleBackColor = true;
@@ -3100,7 +3143,7 @@
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(839, 371);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(839, 368);
             this.tableLayoutPanel15.TabIndex = 1;
             // 
             // label45
@@ -3143,109 +3186,6 @@
             this.bundeslandLabel.TabIndex = 8;
             this.bundeslandLabel.Text = "Bundesland";
             // 
-            // label47
-            // 
-            this.label47.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(3, 98);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(45, 13);
-            this.label47.TabIndex = 3;
-            this.label47.Text = "Vorwahl";
-            // 
-            // prefixLabel
-            // 
-            this.prefixLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.prefixLabel.AutoSize = true;
-            this.prefixLabel.Location = new System.Drawing.Point(103, 98);
-            this.prefixLabel.Name = "prefixLabel";
-            this.prefixLabel.Size = new System.Drawing.Size(45, 13);
-            this.prefixLabel.TabIndex = 9;
-            this.prefixLabel.Text = "Vorwahl";
-            // 
-            // label48
-            // 
-            this.label48.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(3, 128);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(87, 13);
-            this.label48.TabIndex = 4;
-            this.label48.Text = "Kfz-Kennzeichen";
-            // 
-            // kfzLabel
-            // 
-            this.kfzLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.kfzLabel.AutoSize = true;
-            this.kfzLabel.Location = new System.Drawing.Point(103, 128);
-            this.kfzLabel.Name = "kfzLabel";
-            this.kfzLabel.Size = new System.Drawing.Size(22, 13);
-            this.kfzLabel.TabIndex = 10;
-            this.kfzLabel.Text = "Kfz";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(2, 158);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(27, 13);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Link";
-            // 
-            // cityLinkLabel
-            // 
-            this.cityLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cityLinkLabel.AutoSize = true;
-            this.cityLinkLabel.Location = new System.Drawing.Point(103, 158);
-            this.cityLinkLabel.Name = "cityLinkLabel";
-            this.cityLinkLabel.Size = new System.Drawing.Size(55, 13);
-            this.cityLinkLabel.TabIndex = 17;
-            this.cityLinkLabel.TabStop = true;
-            this.cityLinkLabel.Text = "linkLabel1";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(2, 180);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(68, 26);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Höhenmeter Stadtmitte";
-            // 
-            // heightLabel
-            // 
-            this.heightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.heightLabel.AutoSize = true;
-            this.heightLabel.Location = new System.Drawing.Point(102, 188);
-            this.heightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.heightLabel.Name = "heightLabel";
-            this.heightLabel.Size = new System.Drawing.Size(33, 13);
-            this.heightLabel.TabIndex = 15;
-            this.heightLabel.Text = "Höhe";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 218);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 13);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "GPS-Koordinaten";
-            // 
-            // gpsLabel
-            // 
-            this.gpsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.gpsLabel.AutoSize = true;
-            this.gpsLabel.Location = new System.Drawing.Point(103, 218);
-            this.gpsLabel.Name = "gpsLabel";
-            this.gpsLabel.Size = new System.Drawing.Size(26, 13);
-            this.gpsLabel.TabIndex = 19;
-            this.gpsLabel.Text = "Gps";
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -3262,7 +3202,7 @@
             this.cityRemarkRichTextBox.Location = new System.Drawing.Point(103, 273);
             this.cityRemarkRichTextBox.Name = "cityRemarkRichTextBox";
             this.cityRemarkRichTextBox.ReadOnly = true;
-            this.cityRemarkRichTextBox.Size = new System.Drawing.Size(733, 95);
+            this.cityRemarkRichTextBox.Size = new System.Drawing.Size(733, 92);
             this.cityRemarkRichTextBox.TabIndex = 22;
             this.cityRemarkRichTextBox.Text = "";
             // 
@@ -3286,13 +3226,136 @@
             this.airportLabel.TabIndex = 24;
             this.airportLabel.Text = "airportLabel";
             // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 218);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 13);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "GPS-Koordinaten";
+            // 
+            // gpsLabel
+            // 
+            this.gpsLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.gpsLabel.AutoSize = true;
+            this.gpsLabel.Location = new System.Drawing.Point(103, 218);
+            this.gpsLabel.Name = "gpsLabel";
+            this.gpsLabel.Size = new System.Drawing.Size(26, 13);
+            this.gpsLabel.TabIndex = 19;
+            this.gpsLabel.Text = "Gps";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(2, 180);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(68, 26);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Höhenmeter Stadtmitte";
+            // 
+            // heightLabel
+            // 
+            this.heightLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.heightLabel.AutoSize = true;
+            this.heightLabel.Location = new System.Drawing.Point(102, 188);
+            this.heightLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.heightLabel.Name = "heightLabel";
+            this.heightLabel.Size = new System.Drawing.Size(33, 13);
+            this.heightLabel.TabIndex = 15;
+            this.heightLabel.Text = "Höhe";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(2, 158);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(27, 13);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Link";
+            // 
+            // cityLinkLabel
+            // 
+            this.cityLinkLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cityLinkLabel.AutoSize = true;
+            this.cityLinkLabel.Location = new System.Drawing.Point(103, 158);
+            this.cityLinkLabel.Name = "cityLinkLabel";
+            this.cityLinkLabel.Size = new System.Drawing.Size(55, 13);
+            this.cityLinkLabel.TabIndex = 17;
+            this.cityLinkLabel.TabStop = true;
+            this.cityLinkLabel.Text = "linkLabel1";
+            // 
+            // label48
+            // 
+            this.label48.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(3, 128);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(87, 13);
+            this.label48.TabIndex = 4;
+            this.label48.Text = "Kfz-Kennzeichen";
+            // 
+            // kfzLabel
+            // 
+            this.kfzLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.kfzLabel.AutoSize = true;
+            this.kfzLabel.Location = new System.Drawing.Point(103, 128);
+            this.kfzLabel.Name = "kfzLabel";
+            this.kfzLabel.Size = new System.Drawing.Size(22, 13);
+            this.kfzLabel.TabIndex = 10;
+            this.kfzLabel.Text = "Kfz";
+            // 
+            // label47
+            // 
+            this.label47.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(3, 98);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(45, 13);
+            this.label47.TabIndex = 3;
+            this.label47.Text = "Vorwahl";
+            // 
+            // prefixLabel
+            // 
+            this.prefixLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.prefixLabel.AutoSize = true;
+            this.prefixLabel.Location = new System.Drawing.Point(103, 98);
+            this.prefixLabel.Name = "prefixLabel";
+            this.prefixLabel.Size = new System.Drawing.Size(45, 13);
+            this.prefixLabel.TabIndex = 9;
+            this.prefixLabel.Text = "Vorwahl";
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(3, 68);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(78, 13);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Postleitzahl(en)";
+            // 
+            // codeLabel
+            // 
+            this.codeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.codeLabel.AutoSize = true;
+            this.codeLabel.Location = new System.Drawing.Point(103, 68);
+            this.codeLabel.Name = "codeLabel";
+            this.codeLabel.Size = new System.Drawing.Size(57, 13);
+            this.codeLabel.TabIndex = 26;
+            this.codeLabel.Text = "codeLabel";
+            // 
             // tabPage29
             // 
             this.tabPage29.Controls.Add(this.cityPictureBox);
             this.tabPage29.Location = new System.Drawing.Point(4, 22);
             this.tabPage29.Name = "tabPage29";
             this.tabPage29.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage29.Size = new System.Drawing.Size(845, 377);
+            this.tabPage29.Size = new System.Drawing.Size(845, 374);
             this.tabPage29.TabIndex = 1;
             this.tabPage29.Text = "Bild";
             this.tabPage29.UseVisualStyleBackColor = true;
@@ -3304,7 +3367,7 @@
             this.cityPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("cityPictureBox.Image")));
             this.cityPictureBox.Location = new System.Drawing.Point(3, 3);
             this.cityPictureBox.Name = "cityPictureBox";
-            this.cityPictureBox.Size = new System.Drawing.Size(839, 371);
+            this.cityPictureBox.Size = new System.Drawing.Size(839, 368);
             this.cityPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.cityPictureBox.TabIndex = 1;
             this.cityPictureBox.TabStop = false;
@@ -3442,18 +3505,356 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.mapSplitContainer);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(859, 489);
+            this.tabPage7.Size = new System.Drawing.Size(859, 486);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Weltkarte";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // mapSplitContainer
+            // 
+            this.mapSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.mapSplitContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.mapSplitContainer.Name = "mapSplitContainer";
+            // 
+            // mapSplitContainer.Panel1
+            // 
+            this.mapSplitContainer.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // mapSplitContainer.Panel2
+            // 
+            this.mapSplitContainer.Panel2.Controls.Add(this.mapControl);
+            this.mapSplitContainer.Size = new System.Drawing.Size(859, 486);
+            this.mapSplitContainer.SplitterDistance = 204;
+            this.mapSplitContainer.SplitterWidth = 3;
+            this.mapSplitContainer.TabIndex = 0;
+            this.mapSplitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.mapSplitContainer_SplitterMoved);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tableLayoutPanel16);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(204, 486);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Kartenoptionen";
+            // 
+            // tableLayoutPanel16
+            // 
+            this.tableLayoutPanel16.ColumnCount = 2;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel16.Controls.Add(this.label25, 0, 0);
+            this.tableLayoutPanel16.Controls.Add(this.label26, 0, 1);
+            this.tableLayoutPanel16.Controls.Add(this.label31, 0, 3);
+            this.tableLayoutPanel16.Controls.Add(this.flightComboBox, 1, 0);
+            this.tableLayoutPanel16.Controls.Add(this.takeoffComboBox, 1, 1);
+            this.tableLayoutPanel16.Controls.Add(this.landingCoordComboBox, 1, 3);
+            this.tableLayoutPanel16.Controls.Add(this.label32, 0, 2);
+            this.tableLayoutPanel16.Controls.Add(this.label35, 0, 4);
+            this.tableLayoutPanel16.Controls.Add(this.takeoffLayoutComboBox, 1, 2);
+            this.tableLayoutPanel16.Controls.Add(this.landingLayoutComboBox, 1, 4);
+            this.tableLayoutPanel16.Controls.Add(this.label36, 0, 5);
+            this.tableLayoutPanel16.Controls.Add(this.cityCoordComboBox, 1, 5);
+            this.tableLayoutPanel16.Controls.Add(this.label37, 0, 6);
+            this.tableLayoutPanel16.Controls.Add(this.label44, 0, 7);
+            this.tableLayoutPanel16.Controls.Add(this.latitudeTextBox, 1, 6);
+            this.tableLayoutPanel16.Controls.Add(this.longitudeTextBox, 1, 7);
+            this.tableLayoutPanel16.Controls.Add(this.flowLayoutPanel4, 1, 8);
+            this.tableLayoutPanel16.Controls.Add(this.loadPositionButton, 1, 9);
+            this.tableLayoutPanel16.Controls.Add(this.label52, 0, 10);
+            this.tableLayoutPanel16.Controls.Add(this.flowLayoutPanel5, 1, 10);
+            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(2, 15);
+            this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
+            this.tableLayoutPanel16.RowCount = 12;
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(200, 469);
+            this.tableLayoutPanel16.TabIndex = 0;
+            // 
+            // label25
+            // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(2, 5);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(64, 13);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "Flug wählen";
+            // 
+            // label26
+            // 
+            this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(2, 29);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(37, 13);
+            this.label26.TabIndex = 1;
+            this.label26.Text = "Abflug";
+            // 
+            // label31
+            // 
+            this.label31.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(2, 77);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(49, 13);
+            this.label31.TabIndex = 2;
+            this.label31.Text = "Landung";
+            // 
+            // flightComboBox
+            // 
+            this.flightComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flightComboBox.FormattingEnabled = true;
+            this.flightComboBox.Location = new System.Drawing.Point(70, 2);
+            this.flightComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.flightComboBox.Name = "flightComboBox";
+            this.flightComboBox.Size = new System.Drawing.Size(128, 21);
+            this.flightComboBox.TabIndex = 5;
+            this.flightComboBox.SelectedIndexChanged += new System.EventHandler(this.flightComboBox_SelectedIndexChanged);
+            // 
+            // takeoffComboBox
+            // 
+            this.takeoffComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.takeoffComboBox.FormattingEnabled = true;
+            this.takeoffComboBox.Location = new System.Drawing.Point(70, 26);
+            this.takeoffComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.takeoffComboBox.Name = "takeoffComboBox";
+            this.takeoffComboBox.Size = new System.Drawing.Size(128, 21);
+            this.takeoffComboBox.TabIndex = 6;
+            this.takeoffComboBox.SelectedIndexChanged += new System.EventHandler(this.takeoffComboBox_SelectedIndexChanged);
+            // 
+            // landingCoordComboBox
+            // 
+            this.landingCoordComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.landingCoordComboBox.FormattingEnabled = true;
+            this.landingCoordComboBox.Location = new System.Drawing.Point(70, 74);
+            this.landingCoordComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.landingCoordComboBox.Name = "landingCoordComboBox";
+            this.landingCoordComboBox.Size = new System.Drawing.Size(128, 21);
+            this.landingCoordComboBox.TabIndex = 7;
+            this.landingCoordComboBox.SelectedIndexChanged += new System.EventHandler(this.landingCoordComboBox_SelectedIndexChanged);
+            // 
+            // label32
+            // 
+            this.label32.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(2, 53);
+            this.label32.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(48, 13);
+            this.label32.TabIndex = 8;
+            this.label32.Text = "   Layout";
+            // 
+            // label35
+            // 
+            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(2, 101);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(48, 13);
+            this.label35.TabIndex = 9;
+            this.label35.Text = "   Layout";
+            // 
+            // takeoffLayoutComboBox
+            // 
+            this.takeoffLayoutComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.takeoffLayoutComboBox.FormattingEnabled = true;
+            this.takeoffLayoutComboBox.Location = new System.Drawing.Point(70, 50);
+            this.takeoffLayoutComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.takeoffLayoutComboBox.Name = "takeoffLayoutComboBox";
+            this.takeoffLayoutComboBox.Size = new System.Drawing.Size(128, 21);
+            this.takeoffLayoutComboBox.TabIndex = 10;
+            this.takeoffLayoutComboBox.SelectedIndexChanged += new System.EventHandler(this.takeoffLayoutComboBox_SelectedIndexChanged);
+            // 
+            // landingLayoutComboBox
+            // 
+            this.landingLayoutComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.landingLayoutComboBox.FormattingEnabled = true;
+            this.landingLayoutComboBox.Location = new System.Drawing.Point(70, 98);
+            this.landingLayoutComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.landingLayoutComboBox.Name = "landingLayoutComboBox";
+            this.landingLayoutComboBox.Size = new System.Drawing.Size(128, 21);
+            this.landingLayoutComboBox.TabIndex = 11;
+            this.landingLayoutComboBox.SelectedIndexChanged += new System.EventHandler(this.landingLayoutComboBox_SelectedIndexChanged);
+            // 
+            // label36
+            // 
+            this.label36.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(2, 125);
+            this.label36.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(32, 13);
+            this.label36.TabIndex = 12;
+            this.label36.Text = "Stadt";
+            // 
+            // cityCoordComboBox
+            // 
+            this.cityCoordComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cityCoordComboBox.FormattingEnabled = true;
+            this.cityCoordComboBox.Location = new System.Drawing.Point(70, 122);
+            this.cityCoordComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.cityCoordComboBox.Name = "cityCoordComboBox";
+            this.cityCoordComboBox.Size = new System.Drawing.Size(128, 21);
+            this.cityCoordComboBox.TabIndex = 13;
+            this.cityCoordComboBox.SelectedIndexChanged += new System.EventHandler(this.cityCoordComboBox_SelectedIndexChanged);
+            // 
+            // label37
+            // 
+            this.label37.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(2, 149);
+            this.label37.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(61, 13);
+            this.label37.TabIndex = 14;
+            this.label37.Text = "Breitengrad";
+            // 
+            // label44
+            // 
+            this.label44.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(2, 173);
+            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(64, 13);
+            this.label44.TabIndex = 15;
+            this.label44.Text = "Längengrad";
+            // 
+            // latitudeTextBox
+            // 
+            this.latitudeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.latitudeTextBox.Location = new System.Drawing.Point(70, 146);
+            this.latitudeTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.latitudeTextBox.Name = "latitudeTextBox";
+            this.latitudeTextBox.Size = new System.Drawing.Size(128, 20);
+            this.latitudeTextBox.TabIndex = 16;
+            // 
+            // longitudeTextBox
+            // 
+            this.longitudeTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.longitudeTextBox.Location = new System.Drawing.Point(70, 170);
+            this.longitudeTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.longitudeTextBox.Name = "longitudeTextBox";
+            this.longitudeTextBox.Size = new System.Drawing.Size(128, 20);
+            this.longitudeTextBox.TabIndex = 17;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.gradRadioButton);
+            this.flowLayoutPanel4.Controls.Add(this.decRadioButton);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(70, 194);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(128, 20);
+            this.flowLayoutPanel4.TabIndex = 18;
+            // 
+            // gradRadioButton
+            // 
+            this.gradRadioButton.AutoSize = true;
+            this.gradRadioButton.Checked = true;
+            this.gradRadioButton.Location = new System.Drawing.Point(2, 2);
+            this.gradRadioButton.Margin = new System.Windows.Forms.Padding(2);
+            this.gradRadioButton.Name = "gradRadioButton";
+            this.gradRadioButton.Size = new System.Drawing.Size(74, 17);
+            this.gradRadioButton.TabIndex = 0;
+            this.gradRadioButton.TabStop = true;
+            this.gradRadioButton.Text = "Grad (° \' \")";
+            this.gradRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // decRadioButton
+            // 
+            this.decRadioButton.AutoSize = true;
+            this.decRadioButton.Location = new System.Drawing.Point(2, 23);
+            this.decRadioButton.Margin = new System.Windows.Forms.Padding(2);
+            this.decRadioButton.Name = "decRadioButton";
+            this.decRadioButton.Size = new System.Drawing.Size(62, 17);
+            this.decRadioButton.TabIndex = 1;
+            this.decRadioButton.Text = "Dezimal";
+            this.decRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // loadPositionButton
+            // 
+            this.loadPositionButton.Location = new System.Drawing.Point(70, 218);
+            this.loadPositionButton.Margin = new System.Windows.Forms.Padding(2);
+            this.loadPositionButton.Name = "loadPositionButton";
+            this.loadPositionButton.Size = new System.Drawing.Size(95, 19);
+            this.loadPositionButton.TabIndex = 19;
+            this.loadPositionButton.Text = "Gehe zu Position";
+            this.loadPositionButton.UseVisualStyleBackColor = true;
+            this.loadPositionButton.Click += new System.EventHandler(this.loadPositionButton_Click);
+            // 
+            // label52
+            // 
+            this.label52.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(2, 248);
+            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(34, 13);
+            this.label52.TabIndex = 20;
+            this.label52.Text = "Zoom";
+            // 
+            // mapControl
+            // 
+            this.mapControl.Bearing = 0F;
+            this.mapControl.CanDragMap = true;
+            this.mapControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapControl.EmptyTileColor = System.Drawing.Color.Navy;
+            this.mapControl.GrayScaleMode = false;
+            this.mapControl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.mapControl.LevelsKeepInMemory = 5;
+            this.mapControl.Location = new System.Drawing.Point(0, 0);
+            this.mapControl.Margin = new System.Windows.Forms.Padding(2);
+            this.mapControl.MarkersEnabled = true;
+            this.mapControl.MaxZoom = 2;
+            this.mapControl.MinZoom = 2;
+            this.mapControl.MouseWheelZoomEnabled = true;
+            this.mapControl.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.mapControl.Name = "mapControl";
+            this.mapControl.NegativeMode = false;
+            this.mapControl.PolygonsEnabled = true;
+            this.mapControl.RetryLoadTile = 0;
+            this.mapControl.RoutesEnabled = true;
+            this.mapControl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.mapControl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.mapControl.ShowTileGridLines = false;
+            this.mapControl.Size = new System.Drawing.Size(652, 486);
+            this.mapControl.TabIndex = 0;
+            this.mapControl.Zoom = 0D;
+            // 
             // flightMenuStrip
             // 
+            this.flightMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.flightMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dateiToolStripMenuItem,
             this.statistikToolStripMenuItem,
+            this.optionenToolStripMenuItem,
             this.hilfeToolStripMenuItem});
             this.flightMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.flightMenuStrip.Name = "flightMenuStrip";
@@ -3610,6 +4011,22 @@
             this.anzeigenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.anzeigenToolStripMenuItem.Text = "&Zeigen";
             // 
+            // optionenToolStripMenuItem
+            // 
+            this.optionenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.einstellungenToolStripMenuItem});
+            this.optionenToolStripMenuItem.Name = "optionenToolStripMenuItem";
+            this.optionenToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.optionenToolStripMenuItem.Text = "&Optionen";
+            // 
+            // einstellungenToolStripMenuItem
+            // 
+            this.einstellungenToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("einstellungenToolStripMenuItem.Image")));
+            this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
+            this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.einstellungenToolStripMenuItem.Text = "&Einstellungen";
+            this.einstellungenToolStripMenuItem.Click += new System.EventHandler(this.einstellungenToolStripMenuItem_Click);
+            // 
             // hilfeToolStripMenuItem
             // 
             this.hilfeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -3648,6 +4065,8 @@
             this.costToolStripButton,
             this.countryToolStripButton,
             this.cityToolStripButton,
+            this.mapToolStripButton,
+            this.setupToolStripButton,
             this.toolStripSeparator2,
             this.helpToolStripButton,
             this.infoToolStripButton,
@@ -3655,7 +4074,7 @@
             this.closeToolStripButton});
             this.flightToolStrip.Location = new System.Drawing.Point(3, 0);
             this.flightToolStrip.Name = "flightToolStrip";
-            this.flightToolStrip.Size = new System.Drawing.Size(420, 39);
+            this.flightToolStrip.Size = new System.Drawing.Size(492, 39);
             this.flightToolStrip.TabIndex = 0;
             // 
             // flightToolStripButton
@@ -3738,6 +4157,27 @@
             this.cityToolStripButton.Text = "Neue Stadt";
             this.cityToolStripButton.Click += new System.EventHandler(this.cityToolStripButton_Click);
             // 
+            // mapToolStripButton
+            // 
+            this.mapToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mapToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("mapToolStripButton.Image")));
+            this.mapToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.mapToolStripButton.Name = "mapToolStripButton";
+            this.mapToolStripButton.Size = new System.Drawing.Size(36, 36);
+            this.mapToolStripButton.Text = "Karte";
+            this.mapToolStripButton.Click += new System.EventHandler(this.mapToolStripButton_Click);
+            // 
+            // setupToolStripButton
+            // 
+            this.setupToolStripButton.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.setupToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.setupToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("setupToolStripButton.Image")));
+            this.setupToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.setupToolStripButton.Name = "setupToolStripButton";
+            this.setupToolStripButton.Size = new System.Drawing.Size(36, 36);
+            this.setupToolStripButton.Text = "Einstellungen";
+            this.setupToolStripButton.Click += new System.EventHandler(this.setupToolStripButton_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -3788,25 +4228,32 @@
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Unbekanntes Datum";
             // 
-            // label15
+            // zoomTrackBar
             // 
-            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 68);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(78, 13);
-            this.label15.TabIndex = 25;
-            this.label15.Text = "Postleitzahl(en)";
+            this.zoomTrackBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.zoomTrackBar.Location = new System.Drawing.Point(2, 2);
+            this.zoomTrackBar.Margin = new System.Windows.Forms.Padding(2);
+            this.zoomTrackBar.Maximum = 20;
+            this.zoomTrackBar.Minimum = 1;
+            this.zoomTrackBar.Name = "zoomTrackBar";
+            this.zoomTrackBar.Size = new System.Drawing.Size(128, 45);
+            this.zoomTrackBar.TabIndex = 21;
+            this.zoomToolTip.SetToolTip(this.zoomTrackBar, "test");
+            this.zoomTrackBar.Value = 1;
+            this.zoomTrackBar.Scroll += new System.EventHandler(this.zoomTrackBar_Scroll);
             // 
-            // codeLabel
+            // flowLayoutPanel5
             // 
-            this.codeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.codeLabel.AutoSize = true;
-            this.codeLabel.Location = new System.Drawing.Point(103, 68);
-            this.codeLabel.Name = "codeLabel";
-            this.codeLabel.Size = new System.Drawing.Size(57, 13);
-            this.codeLabel.TabIndex = 26;
-            this.codeLabel.Text = "codeLabel";
+            this.flowLayoutPanel5.Controls.Add(this.zoomTrackBar);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(71, 243);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(126, 24);
+            this.flowLayoutPanel5.TabIndex = 22;
+            // 
+            // zoomToolTip
+            // 
+            this.zoomToolTip.ToolTipTitle = "Zoom";
             // 
             // FlightDBForm
             // 
@@ -3919,10 +4366,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.cityPictureBox)).EndInit();
             this.toolStrip7.ResumeLayout(false);
             this.toolStrip7.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.mapSplitContainer.Panel1.ResumeLayout(false);
+            this.mapSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mapSplitContainer)).EndInit();
+            this.mapSplitContainer.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.tableLayoutPanel16.ResumeLayout(false);
+            this.tableLayoutPanel16.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
             this.flightMenuStrip.ResumeLayout(false);
             this.flightMenuStrip.PerformLayout();
             this.flightToolStrip.ResumeLayout(false);
             this.flightToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.zoomTrackBar)).EndInit();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4237,5 +4697,37 @@
         private System.Windows.Forms.ToolStripMenuItem distanzberechnungToolStripMenuItem;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label codeLabel;
+        private System.Windows.Forms.SplitContainer mapSplitContainer;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ToolStripButton mapToolStripButton;
+        private System.Windows.Forms.ComboBox flightComboBox;
+        private System.Windows.Forms.ComboBox takeoffComboBox;
+        private System.Windows.Forms.ComboBox landingCoordComboBox;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.ComboBox takeoffLayoutComboBox;
+        private System.Windows.Forms.ComboBox landingLayoutComboBox;
+        private GMap.NET.WindowsForms.GMapControl mapControl;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.ComboBox cityCoordComboBox;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox latitudeTextBox;
+        private System.Windows.Forms.TextBox longitudeTextBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.RadioButton gradRadioButton;
+        private System.Windows.Forms.RadioButton decRadioButton;
+        private System.Windows.Forms.Button loadPositionButton;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.ToolStripMenuItem optionenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem einstellungenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton setupToolStripButton;
+        private System.Windows.Forms.TrackBar zoomTrackBar;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.ToolTip zoomToolTip;
     }
 }

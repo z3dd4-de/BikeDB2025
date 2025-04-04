@@ -10,6 +10,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Windows.Documents;
 using System.Windows.Forms;
+using BikeDB2024.FlightDB;
+using GMap.NET.WindowsForms.Markers;
 using static BikeDB2024.Helpers;
 //using System.Runtime.InteropServices;
 
@@ -23,6 +25,7 @@ namespace BikeDB2024
         public enum LogType { ERROR, INFO, WARNING, LOGIN, LOGOUT, EXPORT, IMPORT, NEW_ENTRY };
         public enum Installation { SINGLE_USER, MULTI_USER, QUICK_LOGIN, STRICT, SINGLE_ADMIN };
         public enum VehicleType { BIKE, FOSSIL, ELECTRIC, FLIGHTS }
+        public enum FlightLocation { TAKEOFF, LANDING, CITY }
         #endregion
 
         #region Database Helper Functions
@@ -348,6 +351,73 @@ namespace BikeDB2024
                 ShowErrorMessage(ex.Message, "Fehler beim Datenbankzugriff");
             }
             return result;
+        }
+
+        /// <summary>
+        /// Enumeration for Location objects.
+        /// </summary>
+        public enum GpsType { AIRPORT, CITY };
+
+        /// <summary>
+        /// Load a Location object (airport or city) into a ComboBox. 
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="type"></param>
+        public static void FillLocationComboBox(ComboBox cb, GpsType type)
+        {
+            SqlConnection con1;
+            List<Location> data = new List<Location>();
+            cb.DataSource = null;
+            cb.Sorted = true;
+            cb.Items.Clear();
+            cb.DisplayMember = "Text";
+            cb.ValueMember = "Value";
+
+            try
+            {
+                using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                {
+                    con1.Open();
+                    using (SqlCommand com1 = new SqlCommand())
+                    {
+                        switch (type)
+                        {
+                            case GpsType.AIRPORT:
+                                com1.CommandText = @"SELECT * FROM Airports WHERE GPS IS NOT NULL";    //[User] = " + Properties.Settings.Default.CurrentUserID.ToString();
+                                com1.CommandType = CommandType.Text;
+                                com1.Connection = con1;
+                                using (SqlDataReader reader1 = com1.ExecuteReader())
+                                {
+                                    while (reader1.Read())
+                                    {
+                                        data.Add(new Airport(reader1.GetInt32(0)));
+                                    }
+                                    reader1.Close();
+                                }
+                                break;
+                            case GpsType.CITY:
+                                com1.CommandText = @"SELECT * FROM Cities WHERE Gps IS NOT NULL";    //[User] = " + Properties.Settings.Default.CurrentUserID.ToString();
+                                com1.CommandType = CommandType.Text;
+                                com1.Connection = con1;
+                                using (SqlDataReader reader1 = com1.ExecuteReader())
+                                {
+                                    while (reader1.Read())
+                                    {
+                                        data.Add(new City(reader1.GetInt32(0)));
+                                    }
+                                    reader1.Close();
+                                }
+                                break;
+                        }
+                    }
+                    con1.Close();
+                }
+                cb.DataSource = data;
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage(ex.Message, "Fehler beim Laden des Ortes");
+            }
         }
 
         /// <summary>
@@ -1555,7 +1625,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        private static string ThreeNonZeroDigits(double value)
+        public static string ThreeNonZeroDigits(double value)
         {
             if (value >= 100)
             {
@@ -1572,6 +1642,26 @@ namespace BikeDB2024
                 // Two digits after the decimal.
                 return value.ToString("0.00");
             }
+        }
+
+        /// <summary>
+        /// Fill a combobox with Google Marker Types
+        /// </summary>
+        /// <param name="comboBox"></param>
+        public static void FillGoogleMarkerTypeComboBox(System.Windows.Forms.ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            List<Marker> markers = new List<Marker>();
+            foreach (var enumVal in Enum.GetValues(typeof(GMarkerGoogleType)))
+            {
+                Marker m = new Marker((int)enumVal);
+                markers.Add(m);
+            }
+            markers.Sort();
+            //comboBox.Items.AddRange(Enum.GetNames(typeof(GMarkerGoogleType)));
+            comboBox.DisplayMember = "MarkerType";
+            comboBox.ValueMember = "Value";
+            comboBox.DataSource = markers;
         }
     }
 }

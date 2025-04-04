@@ -300,6 +300,15 @@ namespace BikeDB2024
 
                 }
 
+                if (Properties.Settings.Default.GPSCoordAngle == true)
+                {
+                    gpsFormatComboBox.SelectedText = "Grad";
+                }
+                else
+                {
+                    gpsFormatComboBox.SelectedText = "Dezimal";
+                }
+
                 userToolStripStatusLabel.Visible = true;
                 userToolStripStatusLabel.Text = Properties.Settings.Default.CurrentUserName +
                     " (" + Properties.Settings.Default.CurrentUserID.ToString() + ")";
@@ -3557,5 +3566,14 @@ namespace BikeDB2024
             }
         }
         #endregion
+
+        private void gpsFormatComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (gpsFormatComboBox.SelectedText == "Grad")
+            {
+                Properties.Settings.Default.GPSCoordAngle = true;
+            }
+            else Properties.Settings.Default.GPSCoordAngle = false;
+        }
     }
 }
