@@ -79,17 +79,19 @@
             System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Bildbetrachter");
             System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Bildbearbeitung");
             System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Entfaltung");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Google Earth");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Einstellungen");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Speicherorte");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Hilfsmittel", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("GPS-Koordinaten");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Google Earth");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Einstellungen");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Speicherorte");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Hilfsmittel", new System.Windows.Forms.TreeNode[] {
             treeNode30,
             treeNode31,
             treeNode32,
             treeNode33,
             treeNode34,
-            treeNode35});
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Versionsgeschichte");
+            treeNode35,
+            treeNode36});
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Versionsgeschichte");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewHelpForm));
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.helpSplitContainer = new System.Windows.Forms.SplitContainer();
@@ -211,16 +213,18 @@
             treeNode31.Text = "Bildbearbeitung";
             treeNode32.Name = "Knoten11";
             treeNode32.Text = "Entfaltung";
-            treeNode33.Name = "Knoten12";
-            treeNode33.Text = "Google Earth";
-            treeNode34.Name = "Knoten13";
-            treeNode34.Text = "Einstellungen";
-            treeNode35.Name = "Knoten14";
-            treeNode35.Text = "Speicherorte";
-            treeNode36.Name = "Knoten9";
-            treeNode36.Text = "Hilfsmittel";
-            treeNode37.Name = "Knoten1";
-            treeNode37.Text = "Versionsgeschichte";
+            treeNode33.Name = "Knoten0";
+            treeNode33.Text = "GPS-Koordinaten";
+            treeNode34.Name = "Knoten12";
+            treeNode34.Text = "Google Earth";
+            treeNode35.Name = "Knoten13";
+            treeNode35.Text = "Einstellungen";
+            treeNode36.Name = "Knoten14";
+            treeNode36.Text = "Speicherorte";
+            treeNode37.Name = "Knoten9";
+            treeNode37.Text = "Hilfsmittel";
+            treeNode38.Name = "Knoten1";
+            treeNode38.Text = "Versionsgeschichte";
             this.helpTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode2,
             treeNode8,
@@ -232,8 +236,8 @@
             treeNode27,
             treeNode28,
             treeNode29,
-            treeNode36,
-            treeNode37});
+            treeNode37,
+            treeNode38});
             this.helpTreeView.Size = new System.Drawing.Size(164, 411);
             this.helpTreeView.TabIndex = 2;
             this.helpTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.helpTreeView_AfterSelect);

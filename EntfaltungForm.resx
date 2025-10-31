@@ -123,6 +123,14 @@
   <metadata name="wheelContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>330, 17</value>
   </metadata>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>Wähle zuerst ein Fahrrad aus, für das die Entfaltung berechnet werden soll.
+Danach muss die Anzahl Kettenblätter (vorne an den Pedalen) und die Anzahl Ritzel (an der Hinterradnabe) eingegeben werden.
+Der Radumfang muss in "mm" (Millimeter) angegeben werden. Gängige Umfänge können durch Rechtsklick auf das Fenster im Kontextmenü ausgewählt werden.
+In den nun angezeigten Feldern muss nun die Anzahl an Zähnen pro Kettenblatt (Spalte "Kettenblätter") bzw. die Anzahl Zähne pro Ritzel zwischen die Semikolons ";" eingetragen werden.
+Die Sortierung erfolgt automatisch: klein nach groß bei den Kettenblättern (von oben nach unten) bzw. groß nach klein bei den Ritzeln (von links nach rechts).
+Es sind nur ganze Zahlen erlaubt! Dezimalpunkt oder -komma führt zu einem Fehler und die Entfaltung kann nicht berechnet werden.</value>
+  </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>133, 17</value>
   </metadata>
@@ -139,14 +147,6 @@
         pNeYDTGPIXgHsBtd3UdqIfQJKpQv1utH3In1jesk7EGjCe1M0OHki/X8NROoRufYrIInUQJo9aeoRlMq
         BBAlwCSqSXb11tzHwtRbfXaSepaU/CWS5BOQY8RkfgvCdAAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Wähle zuerst ein Fahrrad aus, für das die Entfaltung berechnet werden soll.
-Danach muss die Anzahl Kettenblätter (vorne an den Pedalen) und die Anzahl Ritzel (an der Hinterradnabe) eingegeben werden.
-Der Radumfang muss in "mm" (Millimeter) angegeben werden. Gängige Umfänge können durch Rechtsklick auf das Fenster im Kontextmenü ausgewählt werden.
-In den nun angezeigten Feldern muss nun die Anzahl an Zähnen pro Kettenblatt (Spalte "Kettenblätter") bzw. die Anzahl Zähne pro Ritzel zwischen die Semikolons ";" eingetragen werden.
-Die Sortierung erfolgt automatisch: klein nach groß bei den Kettenblättern (von oben nach unten) bzw. groß nach klein bei den Ritzeln (von links nach rechts).
-Es sind nur ganze Zahlen erlaubt! Dezimalpunkt oder -komma führt zu einem Fehler und die Entfaltung kann nicht berechnet werden.</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -18,8 +18,8 @@ namespace BikeDB2024
 
         internal string table;
         internal string sqlquery;
-        internal SqlConnection sqlconnection;
-        internal SqlCommand sqlcommand;
+        //internal SqlConnection sqlconnection;
+        //internal SqlCommand sqlcommand;
 
         /// <summary>
         /// Value (e.g. for ListBox).

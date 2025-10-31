@@ -1,16 +1,22 @@
 ﻿// Source: https://www.csharphelper.com/howtos/howto_great_circle_distance.html
 using System;
 using System.Linq;
+using static BikeDB2024.Helpers;
+using GMap.NET;
+using static BikeDB2024.SexagesimalAngle;
 
 namespace BikeDB2024.FlightDB
 {
     internal class GpsCoordinate
     {
-        public string Coordinate { get; set; }
+        #region Variables.
+        public string Coordinate;
         public string Latitude;
         public string Longitude;
         public double LatitudeValue;
         public double LongitudeValue;
+        public CoordinateType Type;
+        #endregion
 
         /// <summary>
         /// Constructor.
@@ -19,27 +25,95 @@ namespace BikeDB2024.FlightDB
         public GpsCoordinate(string coord) 
         { 
             Coordinate = coord;
-            getParts();
+            TestCoordinateType(coord);
+            if (Type == CoordinateType.DECIMAL || Type == CoordinateType.DEGREE)
+            {
+                getParts();
+            }
+            else
+            {
+                Latitude = "";
+                Longitude = "";
+                LatitudeValue = 0;
+                LongitudeValue = 0;
+            }
         }
 
         /// <summary>
-        /// Extract latitude and longitude from GPS Coordinate.
+        /// Get a GMap.NET.PointLatLng-Coordinate.
+        /// </summary>
+        /// <returns>Position on a GMap.</returns>
+        public PointLatLng GetMapPosition()
+        {
+            return new PointLatLng(LatitudeValue, LongitudeValue);
+        }
+
+        /// <summary>
+        /// Get the coordinate in decimal representation.
+        /// </summary>
+        /// <returns></returns>
+        public string GetDecimalCoordinate()
+        {
+            return LatitudeValue.ToString() + ", " + LongitudeValue.ToString();
+        }
+
+        /// <summary>
+        /// Get the coordinate in degree representation.
+        /// </summary>
+        /// <returns></returns>
+        public string GetDegreeCoordinate()
+        {
+            return Latitude + ", " + Longitude;
+        }
+
+        /// <summary>
+        /// Check the type of a coordinate string (decimal or degree are valid strings).
+        /// </summary>
+        /// <param name="orig"></param>
+        public void TestCoordinateType(string orig)
+        {
+            if (orig != String.Empty)
+            {
+                string[] parts = orig.Split(',');
+                if (parts.Length != 2)
+                {
+                    Type = CoordinateType.INCOMPLETE;
+                    return;
+                }
+                if (orig.Contains("°"))
+                {
+                    Type = CoordinateType.DEGREE;
+                }
+                else if (orig.Contains("."))
+                {
+                    Type = CoordinateType.DECIMAL;
+                }
+            }
+            else
+            {
+                Type = CoordinateType.NULL;
+            }
+        }
+
+        /// <summary>
+        /// Extract latitude and longitude from GPS Coordinate. Both are stored as decimal and degree values.
         /// </summary>
         private void getParts()
         {
-            if (Coordinate != String.Empty)
+            string[] tmp = Coordinate.Split(',');
+            if (Type == CoordinateType.DECIMAL)
             {
-                if (Coordinate.Contains(","))
-                {
-                    string[] tmp = Coordinate.Split(',');
-                    if (tmp.Length == 2)
-                    {
-                        Latitude = tmp[0];
-                        LatitudeValue = ParseLatLon(tmp[0]);
-                        Longitude = tmp[1];
-                        LongitudeValue = ParseLatLon(tmp[1]);
-                    }
-                }
+                Latitude = FromDouble(Convert.ToDouble(tmp[0])).ToString();
+                LatitudeValue = Convert.ToDouble(tmp[0]);
+                Longitude = FromDouble(Convert.ToDouble(tmp[1])).ToString();
+                LongitudeValue = Convert.ToDouble(tmp[1]);
+            }
+            else if (Type == CoordinateType.DEGREE)
+            {
+                Latitude = tmp[0];
+                LatitudeValue = ParseLatLon(tmp[0]);
+                Longitude = tmp[1];
+                LongitudeValue = ParseLatLon(tmp[1]);
             }
         }
 

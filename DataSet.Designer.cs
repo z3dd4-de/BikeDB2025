@@ -7978,6 +7978,8 @@ namespace BikeDB2024 {
             
             private global::System.Data.DataColumn columnMaxAltitude;
             
+            private global::System.Data.DataColumn columnCadence;
+            
             private global::System.Data.DataColumn columnRemark;
             
             private global::System.Data.DataColumn columnImageGallery;
@@ -8105,6 +8107,14 @@ namespace BikeDB2024 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CadenceColumn {
+                get {
+                    return this.columnCadence;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn RemarkColumn {
                 get {
                     return this.columnRemark;
@@ -8199,6 +8209,7 @@ namespace BikeDB2024 {
                         decimal MaxSpeed, 
                         int AccumulatedHeight, 
                         int MaxAltitude, 
+                        int Cadence, 
                         string Remark, 
                         ImageGalleriesRow parentImageGalleriesRowByImageGalleries_Tour, 
                         string Persons, 
@@ -8217,6 +8228,7 @@ namespace BikeDB2024 {
                         MaxSpeed,
                         AccumulatedHeight,
                         MaxAltitude,
+                        Cadence,
                         Remark,
                         null,
                         Persons,
@@ -8230,7 +8242,7 @@ namespace BikeDB2024 {
                     columnValuesArray[3] = parentVehiclesRowByVehicles_Tour[0];
                 }
                 if ((parentImageGalleriesRowByImageGalleries_Tour != null)) {
-                    columnValuesArray[11] = parentImageGalleriesRowByImageGalleries_Tour[0];
+                    columnValuesArray[12] = parentImageGalleriesRowByImageGalleries_Tour[0];
                 }
                 rowTourRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTourRow);
@@ -8271,6 +8283,7 @@ namespace BikeDB2024 {
                 this.columnMaxSpeed = base.Columns["MaxSpeed"];
                 this.columnAccumulatedHeight = base.Columns["AccumulatedHeight"];
                 this.columnMaxAltitude = base.Columns["MaxAltitude"];
+                this.columnCadence = base.Columns["Cadence"];
                 this.columnRemark = base.Columns["Remark"];
                 this.columnImageGallery = base.Columns["ImageGallery"];
                 this.columnPersons = base.Columns["Persons"];
@@ -8302,6 +8315,8 @@ namespace BikeDB2024 {
                 base.Columns.Add(this.columnAccumulatedHeight);
                 this.columnMaxAltitude = new global::System.Data.DataColumn("MaxAltitude", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaxAltitude);
+                this.columnCadence = new global::System.Data.DataColumn("Cadence", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCadence);
                 this.columnRemark = new global::System.Data.DataColumn("Remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRemark);
                 this.columnImageGallery = new global::System.Data.DataColumn("ImageGallery", typeof(int), null, global::System.Data.MappingType.Element);
@@ -12737,6 +12752,22 @@ namespace BikeDB2024 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Cadence {
+                get {
+                    try {
+                        return ((int)(this[this.tableTour.CadenceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Der Wert für Spalte Cadence in Tabelle Tour ist DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTour.CadenceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string Remark {
                 get {
                     try {
@@ -12953,6 +12984,18 @@ namespace BikeDB2024 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetMaxAltitudeNull() {
                 this[this.tableTour.MaxAltitudeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCadenceNull() {
+                return this.IsNull(this.tableTour.CadenceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCadenceNull() {
+                this[this.tableTour.CadenceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -23302,6 +23345,7 @@ SELECT Id, LinkType, Type, PathType, Path, Date, LinkId, Remark, Created, LastCh
             tableMapping.ColumnMappings.Add("MaxSpeed", "MaxSpeed");
             tableMapping.ColumnMappings.Add("AccumulatedHeight", "AccumulatedHeight");
             tableMapping.ColumnMappings.Add("MaxAltitude", "MaxAltitude");
+            tableMapping.ColumnMappings.Add("Cadence", "Cadence");
             tableMapping.ColumnMappings.Add("Remark", "Remark");
             tableMapping.ColumnMappings.Add("ImageGallery", "ImageGallery");
             tableMapping.ColumnMappings.Add("Persons", "Persons");
@@ -23311,7 +23355,7 @@ SELECT Id, LinkType, Type, PathType, Path, Date, LinkId, Remark, Created, LastCh
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tour] WHERE (([Id] = @Original_Id) AND ([Date] = @Original_Date) AND ((@IsNull_Route = 1 AND [Route] IS NULL) OR ([Route] = @Original_Route)) AND ((@IsNull_Vehicle = 1 AND [Vehicle] IS NULL) OR ([Vehicle] = @Original_Vehicle)) AND ((@IsNull_Km = 1 AND [Km] IS NULL) OR ([Km] = @Original_Km)) AND ((@IsNull_Time = 1 AND [Time] IS NULL) OR ([Time] = @Original_Time)) AND ((@IsNull_AverageSpeed = 1 AND [AverageSpeed] IS NULL) OR ([AverageSpeed] = @Original_AverageSpeed)) AND ((@IsNull_MaxSpeed = 1 AND [MaxSpeed] IS NULL) OR ([MaxSpeed] = @Original_MaxSpeed)) AND ((@IsNull_AccumulatedHeight = 1 AND [AccumulatedHeight] IS NULL) OR ([AccumulatedHeight] = @Original_AccumulatedHeight)) AND ((@IsNull_MaxAltitude = 1 AND [MaxAltitude] IS NULL) OR ([MaxAltitude] = @Original_MaxAltitude)) AND ((@IsNull_ImageGallery = 1 AND [ImageGallery] IS NULL) OR ([ImageGallery] = @Original_ImageGallery)) AND ((@IsNull_Created = 1 AND [Created] IS NULL) OR ([Created] = @Original_Created)) AND ((@IsNull_LastChanged = 1 AND [LastChanged] IS NULL) OR ([LastChanged] = @Original_LastChanged)) AND ([User] = @Original_User))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tour] WHERE (([Id] = @Original_Id) AND ([Date] = @Original_Date) AND ((@IsNull_Route = 1 AND [Route] IS NULL) OR ([Route] = @Original_Route)) AND ((@IsNull_Vehicle = 1 AND [Vehicle] IS NULL) OR ([Vehicle] = @Original_Vehicle)) AND ((@IsNull_Km = 1 AND [Km] IS NULL) OR ([Km] = @Original_Km)) AND ((@IsNull_Time = 1 AND [Time] IS NULL) OR ([Time] = @Original_Time)) AND ((@IsNull_AverageSpeed = 1 AND [AverageSpeed] IS NULL) OR ([AverageSpeed] = @Original_AverageSpeed)) AND ((@IsNull_MaxSpeed = 1 AND [MaxSpeed] IS NULL) OR ([MaxSpeed] = @Original_MaxSpeed)) AND ((@IsNull_AccumulatedHeight = 1 AND [AccumulatedHeight] IS NULL) OR ([AccumulatedHeight] = @Original_AccumulatedHeight)) AND ((@IsNull_MaxAltitude = 1 AND [MaxAltitude] IS NULL) OR ([MaxAltitude] = @Original_MaxAltitude)) AND ((@IsNull_Cadence = 1 AND [Cadence] IS NULL) OR ([Cadence] = @Original_Cadence)) AND ((@IsNull_ImageGallery = 1 AND [ImageGallery] IS NULL) OR ([ImageGallery] = @Original_ImageGallery)) AND ((@IsNull_Created = 1 AND [Created] IS NULL) OR ([Created] = @Original_Created)) AND ((@IsNull_LastChanged = 1 AND [LastChanged] IS NULL) OR ([LastChanged] = @Original_LastChanged)) AND ([User] = @Original_User))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -23331,6 +23375,8 @@ SELECT Id, LinkType, Type, PathType, Path, Date, LinkId, Remark, Created, LastCh
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AccumulatedHeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccumulatedHeight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaxAltitude", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxAltitude", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxAltitude", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxAltitude", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Cadence", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cadence", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cadence", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cadence", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ImageGallery", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImageGallery", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ImageGallery", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImageGallery", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Created", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Created", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -23340,8 +23386,8 @@ SELECT Id, LinkType, Type, PathType, Path, Date, LinkId, Remark, Created, LastCh
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_User", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "User", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tour] ([Id], [Date], [Route], [Vehicle], [Km], [Time], [AverageSpeed], [MaxSpeed], [AccumulatedHeight], [MaxAltitude], [Remark], [ImageGallery], [Persons], [Created], [LastChanged], [User]) VALUES (@Id, @Date, @Route, @Vehicle, @Km, @Time, @AverageSpeed, @MaxSpeed, @AccumulatedHeight, @MaxAltitude, @Remark, @ImageGallery, @Persons, @Created, @LastChanged, @User);
-SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeight, MaxAltitude, Remark, ImageGallery, Persons, Created, LastChanged, [User] FROM Tour WHERE (Id = @Id)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tour] ([Id], [Date], [Route], [Vehicle], [Km], [Time], [AverageSpeed], [MaxSpeed], [AccumulatedHeight], [MaxAltitude], [Cadence], [Remark], [ImageGallery], [Persons], [Created], [LastChanged], [User]) VALUES (@Id, @Date, @Route, @Vehicle, @Km, @Time, @AverageSpeed, @MaxSpeed, @AccumulatedHeight, @MaxAltitude, @Cadence, @Remark, @ImageGallery, @Persons, @Created, @LastChanged, @User);
+SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeight, MaxAltitude, Cadence, Remark, ImageGallery, Persons, Created, LastChanged, [User] FROM Tour WHERE (Id = @Id)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -23353,6 +23399,7 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxSpeed", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 16, 2, "MaxSpeed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AccumulatedHeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccumulatedHeight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxAltitude", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxAltitude", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cadence", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cadence", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImageGallery", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImageGallery", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Persons", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Persons", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -23364,24 +23411,26 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Tour] SET [Id] = @Id, [Date] = @Date, [Route] = @Route, [Vehicle] =" +
                 " @Vehicle, [Km] = @Km, [Time] = @Time, [AverageSpeed] = @AverageSpeed, [MaxSpeed" +
                 "] = @MaxSpeed, [AccumulatedHeight] = @AccumulatedHeight, [MaxAltitude] = @MaxAlt" +
-                "itude, [Remark] = @Remark, [ImageGallery] = @ImageGallery, [Persons] = @Persons," +
-                " [Created] = @Created, [LastChanged] = @LastChanged, [User] = @User WHERE (([Id]" +
-                " = @Original_Id) AND ([Date] = @Original_Date) AND ((@IsNull_Route = 1 AND [Rout" +
-                "e] IS NULL) OR ([Route] = @Original_Route)) AND ((@IsNull_Vehicle = 1 AND [Vehic" +
-                "le] IS NULL) OR ([Vehicle] = @Original_Vehicle)) AND ((@IsNull_Km = 1 AND [Km] I" +
-                "S NULL) OR ([Km] = @Original_Km)) AND ((@IsNull_Time = 1 AND [Time] IS NULL) OR " +
-                "([Time] = @Original_Time)) AND ((@IsNull_AverageSpeed = 1 AND [AverageSpeed] IS " +
-                "NULL) OR ([AverageSpeed] = @Original_AverageSpeed)) AND ((@IsNull_MaxSpeed = 1 A" +
-                "ND [MaxSpeed] IS NULL) OR ([MaxSpeed] = @Original_MaxSpeed)) AND ((@IsNull_Accum" +
-                "ulatedHeight = 1 AND [AccumulatedHeight] IS NULL) OR ([AccumulatedHeight] = @Ori" +
-                "ginal_AccumulatedHeight)) AND ((@IsNull_MaxAltitude = 1 AND [MaxAltitude] IS NUL" +
-                "L) OR ([MaxAltitude] = @Original_MaxAltitude)) AND ((@IsNull_ImageGallery = 1 AN" +
-                "D [ImageGallery] IS NULL) OR ([ImageGallery] = @Original_ImageGallery)) AND ((@I" +
-                "sNull_Created = 1 AND [Created] IS NULL) OR ([Created] = @Original_Created)) AND" +
-                " ((@IsNull_LastChanged = 1 AND [LastChanged] IS NULL) OR ([LastChanged] = @Origi" +
-                "nal_LastChanged)) AND ([User] = @Original_User));\r\nSELECT Id, Date, Route, Vehic" +
-                "le, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeight, MaxAltitude, Remark, Im" +
-                "ageGallery, Persons, Created, LastChanged, [User] FROM Tour WHERE (Id = @Id)";
+                "itude, [Cadence] = @Cadence, [Remark] = @Remark, [ImageGallery] = @ImageGallery," +
+                " [Persons] = @Persons, [Created] = @Created, [LastChanged] = @LastChanged, [User" +
+                "] = @User WHERE (([Id] = @Original_Id) AND ([Date] = @Original_Date) AND ((@IsNu" +
+                "ll_Route = 1 AND [Route] IS NULL) OR ([Route] = @Original_Route)) AND ((@IsNull_" +
+                "Vehicle = 1 AND [Vehicle] IS NULL) OR ([Vehicle] = @Original_Vehicle)) AND ((@Is" +
+                "Null_Km = 1 AND [Km] IS NULL) OR ([Km] = @Original_Km)) AND ((@IsNull_Time = 1 A" +
+                "ND [Time] IS NULL) OR ([Time] = @Original_Time)) AND ((@IsNull_AverageSpeed = 1 " +
+                "AND [AverageSpeed] IS NULL) OR ([AverageSpeed] = @Original_AverageSpeed)) AND ((" +
+                "@IsNull_MaxSpeed = 1 AND [MaxSpeed] IS NULL) OR ([MaxSpeed] = @Original_MaxSpeed" +
+                ")) AND ((@IsNull_AccumulatedHeight = 1 AND [AccumulatedHeight] IS NULL) OR ([Acc" +
+                "umulatedHeight] = @Original_AccumulatedHeight)) AND ((@IsNull_MaxAltitude = 1 AN" +
+                "D [MaxAltitude] IS NULL) OR ([MaxAltitude] = @Original_MaxAltitude)) AND ((@IsNu" +
+                "ll_Cadence = 1 AND [Cadence] IS NULL) OR ([Cadence] = @Original_Cadence)) AND ((" +
+                "@IsNull_ImageGallery = 1 AND [ImageGallery] IS NULL) OR ([ImageGallery] = @Origi" +
+                "nal_ImageGallery)) AND ((@IsNull_Created = 1 AND [Created] IS NULL) OR ([Created" +
+                "] = @Original_Created)) AND ((@IsNull_LastChanged = 1 AND [LastChanged] IS NULL)" +
+                " OR ([LastChanged] = @Original_LastChanged)) AND ([User] = @Original_User));\r\nSE" +
+                "LECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeig" +
+                "ht, MaxAltitude, Cadence, Remark, ImageGallery, Persons, Created, LastChanged, [" +
+                "User] FROM Tour WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -23393,6 +23442,7 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxSpeed", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 16, 2, "MaxSpeed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@AccumulatedHeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccumulatedHeight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxAltitude", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxAltitude", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cadence", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cadence", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Remark", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Remark", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ImageGallery", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImageGallery", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Persons", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Persons", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -23417,6 +23467,8 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_AccumulatedHeight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "AccumulatedHeight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaxAltitude", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxAltitude", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxAltitude", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxAltitude", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Cadence", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cadence", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cadence", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cadence", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ImageGallery", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImageGallery", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ImageGallery", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ImageGallery", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Created", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Created", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -23440,8 +23492,8 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHei" +
-                "ght, MaxAltitude, Remark, ImageGallery, Persons, Created, LastChanged, [User] FR" +
-                "OM dbo.Tour";
+                "ght, MaxAltitude, Cadence, Remark, ImageGallery, Persons, Created, LastChanged, " +
+                "[User] FROM dbo.Tour";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -23502,7 +23554,7 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, System.DateTime Original_Date, global::System.Nullable<int> Original_Route, global::System.Nullable<int> Original_Vehicle, global::System.Nullable<decimal> Original_Km, global::System.Nullable<global::System.TimeSpan> Original_Time, global::System.Nullable<decimal> Original_AverageSpeed, global::System.Nullable<decimal> Original_MaxSpeed, global::System.Nullable<int> Original_AccumulatedHeight, global::System.Nullable<int> Original_MaxAltitude, global::System.Nullable<int> Original_ImageGallery, global::System.Nullable<global::System.DateTime> Original_Created, global::System.Nullable<global::System.DateTime> Original_LastChanged, int Original_User) {
+        public virtual int Delete(int Original_Id, System.DateTime Original_Date, global::System.Nullable<int> Original_Route, global::System.Nullable<int> Original_Vehicle, global::System.Nullable<decimal> Original_Km, global::System.Nullable<global::System.TimeSpan> Original_Time, global::System.Nullable<decimal> Original_AverageSpeed, global::System.Nullable<decimal> Original_MaxSpeed, global::System.Nullable<int> Original_AccumulatedHeight, global::System.Nullable<int> Original_MaxAltitude, global::System.Nullable<int> Original_Cadence, global::System.Nullable<int> Original_ImageGallery, global::System.Nullable<global::System.DateTime> Original_Created, global::System.Nullable<global::System.DateTime> Original_LastChanged, int Original_User) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Date));
             if ((Original_Route.HasValue == true)) {
@@ -23569,31 +23621,39 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
                 this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            if ((Original_ImageGallery.HasValue == true)) {
+            if ((Original_Cadence.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((int)(Original_ImageGallery.Value));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((int)(Original_Cadence.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
-            if ((Original_Created.HasValue == true)) {
+            if ((Original_ImageGallery.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((System.DateTime)(Original_Created.Value));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((int)(Original_ImageGallery.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
-            if ((Original_LastChanged.HasValue == true)) {
+            if ((Original_Created.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((System.DateTime)(Original_LastChanged.Value));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((System.DateTime)(Original_Created.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[24].Value = ((int)(Original_User));
+            if ((Original_LastChanged.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((System.DateTime)(Original_LastChanged.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.DeleteCommand.Parameters[26].Value = ((int)(Original_User));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -23625,6 +23685,7 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
                     global::System.Nullable<decimal> MaxSpeed, 
                     global::System.Nullable<int> AccumulatedHeight, 
                     global::System.Nullable<int> MaxAltitude, 
+                    global::System.Nullable<int> Cadence, 
                     string Remark, 
                     global::System.Nullable<int> ImageGallery, 
                     string Persons, 
@@ -23681,37 +23742,43 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Remark == null)) {
+            if ((Cadence.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(Cadence.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Remark));
-            }
-            if ((ImageGallery.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(ImageGallery.Value));
-            }
-            else {
+            if ((Remark == null)) {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((Persons == null)) {
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Remark));
+            }
+            if ((ImageGallery.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(ImageGallery.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Persons));
-            }
-            if ((Created.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((System.DateTime)(Created.Value));
-            }
-            else {
+            if ((Persons == null)) {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((LastChanged.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((System.DateTime)(LastChanged.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(Persons));
+            }
+            if ((Created.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((System.DateTime)(Created.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[15].Value = ((int)(User));
+            if ((LastChanged.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((System.DateTime)(LastChanged.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.InsertCommand.Parameters[16].Value = ((int)(User));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -23743,6 +23810,7 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
                     global::System.Nullable<decimal> MaxSpeed, 
                     global::System.Nullable<int> AccumulatedHeight, 
                     global::System.Nullable<int> MaxAltitude, 
+                    global::System.Nullable<int> Cadence, 
                     string Remark, 
                     global::System.Nullable<int> ImageGallery, 
                     string Persons, 
@@ -23759,6 +23827,7 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
                     global::System.Nullable<decimal> Original_MaxSpeed, 
                     global::System.Nullable<int> Original_AccumulatedHeight, 
                     global::System.Nullable<int> Original_MaxAltitude, 
+                    global::System.Nullable<int> Original_Cadence, 
                     global::System.Nullable<int> Original_ImageGallery, 
                     global::System.Nullable<global::System.DateTime> Original_Created, 
                     global::System.Nullable<global::System.DateTime> Original_LastChanged, 
@@ -23813,128 +23882,142 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Remark == null)) {
+            if ((Cadence.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Cadence.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Remark));
-            }
-            if ((ImageGallery.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(ImageGallery.Value));
-            }
-            else {
+            if ((Remark == null)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((Persons == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Remark));
+            }
+            if ((ImageGallery.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(ImageGallery.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Persons));
-            }
-            if ((Created.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Created.Value));
-            }
-            else {
+            if ((Persons == null)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((LastChanged.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(LastChanged.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Persons));
+            }
+            if ((Created.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Created.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(User));
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_Date));
-            if ((Original_Route.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_Route.Value));
+            if ((LastChanged.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(LastChanged.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(User));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_Date));
+            if ((Original_Route.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_Route.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             if ((Original_Vehicle.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_Vehicle.Value));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_Vehicle.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             if ((Original_Km.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((decimal)(Original_Km.Value));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((decimal)(Original_Km.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             if ((Original_Time.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((System.TimeSpan)(Original_Time.Value));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((System.TimeSpan)(Original_Time.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             if ((Original_AverageSpeed.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((decimal)(Original_AverageSpeed.Value));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((decimal)(Original_AverageSpeed.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             if ((Original_MaxSpeed.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((decimal)(Original_MaxSpeed.Value));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((decimal)(Original_MaxSpeed.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             if ((Original_AccumulatedHeight.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((int)(Original_AccumulatedHeight.Value));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(Original_AccumulatedHeight.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             if ((Original_MaxAltitude.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((int)(Original_MaxAltitude.Value));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_MaxAltitude.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Cadence.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_Cadence.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
             if ((Original_ImageGallery.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((int)(Original_ImageGallery.Value));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(Original_ImageGallery.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
             if ((Original_Created.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((System.DateTime)(Original_Created.Value));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((System.DateTime)(Original_Created.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
             if ((Original_LastChanged.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((System.DateTime)(Original_LastChanged.Value));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((System.DateTime)(Original_LastChanged.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[40].Value = ((int)(Original_User));
+            this.Adapter.UpdateCommand.Parameters[43].Value = ((int)(Original_User));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -23965,6 +24048,7 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
                     global::System.Nullable<decimal> MaxSpeed, 
                     global::System.Nullable<int> AccumulatedHeight, 
                     global::System.Nullable<int> MaxAltitude, 
+                    global::System.Nullable<int> Cadence, 
                     string Remark, 
                     global::System.Nullable<int> ImageGallery, 
                     string Persons, 
@@ -23981,11 +24065,12 @@ SELECT Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHe
                     global::System.Nullable<decimal> Original_MaxSpeed, 
                     global::System.Nullable<int> Original_AccumulatedHeight, 
                     global::System.Nullable<int> Original_MaxAltitude, 
+                    global::System.Nullable<int> Original_Cadence, 
                     global::System.Nullable<int> Original_ImageGallery, 
                     global::System.Nullable<global::System.DateTime> Original_Created, 
                     global::System.Nullable<global::System.DateTime> Original_LastChanged, 
                     int Original_User) {
-            return this.Update(Original_Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeight, MaxAltitude, Remark, ImageGallery, Persons, Created, LastChanged, User, Original_Id, Original_Date, Original_Route, Original_Vehicle, Original_Km, Original_Time, Original_AverageSpeed, Original_MaxSpeed, Original_AccumulatedHeight, Original_MaxAltitude, Original_ImageGallery, Original_Created, Original_LastChanged, Original_User);
+            return this.Update(Original_Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeight, MaxAltitude, Cadence, Remark, ImageGallery, Persons, Created, LastChanged, User, Original_Id, Original_Date, Original_Route, Original_Vehicle, Original_Km, Original_Time, Original_AverageSpeed, Original_MaxSpeed, Original_AccumulatedHeight, Original_MaxAltitude, Original_Cadence, Original_ImageGallery, Original_Created, Original_LastChanged, Original_User);
         }
     }
     

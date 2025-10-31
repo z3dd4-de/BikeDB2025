@@ -17,7 +17,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="StdContinent" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Europa</Value>
     </Setting>
     <Setting Name="StdCity" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -35,10 +35,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="StdCountry" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Deutschland</Value>
     </Setting>
     <Setting Name="StdBundesland" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Nordrhein-Westfalen</Value>
     </Setting>
     <Setting Name="ShowToolbar" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -198,6 +198,12 @@
     </Setting>
     <Setting Name="FDBSplitterSetting" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">280</Value>
+    </Setting>
+    <Setting Name="MapProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">OpenStreetMap</Value>
+    </Setting>
+    <Setting Name="UseCadence" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

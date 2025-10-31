@@ -141,3 +141,4 @@ C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\System.Data.SqlClient.xml
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\System.Data.SQLite.xml
 C:\Users\fukc-\source\repos\BikeDB2024\bin\Debug\System.Security.Principal.Windows.xml
 C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.FlightDB.SettingsFlightDBForm.resources
+C:\Users\fukc-\source\repos\BikeDB2024\obj\Debug\BikeDB2024.QRForm.resources

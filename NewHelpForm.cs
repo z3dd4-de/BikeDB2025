@@ -144,6 +144,9 @@ namespace BikeDB2024
                 case "Kosten":
                     this.helpBrowser.Url = new Uri(String.Format("file:///{0}/HelpPages/Kosten.html", curDir));
                     break;
+                case "GPS-Koordinaten":
+                    this.helpBrowser.Url = new Uri(String.Format("file:///{0}/HelpPages/GPS.html", curDir));
+                    break;
                 default:
                     break;
             }

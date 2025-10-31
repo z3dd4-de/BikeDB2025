@@ -11,6 +11,8 @@ using System.Security.Cryptography;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using BikeDB2024.FlightDB;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using static BikeDB2024.Helpers;
 //using System.Runtime.InteropServices;
@@ -26,6 +28,7 @@ namespace BikeDB2024
         public enum Installation { SINGLE_USER, MULTI_USER, QUICK_LOGIN, STRICT, SINGLE_ADMIN };
         public enum VehicleType { BIKE, FOSSIL, ELECTRIC, FLIGHTS }
         public enum FlightLocation { TAKEOFF, LANDING, CITY }
+        public enum CoordinateType { DECIMAL, DEGREE, INCOMPLETE, NULL }
         #endregion
 
         #region Database Helper Functions
@@ -1662,6 +1665,65 @@ namespace BikeDB2024
             comboBox.DisplayMember = "MarkerType";
             comboBox.ValueMember = "Value";
             comboBox.DataSource = markers;
+        }
+
+        /// <summary>
+        /// Converts a GPS coordinate either to a string including an angle or a double depending on setting.
+        /// Uses GPSCoordinate or SexagesimalAngle classes for conversion.
+        /// </summary>
+        /// <param name="orig"></param>
+        /// <returns></returns>
+        public static string GetGPSviaProperty(string orig)
+        {
+            string ret = "";
+            GpsCoordinate gps = new GpsCoordinate(orig);
+            if (Properties.Settings.Default.GPSCoordAngle)      // Grad: 51° 43′ N, 8° 45′ O
+            {
+                ret = gps.GetDegreeCoordinate();
+            }
+            else
+            {
+                ret = gps.GetDecimalCoordinate();
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// Get the current MapProvider from the properties. Should not be used from outside of Helpers, thus private.
+        /// </summary>
+        /// <returns></returns>
+        private static string ChooseMapProvider()
+        {
+            //BingMap, GoogleMap, OpenStreetMap, WikiMapiaMap, YahooMap
+            return Properties.Settings.Default.MapProvider;
+        }
+
+        /// <summary>
+        /// Switch MapProvider whenever a map is drawn.
+        /// </summary>
+        /// <param name="map"></param>
+        public static void SwitchMapProvider(GMapControl map)
+        {
+            string prov = ChooseMapProvider();
+            switch (prov)
+            {
+                case "BingMap":
+                    map.MapProvider = BingMapProvider.Instance;
+                    break;
+                case "GoogleMap":
+                    map.MapProvider = GoogleMapProvider.Instance;
+                    break;
+                case "OpenStreetMap":
+                default:
+                    map.MapProvider = OpenStreetMapProvider.Instance;
+                    break;
+                case "WikiMapiaMap":
+                    map.MapProvider = WikiMapiaMapProvider.Instance;
+                    break;
+                case "YahooMap":
+                    map.MapProvider = YahooMapProvider.Instance;
+                    break;
+            }
         }
     }
 }

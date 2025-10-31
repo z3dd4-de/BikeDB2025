@@ -60,7 +60,7 @@ namespace BikeDB2024.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Europa")]
         public string StdContinent {
             get {
                 return ((string)(this["StdContinent"]));
@@ -132,7 +132,7 @@ namespace BikeDB2024.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Deutschland")]
         public string StdCountry {
             get {
                 return ((string)(this["StdCountry"]));
@@ -144,7 +144,7 @@ namespace BikeDB2024.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Nordrhein-Westfalen")]
         public string StdBundesland {
             get {
                 return ((string)(this["StdBundesland"]));
@@ -787,6 +787,30 @@ namespace BikeDB2024.Properties {
             }
             set {
                 this["FDBSplitterSetting"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("OpenStreetMap")]
+        public string MapProvider {
+            get {
+                return ((string)(this["MapProvider"]));
+            }
+            set {
+                this["MapProvider"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseCadence {
+            get {
+                return ((bool)(this["UseCadence"]));
+            }
+            set {
+                this["UseCadence"] = value;
             }
         }
     }

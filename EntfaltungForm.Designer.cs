@@ -613,7 +613,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(777, 461);
+            this.tabPage2.Size = new System.Drawing.Size(777, 463);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Entfaltung";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -630,7 +630,7 @@
             this.containerTableLayoutPanel.RowCount = 2;
             this.containerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.containerTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.containerTableLayoutPanel.Size = new System.Drawing.Size(771, 455);
+            this.containerTableLayoutPanel.Size = new System.Drawing.Size(771, 457);
             this.containerTableLayoutPanel.TabIndex = 1;
             // 
             // entfaltungsTableLayoutPanel
@@ -664,7 +664,7 @@
             this.tabPage3.Controls.Add(this.entfaltungWebBrowser);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(777, 463);
+            this.tabPage3.Size = new System.Drawing.Size(777, 461);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Wikipedia";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -675,7 +675,7 @@
             this.entfaltungWebBrowser.Location = new System.Drawing.Point(0, 0);
             this.entfaltungWebBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.entfaltungWebBrowser.Name = "entfaltungWebBrowser";
-            this.entfaltungWebBrowser.Size = new System.Drawing.Size(777, 463);
+            this.entfaltungWebBrowser.Size = new System.Drawing.Size(777, 461);
             this.entfaltungWebBrowser.TabIndex = 0;
             this.entfaltungWebBrowser.Url = new System.Uri("https://de.wikipedia.org/wiki/Entfaltung_(Technik)", System.UriKind.Absolute);
             // 

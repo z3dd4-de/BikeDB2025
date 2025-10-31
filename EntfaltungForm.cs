@@ -583,7 +583,7 @@ namespace BikeDB2024
             SqlConnection myConnection;
             int vec_id = Convert.ToInt32(GetDatabaseEntry("Vehicles", "Id", "VehicleName = '" + vehicleToolStripComboBox.Text + "'"));
             string test = GetDatabaseEntry("Vehicles", "Entfaltung", "VehicleName = '" + vehicleToolStripComboBox.Text + "'");
-            if (test == "-1")
+            if (test == "")       // Entfaltung not yet present
             {
                 int id = 0;
                 try
@@ -604,14 +604,17 @@ namespace BikeDB2024
                         using (SqlCommand myCommand = new SqlCommand())
                         {
                             string sqlquery = "INSERT INTO Entfaltung" +
-                            " (Id, BikeId, Front, Back, Wheel, Unit) " +
-                            "VALUES (@id, @bike, @front, @back, @wheel, @unit)";
+                            " (Id, BikeId, Front, Back, Wheel, Unit, Created, LastChanged, [User]) " +
+                            "VALUES (@id, @bike, @front, @back, @wheel, @unit, @created, @lastchanged, @user)";
                             myCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
                             myCommand.Parameters.Add("@bike", SqlDbType.Int).Value = vec_id;
                             myCommand.Parameters.Add("@front", SqlDbType.NVarChar).Value = kettenbl;
                             myCommand.Parameters.Add("@back", SqlDbType.NVarChar).Value = ritzelMaskedTextBox.Text;
                             myCommand.Parameters.Add("@wheel", SqlDbType.Float).Value = Convert.ToDouble(umfangToolStripComboBox.Text);
                             myCommand.Parameters.Add("@unit", SqlDbType.NVarChar).Value = "mm";
+                            myCommand.Parameters.Add("@created", SqlDbType.DateTime).Value = DateTime.Now;
+                            myCommand.Parameters.Add("@lastchanged", SqlDbType.DateTime).Value = DateTime.Now;
+                            myCommand.Parameters.Add("@user", SqlDbType.Int).Value = Properties.Settings.Default.CurrentUserID;
                             myCommand.CommandText = sqlquery;
                             myCommand.CommandType = CommandType.Text;
                             myCommand.Connection = myConnection;
@@ -619,7 +622,7 @@ namespace BikeDB2024
                         }
                         using (SqlCommand myCommand = new SqlCommand())
                         {
-                            string sqlquery = "UPDATE Vehicles SET Entfaltung = @entf WHERE Id = " + vec_id;
+                            string sqlquery = "UPDATE Vehicles SET Entfaltung = @entf WHERE Id = " + vec_id.ToString();
                             myCommand.Parameters.Add("@entf", SqlDbType.Int).Value = id;
                             myCommand.CommandText = sqlquery;
                             myCommand.CommandType = CommandType.Text;

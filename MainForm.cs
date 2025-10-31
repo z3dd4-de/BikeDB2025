@@ -10,7 +10,12 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using BikeDB2024.FlightDB;
 using ExcelLibrary.BinaryFileFormat;
+using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 using LibUsbDotNet;
 using LibUsbDotNet.DeviceNotify;
 using LibUsbDotNet.Main;
@@ -55,6 +60,8 @@ namespace BikeDB2024
         private int tour_id = 0;
         private int[] note_ids = null;
         private int note_id = 0;
+        //GMap
+        private GMapControl cityMapControl;
         // Sigma Docking Station
         #region SET YOUR USB Vendor and Product ID!
         private const int vid = 7581;
@@ -72,6 +79,32 @@ namespace BikeDB2024
         public MainForm()
         {
             InitializeComponent();
+            initMapControl();
+        }
+
+        /// <summary>
+        /// Initialize the map for cities on the mapTabPage.
+        /// </summary>
+        private void initMapControl()
+        {
+            cityMapControl = new GMapControl
+            {
+                MinZoom = 0,
+                MaxZoom = 18,
+                Zoom = 10,
+                AutoScroll = true,
+                DragButton = MouseButtons.Left,
+                CanDragMap = true
+            };
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+
+            SwitchMapProvider(cityMapControl);
+
+            cityMapControl.Position = new PointLatLng(50.938, 6.9569);
+            cityMapControl.ShowCenter = false;
+            cityMapControl.Dock = DockStyle.Fill;
+
+            mapTabPage.Controls.Add(cityMapControl);
         }
 
         /// <summary>
@@ -129,7 +162,8 @@ namespace BikeDB2024
                     con1.Open();
                     using (SqlCommand com1 = new SqlCommand())
                     {
-                        com1.CommandText = @"SELECT * FROM Vehicles WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
+                        com1.CommandText = @"SELECT * FROM Vehicles WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString()
+                            + " ORDER BY VehicleName";
                         com1.CommandType = CommandType.Text;
                         com1.Connection = con1;
                         using (SqlDataReader reader1 = com1.ExecuteReader())
@@ -176,7 +210,8 @@ namespace BikeDB2024
                     con1.Open();
                     using (SqlCommand com1 = new SqlCommand())
                     {
-                        com1.CommandText = @"SELECT * FROM Routes WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
+                        com1.CommandText = @"SELECT * FROM Routes WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString()
+                            + " ORDER BY RouteName";
                         com1.CommandType = CommandType.Text;
                         com1.Connection = con1;
                         using (SqlDataReader reader1 = com1.ExecuteReader())
@@ -436,13 +471,18 @@ namespace BikeDB2024
                 useAltimeterCheckBox.Checked = true;
             }
             else { useAltimeterCheckBox.Checked = false; }
-
+            if (Properties.Settings.Default.UseCadence == true)
+            {
+                useCadenceCheckBox.Checked = true;
+            }
+            else { useCadenceCheckBox.Checked = false; }
             setting_cityComboBox.SelectedIndex = setting_cityComboBox.FindStringExact(Properties.Settings.Default.StdCity); 
             setting_continentComboBox.SelectedIndex = setting_continentComboBox.FindStringExact(Properties.Settings.Default.StdContinent);
             setting_routeComboBox.SelectedIndex = setting_routeComboBox.FindStringExact(Properties.Settings.Default.StdRoute);
             setting_vehicleComboBox.SelectedIndex = setting_vehicleComboBox.FindStringExact(Properties.Settings.Default.StdVehicle);
             setting_countryComboBox.SelectedIndex = setting_countryComboBox.FindStringExact(Properties.Settings.Default.StdCountry);
             setting_bundeslandComboBox.SelectedIndex = setting_bundeslandComboBox.FindStringExact(Properties.Settings.Default.StdBundesland);
+            setting_MapProviderComboBox.SelectedIndex = setting_MapProviderComboBox.FindStringExact(Properties.Settings.Default.MapProvider);
             if (Properties.Settings.Default.WindowLocation != new Point(0, 0))
                 this.Location = Properties.Settings.Default.WindowLocation;
             else this.Location = new Point(50, 50);
@@ -619,6 +659,7 @@ namespace BikeDB2024
             Properties.Settings.Default.UseAltimeter = useAltimeterCheckBox.Checked;
             altitudeTextBox.Enabled = Properties.Settings.Default.UseAltimeter;
             maxAltTextBox.Enabled = Properties.Settings.Default.UseAltimeter;
+            cadenceTextBox.Enabled = Properties.Settings.Default.UseCadence;
             getPersons();
         }
 
@@ -686,6 +727,9 @@ namespace BikeDB2024
             showSetup();
         }
 
+        /// <summary>
+        /// Load setup into the main window.
+        /// </summary>
         private void showSetup()
         {
             disableTabPages();
@@ -694,6 +738,11 @@ namespace BikeDB2024
             einstellungenToolStripMenuItem.Checked = true;
         }
 
+        /// <summary>
+        /// Switch if altimeter should be used or not.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void useAltimeterCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (useAltimeterCheckBox.Checked)
@@ -719,6 +768,37 @@ namespace BikeDB2024
             {
                 imageFolderPath.Text = imageFolderBrowserDialog.SelectedPath;
                 Properties.Settings.Default.ImageFolder = imageFolderPath.Text;
+            }
+        }
+
+        /// <summary>
+        /// Switch GPS setting between angle and decimal.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gpsFormatComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (gpsFormatComboBox.SelectedText == "Grad")
+            {
+                Properties.Settings.Default.GPSCoordAngle = true;
+            }
+            else Properties.Settings.Default.GPSCoordAngle = false;
+        }
+
+        /// <summary>
+        /// Switch if cadence should be used or not.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void useCadenceCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (useCadenceCheckBox.Checked)
+            {
+                Properties.Settings.Default.UseCadence = true;
+            }
+            else
+            {
+                Properties.Settings.Default.UseCadence = false;
             }
         }
         #endregion
@@ -1214,8 +1294,10 @@ namespace BikeDB2024
         {
             if (openImageDialog.ShowDialog() == DialogResult.OK)
             {
-                ImageViewerForm imageViewerForm = new ImageViewerForm();
-                imageViewerForm.Filename = openImageDialog.FileName;
+                ImageViewerForm imageViewerForm = new ImageViewerForm
+                {
+                    Filename = openImageDialog.FileName
+                };
                 imageViewerForm.Show();
             }
         }
@@ -1313,6 +1395,7 @@ namespace BikeDB2024
                     int newId = NextId("Tour");
                     int maxAlt = 0;
                     int alt = 0;
+                    int cad = 0;
                     if (altitudeTextBox.Text != String.Empty)
                     {
                         alt = Convert.ToInt32(altitudeTextBox.Text);
@@ -1320,6 +1403,10 @@ namespace BikeDB2024
                     if (maxAltTextBox.Text != String.Empty)
                     {
                         maxAlt = Convert.ToInt32(maxAltTextBox.Text);
+                    }
+                    if (cadenceTextBox.Text != String.Empty)
+                    {
+                        cad = Convert.ToInt32(cadenceTextBox.Text);
                     }
                     DateTime dt = DateTime.Parse(timeTextBox.Text, CultureInfo.InvariantCulture);
 
@@ -1353,6 +1440,7 @@ namespace BikeDB2024
                         vm,
                         alt,
                         maxAlt,
+                        cad,
                         remarkRichTextBox.Text,
                         null,
                         persons,
@@ -1368,6 +1456,7 @@ namespace BikeDB2024
                         vmaxTextBox.Text = "";
                         altitudeTextBox.Text = "";
                         maxAltTextBox.Text = "";
+                        cadenceTextBox.Text = "";
                         remarkRichTextBox.Text = "";
                         personsListBox.SelectedItems.Clear();
                     }
@@ -1375,7 +1464,7 @@ namespace BikeDB2024
                 else        // Edit data
                 {
                     var sql = @"UPDATE Tour SET Date = @Date, Route = @Route, Vehicle = @Vehicle, Km = @Km, Time = @Time, AverageSpeed = @AvgSpeed, " +
-                        "MaxSpeed = @MaxSpeed, AccumulatedHeight = @Height, MaxAltitude = @MaxAlt, Remark = @Remark , Persons = @persons, LastChanged = @last " +
+                        "MaxSpeed = @MaxSpeed, AccumulatedHeight = @Height, MaxAltitude = @MaxAlt, Cadence = @Cadence, Remark = @Remark , Persons = @persons, LastChanged = @last " +
                         "WHERE Id = " + current_tour.ToString();
                     try
                     {
@@ -1385,6 +1474,7 @@ namespace BikeDB2024
                             {
                                 int maxAlt = 0;
                                 int alt = 0;
+                                int cad = 0;
                                 if (altitudeTextBox.Text != String.Empty)
                                 {
                                     alt = Convert.ToInt32(altitudeTextBox.Text);
@@ -1392,6 +1482,10 @@ namespace BikeDB2024
                                 if (maxAltTextBox.Text != String.Empty)
                                 {
                                     maxAlt = Convert.ToInt32(maxAltTextBox.Text);
+                                }
+                                if (cadenceTextBox.Text != String.Empty)
+                                {
+                                    cad = Convert.ToInt32(cadenceTextBox.Text);
                                 }
                                 string persons = "";
                                 if (personsListBox.SelectedItems.Count > 0)
@@ -1420,6 +1514,7 @@ namespace BikeDB2024
                                 command.Parameters.Add("@MaxSpeed", SqlDbType.Decimal).Value = vm;
                                 command.Parameters.Add("@Height", SqlDbType.Int).Value = alt;
                                 command.Parameters.Add("@MaxAlt", SqlDbType.Int).Value = maxAlt;
+                                command.Parameters.Add("@Cadence", SqlDbType.Int).Value = cad;
                                 command.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = remarkRichTextBox.Text;
                                 command.Parameters.Add("@persons", SqlDbType.NVarChar).Value = persons;
                                 command.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
@@ -1592,8 +1687,10 @@ namespace BikeDB2024
                 SqlParameter idParam;
 
                 //Add id portion
-                idParam = new SqlParameter();
-                idParam.ParameterName = "@id";
+                idParam = new SqlParameter
+                {
+                    ParameterName = "@id"
+                };
                 /*if (current_tour != 0 && tabPage == 1)
                     idParam.Value = current_tour;
                 else if (current_route != 0 && tabPage == 2)
@@ -1783,7 +1880,7 @@ namespace BikeDB2024
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Else " + vehicle_id.ToString() + " " + vehicle_ids.Last().ToString());
+                                            //MessageBox.Show("Else " + vehicle_id.ToString() + " " + vehicle_ids.Last().ToString());
                                             vecToolStripButton0.Enabled = true;
                                             vecToolStripButton1.Enabled = true;
                                             vecToolStripButton2.Enabled = true;
@@ -2294,7 +2391,7 @@ namespace BikeDB2024
                                                 }
                                                 countryLabel.Text = land;
                                                 bundeslandLabel.Text = bland;
-                                                plzCityLabel.Text = reader[4].ToString();
+                                                postCodeLabel.Text = reader[4].ToString();
                                                 prefixLabel.Text = reader[5].ToString();
                                                 cityLinkLabel.Text = reader[6].ToString();
                                                 kfzLabel.Text = reader[7].ToString();
@@ -2309,7 +2406,15 @@ namespace BikeDB2024
                                                     cityPictureBox.Image = Image.FromFile(reader[10].ToString());
                                                 }
                                                 else cityPictureBox.Image = cityPictureBox.ErrorImage;
-                                                gpsLabel.Text = reader[11].ToString();
+                                                gpsLabel.Text = GetGPSviaProperty(reader[11].ToString());
+                                                SwitchMapProvider(cityMapControl);
+                                                if (reader[11].ToString() != String.Empty)
+                                                {
+                                                    string loc = reader[11].ToString();
+                                                    GpsCoordinate map_loc = new GpsCoordinate(loc);
+                                                    cityMapControl.Position = map_loc.GetMapPosition();
+                                                    cityMapControl.Refresh();
+                                                }
                                                 break;
                                             case 5:
                                                 string city = "";
@@ -2648,9 +2753,11 @@ namespace BikeDB2024
 
         private void routeToolStripButton4_Click(object sender, EventArgs e)
         {
-            RouteForm routeForm = new RouteForm();
-            routeForm.Edit = true;
-            routeForm.RouteId = current_route;
+            RouteForm routeForm = new RouteForm
+            {
+                Edit = true,
+                RouteId = current_route
+            };
             if (routeForm.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -2704,9 +2811,11 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void vecToolStripButton4_Click(object sender, EventArgs e)
         {
-            VehicleForm vehicleForm = new VehicleForm();
-            vehicleForm.Edit = true;
-            vehicleForm.VehicleId = current_vehicle;
+            VehicleForm vehicleForm = new VehicleForm
+            {
+                Edit = true,
+                VehicleId = current_vehicle
+            };
             if (vehicleForm.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -2760,9 +2869,11 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void city5ToolStripButton_Click(object sender, EventArgs e)
         {
-            CityForm cityForm = new CityForm();
-            cityForm.Edit = true;
-            cityForm.CityId = current_city;
+            CityForm cityForm = new CityForm
+            {
+                Edit = true,
+                CityId = current_city
+            };
             if (cityForm.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -2816,9 +2927,11 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void persons5ToolStripButton_Click(object sender, EventArgs e)
         {
-            PersonsForm personsForm = new PersonsForm();
-            personsForm.Edit = true;
-            personsForm.EditId = current_person;
+            PersonsForm personsForm = new PersonsForm
+            {
+                Edit = true,
+                EditId = current_person
+            };
             if (personsForm.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -2872,9 +2985,11 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void goals5ToolStripButton_Click(object sender, EventArgs e)
         {
-            GoalsForm goalsForm = new GoalsForm();
-            goalsForm.Edit = true;
-            goalsForm.EditId = current_goal;
+            GoalsForm goalsForm = new GoalsForm
+            {
+                Edit = true,
+                EditId = current_goal
+            };
             if (goalsForm.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -2929,9 +3044,11 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void notes5ToolStripButton_Click(object sender, EventArgs e)
         {
-            NotesForm notesForm = new NotesForm();
-            notesForm.Edit = true;
-            notesForm.EditId = current_note;
+            NotesForm notesForm = new NotesForm
+            {
+                Edit = true,
+                EditId = current_note
+            };
             if (notesForm.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -3560,20 +3677,38 @@ namespace BikeDB2024
         {
             if (current_gallery != -1)
             {
-                ImageGalleryForm imageGallery = new ImageGalleryForm();
-                imageGallery.Id = current_gallery;
+                ImageGalleryForm imageGallery = new ImageGalleryForm
+                {
+                    Id = current_gallery
+                };
                 imageGallery.Show();
             }
         }
         #endregion
 
-        private void gpsFormatComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Open a QRForm on a link (context menu).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void qrCodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (gpsFormatComboBox.SelectedText == "Grad")
+            ToolStripItem menuItem = sender as ToolStripItem;
+            if (menuItem != null)
             {
-                Properties.Settings.Default.GPSCoordAngle = true;
+                // Retrieve the ContextMenuStrip that owns this ToolStripItem
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    // Get the control that is displaying this context menu
+                    Control sourceControl = owner.SourceControl;
+                    if (sourceControl.Text != "")
+                    {
+                        QRForm qRForm = new QRForm(sourceControl.Text);
+                        qRForm.Show();
+                    }
+                }
             }
-            else Properties.Settings.Default.GPSCoordAngle = false;
         }
     }
 }
