@@ -205,5 +205,14 @@
     <Setting Name="UseCadence" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="SigmaDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="SigmaDsEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SigmaDsVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Sigma Sport Topline 2012 Dockingstation</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

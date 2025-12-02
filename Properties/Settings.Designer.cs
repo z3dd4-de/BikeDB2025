@@ -12,7 +12,7 @@ namespace BikeDB2024.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.12.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -811,6 +811,42 @@ namespace BikeDB2024.Properties {
             }
             set {
                 this["UseCadence"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public string SigmaDirectory {
+            get {
+                return ((string)(this["SigmaDirectory"]));
+            }
+            set {
+                this["SigmaDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SigmaDsEnabled {
+            get {
+                return ((bool)(this["SigmaDsEnabled"]));
+            }
+            set {
+                this["SigmaDsEnabled"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Sigma Sport Topline 2012 Dockingstation")]
+        public string SigmaDsVersion {
+            get {
+                return ((string)(this["SigmaDsVersion"]));
+            }
+            set {
+                this["SigmaDsVersion"] = value;
             }
         }
     }

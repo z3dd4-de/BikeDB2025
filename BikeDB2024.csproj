@@ -378,6 +378,12 @@
     <Compile Include="SigmaDsForm.Designer.cs">
       <DependentUpon>SigmaDsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SigmaDsForm_test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SigmaDsForm_test.Designer.cs">
+      <DependentUpon>SigmaDsForm_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="StatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -519,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SigmaDsForm.resx">
       <DependentUpon>SigmaDsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SigmaDsForm_test.resx">
+      <DependentUpon>SigmaDsForm_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StatisticsForm.resx">
       <DependentUpon>StatisticsForm.cs</DependentUpon>

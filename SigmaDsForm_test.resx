@@ -117,33 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>133, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="directoryButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="connectToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAADMSURBVFhH7ZJRCoNADAXfKUrp/Y9UWjxNZaEBGSIvkf3w
-        YweCvpCJuigtFjflN6E+kp5cXIXLrtYm6cXlFWKB62X9yN/DtX0SXHrWy/qRH5Le//v2SXDpWS/jODe+
-        PE5i/BNlsodlvQzOjZdgz5IJ0atW5pbJBD7AVeaWaQuG9r62YGjvawuG9j4KkbtFvwwFLq4W/TIUmB2c
-        Z7ZQYHZwntlCgdnBeWYLBWYH55ktFJgdnGe2UGB2cJ7ZQoHZwXlmSwizqwzFWbVY3I8dh9/+ashZpKIA
-        AAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGeSURBVFhH7ZVNSsRAEIXjQty4cuOsvIGiK48gehVBQXHv
+        DVQEF4J4BBcexcEf1DsoiFt9X5MHbUwmSU8PCObBR6Y7PdWVqq7qYtCg/6DF8jkzbYh9cSR2xLywRuJB
+        HIdRZi2JW/FV4UVsCm/OHM9skcAQxscC4+/iWpyLp3LuQzyXv9mc9VlEKDHoL7sTK8JaEJeCd4AT2TaP
+        Qwr3YllUNScuBGuIBOmYWv7y9fKJcZ5NX4cTjgRRiA9mb5HzeNOuTpCOR8G6LSZSVQ19HydOBWsOwyhB
+        lJpPOzmPN+3iBNXB+90wSpDrnNPOgYuj0eYE1UGJ8m6Nib7COH9+E3GpdXECZ3GauRuRpD2Bgasw+qk2
+        J0gXv3GCNCaJ3o6RkzD6rUlOQFOf6KxtgSFKiZKqU1skpur/NA8uFozRVGgudWpyIssNSBv9FBinvdY5
+        QZidczuBU1mEoVdh40QiTgfV4dPuPpHt7o9DixOOBGfiTNBkXOfuE1nvfG/ukJIO3/Ex1HlyqU2Sb8A4
+        nxxMLpYDQXtdFTNVtpAOGvRHVRTfxiKfg90hqc8AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>Um den automatischen Import von Sigma-Tachodaten zu aktivieren, benötigt man eine Sigma Docking Station.
-Aktuell wird nur die "Sigma Sport Topline 2012 Dockingstation" unterstützt. Falls zukünftig weitere Versionen verfügbar werden, muss auf jeden Fall die verwendete Version unter "DS Version" ausgewählt werden.
-
-Installiere die Sigma Docking Station nach Anleitung, sodass sie von der offiziellen Anwendung 
-   SIGMA DATA CENTER
-unterstützt wird.
-
-Installiere nun die SigmaNotificationApp, die du unten unter "Installation" finden kannst. Verwende die letzte und aktuellste Version.
-
-Wenn das Setup abgeschlossen ist, solltest du unter "Verwendung" den Ordner auswählen, in dem die SigmaNotificationApp ihre Daten speichert.
-
-Nun können Tacho-Daten automatisch in BikeDB importiert werden.
+  <data name="disconnectToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG0SURBVFhH7ZZNLgVBFIWbmb8ppgwxsAtsQMIWWIDEPiTC
+        swbWwYj4SRiKKRORGOB8zY2rVJeqpJ4B7yRf+lW97rqnq7rurWag/6RpsfH+s75Gxba4Es/iThyIWYEI
+        filexSYdNTUlTgSDhzyIVWHBuWKmipjORWGD34hlMSEWxJHwZqoGZxoZ9OXjei4mhdeQ2BFmgJmoJr+m
+        mGAmYvIm7sWMqCZvIjW9mDgU3LdHR03x5rYMKRPzgntu21YlhcuQMjEu+P+xbVVQOP1+N8RMrAj+O21b
+        BWKrxd7IdoEPFpry/WxR+rfoyFUsiFfMXPhN+Jk5FiMiW7kfmIn/LZg9Z9dYnkiKm3nID5Iy4YNz9W/O
+        87SzRWGx3I4JP1iXiZ++iaICRFXjoWth0xa+YcxE7JugXVyCLwSBltrWp3JMVNGTIMhY2/qqXzHBYYIA
+        c23ru/puoicYnAJCIYmpryY4RlE6GXxXDIuYSvNEkdYEA8O+CE3E8kTRVkvJT6/B8YqSSlWjsFhutzxR
+        vNW6FK7turDlCCG3F6XXHMUyGscoTjIcJqjnZ4KqVlRYStRVggf6i2qaN1ibr4LKxzeyAAAAAElFTkSu
+        QmCC
 </value>
   </data>
-  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <data name="closeToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGjSURBVFhH7ZS7SsRAFIYDXlGwELSwtbK0UdQHsdBCsFFR
+        0Uew8PYCgp2dj+AbWAhiISiIl8Jbqwg2Xr9/NwfHsFln4iwo5IMPsmczZ/5JJpOUlPxnWnET7/AW19Oa
+        8ZFjNDYw23wNjex/ZjS0ajUcwbH0WrU8GhZgFC3ADeZROIAmOMMn1GNvR6F3bk3NVczD7gliEB/RneQE
+        h1EbTiH0JLRyTe5uwizBAfrxHjVoFxXmKP39htvYgb4EBejDK9SAPbSVraA1kofYhi6z2Fu9/IaN8WIJ
+        dfM+dqoA2gsvqNUv4AXqHr0GYw5VO8ZsiKAAYhq7q5dJF16iGti3PoSvqFC6FppUk9cKERzAZQs1+ABb
+        VEipdRi5uiGsVogH1OCByq8v9P538BltAtdoAWxDLld+5dOwVzCO76mLKuQQdRMaaqQzYQZ9QkT5DA17
+        pNeYDTGPIXgHsBtd3UdqIfQJKpQv1utH3In1jesk7EGjCe1M0OHki/X8NROoRufYrIInUQJo9aeoRlMq
+        BBAlwCSqSXb11tzHwtRbfXaSepaU/CWS5BOQY8RkfgvCdAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="serialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>238, 17</value>
   </metadata>
 </root>
