@@ -3,19 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|c:\\users\\fukc-\\source\\repos\\bikedb2024\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|BikeDB2024||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|c:\\users\\fukc-\\source\\repos\\bikedb2024\\sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|BikeDB2024||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|c:\\users\\fukc-\\source\\repos\\bikedb2024\\sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -212,21 +212,37 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs",
+              "RelativeDocumentMoniker": "MainForm.cs",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs",
+              "RelativeToolTip": "MainForm.cs",
+              "ViewState": "AgIAAJQNAAAAAAAAAAAowLINAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T16:41:18.737Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "SigmaDsForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SigmaDsForm.cs",
               "RelativeDocumentMoniker": "SigmaDsForm.cs",
               "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SigmaDsForm.cs",
               "RelativeToolTip": "SigmaDsForm.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAuwB8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-02T20:46:18.628Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SigmaDsForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SigmaDsForm.cs",
               "RelativeDocumentMoniker": "SigmaDsForm.cs",
@@ -235,23 +251,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-02T18:48:47.85Z",
               "EditorCaption": " [Entwurf]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs",
-              "RelativeDocumentMoniker": "MainForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs",
-              "RelativeToolTip": "MainForm.cs",
-              "ViewState": "AgIAAKQNAAAAAAAAAAAAwLINAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T16:41:18.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
@@ -274,8 +273,7 @@
               "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs [Entwurf]",
               "RelativeToolTip": "MainForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T18:35:22.958Z",
-              "EditorCaption": " [Entwurf]"
+              "WhenOpened": "2025-04-06T18:35:22.958Z"
             },
             {
               "$type": "Document",
@@ -373,7 +371,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "BikeDB2024",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\BikeDB2024.csproj",
               "RelativeDocumentMoniker": "BikeDB2024.csproj",
@@ -448,8 +446,8 @@
               "Title": "SettingsFlightDBForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\SettingsFlightDBForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs*",
-              "RelativeToolTip": "FlightDB\\SettingsFlightDBForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs",
+              "RelativeToolTip": "FlightDB\\SettingsFlightDBForm.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAowDoAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T11:27:17.621Z"
@@ -460,8 +458,8 @@
               "Title": "SettingsFlightDBForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\SettingsFlightDBForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs [Entwurf]*",
-              "RelativeToolTip": "FlightDB\\SettingsFlightDBForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs [Entwurf]",
+              "RelativeToolTip": "FlightDB\\SettingsFlightDBForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-11T20:42:10.147Z"
             },
@@ -518,8 +516,8 @@
               "Title": "AdminForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs",
               "RelativeDocumentMoniker": "AdminForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs [Entwurf]*",
-              "RelativeToolTip": "AdminForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs [Entwurf]",
+              "RelativeToolTip": "AdminForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T01:43:26.862Z"
             },
@@ -540,8 +538,8 @@
               "Title": "AdminForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs",
               "RelativeDocumentMoniker": "AdminForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs*",
-              "RelativeToolTip": "AdminForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs",
+              "RelativeToolTip": "AdminForm.cs",
               "ViewState": "AgIAACcBAAAAAAAAAAAQwLUBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T19:21:31.644Z"
@@ -564,8 +562,8 @@
               "Title": "CostsForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs",
               "RelativeDocumentMoniker": "CostsForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs*",
-              "RelativeToolTip": "CostsForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs",
+              "RelativeToolTip": "CostsForm.cs",
               "ViewState": "AgIAAJMAAAAAAAAAAAAiwO4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-30T19:39:25.359Z"
@@ -610,8 +608,8 @@
               "Title": "CostsForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs",
               "RelativeDocumentMoniker": "CostsForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs [Entwurf]*",
-              "RelativeToolTip": "CostsForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs [Entwurf]",
+              "RelativeToolTip": "CostsForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-05T16:28:11.695Z"
             },
@@ -771,8 +769,8 @@
               "Title": "CompanyForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs",
               "RelativeDocumentMoniker": "CompanyForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs [Entwurf]*",
-              "RelativeToolTip": "CompanyForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs [Entwurf]",
+              "RelativeToolTip": "CompanyForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T19:37:27.345Z"
             },
@@ -782,8 +780,8 @@
               "Title": "CompanyForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs",
               "RelativeDocumentMoniker": "CompanyForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs*",
-              "RelativeToolTip": "CompanyForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs",
+              "RelativeToolTip": "CompanyForm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T19:37:31.956Z"

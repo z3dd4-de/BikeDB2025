@@ -120,12 +120,11 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="directoryButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAADMSURBVFhH7ZJRCoNADAXfKUrp/Y9UWjxNZaEBGSIvkf3w
-        YweCvpCJuigtFjflN6E+kp5cXIXLrtYm6cXlFWKB62X9yN/DtX0SXHrWy/qRH5Le//v2SXDpWS/jODe+
-        PE5i/BNlsodlvQzOjZdgz5IJ0atW5pbJBD7AVeaWaQuG9r62YGjvawuG9j4KkbtFvwwFLq4W/TIUmB2c
-        Z7ZQYHZwntlCgdnBeWYLBWYH55ktFJgdnGe2UGB2cJ7ZQoHZwXlmSwizqwzFWbVY3I8dh9/+ashZpKIA
-        AAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EAAACxABrSO9dQAAAMxJREFUWEftklEKg0AMBd8pSun9j1RaPE1loQEZIi+R/fBjB4K+kIm6KC0WN+U3
+        oT6Snlxchcuu1ibpxeUVYoHrZf3I38O1fRJcetbL+pEfkt7/+/ZJcOlZL+M4N748TmL8E2Wyh2W9DM6N
+        l2DPkgnRq1bmlskEPsBV5pZpC4b2vrZgaO9rC4b2PgqRu0W/DAUurhb9MhSYHZxntlBgdnCe2UKB2cF5
+        ZgsFZgfnmS0UmB2cZ7ZQYHZwntlCgdnBeWZLCLOrDMVZtVjcjx2H3/5qyFmkogAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="richTextBox1.Text" xml:space="preserve">
@@ -143,7 +142,10 @@ Wenn das Setup abgeschlossen ist, solltest du unter "Verwendung" den Ordner ausw
 Nun können Tacho-Daten automatisch in BikeDB importiert werden.
 </value>
   </data>
-  <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="openJsonFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
+  </metadata>
+  <metadata name="folderBrowserDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>173, 17</value>
   </metadata>
 </root>

@@ -31,12 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SigmaDsForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.statusLabel = new System.Windows.Forms.Label();
             this.dsInstalledCheckBox = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.pathTextBox = new System.Windows.Forms.TextBox();
+            this.directoryButton = new System.Windows.Forms.Button();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,16 +47,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.installLinkLabel = new System.Windows.Forms.LinkLabel();
             this.saveButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.pathTextBox = new System.Windows.Forms.TextBox();
-            this.directoryButton = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openJsonFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -77,17 +78,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Verwendung";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(473, 348);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Setup";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -131,6 +121,53 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "JSON-Verzeichnis";
             // 
+            // dsInstalledCheckBox
+            // 
+            this.dsInstalledCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dsInstalledCheckBox.AutoSize = true;
+            this.dsInstalledCheckBox.Location = new System.Drawing.Point(123, 6);
+            this.dsInstalledCheckBox.Name = "dsInstalledCheckBox";
+            this.dsInstalledCheckBox.Size = new System.Drawing.Size(183, 17);
+            this.dsInstalledCheckBox.TabIndex = 0;
+            this.dsInstalledCheckBox.Text = "SigmaNotificationApp ist installiert";
+            this.dsInstalledCheckBox.UseVisualStyleBackColor = true;
+            this.dsInstalledCheckBox.CheckedChanged += new System.EventHandler(this.dsInstalledCheckBox_CheckedChanged);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.Controls.Add(this.pathTextBox, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.directoryButton, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(123, 33);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(341, 44);
+            this.tableLayoutPanel3.TabIndex = 5;
+            // 
+            // pathTextBox
+            // 
+            this.pathTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pathTextBox.Enabled = false;
+            this.pathTextBox.Location = new System.Drawing.Point(3, 12);
+            this.pathTextBox.Name = "pathTextBox";
+            this.pathTextBox.Size = new System.Drawing.Size(295, 20);
+            this.pathTextBox.TabIndex = 1;
+            // 
+            // directoryButton
+            // 
+            this.directoryButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.directoryButton.Image = ((System.Drawing.Image)(resources.GetObject("directoryButton.Image")));
+            this.directoryButton.Location = new System.Drawing.Point(304, 3);
+            this.directoryButton.Name = "directoryButton";
+            this.directoryButton.Size = new System.Drawing.Size(34, 38);
+            this.directoryButton.TabIndex = 2;
+            this.directoryButton.UseVisualStyleBackColor = true;
+            this.directoryButton.Click += new System.EventHandler(this.directoryButton_Click);
+            // 
             // statusLabel
             // 
             this.statusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -141,16 +178,16 @@
             this.statusLabel.TabIndex = 2;
             this.statusLabel.Text = "statusLabel";
             // 
-            // dsInstalledCheckBox
+            // tabPage2
             // 
-            this.dsInstalledCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dsInstalledCheckBox.AutoSize = true;
-            this.dsInstalledCheckBox.Location = new System.Drawing.Point(123, 6);
-            this.dsInstalledCheckBox.Name = "dsInstalledCheckBox";
-            this.dsInstalledCheckBox.Size = new System.Drawing.Size(183, 17);
-            this.dsInstalledCheckBox.TabIndex = 4;
-            this.dsInstalledCheckBox.Text = "SigmaNotificationApp ist installiert";
-            this.dsInstalledCheckBox.UseVisualStyleBackColor = true;
+            this.tabPage2.Controls.Add(this.tableLayoutPanel2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(473, 348);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Setup";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -206,7 +243,7 @@
             this.dsComboBox.Name = "dsComboBox";
             this.dsComboBox.Size = new System.Drawing.Size(341, 21);
             this.dsComboBox.Sorted = true;
-            this.dsComboBox.TabIndex = 2;
+            this.dsComboBox.TabIndex = 0;
             this.dsComboBox.SelectedIndexChanged += new System.EventHandler(this.dsComboBox_SelectedIndexChanged);
             // 
             // label6
@@ -226,7 +263,7 @@
             this.installLinkLabel.Location = new System.Drawing.Point(123, 290);
             this.installLinkLabel.Name = "installLinkLabel";
             this.installLinkLabel.Size = new System.Drawing.Size(338, 13);
-            this.installLinkLabel.TabIndex = 4;
+            this.installLinkLabel.TabIndex = 1;
             this.installLinkLabel.TabStop = true;
             this.installLinkLabel.Text = "https://github.com/z3dd4-de/SigmaNotificationApp/tree/main/publish";
             this.installLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.installLinkLabel_LinkClicked);
@@ -236,48 +273,15 @@
             this.saveButton.Location = new System.Drawing.Point(123, 315);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 5;
+            this.saveButton.TabIndex = 2;
             this.saveButton.Text = "Speichern";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // tableLayoutPanel3
+            // openJsonFileDialog
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel3.Controls.Add(this.pathTextBox, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.directoryButton, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(123, 33);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(341, 44);
-            this.tableLayoutPanel3.TabIndex = 5;
-            // 
-            // pathTextBox
-            // 
-            this.pathTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pathTextBox.Enabled = false;
-            this.pathTextBox.Location = new System.Drawing.Point(3, 12);
-            this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.Size = new System.Drawing.Size(295, 20);
-            this.pathTextBox.TabIndex = 0;
-            // 
-            // directoryButton
-            // 
-            this.directoryButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.directoryButton.Image = ((System.Drawing.Image)(resources.GetObject("directoryButton.Image")));
-            this.directoryButton.Location = new System.Drawing.Point(304, 3);
-            this.directoryButton.Name = "directoryButton";
-            this.directoryButton.Size = new System.Drawing.Size(34, 38);
-            this.directoryButton.TabIndex = 1;
-            this.directoryButton.UseVisualStyleBackColor = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openJsonFileDialog.DefaultExt = "json";
+            this.openJsonFileDialog.Filter = "JSON|*.json|Alle Dateien|*.*";
             // 
             // SigmaDsForm
             // 
@@ -294,13 +298,13 @@
             this.Text = "Sigma Docking Station";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -325,6 +329,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TextBox pathTextBox;
         private System.Windows.Forms.Button directoryButton;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openJsonFileDialog;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
