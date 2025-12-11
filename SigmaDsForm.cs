@@ -41,6 +41,7 @@ namespace BikeDB2024
             if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 pathTextBox.Text = folderBrowserDialog.SelectedPath;
+                Properties.Settings.Default.SigmaDirectory = pathTextBox.Text;
             }
         }
 

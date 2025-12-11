@@ -214,5 +214,8 @@
     <Setting Name="SigmaDsVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)">Sigma Sport Topline 2012 Dockingstation</Value>
     </Setting>
+    <Setting Name="SigmaLastTimeStamp" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

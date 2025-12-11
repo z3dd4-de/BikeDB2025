@@ -3,14 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|c:\\users\\fukc-\\source\\repos\\bikedb2024\\directorywatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:directorywatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|BikeDB2024||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|c:\\users\\fukc-\\source\\repos\\bikedb2024\\sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|c:\\users\\fukc-\\source\\repos\\bikedb2024\\sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{630A2E2F-38B1-4698-8E6E-226F3838A7E7}|BikeDB2024.csproj|solutionrelative:sigmadsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -209,20 +213,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BikeDB2024",
+              "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\BikeDB2024.csproj",
+              "RelativeDocumentMoniker": "BikeDB2024.csproj",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\BikeDB2024.csproj",
+              "RelativeToolTip": "BikeDB2024.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-12-11T07:41:23.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DirectoryWatcher.cs",
+              "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\DirectoryWatcher.cs",
+              "RelativeDocumentMoniker": "DirectoryWatcher.cs",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\DirectoryWatcher.cs",
+              "RelativeToolTip": "DirectoryWatcher.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAIwDgAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T23:33:24.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SigmaDsForm.cs",
+              "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SigmaDsForm.cs",
+              "RelativeDocumentMoniker": "SigmaDsForm.cs",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SigmaDsForm.cs",
+              "RelativeToolTip": "SigmaDsForm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T20:46:18.628Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs*",
-              "RelativeToolTip": "MainForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs",
+              "RelativeToolTip": "MainForm.cs",
               "ViewState": "AgIAAJQNAAAAAAAAAAAowLINAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-22T16:41:18.737Z",
@@ -230,20 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SigmaDsForm.cs",
-              "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SigmaDsForm.cs",
-              "RelativeDocumentMoniker": "SigmaDsForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SigmaDsForm.cs",
-              "RelativeToolTip": "SigmaDsForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-02T20:46:18.628Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SigmaDsForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SigmaDsForm.cs",
               "RelativeDocumentMoniker": "SigmaDsForm.cs",
@@ -255,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "BikeDbObject.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\BikeDbObject.cs",
               "RelativeDocumentMoniker": "BikeDbObject.cs",
@@ -268,19 +297,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MainForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs [Entwurf]*",
-              "RelativeToolTip": "MainForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\MainForm.cs [Entwurf]",
+              "RelativeToolTip": "MainForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-06T18:35:22.958Z",
               "EditorCaption": " [Entwurf]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Plane.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\Plane.cs",
               "RelativeDocumentMoniker": "FlightDB\\Plane.cs",
@@ -293,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "SexagesimalAngle.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\SexagesimalAngle.cs",
               "RelativeDocumentMoniker": "SexagesimalAngle.cs",
@@ -306,7 +335,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "PlaneForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\PlaneForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\PlaneForm.cs",
@@ -319,7 +348,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "EntfaltungForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\EntfaltungForm.cs",
               "RelativeDocumentMoniker": "EntfaltungForm.cs",
@@ -331,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "EntfaltungForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\EntfaltungForm.cs",
               "RelativeDocumentMoniker": "EntfaltungForm.cs",
@@ -344,7 +373,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Helpers.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\Helpers.cs",
               "RelativeDocumentMoniker": "Helpers.cs",
@@ -357,7 +386,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "GpsCoordinate.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\GpsCoordinate.cs",
               "RelativeDocumentMoniker": "FlightDB\\GpsCoordinate.cs",
@@ -370,7 +399,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "PlaneForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\PlaneForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\PlaneForm.cs",
@@ -382,19 +411,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BikeDB2024",
-              "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\BikeDB2024.csproj",
-              "RelativeDocumentMoniker": "BikeDB2024.csproj",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\BikeDB2024.csproj",
-              "RelativeToolTip": "BikeDB2024.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-04T23:15:10.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "FlightDBForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\FlightDBForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\FlightDBForm.cs",
@@ -407,7 +424,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Marker.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\Marker.cs",
               "RelativeDocumentMoniker": "Marker.cs",
@@ -420,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "FlightDBForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\FlightDBForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\FlightDBForm.cs",
@@ -432,7 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "DefaultComboBoxes.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\DefaultComboBoxes.cs",
               "RelativeDocumentMoniker": "DefaultComboBoxes.cs",
@@ -445,7 +462,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Location.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\Location.cs",
               "RelativeDocumentMoniker": "Location.cs",
@@ -458,12 +475,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "SettingsFlightDBForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\SettingsFlightDBForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs*",
-              "RelativeToolTip": "FlightDB\\SettingsFlightDBForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs",
+              "RelativeToolTip": "FlightDB\\SettingsFlightDBForm.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAowDoAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T11:27:17.621Z",
@@ -471,19 +488,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "SettingsFlightDBForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\SettingsFlightDBForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs [Entwurf]*",
-              "RelativeToolTip": "FlightDB\\SettingsFlightDBForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\SettingsFlightDBForm.cs [Entwurf]",
+              "RelativeToolTip": "FlightDB\\SettingsFlightDBForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-11T20:42:10.147Z",
               "EditorCaption": " [Entwurf]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "GpsDistanceForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\GpsDistanceForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\GpsDistanceForm.cs",
@@ -496,7 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "GpsDistanceForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\GpsDistanceForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\GpsDistanceForm.cs",
@@ -508,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "Extensions.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\Extensions.cs",
               "RelativeDocumentMoniker": "Extensions.cs",
@@ -521,7 +538,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "ImageGalleryForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\ImageGalleryForm.cs",
               "RelativeDocumentMoniker": "ImageGalleryForm.cs",
@@ -534,19 +551,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "AdminForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs",
               "RelativeDocumentMoniker": "AdminForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs [Entwurf]*",
-              "RelativeToolTip": "AdminForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs [Entwurf]",
+              "RelativeToolTip": "AdminForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T01:43:26.862Z",
               "EditorCaption": " [Entwurf]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "ImageGalleryForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\ImageGalleryForm.cs",
               "RelativeDocumentMoniker": "ImageGalleryForm.cs",
@@ -558,12 +575,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "AdminForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs",
               "RelativeDocumentMoniker": "AdminForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs*",
-              "RelativeToolTip": "AdminForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\AdminForm.cs",
+              "RelativeToolTip": "AdminForm.cs",
               "ViewState": "AgIAACcBAAAAAAAAAAAQwLUBAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-19T19:21:31.644Z",
@@ -571,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "AirportForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\AirportForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\AirportForm.cs",
@@ -584,12 +601,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "CostsForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs",
               "RelativeDocumentMoniker": "CostsForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs*",
-              "RelativeToolTip": "CostsForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs",
+              "RelativeToolTip": "CostsForm.cs",
               "ViewState": "AgIAAJMAAAAAAAAAAAAiwO4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-30T19:39:25.359Z",
@@ -597,7 +614,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "AirlineForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\AirlineForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\AirlineForm.cs",
@@ -610,7 +627,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "FlightDBStatistics.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\FlightDBStatistics.cs",
               "RelativeDocumentMoniker": "FlightDB\\FlightDBStatistics.cs",
@@ -622,7 +639,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "ImageViewerForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\ImageViewerForm.cs",
               "RelativeDocumentMoniker": "ImageViewerForm.cs",
@@ -634,19 +651,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "CostsForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs",
               "RelativeDocumentMoniker": "CostsForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs [Entwurf]*",
-              "RelativeToolTip": "CostsForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CostsForm.cs [Entwurf]",
+              "RelativeToolTip": "CostsForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-05T16:28:11.695Z",
               "EditorCaption": " [Entwurf]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "Manufacturer.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\Manufacturer.cs",
               "RelativeDocumentMoniker": "FlightDB\\Manufacturer.cs",
@@ -659,7 +676,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "CheckboxItem.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CheckboxItem.cs",
               "RelativeDocumentMoniker": "CheckboxItem.cs",
@@ -672,7 +689,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "PlaneManufacturersForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\PlaneManufacturersForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\PlaneManufacturersForm.cs",
@@ -684,7 +701,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "ClientForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\Admin\\ClientForm.cs",
               "RelativeDocumentMoniker": "Admin\\ClientForm.cs",
@@ -697,7 +714,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "ClientForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\Admin\\ClientForm.cs",
               "RelativeDocumentMoniker": "Admin\\ClientForm.cs",
@@ -709,7 +726,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "ProgressForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\ProgressForm.cs",
               "RelativeDocumentMoniker": "ProgressForm.cs",
@@ -722,7 +739,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "ExportForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\ExportForm.cs",
               "RelativeDocumentMoniker": "ExportForm.cs",
@@ -735,7 +752,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "ExportForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\ExportForm.cs",
               "RelativeDocumentMoniker": "ExportForm.cs",
@@ -747,7 +764,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "ProgressForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\ProgressForm.cs",
               "RelativeDocumentMoniker": "ProgressForm.cs",
@@ -759,7 +776,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "AirlineForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\AirlineForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\AirlineForm.cs",
@@ -771,7 +788,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "FlightForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\FlightForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\FlightForm.cs",
@@ -784,7 +801,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "AirportForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\FlightDB\\AirportForm.cs",
               "RelativeDocumentMoniker": "FlightDB\\AirportForm.cs",
@@ -796,7 +813,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "StatisticsForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\StatisticsForm.cs",
               "RelativeDocumentMoniker": "StatisticsForm.cs",
@@ -809,24 +826,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "CompanyForm.cs [Entwurf]",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs",
               "RelativeDocumentMoniker": "CompanyForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs [Entwurf]*",
-              "RelativeToolTip": "CompanyForm.cs [Entwurf]*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs [Entwurf]",
+              "RelativeToolTip": "CompanyForm.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T19:37:27.345Z",
               "EditorCaption": " [Entwurf]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "CompanyForm.cs",
               "DocumentMoniker": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs",
               "RelativeDocumentMoniker": "CompanyForm.cs",
-              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs*",
-              "RelativeToolTip": "CompanyForm.cs*",
+              "ToolTip": "C:\\Users\\fukc-\\source\\repos\\BikeDB2024\\CompanyForm.cs",
+              "RelativeToolTip": "CompanyForm.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T19:37:31.956Z",

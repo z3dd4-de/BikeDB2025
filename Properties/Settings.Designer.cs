@@ -849,5 +849,17 @@ namespace BikeDB2024.Properties {
                 this["SigmaDsVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SigmaLastTimeStamp {
+            get {
+                return ((string)(this["SigmaLastTimeStamp"]));
+            }
+            set {
+                this["SigmaLastTimeStamp"] = value;
+            }
+        }
     }
 }
