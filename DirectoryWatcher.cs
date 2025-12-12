@@ -26,12 +26,17 @@ namespace BikeDB2024
         public TimeSpan TripSectionDuration => TimeSpan.FromSeconds(TripSectionTimeSeconds);
     }
 
-    internal class DirectoryWatcher
+    public class DirectoryWatcher
     {
         private FileSystemWatcher watcher;
         private bool newFileDetected = false;
         private string latestFileTimeStamp = string.Empty;
         static string filename = "bikedata.json";
+        public bool IsWatcherActive = false;
+
+        // Eigene Events definieren
+        public event EventHandler<string> FileCreated;
+        public event EventHandler<string> FileChanged;
 
         public DirectoryWatcher()
         {
@@ -55,6 +60,7 @@ namespace BikeDB2024
             watcher.Changed += OnFileChanged;
             watcher.Error += OnError;
             watcher.EnableRaisingEvents = true;
+            IsWatcherActive = true;
         }
 
         private void CheckTimeStamp(string filePath)
@@ -77,13 +83,14 @@ namespace BikeDB2024
         {
             if (e.ChangeType != WatcherChangeTypes.Changed)
             {
-                return;
+                FileChanged.Invoke(this, e.FullPath);
             }
             Console.WriteLine($"Datei geändert: {e.FullPath} ({e.ChangeType})");
         }
 
         private void OnFileCreated(object sender, FileSystemEventArgs e)
         {
+            FileCreated.Invoke(this, e.FullPath);
             Console.WriteLine($"Datei erstellt: {e.FullPath} ({e.ChangeType})");
         }
 

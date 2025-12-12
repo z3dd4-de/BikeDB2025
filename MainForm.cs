@@ -19,7 +19,10 @@ using GMap.NET.WindowsForms.Markers;
 using LibUsbDotNet;
 using LibUsbDotNet.DeviceNotify;
 using LibUsbDotNet.Main;
+using QiHe.CodeLib;
 using static BikeDB2024.Helpers;
+using System.Text.Json;
+using System.IO;
 
 namespace BikeDB2024
 {
@@ -69,6 +72,7 @@ namespace BikeDB2024
         private UsbDeviceFinder MyUsbFinder = new UsbDeviceFinder(vid, pid);
         private IDeviceNotifier UsbDeviceNotifier = DeviceNotifier.OpenDeviceNotifier();
         private UsbDevice MyUsbDevice;
+        private DirectoryWatcher directoryWatcher;
         #endregion
         #endregion
 
@@ -135,7 +139,8 @@ namespace BikeDB2024
             // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet.Countries". Sie können sie bei Bedarf verschieben oder entfernen.
             //this.countriesTableAdapter.Fill(this.dataSet.Countries);
             SetLoginStatus(false);
-            checkLogin();           
+            checkLogin();  
+            checkDockingStation();
         }
 
         /// <summary>
@@ -407,7 +412,7 @@ namespace BikeDB2024
             {
                 if (Properties.Settings.Default.UseSigmaDockingStation)
                 {
-                    UsbDeviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
+                    /*UsbDeviceNotifier.OnDeviceNotify += OnDeviceNotifyEvent;
                     UsbRegDeviceList regList = UsbDevice.AllDevices.FindAll(MyUsbFinder);
                     if (regList.Count > 0)
                     {
@@ -416,13 +421,66 @@ namespace BikeDB2024
                     else if (regList.Count == 0)
                     {
                         testConnection(false);
-                    }
+                    }*/
+                    createDirectoryWatcher();
                 }
             }
-            else
+            dsConnectedToolStripStatusLabel.Visible = false;
+            dsNotConnectedToolStripStatusLabel.Visible = false;
+        }
+
+        private void createDirectoryWatcher()
+        {
+            if (Properties.Settings.Default.SigmaDsEnabled && Properties.Settings.Default.SigmaDirectory != String.Empty)
             {
-                dsConnectedToolStripStatusLabel.Visible = false;
-                dsNotConnectedToolStripStatusLabel.Visible = false;
+                directoryWatcher = new DirectoryWatcher();
+                directoryWatcher.IsWatcherActive = true;
+                // Events abonnieren
+                directoryWatcher.FileCreated += Watcher_FileCreated;
+                directoryWatcher.FileChanged += Watcher_FileChanged;
+            }
+        }
+
+        private void Watcher_FileCreated(object sender, string filePath)
+        {
+            LoadJsonAndDisplay(filePath);
+        }
+
+        private void Watcher_FileChanged(object sender, string filePath)
+        {
+            LoadJsonAndDisplay(filePath);
+        }
+
+        private void LoadJsonAndDisplay(string filePath)
+        {
+            if (!File.Exists(filePath))
+                return;
+
+            try
+            {
+                // JSON einlesen
+                string json = File.ReadAllText(filePath);
+
+                var data = JsonSerializer.Deserialize<RideData>(json);
+                if (data == null) return;
+
+                LoadBikeDataForm rideDataForm = new LoadBikeDataForm(data);
+                if (rideDataForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Da es ein UI-Thread ist, Invoke nutzen
+                    this.Invoke(new Action(() =>
+                    {
+                        kmTextBox.Text = data.DistanceKm.ToString("F2", CultureInfo.InvariantCulture);
+                        timeTextBox.Text = data.Duration.ToString(@"hh\:mm\:ss");
+                        avgTextBox.Text = data.MeanSpeedKmh.ToString("F2", CultureInfo.InvariantCulture);
+                        vmaxTextBox.Text = data.MaxSpeedKmh.ToString("F2", CultureInfo.InvariantCulture);
+                        cadenceTextBox.Text = data.Cadence.ToString();
+                    }));
+                }           
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Lesen der JSON: " + ex.Message);
             }
         }
 
@@ -3505,7 +3563,10 @@ namespace BikeDB2024
         private void sigmaConnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SigmaDsForm ds = new SigmaDsForm();
-            ds.Show();
+            if (ds.ShowDialog() == DialogResult.OK)
+            {
+                createDirectoryWatcher();
+            }
         }
 
         /// <summary>

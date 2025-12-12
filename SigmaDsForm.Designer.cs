@@ -296,6 +296,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sigma Docking Station";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SigmaDsForm_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

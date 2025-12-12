@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
+using Newtonsoft.Json.Linq;
 
 namespace BikeDB2024
 {
@@ -16,9 +9,18 @@ namespace BikeDB2024
         public SigmaDsForm()
         {
             InitializeComponent();
+            
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
             changeStatusLabel("");
             dsComboBox.SelectedIndex = 0;
             dsComboBox.Enabled = false;
+            saveButton.Enabled = false;
+            dsInstalledCheckBox.Checked = Properties.Settings.Default.SigmaDsEnabled;
+            pathTextBox.Text = Properties.Settings.Default.SigmaDirectory;
         }
 
         private void dsComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,6 +62,14 @@ namespace BikeDB2024
             {
                 Properties.Settings.Default.SigmaDsEnabled = false;
             }
+        }
+
+        private void SigmaDsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.SigmaDsVersion = dsComboBox.SelectedItem.ToString();
+            Properties.Settings.Default.Save();
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

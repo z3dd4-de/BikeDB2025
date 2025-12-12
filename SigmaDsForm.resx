@@ -117,16 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="directoryButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAAMxJREFUWEftklEKg0AMBd8pSun9j1RaPE1loQEZIi+R/fBjB4K+kIm6KC0WN+U3
-        oT6Snlxchcuu1ibpxeUVYoHrZf3I38O1fRJcetbL+pEfkt7/+/ZJcOlZL+M4N748TmL8E2Wyh2W9DM6N
-        l2DPkgnRq1bmlskEPsBV5pZpC4b2vrZgaO9rC4b2PgqRu0W/DAUurhb9MhSYHZxntlBgdnCe2UKB2cF5
-        ZgsFZgfnmS0UmB2cZ7ZQYHZwntlCgdnBeWZLCLOrDMVZtVjcjx2H3/5qyFmkogAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="richTextBox1.Text" xml:space="preserve">
     <value>Um den automatischen Import von Sigma-Tachodaten zu aktivieren, benötigt man eine Sigma Docking Station.
 Aktuell wird nur die "Sigma Sport Topline 2012 Dockingstation" unterstützt. Falls zukünftig weitere Versionen verfügbar werden, muss auf jeden Fall die verwendete Version unter "DS Version" ausgewählt werden.
@@ -140,6 +130,16 @@ Installiere nun die SigmaNotificationApp, die du unten unter "Installation" find
 Wenn das Setup abgeschlossen ist, solltest du unter "Verwendung" den Ordner auswählen, in dem die SigmaNotificationApp ihre Daten speichert.
 
 Nun können Tacho-Daten automatisch in BikeDB importiert werden.
+</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="directoryButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DwAACw8BkvkDpQAAAMxJREFUWEftklEKg0AMBd8pSun9j1RaPE1loQEZIi+R/fBjB4K+kIm6KC0WN+U3
+        oT6Snlxchcuu1ibpxeUVYoHrZf3I38O1fRJcetbL+pEfkt7/+/ZJcOlZL+M4N748TmL8E2Wyh2W9DM6N
+        l2DPkgnRq1bmlskEPsBV5pZpC4b2vrZgaO9rC4b2PgqRu0W/DAUurhb9MhSYHZxntlBgdnCe2UKB2cF5
+        ZgsFZgfnmS0UmB2cZ7ZQYHZwntlCgdnBeWZLCLOrDMVZtVjcjx2H3/5qyFmkogAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="openJsonFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
