@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadBikeDataForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,15 +38,21 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.tachoLabel = new System.Windows.Forms.Label();
-            this.bikeLabel = new System.Windows.Forms.Label();
-            this.kmLabel = new System.Windows.Forms.Label();
-            this.timeLabel = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.tachoLabel = new System.Windows.Forms.Label();
+            this.kmLabel = new System.Windows.Forms.Label();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.vehicleComboBox = new System.Windows.Forms.ComboBox();
+            this.dataSet = new BikeDB2024.DataSet();
+            this.vehiclesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vehiclesTableAdapter = new BikeDB2024.DataSetTableAdapters.VehiclesTableAdapter();
+            this.errorToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -62,9 +69,9 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 6);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tachoLabel, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.bikeLabel, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.kmLabel, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.timeLabel, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.vehicleComboBox, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -156,54 +163,6 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(212, 32);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
-            // dateTimePicker
-            // 
-            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dateTimePicker.Location = new System.Drawing.Point(103, 5);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker.TabIndex = 7;
-            // 
-            // tachoLabel
-            // 
-            this.tachoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tachoLabel.AutoSize = true;
-            this.tachoLabel.Location = new System.Drawing.Point(103, 38);
-            this.tachoLabel.Name = "tachoLabel";
-            this.tachoLabel.Size = new System.Drawing.Size(60, 13);
-            this.tachoLabel.TabIndex = 8;
-            this.tachoLabel.Text = "tachoLabel";
-            // 
-            // bikeLabel
-            // 
-            this.bikeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.bikeLabel.AutoSize = true;
-            this.bikeLabel.Location = new System.Drawing.Point(103, 68);
-            this.bikeLabel.Name = "bikeLabel";
-            this.bikeLabel.Size = new System.Drawing.Size(53, 13);
-            this.bikeLabel.TabIndex = 9;
-            this.bikeLabel.Text = "bikeLabel";
-            // 
-            // kmLabel
-            // 
-            this.kmLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.kmLabel.AutoSize = true;
-            this.kmLabel.Location = new System.Drawing.Point(103, 98);
-            this.kmLabel.Name = "kmLabel";
-            this.kmLabel.Size = new System.Drawing.Size(47, 13);
-            this.kmLabel.TabIndex = 10;
-            this.kmLabel.Text = "kmLabel";
-            // 
-            // timeLabel
-            // 
-            this.timeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Location = new System.Drawing.Point(103, 128);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(52, 13);
-            this.timeLabel.TabIndex = 11;
-            this.timeLabel.Text = "timeLabel";
-            // 
             // okButton
             // 
             this.okButton.Location = new System.Drawing.Point(3, 3);
@@ -225,6 +184,69 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dateTimePicker.Location = new System.Drawing.Point(103, 5);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker.TabIndex = 7;
+            // 
+            // tachoLabel
+            // 
+            this.tachoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tachoLabel.AutoSize = true;
+            this.tachoLabel.Location = new System.Drawing.Point(103, 38);
+            this.tachoLabel.Name = "tachoLabel";
+            this.tachoLabel.Size = new System.Drawing.Size(60, 13);
+            this.tachoLabel.TabIndex = 8;
+            this.tachoLabel.Text = "tachoLabel";
+            // 
+            // kmLabel
+            // 
+            this.kmLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.kmLabel.AutoSize = true;
+            this.kmLabel.Location = new System.Drawing.Point(103, 98);
+            this.kmLabel.Name = "kmLabel";
+            this.kmLabel.Size = new System.Drawing.Size(47, 13);
+            this.kmLabel.TabIndex = 10;
+            this.kmLabel.Text = "kmLabel";
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.timeLabel.AutoSize = true;
+            this.timeLabel.Location = new System.Drawing.Point(103, 128);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(52, 13);
+            this.timeLabel.TabIndex = 11;
+            this.timeLabel.Text = "timeLabel";
+            // 
+            // vehicleComboBox
+            // 
+            this.vehicleComboBox.DataSource = this.vehiclesBindingSource;
+            this.vehicleComboBox.DisplayMember = "VehicleName";
+            this.vehicleComboBox.FormattingEnabled = true;
+            this.vehicleComboBox.Location = new System.Drawing.Point(103, 63);
+            this.vehicleComboBox.Name = "vehicleComboBox";
+            this.vehicleComboBox.Size = new System.Drawing.Size(200, 21);
+            this.vehicleComboBox.TabIndex = 12;
+            this.vehicleComboBox.ValueMember = "Id";
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vehiclesBindingSource
+            // 
+            this.vehiclesBindingSource.DataMember = "Vehicles";
+            this.vehiclesBindingSource.DataSource = this.dataSet;
+            // 
+            // vehiclesTableAdapter
+            // 
+            this.vehiclesTableAdapter.ClearBeforeFill = true;
+            // 
             // LoadBikeDataForm
             // 
             this.AcceptButton = this.okButton;
@@ -244,6 +266,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,8 +286,12 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Label tachoLabel;
-        private System.Windows.Forms.Label bikeLabel;
         private System.Windows.Forms.Label kmLabel;
         private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.ComboBox vehicleComboBox;
+        private DataSet dataSet;
+        private System.Windows.Forms.BindingSource vehiclesBindingSource;
+        private DataSetTableAdapters.VehiclesTableAdapter vehiclesTableAdapter;
+        private System.Windows.Forms.ToolTip errorToolTip;
     }
 }

@@ -84,6 +84,7 @@ namespace BikeDB2024
         {
             InitializeComponent();
             initMapControl();
+            this.Text = Properties.Settings.Default.BikeDBVersion;
         }
 
         /// <summary>

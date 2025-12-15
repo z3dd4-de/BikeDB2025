@@ -217,5 +217,8 @@
     <Setting Name="SigmaLastTimeStamp" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="BikeDBVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BikeDB 2026</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

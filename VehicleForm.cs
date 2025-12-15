@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using static BikeDB2024.Helpers;
+using System.Linq;
 
 namespace BikeDB2024
 {
@@ -11,6 +12,7 @@ namespace BikeDB2024
         #region Public Properties
         public bool Edit { get; set; }
         public int VehicleId { get; set; }
+        public int SpeedometerId { get; set; }
         #endregion
 
         /// <summary>
@@ -70,13 +72,18 @@ namespace BikeDB2024
                             vehiclesComboBox.Enabled = false;
                             nameTextBox.Text = reader1[1].ToString();
                             constructorComboBox.SelectedIndex = Convert.ToInt32(reader1[2]);
-                            typeComboBox.SelectedIndex = Convert.ToInt32(reader1[3]);
+                            typeComboBox.SelectedValue = Convert.ToInt32(reader1[3]);
                             boughtDateTimePicker.Value = Convert.ToDateTime(reader1[4].ToString());
                             buildYearTextBox.Text = reader1[5].ToString();
                             priceTextBox.Text = reader1[6].ToString();
                             inventoryRichTextBox.Text = reader1[7].ToString();
                             fileTextBox.Text = reader1[8].ToString();
-                            licenseTextBox.Text = reader1[13].ToString();
+                            licenseTextBox.Text = reader1[14].ToString();
+                            if (reader1[15] != DBNull.Value)
+                                SpeedometerId = Convert.ToInt32(reader1[15]);
+                            else
+                                SpeedometerId = -1;
+                            ShowSpeedometerButton();
                             addButton.Enabled = true;
                             addButton.Text = "Bearbeiten";
                             errorToolStripStatusLabel.Text = "Bearbeiten: Vehicles - Datensatz " + VehicleId.ToString();
@@ -147,17 +154,19 @@ namespace BikeDB2024
                         inventoryRichTextBox.Text,
                         fileTextBox.Text,
                         null,           // Entfaltung wird im EntfaltungsForm bestimmt
+                        0,              // NotShown
                         DateTime.Now,
                         DateTime.Now,
                         Properties.Settings.Default.CurrentUserID,
-                        licenseTextBox.Text);          
+                        licenseTextBox.Text,
+                        SpeedometerId);          
                     this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
                     var sql = @"UPDATE Vehicles SET VehicleName = @VehicleName, Manufacturer = @Manufacturer, VehicleType = @VehicleType, " +
                         "BoughtOn = @BoughtOn, BuildYear = @BuildYear, Price = @Price, Equipment = @Equipment, Image = @Image, " +
-                        "LastChanged = @last, LicensePlate = @license " +
+                        "LastChanged = @last, LicensePlate = @license, Speedometer = @speedometer " +
                         "WHERE Id = " + VehicleId.ToString();
                     try
                     {
@@ -175,7 +184,8 @@ namespace BikeDB2024
                                 command.Parameters.Add("@Image", SqlDbType.NVarChar).Value = fileTextBox.Text;
                                 command.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
                                 command.Parameters.Add("@license", SqlDbType.NChar).Value = licenseTextBox.Text;
-                                
+                                command.Parameters.Add("@speedometer", SqlDbType.Int).Value = SpeedometerId;
+
                                 connection.Open();
                                 command.ExecuteNonQuery();
                                 connection.Close();
@@ -214,6 +224,45 @@ namespace BikeDB2024
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 fileTextBox.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void tachoButton_Click(object sender, EventArgs e)
+        {
+            if (SpeedometerId >= 0)
+            {
+                SpeedometerForm speedometerForm = new SpeedometerForm();
+                speedometerForm.SpeedometerID = SpeedometerId;
+                if (speedometerForm.ShowDialog() == DialogResult.OK)
+                {
+                    SpeedometerId = speedometerForm.SpeedometerID;
+                }
+            }
+            else
+            {
+                SpeedometerForm speedometerForm = new SpeedometerForm();
+                if (speedometerForm.ShowDialog() == DialogResult.OK)
+                {
+                    SpeedometerId = speedometerForm.SpeedometerID;
+                }
+            }
+        }
+
+        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShowSpeedometerButton();
+        }
+
+        private void ShowSpeedometerButton()
+        {
+            int[] ints = { 1, 3, 4, 5, 7, 8, 9, 10, 18, 19 };
+            if (ints.Contains((int)typeComboBox.SelectedValue))
+            {
+                tachoButton.Visible = true;
+            }
+            else
+            {
+                tachoButton.Visible = false;
             }
         }
     }

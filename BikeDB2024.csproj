@@ -110,6 +110,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>packages\System.Data.SQLite.Linq.1.0.119.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
     </Reference>
@@ -193,6 +194,9 @@
     </Compile>
     <Compile Include="CountryForm.Designer.cs">
       <DependentUpon>CountryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet.cs">
+      <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -395,6 +399,7 @@
       <DependentUpon>RouteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SexagesimalAngle.cs" />
+    <Compile Include="SigmaDetector.cs" />
     <Compile Include="SigmaDsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,6 +411,12 @@
     </Compile>
     <Compile Include="SigmaDsForm_test.Designer.cs">
       <DependentUpon>SigmaDsForm_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpeedometerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpeedometerForm.Designer.cs">
+      <DependentUpon>SpeedometerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StatisticsForm.cs">
       <SubType>Form</SubType>
@@ -555,6 +566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SigmaDsForm_test.resx">
       <DependentUpon>SigmaDsForm_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpeedometerForm.resx">
+      <DependentUpon>SpeedometerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StatisticsForm.resx">
       <DependentUpon>StatisticsForm.cs</DependentUpon>

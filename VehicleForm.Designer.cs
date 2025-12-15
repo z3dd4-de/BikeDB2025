@@ -56,7 +56,6 @@
             this.buildYearTextBox = new System.Windows.Forms.TextBox();
             this.addButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.licenseTextBox = new System.Windows.Forms.TextBox();
             this.vehiclesTableAdapter = new BikeDB2024.DataSetTableAdapters.VehiclesTableAdapter();
@@ -65,6 +64,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.errorToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tachoButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vehicleTypesBindingSource)).BeginInit();
@@ -73,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -98,9 +101,9 @@
             this.tableLayoutPanel1.Controls.Add(this.buildYearTextBox, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.addButton, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.licenseTextBox, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 8);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -219,6 +222,7 @@
             this.typeComboBox.Size = new System.Drawing.Size(267, 21);
             this.typeComboBox.TabIndex = 3;
             this.typeComboBox.ValueMember = "Id";
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
             // 
             // vehicleTypesBindingSource
             // 
@@ -362,15 +366,6 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "Bilddatei";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 240);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Ausstattung";
-            // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -423,6 +418,34 @@
     "*";
             this.openFileDialog.Title = "Fahrzeugbild auswählen";
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.label6);
+            this.flowLayoutPanel3.Controls.Add(this.tachoButton);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 243);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(134, 100);
+            this.flowLayoutPanel3.TabIndex = 29;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Ausstattung";
+            // 
+            // tachoButton
+            // 
+            this.tachoButton.Location = new System.Drawing.Point(3, 16);
+            this.tachoButton.Name = "tachoButton";
+            this.tachoButton.Size = new System.Drawing.Size(75, 23);
+            this.tachoButton.TabIndex = 7;
+            this.tachoButton.Text = "Tacho";
+            this.tachoButton.UseVisualStyleBackColor = true;
+            this.tachoButton.Click += new System.EventHandler(this.tachoButton_Click);
+            // 
             // VehicleForm
             // 
             this.AcceptButton = this.addButton;
@@ -452,6 +475,8 @@
             this.flowLayoutPanel1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,7 +490,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.ComboBox constructorComboBox;
         private System.Windows.Forms.ComboBox typeComboBox;
@@ -495,5 +519,8 @@
         private System.Windows.Forms.Button fileButton;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox licenseTextBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button tachoButton;
     }
 }
