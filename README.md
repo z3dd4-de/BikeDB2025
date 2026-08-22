@@ -1,39 +1,81 @@
-# BikeDB 2025
-A Windows application to manage bikes, routes, speedometer data and much more.
+# BikeDB
 
-## What is BikeDB 2025
-Since more than 20 years I'm saving my bicycle data, collected normally with Sigma Sport speedometers. First I used a local web page which was created with PHP 4.2. Later I developed a MS Access database, but I also used spreadsheets.
+BikeDB is a Windows desktop application for managing, analyzing, and visualizing ride and vehicle data.
 
-Time passed and in 2024 I wanted to recreate the project from scratch. I used Visual Studio 2022 with a local SQL database.
+Originally built for personal use, it has evolved into a comprehensive system supporting multiple users, vehicles, and data-driven insights.
 
-## Features of BikeDB 2025
-- Runs under Windows 10/11 64bit without installation. Local installation could be used on multiple computers from a USB stick.
-- Multiuser interface. It can be used with administrators and multiple users. Thus, more than one user can have their own data and profiles. Admins can setup network data and modules, what users cannot do.
-- Admin accounts can install the software on servers, create other databases than the local one, make the software available on a LAN or WAN (not yet tested).
-- Export and import data as Excel *.xls data. Users can only dump their own data, admins can dump the whole database.
-- Multiple vehicle support: started with bicycles, the applications now supports any vehicle type: cars, motorbikes, e-bikes; you could track your hiking by feet or running training sessions.
-- Every user can have any amount of vehicles. It is also possible that a car which is used by more than one user, is tracked individually.
-- Several modules included: tracks, cities, countries. You can create routes that you regularly use, or one-time routes. Daily route home to work, or routes that you drove during a vacation. There are no limits.
-- OpenStreetMap is included and the only functionality that needs web access. The application supports GPS coordinates on every level.
-- More modules: notes and plans, persons, calendar, birthdays.
-- "Notes and plans": you can define targets that you want to achieve or just leave a freetext note without any timer. If you achieve a target ("do 100 km on a bike in October"), it will be marked as achieved automatically.
-- "Persons" can be used to track every activity that you did with family and friends. When you add them to your private list, you can also be reminded of their birthdays.
-- More modules: FlightDB and QR-Codes. FlightDB can manage planes, flights, destinations etc. QR-Codes can be used to generate QR-Codes from any URL that is used within the application.
+---
 
-## FlightDB is in alpha status
-As the FlightDB is an optional module and not yet complete, admins can decide to deactivate it globally, thus no user can access it and menu items will disappear.
+## 🚀 Key Features
 
-## Achtung: BikeDB2025 ist momentan nur auf Deutsch verfügbar
-Ohne Unterstützung wird es wohl auch so bleiben, da ich die BikeDB nur für mich selbst entwickelt habe. Meine Anforderungen prägen das Projekt und ich muss sie nicht in eine andere Sprache übersetzen, da sie für mich funktioniert.
+- **Ride & Activity Tracking**  
+  Track daily commutes, training sessions, or long-distance tours.
 
-## Import of speedometer data (Sigma Sport TL 2009/2012)
-If you have a Sigma Sport Topline docking station, then you can use my other app, SigmaNotificationApp, to detect if a speedometer was attached to the docking station. This allows you to directly import the data from the speedometer to BikeDB.
+- **Multi-Vehicle Support**  
+  Manage bicycles, cars, motorbikes, or even running and hiking activities.
 
-## Current status of BikeDB 2025
-I use this application regularly, but there are still some issues that I need to debug. Anyway, BikeDB 2025 is 99% complete for a local installation with one admin and multiple users.
-Export/Import is broken, because the underlying database has changed to much. This will be fixed once I deem the database structure final.
-FlightDB is currently not further developed, thus it will be deactivated in the final release version 1.0.
-The admin module is not yet fully complete.
-Installation on web servers and other databases is prepared, but neither tested nor fully functional. The Windows application can already be configured as client and maybe you can make the database run on a server and connect from the client. But it is not garanteed.
+- **Multi-User System**  
+  Separate profiles with individual data and permissions (user/admin roles).
 
-Thus, still in development, but made open for public. Feel free to contact me here on Github!
+- **Data Analysis & Statistics**  
+  Generate reports and analyze performance over time.
+
+- **Route & Location Management**  
+  Organize routes, cities, countries, and GPS-based data.
+
+- **Integrated Modules**  
+  Includes notes, plans, calendar, and personal tracking features.
+
+- **OpenStreetMap Integration**  
+  Visualize routes and locations with map support.
+
+---
+
+## 🧠 Use Cases
+
+BikeDB can be used for:
+
+- Personal fitness tracking  
+- Long-term ride and activity analysis  
+- Managing multiple vehicles and usage patterns  
+- Documenting travel routes and activities  
+- Data-driven performance insights  
+
+---
+
+## 🛠 Tech Stack
+
+- C# (.NET, Windows Desktop)
+- SQLite / SQL databases
+- JSON / Excel data import & export
+- OpenStreetMap integration
+
+---
+
+## 🔗 Related Projects
+
+- **SigmaDataCenter**  
+  Extracts and converts data from Sigma Sport devices.
+
+- **BikeDB Trax**  
+  Mobile companion app for recording ride data.
+
+---
+
+## ⚙️ Current Status
+
+BikeDB is actively developed and used in production (personal use).
+
+Core functionality is stable, while some features (e.g. advanced import/export and server setups) are still being refined.
+
+---
+
+## 📌 Background
+
+This project is the result of over 20 years of tracking and analyzing personal ride data, evolving from simple spreadsheets to a full-featured application.
+
+---
+
+## 📬 Contact
+
+Feel free to reach out via GitHub.

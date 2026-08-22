@@ -28,7 +28,7 @@ namespace BikeDB2024
             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
             {
                 con1.Open();
-                using (SqlCommand com1 = new SqlCommand())
+                using (SqlCommand com1 = new())
                 {
                     com1.CommandText = @"SELECT * FROM Countries WHERE Id = " + EditId.ToString();
                     com1.CommandType = CommandType.Text;
@@ -114,7 +114,7 @@ namespace BikeDB2024
             if (!Edit)
             {
                 int length = countriesComboBox.Items.Count;
-                DataSetTableAdapters.CountriesTableAdapter adapter = new DataSetTableAdapters.CountriesTableAdapter();
+                DataSetTableAdapters.CountriesTableAdapter adapter = new();
                 adapter.Insert(length, nameTextBox.Text, iso3166TextBox.Text, prefixTextBox.Text, Convert.ToInt32(continentComboBox.SelectedValue),
                     DateTime.Now, DateTime.Now, Properties.Settings.Default.CurrentUserID);
                 Close();

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.inventoryRichTextBox = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -58,15 +59,15 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.licenseTextBox = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tachoButton = new System.Windows.Forms.Button();
             this.vehiclesTableAdapter = new BikeDB2024.DataSetTableAdapters.VehiclesTableAdapter();
             this.companiesTableAdapter = new BikeDB2024.DataSetTableAdapters.CompaniesTableAdapter();
             this.vehicleTypesTableAdapter = new BikeDB2024.DataSetTableAdapters.VehicleTypesTableAdapter();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.errorToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tachoButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vehicleTypesBindingSource)).BeginInit();
@@ -74,8 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.companiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -160,7 +161,7 @@
             this.fileButton.TabIndex = 10;
             this.fileButton.Text = "Suchen";
             this.fileButton.UseVisualStyleBackColor = true;
-            this.fileButton.Click += new System.EventHandler(this.fileButton_Click);
+            this.fileButton.Click += new System.EventHandler(this.FileButton_Click);
             // 
             // label4
             // 
@@ -222,7 +223,7 @@
             this.typeComboBox.Size = new System.Drawing.Size(267, 21);
             this.typeComboBox.TabIndex = 3;
             this.typeComboBox.ValueMember = "Id";
-            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.TypeComboBox_SelectedIndexChanged);
             // 
             // vehicleTypesBindingSource
             // 
@@ -259,7 +260,7 @@
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(267, 20);
             this.nameTextBox.TabIndex = 1;
-            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
+            this.nameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
             // label8
             // 
@@ -354,7 +355,7 @@
             this.addButton.TabIndex = 11;
             this.addButton.Text = "Hinzufügen";
             this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // label10
             // 
@@ -384,6 +385,35 @@
             this.licenseTextBox.Name = "licenseTextBox";
             this.licenseTextBox.Size = new System.Drawing.Size(121, 20);
             this.licenseTextBox.TabIndex = 7;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.label6);
+            this.flowLayoutPanel3.Controls.Add(this.tachoButton);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 243);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(134, 100);
+            this.flowLayoutPanel3.TabIndex = 29;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Ausstattung";
+            // 
+            // tachoButton
+            // 
+            this.tachoButton.Location = new System.Drawing.Point(3, 16);
+            this.tachoButton.Name = "tachoButton";
+            this.tachoButton.Size = new System.Drawing.Size(75, 23);
+            this.tachoButton.TabIndex = 7;
+            this.tachoButton.Text = "Tacho";
+            this.tachoButton.UseVisualStyleBackColor = true;
+            this.tachoButton.Visible = false;
+            this.tachoButton.Click += new System.EventHandler(this.TachoButton_Click);
             // 
             // vehiclesTableAdapter
             // 
@@ -418,34 +448,6 @@
     "*";
             this.openFileDialog.Title = "Fahrzeugbild auswählen";
             // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.label6);
-            this.flowLayoutPanel3.Controls.Add(this.tachoButton);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 243);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(134, 100);
-            this.flowLayoutPanel3.TabIndex = 29;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Ausstattung";
-            // 
-            // tachoButton
-            // 
-            this.tachoButton.Location = new System.Drawing.Point(3, 16);
-            this.tachoButton.Name = "tachoButton";
-            this.tachoButton.Size = new System.Drawing.Size(75, 23);
-            this.tachoButton.TabIndex = 7;
-            this.tachoButton.Text = "Tacho";
-            this.tachoButton.UseVisualStyleBackColor = true;
-            this.tachoButton.Click += new System.EventHandler(this.tachoButton_Click);
-            // 
             // VehicleForm
             // 
             this.AcceptButton = this.addButton;
@@ -454,11 +456,11 @@
             this.ClientSize = new System.Drawing.Size(419, 446);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "VehicleForm";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Neues Fahrzeug";
@@ -473,10 +475,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.vehiclesBindingSource)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -68,10 +68,10 @@ namespace BikeDB2024
                             return null;
 
                         port.DiscardInBuffer();
-                        port.Write(new byte[] { 0xfe }, 0, 1);
+                        port.Write([0xfe], 0, 1);
                         Thread.Sleep(500);
 
-                        port.Write(new byte[] { 0xfb }, 0, 1);
+                        port.Write([0xfb], 0, 1);
                         Thread.Sleep(1500);
 
                         byte[] buf = new byte[11];
@@ -116,7 +116,7 @@ namespace BikeDB2024
         private bool IsUnitPresent(SerialPort port)
         {
             port.DiscardInBuffer();
-            port.Write(new byte[] { 0xf4 }, 0, 1);
+            port.Write([0xf4], 0, 1);
             Thread.Sleep(150);
 
             return port.BytesToRead > 0 && port.ReadByte() == 1;

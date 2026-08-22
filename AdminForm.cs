@@ -197,7 +197,7 @@ namespace BikeDB2024
 
         private void infoToolStripButton_Click(object sender, EventArgs e)
         {
-            AboutBox aboutBox = new AboutBox();
+            AboutBox aboutBox = new();
             aboutBox.ShowDialog();
         }
 
@@ -216,7 +216,7 @@ namespace BikeDB2024
 
         private void pwdButton_Click(object sender, EventArgs e)
         {
-            PasswordForm pf = new PasswordForm();
+            PasswordForm pf = new();
             if (pf.ShowDialog() == DialogResult.OK)
             {
                 pwdTextBox.Text = pf.Password;
@@ -234,12 +234,12 @@ namespace BikeDB2024
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-            SmtpClient client = new SmtpClient(smtpTextBox.Text);
-            MailAddress from = new MailAddress(fromTextBox.Text,
+            SmtpClient client = new(smtpTextBox.Text);
+            MailAddress from = new(fromTextBox.Text,
                "Admin BikeDB 2025",
             Encoding.UTF8);
-            MailAddress to = new MailAddress(emailTextBox.Text);
-            MailMessage message = new MailMessage(from, to);
+            MailAddress to = new(emailTextBox.Text);
+            MailMessage message = new(from, to);
             message.Body = messageRichTextBox.Text;
             message.BodyEncoding = Encoding.UTF8;
             message.Subject = subjectTextBox.Text;
@@ -426,7 +426,7 @@ namespace BikeDB2024
 
         private void addClientButton_Click(object sender, EventArgs e)
         {
-            ClientForm clientForm = new ClientForm();
+            ClientForm clientForm = new();
             if (clientForm.ShowDialog() == DialogResult.OK)
             {
 

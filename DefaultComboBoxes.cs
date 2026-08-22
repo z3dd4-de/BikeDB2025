@@ -134,7 +134,7 @@ namespace BikeDB2024
         /// <param name="types"></param>
         public void LoadComboBoxItems(string[] types)
         {
-            List<object> data = new List<object>(); 
+            List<object> data = new(); 
             DefaultComboBox.DataSource = null;
             DefaultComboBox.Items.Clear();
             DefaultComboBox.DisplayMember = "Text";
@@ -153,7 +153,7 @@ namespace BikeDB2024
         /// <param name="types"></param>
         public void LoadComboBoxItems(CB_Types types)
         {
-            List<object> data = new List<object>();
+            List<object> data = new();
             DefaultComboBox.DataSource = null;
             DefaultComboBox.Items.Clear();
             DefaultComboBox.DisplayMember = "Text";
@@ -166,7 +166,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         sqlquery = $"SELECT {id_field} FROM {table}";
                         if (not_shown)

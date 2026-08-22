@@ -69,7 +69,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = @"SELECT VehicleName FROM Vehicles WHERE VehicleType IN (1,3,4,5,9,10,18) AND [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
                         com1.CommandType = CommandType.Text;
@@ -601,7 +601,7 @@ namespace BikeDB2024
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             string sqlquery = "INSERT INTO Entfaltung" +
                             " (Id, BikeId, Front, Back, Wheel, Unit, Created, LastChanged, [User]) " +
@@ -620,7 +620,7 @@ namespace BikeDB2024
                             myCommand.Connection = myConnection;
                             myCommand.ExecuteNonQuery();
                         }
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             string sqlquery = "UPDATE Vehicles SET Entfaltung = @entf WHERE Id = " + vec_id.ToString();
                             myCommand.Parameters.Add("@entf", SqlDbType.Int).Value = id;
@@ -652,7 +652,7 @@ namespace BikeDB2024
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             string sqlquery = "UPDATE Entfaltung " +
                             "SET BikeId = @bike, Front = @front, Back = @back, Wheel = @wheel, Unit = @unit " +
@@ -667,7 +667,7 @@ namespace BikeDB2024
                             myCommand.Connection = myConnection;
                             myCommand.ExecuteNonQuery();
                         }
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             string sqlquery = "UPDATE Vehicles SET Entfaltung = @entf WHERE Id = " + vec_id;
                             myCommand.Parameters.Add("@entf", SqlDbType.Int).Value = id;
@@ -702,7 +702,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = @"SELECT * FROM Entfaltung WHERE Id = " + VehicleEntfaltung.ToString();
                         com1.CommandType = CommandType.Text;

@@ -143,7 +143,7 @@ namespace BikeDB2024
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = $"SELECT Date, Km, AverageSpeed, MaxSpeed FROM Tour WHERE Vehicle = " + vehicleId.ToString();
                             com1.CommandType = CommandType.Text;
@@ -230,7 +230,7 @@ namespace BikeDB2024
         }
         #region Printing
         private PrintDocument docToPrint =
-            new PrintDocument();
+            new();
 
         private void printCurrentPageToolStripButton_Click(object sender, EventArgs e)
         {
@@ -291,10 +291,10 @@ namespace BikeDB2024
             // message on the document in the dialog.
             string text = "In document_PrintPage method.";
             Font printFont_title =
-                new Font("Arial", 25,
+                new("Arial", 25,
                 FontStyle.Regular);
             Font printFont_small =
-                new Font("Arial", 11,
+                new("Arial", 11,
                 FontStyle.Regular);
             string manufacturer = GetDatabaseEntry("Companies", "CompanyName", Convert.ToInt32(
                         GetDatabaseEntry("Vehicles", "Manufacturer", vehicleId)));
@@ -325,7 +325,7 @@ namespace BikeDB2024
                         Brushes.Black, loc_x, 260);
 
                     Image img = Image.FromFile(curDir + "/HelpPages/logo_bikeDB.png");
-                    Point loc = new Point(650, 40);
+                    Point loc = new(650, 40);
                     e.Graphics.DrawImage(img, loc);
                     break;
                 case 1:

@@ -72,7 +72,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = @"SELECT Electric, Engine FROM VehicleTypes WHERE Id = " + vt.ToString();
                         com1.CommandType = CommandType.Text;

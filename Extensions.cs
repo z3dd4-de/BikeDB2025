@@ -12,8 +12,7 @@ namespace ExtensionMethods
         /// <returns>Word Count.</returns>
         public static int WordCount(this string str)
         {
-            return str.Split(new char[] { ' ', '.', '?', '!', ';', ',' },
-                             StringSplitOptions.RemoveEmptyEntries).Length;
+            return str.Split(new[] { ' ', '.', '?', '!', ';', ',' }, StringSplitOptions.RemoveEmptyEntries).Length;
         }
 
         /// <summary>
@@ -23,8 +22,8 @@ namespace ExtensionMethods
         /// <returns>File Size as string.</returns>
         public static string ToFileSize(this double value)
         {
-            string[] suffixes = { "bytes", "KB", "MB", "GB",
-                "TB", "PB", "EB", "ZB", "YB"};
+            string[] suffixes = new[] {"bytes", "KB", "MB", "GB",
+                "TB", "PB", "EB", "ZB", "YB" };
             for (int i = 0; i < suffixes.Length; i++)
             {
                 if (value <= (Math.Pow(1024, i + 1)))

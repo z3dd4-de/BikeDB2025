@@ -26,9 +26,9 @@ namespace BikeDB2024
         {
             if (link != null)
             {
-                QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                QRCodeGenerator qrGenerator = new();
                 QRCodeData qrCodeData = qrGenerator.CreateQrCode(link, QRCodeGenerator.ECCLevel.Q);
-                QRCode qrCode = new QRCode(qrCodeData);
+                QRCode qrCode = new(qrCodeData);
                 Bitmap qrCodeImage = qrCode.GetGraphic(20);
                 linkQrLabel.Text = link;
                 qrPictureBox.Image = qrCodeImage;

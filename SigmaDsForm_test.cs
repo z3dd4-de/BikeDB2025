@@ -36,7 +36,7 @@ namespace BikeDB2024
         internal delegate void SerialPinChangedEventHandlerDelegate(object sender, SerialPinChangedEventArgs e);
         private SerialPinChangedEventHandler SerialPinChangedEventHandler1;
 
-        Thread readThread = new Thread(Read);
+        Thread readThread = new(Read);
         static bool _continue;
         static string text;
         public SigmaDsForm_test()
@@ -73,7 +73,7 @@ namespace BikeDB2024
         {
             Thread.Sleep(500);
             string data = _serialPort.ReadLine();
-            this.BeginInvoke(new SetTextDeleg(si_DataReceived), new object[] { data });
+            this.BeginInvoke(new SetTextDeleg(si_DataReceived), [data]);
         }
 
         private void si_DataReceived(string data) { consoleRichTextBox.Text += data; }

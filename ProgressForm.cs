@@ -95,7 +95,7 @@ namespace BikeDB2024
             {
                 workbook = new Workbook();
 
-                Worksheet ws_ver = new Worksheet("Version");
+                Worksheet ws_ver = new("Version");
                 ws_ver.Cells[0, 0] = new Cell("Don't change this worksheet or the import might fail.");
                 ws_ver.Cells[1, 0] = new Cell("Version");
                 ws_ver.Cells[2, 0] = new Cell(version);
@@ -121,7 +121,7 @@ namespace BikeDB2024
                             case 0:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_tour = new Worksheet("Tour");
+                                    Worksheet ws_tour = new("Tour");
 
                                     // Table name
                                     ws_tour.Cells[0, 0] = new Cell("Tabelle: Tour");
@@ -151,7 +151,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     if (admin)
                                                         com1.CommandText = $"SELECT * FROM Tour";
@@ -200,7 +200,7 @@ namespace BikeDB2024
                             case 1:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_countries = new Worksheet("Countries");
+                                    Worksheet ws_countries = new("Countries");
                                     // Table name
                                     ws_countries.Cells[0, 0] = new Cell("Tabelle: Countries");
                                     // Column names
@@ -222,7 +222,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Countries";      // WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -262,7 +262,7 @@ namespace BikeDB2024
                             case 2:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_cities = new Worksheet("Cities");
+                                    Worksheet ws_cities = new("Cities");
                                     // Table name
                                     ws_cities.Cells[0, 0] = new Cell("Tabelle: Cities");
                                     // Column names
@@ -290,7 +290,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Cities";     // WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -336,7 +336,7 @@ namespace BikeDB2024
                             case 3:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_routes = new Worksheet("Routes");
+                                    Worksheet ws_routes = new("Routes");
                                     // Table name
                                     ws_routes.Cells[0, 0] = new Cell("Tabelle: Routes");
                                     // Column names
@@ -366,7 +366,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Routes WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -414,7 +414,7 @@ namespace BikeDB2024
                             case 4:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_vehicles = new Worksheet("Vehicles");
+                                    Worksheet ws_vehicles = new("Vehicles");
                                     // Table name
                                     ws_vehicles.Cells[0, 0] = new Cell("Tabelle: Vehicles");
                                     // Column names
@@ -442,7 +442,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Vehicles WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -488,7 +488,7 @@ namespace BikeDB2024
                             case 5:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_companies = new Worksheet("Companies");
+                                    Worksheet ws_companies = new("Companies");
                                     // Table name
                                     ws_companies.Cells[0, 0] = new Cell("Tabelle: Companies");
                                     // Column names
@@ -508,7 +508,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Companies WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -546,7 +546,7 @@ namespace BikeDB2024
                             case 6:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_entfaltung = new Worksheet("Entfaltung");
+                                    Worksheet ws_entfaltung = new("Entfaltung");
                                     // Table name
                                     ws_entfaltung.Cells[0, 0] = new Cell("Tabelle: Entfaltung");
                                     // Column names
@@ -569,7 +569,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Entfaltung WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -610,7 +610,7 @@ namespace BikeDB2024
                             case 7:     
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_vectype = new Worksheet("VehicleTypes");
+                                    Worksheet ws_vectype = new("VehicleTypes");
                                     // Table name
                                     ws_vectype.Cells[0, 0] = new Cell("Tabelle: VehicleTypes");
                                     // Column names
@@ -631,7 +631,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM VehicleTypes";   // WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -670,7 +670,7 @@ namespace BikeDB2024
                             case 8:     
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_routetype = new Worksheet("RouteTypes");
+                                    Worksheet ws_routetype = new("RouteTypes");
                                     // Table name
                                     ws_routetype.Cells[0, 0] = new Cell("Tabelle: RouteTypes");
                                     // Column names
@@ -689,7 +689,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM RouteTypes WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -726,7 +726,7 @@ namespace BikeDB2024
                             case 9:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_persons = new Worksheet("Persons");
+                                    Worksheet ws_persons = new("Persons");
                                     // Table name
                                     ws_persons.Cells[0, 0] = new Cell("Tabelle: Persons");
                                     // Column names
@@ -762,7 +762,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     if (admin)
                                                         com1.CommandText = $"SELECT * FROM Persons";
@@ -819,7 +819,7 @@ namespace BikeDB2024
                             case 10:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_notes = new Worksheet("Notes");
+                                    Worksheet ws_notes = new("Notes");
                                     // Table name
                                     ws_notes.Cells[0, 0] = new Cell("Tabelle: Notes");
                                     // Column names
@@ -839,7 +839,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Notes WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -877,7 +877,7 @@ namespace BikeDB2024
                             case 11:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_goals = new Worksheet("Goals");
+                                    Worksheet ws_goals = new("Goals");
                                     // Table name
                                     ws_goals.Cells[0, 0] = new Cell("Tabelle: Goals");
                                     // Column names
@@ -899,7 +899,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Goals WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -939,7 +939,7 @@ namespace BikeDB2024
                             case 12:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_costs = new Worksheet("Costs");
+                                    Worksheet ws_costs = new("Costs");
                                     // Table name
                                     ws_costs.Cells[0, 0] = new Cell("Tabelle: Costs");
                                     // Column names
@@ -963,7 +963,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Costs WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -1005,7 +1005,7 @@ namespace BikeDB2024
                             case 13:
                                 if ((bool)Checkboxes.GetValue(i))
                                 {
-                                    Worksheet ws_costscat = new Worksheet("CostCategories");
+                                    Worksheet ws_costscat = new("CostCategories");
                                     // Table name
                                     ws_costscat.Cells[0, 0] = new Cell("Tabelle: CostCategories");
                                     // Column names
@@ -1026,7 +1026,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM CostCategories"; // WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
                                                     com1.CommandType = CommandType.Text;
@@ -1065,7 +1065,7 @@ namespace BikeDB2024
                             case 14:
                                 if ((bool)Checkboxes.GetValue(i) && admin)
                                 {
-                                    Worksheet ws_clients = new Worksheet("Clients");
+                                    Worksheet ws_clients = new("Clients");
                                     // Table name
                                     ws_clients.Cells[0, 0] = new Cell("Tabelle: Clients");
                                     // Column names
@@ -1089,7 +1089,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Clients";
                                                     com1.CommandType = CommandType.Text;
@@ -1131,7 +1131,7 @@ namespace BikeDB2024
                             case 15:
                                 if ((bool)Checkboxes.GetValue(i) && admin)
                                 {
-                                    Worksheet ws_log = new Worksheet("Log");
+                                    Worksheet ws_log = new("Log");
                                     // Table name
                                     ws_log.Cells[0, 0] = new Cell("Tabelle: Log");
                                     // Column names
@@ -1150,7 +1150,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Log";
                                                     com1.CommandType = CommandType.Text;
@@ -1187,7 +1187,7 @@ namespace BikeDB2024
                             case 16:
                                 if ((bool)Checkboxes.GetValue(i) && admin)
                                 {
-                                    Worksheet ws_settings = new Worksheet("Settings");
+                                    Worksheet ws_settings = new("Settings");
                                     // Table name
                                     ws_settings.Cells[0, 0] = new Cell("Tabelle: Settings");
                                     // Column names
@@ -1251,7 +1251,7 @@ namespace BikeDB2024
                                             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                             {
                                                 con1.Open();
-                                                using (SqlCommand com1 = new SqlCommand())
+                                                using (SqlCommand com1 = new())
                                                 {
                                                     com1.CommandText = $"SELECT * FROM Settings";
                                                     com1.CommandType = CommandType.Text;
@@ -1347,7 +1347,7 @@ namespace BikeDB2024
             {
                 current_table = 0;
                 percent = 0;
-                Dictionary<int, string[]> result = new Dictionary<int, string[]>();
+                Dictionary<int, string[]> result = new();
                 SqlConnection myConnection;
 
                 for (int i = 0; i < tables.Length; i++)
@@ -1379,7 +1379,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, Date, Route, Vehicle, Km, Time, AverageSpeed, MaxSpeed, AccumulatedHeight, MaxAltitude, Remark, Persons, Created, LastChanged, [User]) " +
@@ -1445,7 +1445,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, Country, Iso3166, Phone, Continent, Created, LastChanged, [User]) " +
@@ -1494,7 +1494,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, CityName, Country, Bundesland, CityPrefix, Link, Kfz, Height, Remark, Image, Gps, Created, LastChanged, [User]) " +
@@ -1549,7 +1549,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, RouteName, City, CityStart, CityEnd, Cities, RouteType, MaxAlt, Altitude, Remarks, AltProfile, Image, NotShown, Created, LastChanged, [User]) " +
@@ -1598,10 +1598,10 @@ namespace BikeDB2024
                                     //ClearTable(tables[current_table]);
                                     try
                                     {
-                                        using (SqlConnection con = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                        using (SqlConnection con = new(Properties.Settings.Default.DataConnectionString))
                                         {
                                             con.Open();
-                                            using (SqlCommand command = new SqlCommand("DELETE FROM " + tables[current_table] + " WHERE NOT Id IN (0, 1)", con))
+                                            using (SqlCommand command = new("DELETE FROM " + tables[current_table] + " WHERE NOT Id IN (0, 1)", con))
                                             {
                                                 command.ExecuteNonQuery();
                                             }
@@ -1622,7 +1622,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, VehicleName, Manufacturer, VehicleType, BoughtOn, BuildYear, Price, Equipment, Image, Entfaltung, Created, LastChanged, [User], LicensePlate) " +
@@ -1679,7 +1679,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, CompanyName, Link, Created, LastChanged, [User]) " +
@@ -1726,7 +1726,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, BikeId, Front, Back, Wheel, Unit, Created, LastChanged, [User]) " +
@@ -1776,7 +1776,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, VehicleType, Electric, Engine, Created, LastChanged, [User]) " +
@@ -1824,7 +1824,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, RouteType, Created, LastChanged, [User]) " +
@@ -1862,10 +1862,10 @@ namespace BikeDB2024
                                     //ClearTable(tables[current_table]);
                                     try
                                     {
-                                        using (SqlConnection con = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                        using (SqlConnection con = new(Properties.Settings.Default.DataConnectionString))
                                         {
                                             con.Open();
-                                            using (SqlCommand command = new SqlCommand("DELETE FROM " + tables[current_table] + " WHERE NOT Id = 0", con))
+                                            using (SqlCommand command = new("DELETE FROM " + tables[current_table] + " WHERE NOT Id = 0", con))
                                             {
                                                 command.ExecuteNonQuery();
                                             }
@@ -1886,7 +1886,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, Username, Lastname, Name, City, Birthdate, Deathdate, Phone, Email, PLZ, Street1, Street2, Country, Image, " +
@@ -1951,7 +1951,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, Title, Remark, Created, LastChanged, [User]) " +
@@ -1998,7 +1998,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, Title, Remark, Date, Achieved, Created, LastChanged, [User]) " +
@@ -2047,7 +2047,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, CategoryName, ElectricVehicles, Engines, [User], Created, LastChanged) " +
@@ -2095,7 +2095,7 @@ namespace BikeDB2024
                                         myConnection.Open();
                                         for (int x = 0; x < result.Count; x++)
                                         {
-                                            using (SqlCommand myCommand = new SqlCommand())
+                                            using (SqlCommand myCommand = new())
                                             {
                                                 string sqlquery = "INSERT INTO " + tables[current_table] +
                                                 " (Id, CostTitle, Date, CostCategory, Description, Price, Vehicle, [User], Created, LastChanged) " +
@@ -2148,7 +2148,7 @@ namespace BikeDB2024
                                             myConnection.Open();
                                             for (int x = 0; x < result.Count; x++)
                                             {
-                                                using (SqlCommand myCommand = new SqlCommand())
+                                                using (SqlCommand myCommand = new())
                                                 {
                                                     string sqlquery = "INSERT INTO " + tables[current_table] +
                                                     " (Id, ClientName, IPv4, IPv6, LAN, RestrictUser, AllowedUser, [User], Created, LastChanged) " +
@@ -2202,7 +2202,7 @@ namespace BikeDB2024
                                             myConnection.Open();
                                             for (int x = 0; x < result.Count; x++)
                                             {
-                                                using (SqlCommand myCommand = new SqlCommand())
+                                                using (SqlCommand myCommand = new())
                                                 {
                                                     string sqlquery = "INSERT INTO " + tables[current_table] +
                                                     " (Id, Type, Remark, [User], Created) " +
@@ -2251,7 +2251,7 @@ namespace BikeDB2024
                                             myConnection.Open();
                                             for (int x = 0; x < result.Count; x++)
                                             {
-                                                using (SqlCommand myCommand = new SqlCommand())
+                                                using (SqlCommand myCommand = new())
                                                 {
                                                     string sqlquery = "INSERT INTO Settings" +
                                                         " (Id, [User], UseAltimeter, DefaultContinent, DefaultCountry, DefaultCity, DefaultRoute, DefaultVehicle, DefaultBundesland, " +
@@ -2349,7 +2349,7 @@ namespace BikeDB2024
         /// <returns>Dictionary<int, string[]></returns>
         private Dictionary<int, string[]> ReadSpreadsheet(string name, int column_count, int start_id = 0)
         {
-            Dictionary<int, string[]> result = new Dictionary<int, string[]>();
+            Dictionary<int, string[]> result = new();
             Workbook book = Workbook.Load(FileName);
             foreach (Worksheet sheet in book.Worksheets)
             {

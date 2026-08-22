@@ -68,7 +68,7 @@ namespace BikeDB2024
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = @"SELECT * FROM Persons WHERE Id = " + EditId.ToString();
                             com1.CommandType = CommandType.Text;
@@ -185,7 +185,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void pwdButton_Click(object sender, EventArgs e)
         {
-            PasswordForm passwordForm = new PasswordForm();
+            PasswordForm passwordForm = new();
             if (passwordForm.ShowDialog() == DialogResult.OK)
             {
                 password = passwordForm.Password;
@@ -207,7 +207,7 @@ namespace BikeDB2024
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             int id = NextId("Persons");
                             byte user = 0;

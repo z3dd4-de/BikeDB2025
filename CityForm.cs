@@ -61,7 +61,7 @@ namespace BikeDB2024
             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
             {
                 con1.Open();
-                using (SqlCommand com1 = new SqlCommand())
+                using (SqlCommand com1 = new())
                 {
                     com1.CommandText = @"SELECT * FROM Cities WHERE Id = " + CityId.ToString();
                     com1.CommandType = CommandType.Text;
@@ -131,7 +131,7 @@ namespace BikeDB2024
                         height = Convert.ToInt32(heightTextBox.Text);
                     }
                     int id = NextId("Cities");
-                    DataSetTableAdapters.CitiesTableAdapter adapter = new DataSetTableAdapters.CitiesTableAdapter();
+                    DataSetTableAdapters.CitiesTableAdapter adapter = new();
                     adapter.Insert(id, nameTextBox.Text,
                         con,
                         bl, codeTextBox.Text,

@@ -66,7 +66,7 @@ namespace BikeDB2024
             try
             {
                 int length = companiesComboBox.Items.Count;
-                DataSetTableAdapters.CompaniesTableAdapter adapter = new DataSetTableAdapters.CompaniesTableAdapter();
+                DataSetTableAdapters.CompaniesTableAdapter adapter = new();
                 adapter.Insert(length, nameTextBox.Text, linkTextBox.Text, DateTime.Now, DateTime.Now, Properties.Settings.Default.CurrentUserID);
                 this.DialogResult = DialogResult.OK;
             }

@@ -36,7 +36,7 @@ namespace BikeDB2024
 
         public DateTime GetDate()
         {
-            DateTime dt = new DateTime();
+            DateTime dt = new();
             if (FlightDate != null)
             {
                 dt = FlightDate;

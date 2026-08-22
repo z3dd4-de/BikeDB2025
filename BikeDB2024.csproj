@@ -203,6 +203,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataTransferManager.cs" />
+    <Compile Include="DataTransferService.cs" />
     <Compile Include="DefaultComboBoxes.cs" />
     <Compile Include="DirectoryWatcher.cs" />
     <Compile Include="EntfaltungForm.cs">
@@ -300,6 +302,12 @@
     <Compile Include="GoalsForm.Designer.cs">
       <DependentUpon>GoalsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GPSBabelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GPSBabelForm.Designer.cs">
+      <DependentUpon>GPSBabelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="ImageGalleryForm.cs">
       <SubType>Form</SubType>
@@ -325,6 +333,19 @@
     <Compile Include="ImportForm.Designer.cs">
       <DependentUpon>ImportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImportJsonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportJsonForm.Designer.cs">
+      <DependentUpon>ImportJsonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportJsonPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportJsonPreviewForm.Designer.cs">
+      <DependentUpon>ImportJsonPreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IStatistic.cs" />
     <Compile Include="LoadBikeDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -418,6 +439,7 @@
     <Compile Include="SpeedometerForm.Designer.cs">
       <DependentUpon>SpeedometerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StatisticRegistry.cs" />
     <Compile Include="StatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -506,6 +528,9 @@
     <EmbeddedResource Include="GoalsForm.resx">
       <DependentUpon>GoalsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GPSBabelForm.resx">
+      <DependentUpon>GPSBabelForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ImageGalleryForm.resx">
       <DependentUpon>ImageGalleryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -517,6 +542,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImportForm.resx">
       <DependentUpon>ImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportJsonForm.resx">
+      <DependentUpon>ImportJsonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportJsonPreviewForm.resx">
+      <DependentUpon>ImportJsonPreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadBikeDataForm.resx">
       <DependentUpon>LoadBikeDataForm.cs</DependentUpon>
@@ -655,6 +686,9 @@
     <Content Include="HelpPages\Ansicht_html_8dcd120f.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="HelpPages\BikeDBTrax.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpPages\Bildbearbeitung.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -670,6 +704,9 @@
     <Content Include="HelpPages\Bildbetrachter_html_374cddbb.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="HelpPages\Bildergalerien.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpPages\Content.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -677,6 +714,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\Daten_eingeben_html_1de0993f.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpPages\Drucken.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\Einstellungen.html">
@@ -739,7 +779,12 @@
     <Content Include="HelpPages\GoogleEarth_html_579dd73b.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="HelpPages\GPS.html" />
+    <Content Include="HelpPages\GPS.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpPages\GPSBabel.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpPages\Hilfsmittel.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -780,6 +825,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\Sicherheitshinweis.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpPages\SigmaNotificationApp.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpPages\Speicherorte.html">

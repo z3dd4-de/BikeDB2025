@@ -46,7 +46,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         string sqlquery = "";
                         if (user)
@@ -82,7 +82,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         string sqlquery = "";
                         if (user)
@@ -124,7 +124,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         string sqlquery = "SELECT MAX(Id) FROM " + tablename;
                         myCommand.CommandText = sqlquery;
@@ -165,7 +165,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         string sqlquery = "TRUNCATE TABLE " + tablename;
                         myCommand.CommandText = sqlquery;
@@ -198,7 +198,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         if (user)
                         {
@@ -242,7 +242,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         if (user)
                         {
@@ -287,7 +287,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         if (user)
                         {
@@ -331,7 +331,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = $"SELECT CAST(MIN({value}) as decimal(6, 2)), CAST(AVG({value}) as decimal(6, 2)), CAST(MAX({value}) as decimal(6, 2)) FROM {tablename} WHERE " + where
                              + " AND [User] = " + Properties.Settings.Default.CurrentUserID;
@@ -369,7 +369,7 @@ namespace BikeDB2024
         public static void FillLocationComboBox(ComboBox cb, GpsType type)
         {
             SqlConnection con1;
-            List<Location> data = new List<Location>();
+            List<Location> data = new();
             cb.DataSource = null;
             cb.Sorted = true;
             cb.Items.Clear();
@@ -381,7 +381,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         switch (type)
                         {
@@ -465,7 +465,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         int id = NextId("Log");
                         string sqlquery = "INSERT INTO Log " +
@@ -505,7 +505,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = $"SELECT Id FROM Countries";
                         com1.CommandType = CommandType.Text;
@@ -515,7 +515,7 @@ namespace BikeDB2024
                         {
                             while (reader1.Read())
                             {
-                                Country c = new Country(reader1.GetInt32(0));
+                                Country c = new(reader1.GetInt32(0));
                                 comboBox.Items.Add(c);
                             }
                             reader1.Close();
@@ -546,7 +546,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = $"SELECT Id FROM Cities";
                         com1.CommandType = CommandType.Text;
@@ -556,7 +556,7 @@ namespace BikeDB2024
                         {
                             while (reader1.Read())
                             {
-                                City c = new City(reader1.GetInt32(0));
+                                City c = new(reader1.GetInt32(0));
                                 comboBox.Items.Add(c);
                             }
                             reader1.Close();
@@ -590,7 +590,7 @@ namespace BikeDB2024
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             if (user)
                             {
@@ -641,7 +641,7 @@ namespace BikeDB2024
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             if (user)
                             {
@@ -687,7 +687,7 @@ namespace BikeDB2024
         /// <returns></returns>
         public static Point GetPointFromString(string setting)
         {
-            Point point = new Point(50, 50);    // default
+            Point point = new(50, 50);    // default
             string temp = GetDatabaseEntry("Settings", setting, true);
             string[] t = temp.Split(';');
             try
@@ -711,7 +711,7 @@ namespace BikeDB2024
         /// <returns></returns>
         public static Size GetSizeFromString(string setting)
         {
-            Size size = new Size(800, 600);     // default
+            Size size = new(800, 600);     // default
             string temp = GetDatabaseEntry("Settings", setting, true);
             string[] t = temp.Split(';');
             try
@@ -781,7 +781,7 @@ namespace BikeDB2024
                 Properties.Settings.Default.StdBundesland = "";
                 Properties.Settings.Default.StdCity = "";
                 Properties.Settings.Default.StdRoute = "";
-                Properties.Settings.Default.WindowLocation = new Point(0,0);
+                Properties.Settings.Default.WindowLocation = new Point(0, 0);
                 Properties.Settings.Default.WindowSize = new Size(800, 500);
                 Properties.Settings.Default.ShowBirthdays = true;
                 Properties.Settings.Default.ShowFlightDB = false;
@@ -836,7 +836,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         string sqlquery = "INSERT INTO Settings" +
                         " ([User], UseAltimeter, DefaultContinent, DefaultCountry, DefaultCity, DefaultRoute, DefaultVehicle, DefaultBundesland, " +
@@ -905,7 +905,7 @@ namespace BikeDB2024
                         myCommand.Connection = myConnection;
                         myCommand.ExecuteNonQuery();
                     }
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         /*string sqlquery = "UPDATE Vehicles SET Entfaltung = @entf WHERE Id = " + vec_id;
                         myCommand.Parameters.Add("@entf", SqlDbType.Int).Value = id;
@@ -1142,8 +1142,11 @@ namespace BikeDB2024
         #endregion
 
         #region Methods to change the table entry "NotShown" of available objects
-        public enum VisibilityObject { AIRLINE, AIRPORT, CITY, COMPANY, COST, COUNTRY, FLIGHT, PERSON, PLANEMANUFACTURER,
-            PLANE, ROUTE, VEHICLE } 
+        public enum VisibilityObject
+        {
+            AIRLINE, AIRPORT, CITY, COMPANY, COST, COUNTRY, FLIGHT, PERSON, PLANEMANUFACTURER,
+            PLANE, ROUTE, VEHICLE
+        }
 
         /// <summary>
         /// Return a List of ints with all objects that are not shown for a user.
@@ -1154,7 +1157,7 @@ namespace BikeDB2024
         {
             int user_id = Properties.Settings.Default.CurrentUserID;
             string column = "";
-            List<int> result_ints = new List<int>();
+            List<int> result_ints = new();
             switch (vobject)
             {
                 case VisibilityObject.AIRLINE:
@@ -1203,7 +1206,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = $"SELECT {column} FROM NotShownObjects WHERE User = {user_id}";
                         com1.CommandType = CommandType.Text;
@@ -1368,7 +1371,7 @@ namespace BikeDB2024
             {
                 return ("", false);
             }
-            else 
+            else
             {
                 if (File.Exists(path))
                 {
@@ -1474,7 +1477,7 @@ namespace BikeDB2024
             (string s, bool b) = GetFileOrFolder(path);
             if (b)
             {
-                ImageViewerForm imageViewerForm = new ImageViewerForm();
+                ImageViewerForm imageViewerForm = new();
                 imageViewerForm.Filename = s;
                 imageViewerForm.Show();
             }
@@ -1494,7 +1497,7 @@ namespace BikeDB2024
             int max_size = 350;     // size of thumbnails with setting "large"
             if (!ThumbnailExists(path))
             {
-                Bitmap img = new Bitmap(path);
+                Bitmap img = new(path);
                 img = ScaleImage(img, max_size, max_size);
                 img.Save(GetThumbnailFilename(path));
                 img.Dispose();
@@ -1542,7 +1545,7 @@ namespace BikeDB2024
             bool exists = false;
             string tn_filename = GetThumbnailFilename(path);
             if (tn_filename == "") { exists = true; }
-            FileInfo fileInfo = new FileInfo(tn_filename);
+            FileInfo fileInfo = new(tn_filename);
             if (fileInfo.Exists)
             {
                 exists = true;
@@ -1558,7 +1561,7 @@ namespace BikeDB2024
         public static string GetThumbnailFilename(string path)
         {
             string filename = "";
-            FileInfo fileInfo = new FileInfo(path);
+            FileInfo fileInfo = new(path);
             if (fileInfo.Exists)
             {
                 // If "path" is already a thumbnail, return
@@ -1587,7 +1590,7 @@ namespace BikeDB2024
             }
             else
             {
-                pb.Image = Image.FromFile(TestFileOrFolderPath(image)); 
+                pb.Image = Image.FromFile(TestFileOrFolderPath(image));
                 pb.Visible = true;
             }
         }
@@ -1599,8 +1602,8 @@ namespace BikeDB2024
         /// <returns></returns>
         public static string ToFileSize(/*this*/ double value)
         {
-            string[] suffixes = { "bytes", "KB", "MB", "GB",
-                "TB", "PB", "EB", "ZB", "YB"};
+            string[] suffixes = [ "bytes", "KB", "MB", "GB",
+                "TB", "PB", "EB", "ZB", "YB"];
             for (int i = 0; i < suffixes.Length; i++)
             {
                 if (value <= (Math.Pow(1024, i + 1)))
@@ -1654,10 +1657,10 @@ namespace BikeDB2024
         public static void FillGoogleMarkerTypeComboBox(System.Windows.Forms.ComboBox comboBox)
         {
             comboBox.Items.Clear();
-            List<Marker> markers = new List<Marker>();
+            List<Marker> markers = new();
             foreach (var enumVal in Enum.GetValues(typeof(GMarkerGoogleType)))
             {
-                Marker m = new Marker((int)enumVal);
+                Marker m = new((int)enumVal);
                 markers.Add(m);
             }
             markers.Sort();
@@ -1676,7 +1679,7 @@ namespace BikeDB2024
         public static string GetGPSviaProperty(string orig)
         {
             string ret = "";
-            GpsCoordinate gps = new GpsCoordinate(orig);
+            GpsCoordinate gps = new(orig);
             if (Properties.Settings.Default.GPSCoordAngle)      // Grad: 51° 43′ N, 8° 45′ O
             {
                 ret = gps.GetDegreeCoordinate();
@@ -1724,6 +1727,264 @@ namespace BikeDB2024
                     map.MapProvider = YahooMapProvider.Instance;
                     break;
             }
+        }
+
+        #region BikeDB Folders
+
+        public static string GetBikeDBFolder()
+        {
+            string folder = "";
+            if (Properties.Settings.Default.BikeDBFolder != String.Empty)
+            {
+                folder = Properties.Settings.Default.BikeDBFolder;
+            }
+            else
+            {
+                folder = CreateBikeDBFolder();
+                Properties.Settings.Default.BikeDBFolder = folder;
+                Properties.Settings.Default.Save();
+            }
+            return folder;
+        }
+
+        public static string CreateBikeDBFolder()
+        {
+            string name = "BikeDB";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + name;
+            string folder = GetBikeDBFolder();
+            if (Properties.Settings.Default.BikeDBFolder == String.Empty)
+            {
+                try
+                {
+                    Directory.CreateDirectory(path);
+                    folder = path;
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex.Message, "Fehler beim Erstellen des BikeDB-Ordners");
+                }
+            }
+            else
+            {
+                folder = Properties.Settings.Default.BikeDBFolder;
+            }
+            return folder;
+        }
+
+        public static void CheckFolders()
+        {
+            string bikeDBFolder = GetBikeDBFolder();
+            string snaFolder = Properties.Settings.Default.SNAFolder;
+            string imageFolder = Properties.Settings.Default.ImageFolder;
+            string traxFolder = Properties.Settings.Default.TraxFolder;
+            const string placeholder = "%BIKEDB%";
+
+            if (Properties.Settings.Default.SNAFolder == String.Empty)
+            {
+
+            }
+            else
+            {
+                if (snaFolder.Contains(placeholder))
+                {
+                    snaFolder = snaFolder.Replace(placeholder, bikeDBFolder);
+                    if (!Directory.Exists(snaFolder))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory(snaFolder);
+                        }
+                        catch (Exception ex)
+                        {
+                            ShowErrorMessage(ex.Message, "Fehler beim Erstellen des SNA-Ordners");
+                        }
+                    }
+                    Properties.Settings.Default.SNAFolder = snaFolder;
+                    Properties.Settings.Default.Save();
+                }
+            }
+        }
+
+        public static string GetSNAFolder()
+        {
+            string folder = "";
+            const string placeholder = "%BIKEDB%";
+            if (Properties.Settings.Default.SNAFolder != String.Empty)
+            {
+                folder = Properties.Settings.Default.SNAFolder;
+                if (folder.Contains(placeholder))
+                {
+                    folder = folder.Replace(placeholder, GetBikeDBFolder());
+                    try
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex.Message, "Fehler beim Erstellen des SNA-Ordners");
+                    }
+                    Properties.Settings.Default.SNAFolder = folder;
+                    Properties.Settings.Default.Save();
+                }
+            }
+            else
+            {
+                folder = GetBikeDBFolder() + "\\SNA";
+                try
+                {
+                    Directory.CreateDirectory(folder);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex.Message, "Fehler beim Erstellen des SNA-Ordners");
+                }
+                Properties.Settings.Default.SNAFolder = ReplaceBikeDBFolderWithPlaceholder(folder);
+                Properties.Settings.Default.Save();
+            }
+            return folder;
+        }
+
+        public static string GetTraxFolder()
+        {
+            string folder = "";
+            const string placeholder = "%BIKEDB%";
+            if (Properties.Settings.Default.TraxFolder != String.Empty)
+            {
+                folder = Properties.Settings.Default.TraxFolder;
+                if (folder.Contains(placeholder))
+                {
+                    folder = folder.Replace(placeholder, GetBikeDBFolder());
+                    try
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex.Message, "Fehler beim Erstellen des Trax-Ordners");
+                    }
+                    Properties.Settings.Default.TraxFolder = folder;
+                    Properties.Settings.Default.Save();
+                }
+            }
+            else
+            {
+                folder = GetBikeDBFolder() + "\\Trax";
+                try
+                {
+                    Directory.CreateDirectory(folder);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex.Message, "Fehler beim Erstellen des Trax-Ordners");
+                }
+                Properties.Settings.Default.TraxFolder = ReplaceBikeDBFolderWithPlaceholder(folder);
+                Properties.Settings.Default.Save();
+            }
+            return folder;
+        }
+
+        public static string GetImageFolder()
+        {
+            string folder = "";
+            const string placeholder = "%BIKEDB%";
+            if (Properties.Settings.Default.ImageFolder != String.Empty)
+            {
+                folder = Properties.Settings.Default.ImageFolder;
+                if (folder.Contains(placeholder))
+                {
+                    folder = folder.Replace(placeholder, GetBikeDBFolder());
+                    try
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex.Message, "Fehler beim Erstellen des Bilder-Ordners");
+                    }
+                    Properties.Settings.Default.ImageFolder = ReplaceBikeDBFolderWithPlaceholder(folder);
+                    Properties.Settings.Default.Save();
+                }
+            }
+            else
+            {
+                folder = GetBikeDBFolder() + "\\Images";
+                try
+                {
+                    Directory.CreateDirectory(folder);
+                }
+                catch (Exception ex)
+                {
+                    ShowErrorMessage(ex.Message, "Fehler beim Erstellen des Bilder-Ordners");
+                }
+                Properties.Settings.Default.ImageFolder = ReplaceBikeDBFolderWithPlaceholder(folder);
+                Properties.Settings.Default.Save();
+            }
+            return folder;
+        }
+
+        public static string ReplaceBikeDBFolderWithPlaceholder(string path)
+        {
+            string result = path;
+            const string placeholder = "%BIKEDB%";
+            if (path.Contains(GetBikeDBFolder()))
+            {
+                result = path.Replace(GetBikeDBFolder(), placeholder);
+            }
+            return result;
+        }
+
+        public static string ReplacePlaceholderWithBikeDBFolder(string path)
+        {
+            string result = path;
+            const string placeholder = "%BIKEDB%";
+            if (path.Contains(placeholder))
+            {
+                result = path.Replace(placeholder, GetBikeDBFolder());
+            }
+            return result;
+        }
+        #endregion
+
+        /// <summary>
+        /// https://de.wikipedia.org/wiki/Gau%C3%9Fsche_Osterformel
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns>Date of Easter Sunday for the given year</returns>
+        public static DateTime CalcEasterGauss(int year)
+        {
+            int a = year % 19;
+            int b = year % 4;
+            int c = year % 7;
+
+            int k = year / 100;
+            int p = (8 * k + 13) / 25;
+            int q = k / 4;
+
+            int m = (15 + k - p - q) % 30;
+            int n = (4 + k - q) % 7;
+
+            int d = (19 * a + m) % 30;
+            int e = (2 * b + 4 * c + 6 * d + n) % 7;
+
+            // Ausnahmefälle korrigieren
+            int day = 22 + d + e;
+            int month = 3; // März
+
+            if (d == 29 && e == 6)
+            {
+                day = 19;
+            }
+            else if (d == 28 && e == 6 && ((11 * m + 11) % 30) < 19)
+            {
+                day = 18;
+            }
+            else if (day > 31)
+            {
+                day -= 31;
+                month = 4; // April
+            }
+
+            return new DateTime(year, month, day);
         }
     }
 }

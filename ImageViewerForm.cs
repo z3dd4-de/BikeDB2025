@@ -238,7 +238,7 @@ namespace BikeDB2024
         #region Show Help
         private void showHelp()
         {
-            ImageViewerHelpForm helpForm = new ImageViewerHelpForm();
+            ImageViewerHelpForm helpForm = new();
             helpForm.ShowDialog();
         }
 
@@ -299,7 +299,7 @@ namespace BikeDB2024
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             pictureBox.Location = new Point(0, 0);
-            Bitmap bmp = new Bitmap(pictureBox.Image, pictureBox.Width, pictureBox.Height);
+            Bitmap bmp = new(pictureBox.Image, pictureBox.Width, pictureBox.Height);
             pictureBox.DrawToBitmap(bmp, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
 
             if (saveImageDialog.ShowDialog() == DialogResult.OK)

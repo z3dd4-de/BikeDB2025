@@ -31,7 +31,7 @@ namespace BikeDB2024
             routesComboBox.Items.Clear();
 
             SqlConnection con1;
-            List<Route> data = new List<Route>();
+            List<Route> data = new();
             routesComboBox.DisplayMember = "Text";
             routesComboBox.ValueMember = "Value";
 
@@ -40,7 +40,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = @"SELECT * FROM Routes WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
                         com1.CommandType = CommandType.Text;
@@ -74,7 +74,7 @@ namespace BikeDB2024
             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
             {
                 con1.Open();
-                using (SqlCommand com1 = new SqlCommand())
+                using (SqlCommand com1 = new())
                 {
                     com1.CommandText = @"SELECT * FROM Routes WHERE Id = " + RouteId.ToString();
                     com1.CommandType = CommandType.Text;
@@ -189,7 +189,7 @@ namespace BikeDB2024
                     {
                         notshown = 1;
                     }
-                    DataSetTableAdapters.RoutesTableAdapter adapter = new DataSetTableAdapters.RoutesTableAdapter();
+                    DataSetTableAdapters.RoutesTableAdapter adapter = new();
                     adapter.Insert(length, nameTextBox.Text, cityComboBox.SelectedIndex,
                         cityStartComboBox.SelectedIndex,
                         cityEndComboBox.SelectedIndex,

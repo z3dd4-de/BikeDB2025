@@ -67,11 +67,11 @@ namespace BikeDB2024
         private GMapControl cityMapControl;
         // Sigma Docking Station
         #region SET YOUR USB Vendor and Product ID!
-        private const int vid = 7581;
+        /*private const int vid = 7581;
         private const int pid = 4113;
-        private UsbDeviceFinder MyUsbFinder = new UsbDeviceFinder(vid, pid);
+        private UsbDeviceFinder MyUsbFinder = new(vid, pid);
         private IDeviceNotifier UsbDeviceNotifier = DeviceNotifier.OpenDeviceNotifier();
-        private UsbDevice MyUsbDevice;
+        private UsbDevice MyUsbDevice;*/
         private DirectoryWatcher directoryWatcher;
         #endregion
         #endregion
@@ -83,14 +83,14 @@ namespace BikeDB2024
         public MainForm()
         {
             InitializeComponent();
-            initMapControl();
+            InitMapControl();
             this.Text = Properties.Settings.Default.BikeDBVersion;
         }
 
         /// <summary>
         /// Initialize the map for cities on the mapTabPage.
         /// </summary>
-        private void initMapControl()
+        private void InitMapControl()
         {
             cityMapControl = new GMapControl
             {
@@ -140,14 +140,14 @@ namespace BikeDB2024
             // TODO: Diese Codezeile lädt Daten in die Tabelle "dataSet.Countries". Sie können sie bei Bedarf verschieben oder entfernen.
             //this.countriesTableAdapter.Fill(this.dataSet.Countries);
             SetLoginStatus(false);
-            checkLogin();  
-            checkDockingStation();
+            CheckLogin();  
+            CheckDockingStation();
         }
 
         /// <summary>
         /// Load vehicles for the current user. 
         /// </summary>
-        private void loadVehicles()
+        private void LoadVehicles()
         {
             setting_vehicleComboBox.DataSource = null;
             vehicleComboBox.DataSource = null;
@@ -166,20 +166,18 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = @"SELECT * FROM Vehicles WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString()
                             + " ORDER BY VehicleName";
                         com1.CommandType = CommandType.Text;
                         com1.Connection = con1;
-                        using (SqlDataReader reader1 = com1.ExecuteReader())
+                        using SqlDataReader reader1 = com1.ExecuteReader();
+                        while (reader1.Read())
                         {
-                            while (reader1.Read())
-                            {
-                                data.Add(new Vehicle(reader1.GetInt32(0)));
-                            }
-                            reader1.Close();
+                            data.Add(new Vehicle(reader1.GetInt32(0)));
                         }
+                        reader1.Close();
                     }
                     con1.Close();
                 }
@@ -195,7 +193,7 @@ namespace BikeDB2024
         /// <summary>
         /// Load routes for the current user. 
         /// </summary>
-        private void loadRoutes()
+        private void LoadRoutes()
         {
             setting_routeComboBox.DataSource = null;
             routeComboBox.DataSource = null;
@@ -203,7 +201,7 @@ namespace BikeDB2024
             routeComboBox.Items.Clear();
 
             SqlConnection con1;
-            List<Route> data = new List<Route>();
+            List<Route> data = [];
             setting_routeComboBox.DisplayMember = "Text";
             setting_routeComboBox.ValueMember = "Value";
             routeComboBox.DisplayMember = "Text";
@@ -214,20 +212,18 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = @"SELECT * FROM Routes WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString()
                             + " ORDER BY RouteName";
                         com1.CommandType = CommandType.Text;
                         com1.Connection = con1;
-                        using (SqlDataReader reader1 = com1.ExecuteReader())
+                        using SqlDataReader reader1 = com1.ExecuteReader();
+                        while (reader1.Read())
                         {
-                            while (reader1.Read())
-                            {
-                                data.Add(new Route(reader1.GetInt32(0)));
-                            }
-                            reader1.Close();
+                            data.Add(new Route(reader1.GetInt32(0)));
                         }
+                        reader1.Close();
                     }
                     con1.Close();
                 }
@@ -243,7 +239,7 @@ namespace BikeDB2024
         /// <summary>
         /// Check local login status.
         /// </summary>
-        private void checkLogin()
+        private void CheckLogin()
         {
             if (Properties.Settings.Default.UserLoggedIn)
             {
@@ -269,21 +265,21 @@ namespace BikeDB2024
                 administrationToolStripMenuItem.Visible = true;
                 adminToolStripButton.Visible = true;
             }
-            setMenuItemsAvailability();
-            checkDockingStation();
+            SetMenuItemsAvailability();
+            CheckDockingStation();
         }
 
         /// <summary>
         /// Visibility of ToolStripMenu (buttons and labels).
         /// </summary>
-        private void setMenuItemsAvailability()
+        private void SetMenuItemsAvailability()
         {
             if (logged_in)
             {
-                showStartPage();
-                loadSettings();
-                loadVehicles();
-                loadRoutes();
+                ShowStartPage();
+                LoadSettings();
+                LoadVehicles();
+                LoadRoutes();
 
                 mainStatusLabel.Text = "";
                 loginToolStripMenuItem.Visible = false;
@@ -350,6 +346,53 @@ namespace BikeDB2024
                     gpsFormatComboBox.SelectedText = "Dezimal";
                 }
 
+                if (Properties.Settings.Default.UseCadence)
+                {
+
+                }
+                else
+                {
+
+                }
+
+                if (Properties.Settings.Default.UseAltimeter)
+                {
+
+                }
+                else
+                {
+
+                }
+
+                if (Properties.Settings.Default.ImportJson)
+                {
+                    importJsonButton.Visible = true;
+                    jSONImportierenToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    importJsonButton.Visible = false;
+                    jSONImportierenToolStripMenuItem.Visible = false;
+                }
+
+                if (Properties.Settings.Default.UseGPSBabel)
+                {
+                    gPXDateiumwandelnToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    gPXDateiumwandelnToolStripMenuItem.Visible = false;
+                }
+
+                if (Properties.Settings.Default.UseTrax)
+                {
+
+                }
+                else
+                {
+
+                }
+
                 userToolStripStatusLabel.Visible = true;
                 userToolStripStatusLabel.Text = Properties.Settings.Default.CurrentUserName +
                     " (" + Properties.Settings.Default.CurrentUserID.ToString() + ")";
@@ -407,7 +450,7 @@ namespace BikeDB2024
         /// <summary>
         /// If the docking station use is enabled in settings, it will be set up here.
         /// </summary>
-        private void checkDockingStation()
+        private void CheckDockingStation()
         {
             if (logged_in)
             {
@@ -423,19 +466,21 @@ namespace BikeDB2024
                     {
                         testConnection(false);
                     }*/
-                    createDirectoryWatcher();
+                    CreateDirectoryWatcher();
                 }
             }
             dsConnectedToolStripStatusLabel.Visible = false;
             dsNotConnectedToolStripStatusLabel.Visible = false;
         }
 
-        private void createDirectoryWatcher()
+        private void CreateDirectoryWatcher()
         {
             if (Properties.Settings.Default.SigmaDsEnabled && Properties.Settings.Default.SigmaDirectory != String.Empty)
             {
-                directoryWatcher = new DirectoryWatcher();
-                directoryWatcher.IsWatcherActive = true;
+                directoryWatcher = new DirectoryWatcher
+                {
+                    IsWatcherActive = true
+                };
                 // Events abonnieren
                 directoryWatcher.FileCreated += Watcher_FileCreated;
                 directoryWatcher.FileChanged += Watcher_FileChanged;
@@ -465,7 +510,7 @@ namespace BikeDB2024
                 var data = JsonSerializer.Deserialize<RideData>(json);
                 if (data == null) return;
 
-                LoadBikeDataForm rideDataForm = new LoadBikeDataForm(data);
+                LoadBikeDataForm rideDataForm = new(data);
                 if (rideDataForm.ShowDialog() == DialogResult.OK)
                 {
                     // Da es ein UI-Thread ist, Invoke nutzen
@@ -492,8 +537,8 @@ namespace BikeDB2024
             {
                 if (e.Device != null && e.Device.Name.Contains("USB#VID_1D9D&PID_1011"))
                 {
-                    testConnection(true);
-                    NotifyMessage notifyMessage = new NotifyMessage();
+                    TestConnection(true);
+                    NotifyMessage notifyMessage = new();
                     notifyMessage.ShowMessage("Sigma Docking Station", "wurde angeschlossen");
                 }
             }
@@ -501,14 +546,14 @@ namespace BikeDB2024
             {
                 if (e.Device != null && e.Device.Name.Contains("USB#VID_1D9D&PID_1011"))
                 {
-                    testConnection(false);
-                    NotifyMessage notifyMessage = new NotifyMessage();
+                    TestConnection(false);
+                    NotifyMessage notifyMessage = new();
                     notifyMessage.ShowMessage("Sigma Docking Station", "Verbindung wurde getrennt");
                 }
             }
         }
 
-        private void testConnection(bool connect)
+        private void TestConnection(bool connect)
         {
             if (connect)
             {
@@ -523,7 +568,7 @@ namespace BikeDB2024
         /// <summary>
         /// Basic settings from the user. Saved when application closes, loaded with the application.
         /// </summary>
-        private void loadSettings()
+        private void LoadSettings()
         {
             if (Properties.Settings.Default.UseAltimeter == true)
             {
@@ -560,7 +605,7 @@ namespace BikeDB2024
             imageEditorTextBox.Text = Properties.Settings.Default.ImageEditorName;
             notificationCheckBox.Checked = Properties.Settings.Default.ShowNotifyIcon;
             timerMaskedTextBox.Text = Properties.Settings.Default.NotifyTime.ToString();
-            showHelp();
+            ShowHelp();
         }
 
         /// <summary>
@@ -572,7 +617,7 @@ namespace BikeDB2024
         {
             if (Properties.Settings.Default.ShowWelcomeForm)
             {
-                WelcomeForm welcomeForm = new WelcomeForm();
+                WelcomeForm welcomeForm = new();
                 welcomeForm.ShowDialog();
             }
             springToolStripStatusLabel.Text = String.Empty;
@@ -581,7 +626,7 @@ namespace BikeDB2024
         /// <summary>
         /// Enables or disables visibility of Help items.
         /// </summary>
-        private void showHelp()
+        private void ShowHelp()
         {
             if (hilfeToolStripMenuItem2.Checked)
             {
@@ -599,7 +644,7 @@ namespace BikeDB2024
             }
         }
 
-        private void disableTabPages()
+        private void DisableTabPages()
         {
             mainStatusLabel.Text = "";
             mainTabControl.Visible = false;
@@ -608,10 +653,10 @@ namespace BikeDB2024
             cityTabControl.Visible = false;
             routeTabControl.Visible = false;
 
-            disableAnsichtChecked();
+            DisableAnsichtChecked();
         }
 
-        private void disableAnsichtChecked() 
+        private void DisableAnsichtChecked()
         {
             datenToolStripMenuItem.Checked = false;
             startseiteToolStripMenuItem.Checked = false;
@@ -627,21 +672,21 @@ namespace BikeDB2024
             kalenderToolStripMenuItem.Checked = false;
         }
 
-        private void toolbarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolbarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolbarToolStripMenuItem.Checked = !toolbarToolStripMenuItem.Checked;
             mainToolStrip.Visible = toolbarToolStripMenuItem.Checked;
             Properties.Settings.Default.ShowToolbar = toolbarToolStripMenuItem.Checked;
         }
 
-        private void hilfeToolStripMenuItem2_Click(object sender, EventArgs e)
+        private void HilfeToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             hilfeToolStripMenuItem2.Checked = !hilfeToolStripMenuItem2.Checked;
             Properties.Settings.Default.ShowHelp = hilfeToolStripMenuItem2.Checked;
-            showHelp();
+            ShowHelp();
         }
 
-        private void willkommenseiteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void WillkommenseiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             willkommenseiteToolStripMenuItem.Checked = !willkommenseiteToolStripMenuItem.Checked;
             Properties.Settings.Default.ShowWelcomeForm = willkommenseiteToolStripMenuItem.Checked;
@@ -649,12 +694,12 @@ namespace BikeDB2024
         #endregion
 
         #region Close application
-        private void beendenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BeendenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void exitToolStripButton_Click(object sender, EventArgs e)
+        private void ExitToolStripButton_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -688,52 +733,52 @@ namespace BikeDB2024
 
             if (Properties.Settings.Default.UseSigmaDockingStation)
             {
-                UsbDeviceNotifier.Enabled = false;  // Disable the device notifier
+                /*UsbDeviceNotifier.Enabled = false;  // Disable the device notifier
                 // Unhook the device notifier event
                 UsbDeviceNotifier.OnDeviceNotify -= OnDeviceNotifyEvent;
                 if (MyUsbDevice != null)
                 {
                     MyUsbDevice.Close();
                     MyUsbDevice = null;
-                }
+                }*/
             }
         }
         #endregion
 
         #region Startpage
-        private void startseiteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StartseiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showStartPage();
+            ShowStartPage();
         }
 
-        private void homeToolStripButton_Click(object sender, EventArgs e)
+        private void HomeToolStripButton_Click(object sender, EventArgs e)
         {
-            showStartPage();
+            ShowStartPage();
         }
 
-        private void showStartPage()
+        private void ShowStartPage()
         {
-            showMainTab(0);
+            ShowMainTab(0);
             startseiteToolStripMenuItem.Checked = true;
             Properties.Settings.Default.UseAltimeter = useAltimeterCheckBox.Checked;
             altitudeTextBox.Enabled = Properties.Settings.Default.UseAltimeter;
             maxAltTextBox.Enabled = Properties.Settings.Default.UseAltimeter;
             cadenceTextBox.Enabled = Properties.Settings.Default.UseCadence;
-            getPersons();
+            GetPersons();
         }
 
-        private void showMainTab(int page)
+        private void ShowMainTab(int page)
         {
-            disableTabPages();
+            DisableTabPages();
             mainTabControl.Visible = true;
             mainTabControl.Dock = DockStyle.Fill;
             mainTabControl.SelectedIndex = page;
         }
 
-        private void getPersons()
+        private void GetPersons()
         {
             SqlConnection con1;
-            List<Person> data = new List<Person>();
+            List<Person> data = [];
             personsListBox.DisplayMember = "Text";
             personsListBox.ValueMember = "Value";
             
@@ -742,23 +787,21 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = @"SELECT * FROM Persons WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
                         com1.CommandType = CommandType.Text;
                         com1.Connection = con1;
-                        using (SqlDataReader reader1 = com1.ExecuteReader())
+                        using SqlDataReader reader1 = com1.ExecuteReader();
+                        while (reader1.Read())
                         {
-                            while (reader1.Read())
+                            if (reader1.GetInt32(0) != Properties.Settings.Default.CurrentUserID)
                             {
-                                if (reader1.GetInt32(0) != Properties.Settings.Default.CurrentUserID)
-                                {
-                                    //TODO: new Person(id) verwenden
-                                    data.Add(new Person(reader1.GetInt32(0), reader1.GetString(2), reader1.GetString(3)));
-                                }
+                                //TODO: new Person(id) verwenden
+                                data.Add(new Person(reader1.GetInt32(0), reader1.GetString(2), reader1.GetString(3)));
                             }
-                            reader1.Close();
                         }
+                        reader1.Close();
                     }
                     con1.Close();
                 }
@@ -776,22 +819,22 @@ namespace BikeDB2024
         #endregion
 
         #region Settings
-        private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EinstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showSetup();
+            ShowSetup();
         }
 
-        private void settingsToolStripButton_Click(object sender, EventArgs e)
+        private void SettingsToolStripButton_Click(object sender, EventArgs e)
         {
-            showSetup();
+            ShowSetup();
         }
 
         /// <summary>
         /// Load setup into the main window.
         /// </summary>
-        private void showSetup()
+        private void ShowSetup()
         {
-            disableTabPages();
+            DisableTabPages();
             setupTabControl.Visible = true;
             setupTabControl.Dock = DockStyle.Fill;
             einstellungenToolStripMenuItem.Checked = true;
@@ -802,7 +845,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void useAltimeterCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void UseAltimeterCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (useAltimeterCheckBox.Checked)
             {
@@ -814,12 +857,12 @@ namespace BikeDB2024
             }
         }
 
-        private void setting_continentComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void Setting_continentComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.StdContinent = setting_continentComboBox.Text;
         }
 
-        private void imageFolderButton_Click(object sender, EventArgs e)
+        private void ImageFolderButton_Click(object sender, EventArgs e)
         {
             if (imageFolderPath.Text != "") imageFolderBrowserDialog.SelectedPath = imageFolderPath.Text;
 
@@ -835,7 +878,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void gpsFormatComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void GpsFormatComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (gpsFormatComboBox.SelectedText == "Grad")
             {
@@ -849,7 +892,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void useCadenceCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void UseCadenceCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             if (useCadenceCheckBox.Checked)
             {
@@ -863,9 +906,9 @@ namespace BikeDB2024
         #endregion
 
         #region MainTabControl: Pages
-        private void städteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StädteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showCities();
+            ShowCities();
         }
 
         /*private void showCities()
@@ -876,118 +919,118 @@ namespace BikeDB2024
             städteToolStripMenuItem.Checked = true;
         }*/
 
-        private void showCities()
+        private void ShowCities()
         {
-            showMainTab(4);
+            ShowMainTab(4);
             städteToolStripMenuItem.Checked = true;
         }
 
-        private void streckenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StreckenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showRouteTypes();
+            ShowRouteTypes();
         }
 
-        private void showRouteTypes()
+        private void ShowRouteTypes()
         {
-            disableTabPages();
+            DisableTabPages();
             routeTabControl.Visible = true;
             routeTabControl.Dock= DockStyle.Fill;
             streckenToolStripMenuItem.Checked = true;
         }
 
-        private void streckenToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void StreckenToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            showRoutes();
+            ShowRoutes();
         }
 
-        private void showRoutes()
+        private void ShowRoutes()
         {
-            showMainTab(2);
+            ShowMainTab(2);
             streckenToolStripMenuItem1.Checked = true;
         }
 
-        private void datenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DatenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showData();
+            ShowData();
         }
 
-        private void showData()
+        private void ShowData()
         {
-            showMainTab(1);
+            ShowMainTab(1);
             datenToolStripMenuItem.Checked = true;
         }  
 
-        private void fahrzeugeToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void FahrzeugeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            showVehicles();
+            ShowVehicles();
         }
 
-        private void showVehicles()
+        private void ShowVehicles()
         {
-            showMainTab(3);
+            ShowMainTab(3);
             fahrzeugeToolStripMenuItem1.Checked = true;
         }
 
-        private void fahrzeugeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FahrzeugeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showVehicleTypes();
+            ShowVehicleTypes();
         }
 
-        private void showVehicleTypes()
+        private void ShowVehicleTypes()
         {
-            disableTabPages();
+            DisableTabPages();
             vehicleTabControl.Visible = true;
             vehicleTabControl.Dock = DockStyle.Fill;
             fahrzeugeToolStripMenuItem.Checked = true;
         }
 
-        private void personenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PersonenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showMainTab(5);
+            ShowMainTab(5);
             personenToolStripMenuItem.Checked = true;
         }
 
-        private void zieleToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZieleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showGoalTab();
+            ShowGoalTab();
         }
 
-        private void showGoalTab()
+        private void ShowGoalTab()
         {
-            showMainTab(6);
+            ShowMainTab(6);
             zieleToolStripMenuItem.Checked = true;
         }
 
-        private void notizenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NotizenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showMainTab(7);
+            ShowMainTab(7);
             notizenToolStripMenuItem.Checked = true;
         }
         #endregion
 
         #region Calendar
-        private void kalenderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void KalenderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showCalendar();
+            ShowCalendar();
         }
 
-        private void calendarToolStripButton_Click(object sender, EventArgs e)
+        private void CalendarToolStripButton_Click(object sender, EventArgs e)
         {
-            showCalendar();
+            ShowCalendar();
         }
 
-        private void showCalendar()
+        private void ShowCalendar()
         {
-            showMainTab(8);
+            ShowMainTab(8);
             kalenderToolStripMenuItem.Checked = true;
         }
 
-        private void mainCalendar_DateSelected(object sender, DateRangeEventArgs e)
+        private void MainCalendar_DateSelected(object sender, DateRangeEventArgs e)
         {
-            mainCalendar_ShowDetails();
+            MainCalendar_ShowDetails();
         }
 
-        private void mainCalendar_ShowDetails()
+        private void MainCalendar_ShowDetails()
         {
             SqlConnection con1;
             calendarDetailsRichTextBox.Text = "";
@@ -999,54 +1042,50 @@ namespace BikeDB2024
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = @"SELECT * FROM BirthdateView WHERE [User] = @user";
                             com1.Parameters.Add("@user", SqlDbType.Int).Value = Properties.Settings.Default.CurrentUserID;
                             com1.CommandType = CommandType.Text;
                             com1.Connection = con1;
-                            using (SqlDataReader reader1 = com1.ExecuteReader())
+                            using SqlDataReader reader1 = com1.ExecuteReader();
+                            while (reader1.Read())
                             {
-                                while (reader1.Read())
+                                if (reader1[2].ToString() != String.Empty)
                                 {
-                                    if (reader1[2].ToString() != String.Empty)
+                                    if (Convert.ToDateTime(reader1[2]).Month == mainCalendar.SelectionStart.Month
+                                        && Convert.ToDateTime(reader1[2]).Day == mainCalendar.SelectionStart.Day)
                                     {
-                                        if (Convert.ToDateTime(reader1[2]).Month == mainCalendar.SelectionStart.Month
-                                            && Convert.ToDateTime(reader1[2]).Day == mainCalendar.SelectionStart.Day)
-                                        {
-                                            calendarDetailsRichTextBox.Text += mainCalendar.SelectionStart.ToString("dd.MM.yyyy") + ": ";
-                                            calendarDetailsRichTextBox.Text += "Geburtstag von ";
-                                            calendarDetailsRichTextBox.Text += reader1[0].ToString() + " ";
-                                            calendarDetailsRichTextBox.Text += reader1[1].ToString();
-                                        }
+                                        calendarDetailsRichTextBox.Text += mainCalendar.SelectionStart.ToString("dd.MM.yyyy") + ": ";
+                                        calendarDetailsRichTextBox.Text += "Geburtstag von ";
+                                        calendarDetailsRichTextBox.Text += reader1[0].ToString() + " ";
+                                        calendarDetailsRichTextBox.Text += reader1[1].ToString();
                                     }
                                 }
-                                reader1.Close();
                             }
+                            reader1.Close();
                         }
                         // Birthday of current user.
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = @"SELECT * FROM Persons WHERE id = @id";
                             com1.Parameters.Add("@id", SqlDbType.Int).Value = Properties.Settings.Default.CurrentUserID;
                             com1.CommandType = CommandType.Text;
                             com1.Connection = con1;
-                            using (SqlDataReader reader1 = com1.ExecuteReader())
+                            using SqlDataReader reader1 = com1.ExecuteReader();
+                            while (reader1.Read())
                             {
-                                while (reader1.Read())
+                                if (reader1[5].ToString() != String.Empty)
                                 {
-                                    if (reader1[5].ToString() != String.Empty)
+                                    if (Convert.ToDateTime(reader1[5]).Month == mainCalendar.SelectionStart.Month
+                                        && Convert.ToDateTime(reader1[5]).Day == mainCalendar.SelectionStart.Day)
                                     {
-                                        if (Convert.ToDateTime(reader1[5]).Month == mainCalendar.SelectionStart.Month
-                                            && Convert.ToDateTime(reader1[5]).Day == mainCalendar.SelectionStart.Day)
-                                        {
-                                            calendarDetailsRichTextBox.Text += mainCalendar.SelectionStart.ToString("dd.MM.yyyy") + ": ";
-                                            calendarDetailsRichTextBox.Text += "Du hast Geburtstag! Herzlichen Glückwunsch.";
-                                        }
+                                        calendarDetailsRichTextBox.Text += mainCalendar.SelectionStart.ToString("dd.MM.yyyy") + ": ";
+                                        calendarDetailsRichTextBox.Text += "Du hast Geburtstag! Herzlichen Glückwunsch.";
                                     }
                                 }
-                                reader1.Close();
                             }
+                            reader1.Close();
                         }
                         con1.Close();
                     }
@@ -1060,81 +1099,77 @@ namespace BikeDB2024
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = @"SELECT * FROM DateView WHERE [User] = @user";
                             com1.Parameters.Add("@user", SqlDbType.Int).Value = Properties.Settings.Default.CurrentUserID;
                             com1.CommandType = CommandType.Text;
                             com1.Connection = con1;
-                            using (SqlDataReader reader1 = com1.ExecuteReader())
+                            using SqlDataReader reader1 = com1.ExecuteReader();
+                            while (reader1.Read())
                             {
-                                while (reader1.Read())
+                                if (reader1[0].ToString() != String.Empty)
                                 {
-                                    if (reader1[0].ToString() != String.Empty)
+                                    if (Convert.ToDateTime(reader1[0]).Month == mainCalendar.SelectionStart.Month
+                                        && Convert.ToDateTime(reader1[0]).Day == mainCalendar.SelectionStart.Day)
                                     {
-                                        if (Convert.ToDateTime(reader1[0]).Month == mainCalendar.SelectionStart.Month
-                                            && Convert.ToDateTime(reader1[0]).Day == mainCalendar.SelectionStart.Day)
+                                        string manufacturer = "";
+                                        if (reader1[2].ToString() != String.Empty)
                                         {
-                                            string manufacturer = "";
-                                            if (reader1[2].ToString() != String.Empty)
-                                            {
-                                                manufacturer = GetDatabaseEntry("Companies", "CompanyName", Convert.ToInt32(
-                                                    GetDatabaseEntry("Vehicles", "Manufacturer", Convert.ToInt32(reader1[2]))));
-                                                manufacturer += " ";
-                                            }
-                                            calendarDetailsRichTextBox.Text += mainCalendar.SelectionStart.ToString("dd.MM.yyyy") + ": ";
-                                            calendarDetailsRichTextBox.Text += "Tour mit " + manufacturer;
-                                            calendarDetailsRichTextBox.Text += GetDatabaseEntry("Vehicles", "VehicleName", "Id = " + reader1[2].ToString());
-                                            calendarDetailsRichTextBox.Text += " (" + reader1[3].ToString() + "km";
-                                            if (reader1[4].ToString() != String.Empty)
-                                            {
-                                                calendarDetailsRichTextBox.Text += " - " + reader1[4].ToString() + ")";
-                                            }
-                                            else
-                                            {
-                                                calendarDetailsRichTextBox.Text += ")";
-                                            }
+                                            manufacturer = GetDatabaseEntry("Companies", "CompanyName", Convert.ToInt32(
+                                                GetDatabaseEntry("Vehicles", "Manufacturer", Convert.ToInt32(reader1[2]))));
+                                            manufacturer += " ";
+                                        }
+                                        calendarDetailsRichTextBox.Text += mainCalendar.SelectionStart.ToString("dd.MM.yyyy") + ": ";
+                                        calendarDetailsRichTextBox.Text += "Tour mit " + manufacturer;
+                                        calendarDetailsRichTextBox.Text += GetDatabaseEntry("Vehicles", "VehicleName", "Id = " + reader1[2].ToString());
+                                        calendarDetailsRichTextBox.Text += " (" + reader1[3].ToString() + "km";
+                                        if (reader1[4].ToString() != String.Empty)
+                                        {
+                                            calendarDetailsRichTextBox.Text += " - " + reader1[4].ToString() + ")";
+                                        }
+                                        else
+                                        {
+                                            calendarDetailsRichTextBox.Text += ")";
                                         }
                                     }
                                 }
-                                reader1.Close();
                             }
+                            reader1.Close();
                         }
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = @"SELECT * FROM Goals WHERE [User] = @user";
                             com1.Parameters.Add("@user", SqlDbType.Int).Value = Properties.Settings.Default.CurrentUserID;
                             com1.CommandType = CommandType.Text;
                             com1.Connection = con1;
-                            using (SqlDataReader reader1 = com1.ExecuteReader())
+                            using SqlDataReader reader1 = com1.ExecuteReader();
+                            while (reader1.Read())
                             {
-                                while (reader1.Read())
+                                if (reader1[3].ToString() != String.Empty)
                                 {
-                                    if (reader1[3].ToString() != String.Empty)
+                                    if (Convert.ToDateTime(reader1[3]).Month == mainCalendar.SelectionStart.Month
+                                        && Convert.ToDateTime(reader1[3]).Day == mainCalendar.SelectionStart.Day)
                                     {
-                                        if (Convert.ToDateTime(reader1[3]).Month == mainCalendar.SelectionStart.Month
-                                            && Convert.ToDateTime(reader1[3]).Day == mainCalendar.SelectionStart.Day)
+                                        string achieved = "";
+                                        if (reader1[4].ToString() != String.Empty)
                                         {
-                                            string achieved = "";
-                                            if (reader1[4].ToString() != String.Empty)
+                                            if (reader1[4].ToString() == "0")
                                             {
-                                                if (reader1[4].ToString() == "0")
-                                                {
-                                                    achieved = "(nicht erreicht)";
-                                                }
-                                                else if (reader1[4].ToString() == "1")
-                                                {
-                                                    achieved = "(erreicht)";
-                                                }
+                                                achieved = "(nicht erreicht)";
                                             }
-                                            calendarDetailsRichTextBox.Text += mainCalendar.SelectionStart.ToString("dd.MM.yyyy") + ": ";
-                                            calendarDetailsRichTextBox.Text += "Ziel: \"" + reader1.GetString(1) + "\" ";
-                                            calendarDetailsRichTextBox.Text += achieved;
+                                            else if (reader1[4].ToString() == "1")
+                                            {
+                                                achieved = "(erreicht)";
+                                            }
                                         }
+                                        calendarDetailsRichTextBox.Text += mainCalendar.SelectionStart.ToString("dd.MM.yyyy") + ": ";
+                                        calendarDetailsRichTextBox.Text += "Ziel: \"" + reader1.GetString(1) + "\" ";
+                                        calendarDetailsRichTextBox.Text += achieved;
                                     }
                                 }
-                                reader1.Close();
                             }
+                            reader1.Close();
                         }
                         con1.Close();
                     }
@@ -1142,7 +1177,7 @@ namespace BikeDB2024
             }
         }
 
-        private void mainCalendar_DateChanged(object sender, DateRangeEventArgs e)
+        private void MainCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
             //MessageBox.Show(e.Start.ToString());
         }
@@ -1154,22 +1189,22 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void installierenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void InstallierenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://www.google.com/intl/de/earth/about/versions/"));
         }
 
-        private void startenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StartenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            startGoogleEarth();
+            StartGoogleEarth();
         }
 
-        private void earthToolStripButton_Click(object sender, EventArgs e)
+        private void EarthToolStripButton_Click(object sender, EventArgs e)
         {
-            startGoogleEarth();
+            StartGoogleEarth();
         }
 
-        private void startGoogleEarth()
+        private void StartGoogleEarth()
         {
             try
             {
@@ -1185,7 +1220,7 @@ namespace BikeDB2024
             catch (Exception exception) { ShowErrorMessage(exception.Message, "Fehler beim Starten von Google Earth"); }
         }
 
-        private void folderSearchButton_Click(object sender, EventArgs e)
+        private void FolderSearchButton_Click(object sender, EventArgs e)
         {
             if (googleEarthPath.Text != "") googleEarthFolderBrowserDialog.SelectedPath = googleEarthPath.Text;
 
@@ -1198,162 +1233,162 @@ namespace BikeDB2024
         #endregion       
 
         #region Show InfoForm
-        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void InfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showInfoForm();
+            ShowInfoForm();
         }
 
-        private void infoToolStripButton_Click(object sender, EventArgs e)
+        private void InfoToolStripButton_Click(object sender, EventArgs e)
         {
-            showInfoForm();
+            ShowInfoForm();
         }
 
-        private void showInfoForm()
+        private void ShowInfoForm()
         {
-            AboutBox aboutBox = new AboutBox();
+            AboutBox aboutBox = new();
             aboutBox.ShowDialog();
         }
         #endregion
 
         #region VehicleForm
-        private void fahrzeugToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FahrzeugToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showVehicleForm();
+            ShowVehicleForm();
         }
 
-        private void vehicleToolStripButton_Click(object sender, EventArgs e)
+        private void VehicleToolStripButton_Click(object sender, EventArgs e)
         {
-            showVehicleForm();
+            ShowVehicleForm();
         }
 
-        private void showVehicleForm()
+        private void ShowVehicleForm()
         {
-            VehicleForm vehicleForm = new VehicleForm();
+            VehicleForm vehicleForm = new();
             if (vehicleForm.ShowDialog() == DialogResult.OK)
             {
-                refreshComboBoxes();
+                RefreshComboBoxes();
             }
         }
         #endregion
 
         #region CountryForm
-        private void landToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LandToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showCountryForm();
+            ShowCountryForm();
         }
 
-        private void countryToolStripButton_Click(object sender, EventArgs e)
+        private void CountryToolStripButton_Click(object sender, EventArgs e)
         {
-            showCountryForm();
+            ShowCountryForm();
         }
 
-        private void showCountryForm()
+        private void ShowCountryForm()
         {
-            CountryForm countryForm = new CountryForm();
+            CountryForm countryForm = new();
             if (countryForm.ShowDialog() == DialogResult.OK)
             {
-                refreshComboBoxes();
+                RefreshComboBoxes();
             }
         }
         #endregion
 
         #region CityForm
-        private void stadtToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StadtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showCityForm();
+            ShowCityForm();
         }
 
-        private void cityToolStripButton_Click(object sender, EventArgs e)
+        private void CityToolStripButton_Click(object sender, EventArgs e)
         {
-            showCityForm();
+            ShowCityForm();
         }
 
-        private void showCityForm()
+        private void ShowCityForm()
         {
-            CityForm cityForm = new CityForm();
+            CityForm cityForm = new();
             if (cityForm.ShowDialog() == DialogResult.OK)
             {
-                refreshComboBoxes();
+                RefreshComboBoxes();
             }
         }
         #endregion
 
         #region CompanyForm
-        private void herstellerToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HerstellerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showCompanyForm();
+            ShowCompanyForm();
         }
 
-        private void companyToolStripButton_Click(object sender, EventArgs e)
+        private void CompanyToolStripButton_Click(object sender, EventArgs e)
         {
-            showCompanyForm();
+            ShowCompanyForm();
         }
 
-        private void showCompanyForm()
+        private void ShowCompanyForm()
         {
-            CompanyForm companyForm = new CompanyForm();
+            CompanyForm companyForm = new();
             if (companyForm.ShowDialog() == DialogResult.OK)
             {
-                refreshComboBoxes();
+                RefreshComboBoxes();
             }
         }
         #endregion
 
         #region RouteForm
-        private void streckeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StreckeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showRouteForm();
+            ShowRouteForm();
         }
 
-        private void routeToolStripButton_Click(object sender, EventArgs e)
+        private void RouteToolStripButton_Click(object sender, EventArgs e)
         {
-            showRouteForm();
+            ShowRouteForm();
         }
 
-        private void showRouteForm()
+        private void ShowRouteForm()
         {
-            RouteForm routeForm = new RouteForm();
+            RouteForm routeForm = new();
             if (routeForm.ShowDialog() == DialogResult.OK)
             {
-                refreshComboBoxes();
+                RefreshComboBoxes();
             }
         }
         #endregion
 
         #region HelpForm
-        private void helpToolStripButton_Click(object sender, EventArgs e)
+        private void HelpToolStripButton_Click(object sender, EventArgs e)
         {
-            showHelpForm();
+            ShowHelpForm();
         }
 
-        private void hilfeToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void HilfeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            showHelpForm();
+            ShowHelpForm();
         }
 
-        private void showHelpForm()
+        private void ShowHelpForm()
         {
-            NewHelpForm helpForm = new NewHelpForm();
+            NewHelpForm helpForm = new();
             helpForm.Show();
         }
         #endregion
 
         #region ImageViewer
-        private void imageViewerToolStripButton_Click(object sender, EventArgs e)
+        private void ImageViewerToolStripButton_Click(object sender, EventArgs e)
         {
-            showImageViewer();
+            ShowImageViewer();
         }
 
-        private void bildbetrachterToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BildbetrachterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showImageViewer();
+            ShowImageViewer();
         }
 
-        private void showImageViewer()
+        private void ShowImageViewer()
         {
             if (openImageDialog.ShowDialog() == DialogResult.OK)
             {
-                ImageViewerForm imageViewerForm = new ImageViewerForm
+                ImageViewerForm imageViewerForm = new()
                 {
                     Filename = openImageDialog.FileName
                 };
@@ -1363,19 +1398,19 @@ namespace BikeDB2024
         #endregion
 
         #region Entfaltung
-        private void entfaltungToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EntfaltungToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showEntfaltung();
+            ShowEntfaltung();
         }
 
-        private void entfaltungToolStripButton_Click(object sender, EventArgs e)
+        private void EntfaltungToolStripButton_Click(object sender, EventArgs e)
         {
-            showEntfaltung();
+            ShowEntfaltung();
         }
 
-        private void showEntfaltung()
+        private void ShowEntfaltung()
         {
-            EntfaltungForm entfaltung = new EntfaltungForm();
+            EntfaltungForm entfaltung = new();
             if (entfaltung.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -1384,7 +1419,7 @@ namespace BikeDB2024
         #endregion
 
         #region Background Worker
-        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        private void MainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             // 0 = Daten eingeben
             // 1 = Daten anzeigen
@@ -1396,7 +1431,7 @@ namespace BikeDB2024
             // 7 = Notizen anzeigen
             // 8 = Kalender
             tabPage = mainTabControl.SelectedIndex;
-            disableAnsichtChecked();
+            DisableAnsichtChecked();
             switch (tabPage)
             {
                 case 0:
@@ -1435,9 +1470,9 @@ namespace BikeDB2024
                 {
                     System.Threading.Thread.Sleep(500);
                 }
-                refreshComboBoxes();
+                RefreshComboBoxes();
             }
-            else refreshComboBoxes();
+            else RefreshComboBoxes();
         }
 
         /// <summary>
@@ -1445,7 +1480,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void addButton_Click(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1488,7 +1523,7 @@ namespace BikeDB2024
                         vm = Convert.ToDecimal(vmaxTextBox.Text);
                     }
 
-                    DataSetTableAdapters.TourTableAdapter adapter = new DataSetTableAdapters.TourTableAdapter();
+                    DataSetTableAdapters.TourTableAdapter adapter = new();
                     int res = adapter.Insert(newId,
                         Convert.ToDateTime(tourDateTimePicker.Text),
                         Convert.ToInt32(routeComboBox.SelectedValue),
@@ -1529,59 +1564,57 @@ namespace BikeDB2024
                     {
                         using (var connection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                         {
-                            using (var command = new SqlCommand(sql, connection))
+                            using var command = new SqlCommand(sql, connection);
+                            int maxAlt = 0;
+                            int alt = 0;
+                            int cad = 0;
+                            if (altitudeTextBox.Text != String.Empty)
                             {
-                                int maxAlt = 0;
-                                int alt = 0;
-                                int cad = 0;
-                                if (altitudeTextBox.Text != String.Empty)
-                                {
-                                    alt = Convert.ToInt32(altitudeTextBox.Text);
-                                }
-                                if (maxAltTextBox.Text != String.Empty)
-                                {
-                                    maxAlt = Convert.ToInt32(maxAltTextBox.Text);
-                                }
-                                if (cadenceTextBox.Text != String.Empty)
-                                {
-                                    cad = Convert.ToInt32(cadenceTextBox.Text);
-                                }
-                                string persons = "";
-                                if (personsListBox.SelectedItems.Count > 0)
-                                {
-                                    foreach (Person item in personsListBox.SelectedItems)
-                                    {
-                                        persons += item.Value.ToString() + ";";
-                                    }
-                                }
-                                decimal avg = 0.0M;
-                                if (avgTextBox.Text != avgTextBox.Mask)
-                                {
-                                    avg = Convert.ToDecimal(avgTextBox.Text);
-                                }
-                                decimal vm = 0.0M;
-                                if (vmaxTextBox.Text != vmaxTextBox.Mask)
-                                {
-                                    vm = Convert.ToDecimal(vmaxTextBox.Text);
-                                }
-                                command.Parameters.Add("@Date", SqlDbType.Date).Value = Convert.ToDateTime(tourDateTimePicker.Text);
-                                command.Parameters.Add("@Route", SqlDbType.Int).Value = Convert.ToInt32(routeComboBox.SelectedValue);
-                                command.Parameters.Add("@Vehicle", SqlDbType.Int).Value = Convert.ToInt32(vehicleComboBox.SelectedValue);
-                                command.Parameters.Add("@Km", SqlDbType.Decimal).Value = Convert.ToDecimal(kmTextBox.Text);
-                                command.Parameters.Add("@Time", SqlDbType.Time).Value = DateTime.Parse(timeTextBox.Text, CultureInfo.InvariantCulture).TimeOfDay;
-                                command.Parameters.Add("@AvgSpeed", SqlDbType.Decimal).Value = avg;
-                                command.Parameters.Add("@MaxSpeed", SqlDbType.Decimal).Value = vm;
-                                command.Parameters.Add("@Height", SqlDbType.Int).Value = alt;
-                                command.Parameters.Add("@MaxAlt", SqlDbType.Int).Value = maxAlt;
-                                command.Parameters.Add("@Cadence", SqlDbType.Int).Value = cad;
-                                command.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = remarkRichTextBox.Text;
-                                command.Parameters.Add("@persons", SqlDbType.NVarChar).Value = persons;
-                                command.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
-
-                                connection.Open();
-                                command.ExecuteNonQuery();
-                                connection.Close();
+                                alt = Convert.ToInt32(altitudeTextBox.Text);
                             }
+                            if (maxAltTextBox.Text != String.Empty)
+                            {
+                                maxAlt = Convert.ToInt32(maxAltTextBox.Text);
+                            }
+                            if (cadenceTextBox.Text != String.Empty)
+                            {
+                                cad = Convert.ToInt32(cadenceTextBox.Text);
+                            }
+                            string persons = "";
+                            if (personsListBox.SelectedItems.Count > 0)
+                            {
+                                foreach (Person item in personsListBox.SelectedItems)
+                                {
+                                    persons += item.Value.ToString() + ";";
+                                }
+                            }
+                            decimal avg = 0.0M;
+                            if (avgTextBox.Text != avgTextBox.Mask)
+                            {
+                                avg = Convert.ToDecimal(avgTextBox.Text);
+                            }
+                            decimal vm = 0.0M;
+                            if (vmaxTextBox.Text != vmaxTextBox.Mask)
+                            {
+                                vm = Convert.ToDecimal(vmaxTextBox.Text);
+                            }
+                            command.Parameters.Add("@Date", SqlDbType.Date).Value = Convert.ToDateTime(tourDateTimePicker.Text);
+                            command.Parameters.Add("@Route", SqlDbType.Int).Value = Convert.ToInt32(routeComboBox.SelectedValue);
+                            command.Parameters.Add("@Vehicle", SqlDbType.Int).Value = Convert.ToInt32(vehicleComboBox.SelectedValue);
+                            command.Parameters.Add("@Km", SqlDbType.Decimal).Value = Convert.ToDecimal(kmTextBox.Text);
+                            command.Parameters.Add("@Time", SqlDbType.Time).Value = DateTime.Parse(timeTextBox.Text, CultureInfo.InvariantCulture).TimeOfDay;
+                            command.Parameters.Add("@AvgSpeed", SqlDbType.Decimal).Value = avg;
+                            command.Parameters.Add("@MaxSpeed", SqlDbType.Decimal).Value = vm;
+                            command.Parameters.Add("@Height", SqlDbType.Int).Value = alt;
+                            command.Parameters.Add("@MaxAlt", SqlDbType.Int).Value = maxAlt;
+                            command.Parameters.Add("@Cadence", SqlDbType.Int).Value = cad;
+                            command.Parameters.Add("@Remark", SqlDbType.NVarChar).Value = remarkRichTextBox.Text;
+                            command.Parameters.Add("@persons", SqlDbType.NVarChar).Value = persons;
+                            command.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            connection.Close();
                         }
                         kmTextBox.Text = "";
                         timeTextBox.Text = "";
@@ -1611,7 +1644,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void showDataBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void ShowDataBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
@@ -1737,7 +1770,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void showDataBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void ShowDataBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             int result = (int)e.Result;
             if (tabPage != 0)
@@ -1775,7 +1808,7 @@ namespace BikeDB2024
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             switch (tabPage)
                             {
@@ -2204,436 +2237,426 @@ namespace BikeDB2024
                             myCommand.CommandType = CommandType.Text;
                             myCommand.Connection = myConnection;
                             DateTime dt = DateTime.Now;
-                            DateTime[] monthArray = new DateTime[] { dt };
+                            DateTime[] monthArray = [dt];
                             for (int i = 0; i < mainCalendar.CalendarDimensions.Width; i++)
                             {
                                 dt = dt.AddMonths(1);
                                 monthArray.Append(dt);
                             }
-                            mainCalendar.BoldedDates = new DateTime[] { };
+                            mainCalendar.BoldedDates = [];
                             birthdayListBox.Items.Clear();
-                            
-                            using (SqlDataReader reader = myCommand.ExecuteReader())
+
+                            using SqlDataReader reader = myCommand.ExecuteReader();
+                            while (reader.Read())
                             {
-                                while (reader.Read())
+                                if (reader[0].ToString() == idParam.Value.ToString() && tabPage > 0 && tabPage < 8)
                                 {
-                                    if (reader[0].ToString() == idParam.Value.ToString() && tabPage > 0 && tabPage < 8)
+                                    switch (tabPage)
                                     {
-                                        switch (tabPage)
-                                        {
-                                            case 1:
-                                                dt = Convert.ToDateTime(reader[1]);
-                                                string route = "";
-                                                string routeImage = "";
-                                                string vehicle = "";
-                                                string alt = "";
-                                                string maxAlt = "";
-                                                
-                                                if (reader[8].ToString() != "0") alt = reader[8].ToString() + " m";
-                                                if (reader[9].ToString() != "0") maxAlt = reader[9].ToString() + " m";
+                                        case 1:
+                                            dt = Convert.ToDateTime(reader[1]);
+                                            string route = "";
+                                            string routeImage = "";
+                                            string vehicle = "";
+                                            string alt = "";
+                                            string maxAlt = "";
 
-                                                // Route
-                                                if (reader[2].ToString() != String.Empty)
-                                                {
-                                                    using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
-                                                    {
-                                                        con1.Open();
-                                                        using (SqlCommand com1 = new SqlCommand())
-                                                        {
-                                                            com1.CommandText = @"SELECT RouteName, Image FROM Routes WHERE Id = " + reader[2].ToString();
-                                                            com1.CommandType = CommandType.Text;
-                                                            com1.Connection = con1;
-                                                            using (SqlDataReader reader1 = com1.ExecuteReader())
-                                                            {
-                                                                while (reader1.Read())
-                                                                {
-                                                                    route = reader1[0].ToString();
-                                                                    routeImage = reader1[1].ToString();
-                                                                }
-                                                                reader1.Close();
-                                                            }
-                                                        }
-                                                        con1.Close();
-                                                    }
-                                                }
+                                            if (reader[8].ToString() != "0") alt = reader[8].ToString() + " m";
+                                            if (reader[9].ToString() != "0") maxAlt = reader[9].ToString() + " m";
 
-                                                // Vehicle
-                                                if (reader[3].ToString() != String.Empty)
-                                                {
-                                                    vehicle = GetDatabaseEntry("Vehicles", "VehicleName", (int)reader[3]);
-                                                }
-
-                                                dataTitleLabel.Text = "Tagestour vom " + dt.ToString("dd. MMMM yyyy");
-                                                dataRouteLabel.Text = route;
-                                                dataVehicleLabel.Text = vehicle;
-                                                dataKmLabel.Text = reader[4].ToString();
-                                                dataTimeLabel.Text = reader[5].ToString();
-                                                dataAvgLabel.Text = reader[6].ToString();
-                                                dataVmaxLabel.Text = reader[7].ToString();
-                                                dataAltLabel.Text = alt;
-                                                dataMaxAltLabel.Text = maxAlt;
-                                                dataRemarkRichTextBox.Text = reader[10].ToString();
-                                                if (!reader.IsDBNull(11))
-                                                {
-                                                    galleryToolStripSeparator.Visible = true;
-                                                    showGalleryToolStripButton.Visible = true;
-                                                    current_gallery = Convert.ToInt32(reader[11]);
-                                                }
-                                                else
-                                                {
-                                                    galleryToolStripSeparator.Visible = false;
-                                                    showGalleryToolStripButton.Visible = false;
-                                                    current_gallery = -1;
-                                                }
-                                                if (!reader.IsDBNull(12))
-                                                {
-                                                    string[] tmp_pers = reader[12].ToString().Split(';');
-                                                    foreach (string person in tmp_pers)
-                                                    {
-                                                        if (person.Length > 0)
-                                                        {
-                                                            int p = Convert.ToInt32(person);
-                                                            Person pers = new Person(p);
-                                                            personsRichTextBox.Text += pers.ToString() + "; ";
-                                                        }
-                                                    }
-                                                }
-                                                if (routeImage != String.Empty)
-                                                    dataPictureBox.Image = Image.FromFile(routeImage);
-                                                else 
-                                                    dataPictureBox.Image = null;
-                                                break;
-                                            case 2:
-                                                routeTitleLabel.Text = reader[1].ToString();
-
-                                                string city1 = "";
-                                                string city2 = "";
-                                                string city3 = "";
-                                                int int_city1 = -1;
-                                                int int_city2 = -1;
-                                                int int_city3 = -1;
-
-                                                if (reader[2].ToString() != String.Empty)
-                                                {
-                                                    int_city1 = Convert.ToInt32(reader[2]);
-                                                }
-                                                if (reader[3].ToString() != String.Empty)
-                                                {
-                                                    int_city2 = Convert.ToInt32(reader[3]);
-                                                }
-                                                if (reader[4].ToString() != String.Empty)
-                                                {
-                                                    int_city3 = Convert.ToInt32(reader[4]);
-                                                }
+                                            // Route
+                                            if (reader[2].ToString() != String.Empty)
+                                            {
                                                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                                 {
                                                     con1.Open();
-                                                    using (SqlCommand com1 = new SqlCommand())
+                                                    using (SqlCommand com1 = new())
                                                     {
-                                                        com1.CommandText = @"SELECT Id, CityName FROM Cities";
+                                                        com1.CommandText = @"SELECT RouteName, Image FROM Routes WHERE Id = " + reader[2].ToString();
                                                         com1.CommandType = CommandType.Text;
                                                         com1.Connection = con1;
-                                                        using (SqlDataReader reader1 = com1.ExecuteReader())
+                                                        using SqlDataReader reader1 = com1.ExecuteReader();
+                                                        while (reader1.Read())
                                                         {
-                                                            while (reader1.Read())
-                                                            {
-                                                                if (reader1[0].ToString() == int_city1.ToString())
-                                                                    city1 = reader1[1].ToString();
-                                                                if (reader1[0].ToString() == int_city2.ToString())
-                                                                    city2 = reader1[1].ToString();
-                                                                if (reader1[0].ToString() == int_city3.ToString())
-                                                                    city3 = reader1[1].ToString();
-                                                            }
-                                                            reader1.Close();
+                                                            route = reader1[0].ToString();
+                                                            routeImage = reader1[1].ToString();
                                                         }
+                                                        reader1.Close();
                                                     }
                                                     con1.Close();
                                                 }
+                                            }
 
-                                                cityLabel.Text = city1;
-                                                cityStartLabel.Text = city2;
-                                                cityEndLabel.Text = city3;
-                                                citiesLabel.Text = reader[5].ToString();
+                                            // Vehicle
+                                            if (reader[3].ToString() != String.Empty)
+                                            {
+                                                vehicle = GetDatabaseEntry("Vehicles", "VehicleName", (int)reader[3]);
+                                            }
 
-                                                routeTypeLabel.Text = GetDatabaseEntry("RouteTypes", "RouteType", (int)reader[6]);
-                                                
-                                                if (reader[7].ToString() != String.Empty && reader[7].ToString() != "0")
+                                            dataTitleLabel.Text = "Tagestour vom " + dt.ToString("dd. MMMM yyyy");
+                                            dataRouteLabel.Text = route;
+                                            dataVehicleLabel.Text = vehicle;
+                                            dataKmLabel.Text = reader[4].ToString();
+                                            dataTimeLabel.Text = reader[5].ToString();
+                                            dataAvgLabel.Text = reader[6].ToString();
+                                            dataVmaxLabel.Text = reader[7].ToString();
+                                            dataAltLabel.Text = alt;
+                                            dataMaxAltLabel.Text = maxAlt;
+                                            dataRemarkRichTextBox.Text = reader[10].ToString();
+                                            if (!reader.IsDBNull(11))
+                                            {
+                                                galleryToolStripSeparator.Visible = true;
+                                                showGalleryToolStripButton.Visible = true;
+                                                current_gallery = Convert.ToInt32(reader[11]);
+                                            }
+                                            else
+                                            {
+                                                galleryToolStripSeparator.Visible = false;
+                                                showGalleryToolStripButton.Visible = false;
+                                                current_gallery = -1;
+                                            }
+                                            if (!reader.IsDBNull(12))
+                                            {
+                                                string[] tmp_pers = reader[12].ToString().Split(';');
+                                                foreach (string person in tmp_pers)
                                                 {
-                                                    maxAltLabel.Text = reader[7].ToString() + " m";
-                                                }
-                                                else
-                                                {
-                                                    maxAltLabel.Text = "";
-                                                }
-                                                if (reader[8].ToString() != String.Empty && reader[8].ToString() != "0")
-                                                {
-                                                    altLabel.Text = reader[7].ToString() + " m";
-                                                }
-                                                else
-                                                {
-                                                    altLabel.Text = "";
-                                                }
-
-                                                routeRemarkRichTextBox.Text = reader[9].ToString();
-
-                                                if (reader[10].ToString() != String.Empty)
-                                                {
-                                                    altProfilePictureBox.Image = Image.FromFile(reader[10].ToString());
-                                                }
-                                                else altProfilePictureBox.Image = null;
-                                                if (reader[11].ToString() != String.Empty)
-                                                {
-                                                    routePictureBox.Image = Image.FromFile(reader[11].ToString());
-                                                }
-                                                else routePictureBox.Image = null;
-                                                break;
-                                            case 3:
-                                                string manufacturer = "";
-                                                string type = "";
-                                                if (reader[2].ToString() != String.Empty)
-                                                {
-                                                    manufacturer = GetDatabaseEntry("Companies", "CompanyName", (int)reader[2]);
-                                                    if (manufacturer == "Kein Hersteller")
-                                                        manufacturer = "";
-                                                }
-                                                vehicleTitleLabel.Text = manufacturer + " " + reader[1].ToString();
-                                                if (reader[5].ToString() != "")
-                                                {
-                                                    vehicleTitleLabel.Text += " (" + reader[5].ToString() + ")";
-                                                }
-                                                if (reader[4].ToString() != "" && reader[6].ToString() != "")
-                                                {
-                                                    dt = Convert.ToDateTime(reader[4]);
-                                                    boughtLabel.Text = "Gekauft am " + dt.ToString("dd. MMMM yyyy") +
-                                                        " für " + (Convert.ToDecimal(reader[6])).ToString("C") + ".";
-                                                }
-                                                else boughtLabel.Text = "";
-
-                                                if (reader[3].ToString() != String.Empty)
-                                                {
-                                                    type = GetDatabaseEntry("VehicleTypes", "VehicleType", (int)reader[3]);
-                                                }
-                                                typeLabel.Text = type;
-                                                equipRichTextBox.Text = reader[7].ToString();
-                                                if (reader[8].ToString() != String.Empty)
-                                                {
-                                                    vehiclePictureBox.Image = Image.FromFile(reader[8].ToString());
-                                                }
-                                                else vehiclePictureBox.Image = null;
-                                                if (reader[9].ToString() != null && reader[9].ToString() != "")
-                                                {
-                                                    if (Convert.ToInt32(reader[9]) != -1)
+                                                    if (person.Length > 0)
                                                     {
-                                                        entfaltungButton.Enabled = true;
-                                                        current_entfaltung = Convert.ToInt32(reader[9]);
-                                                        noEntfaltungLabel.Text = "";
+                                                        int p = Convert.ToInt32(person);
+                                                        Person pers = new(p);
+                                                        personsRichTextBox.Text += pers.ToString() + "; ";
                                                     }
                                                 }
-                                                else
-                                                {
-                                                    entfaltungButton.Enabled = false;
-                                                    current_entfaltung = -1;
-                                                    noEntfaltungLabel.Text = "Noch nicht vorhanden";
-                                                }
-                                                break;
-                                            case 4:
-                                                string bland = "";
-                                                string land = "";
-                                                cityNameLabel.Text = reader[1].ToString();
-                                                if (reader[3].ToString() != String.Empty)
-                                                {
-                                                    bland = GetDatabaseEntry("Bundeslaender", "Bundesland", (int)reader[3]);
-                                                }
-                                                if (reader[2].ToString() != String.Empty)
-                                                {
-                                                    land = GetDatabaseEntry("Countries", "Country", (int)reader[2]);
-                                                }
-                                                countryLabel.Text = land;
-                                                bundeslandLabel.Text = bland;
-                                                postCodeLabel.Text = reader[4].ToString();
-                                                prefixLabel.Text = reader[5].ToString();
-                                                cityLinkLabel.Text = reader[6].ToString();
-                                                kfzLabel.Text = reader[7].ToString();
-                                                if (reader[8].ToString() != String.Empty)
-                                                {
-                                                    heightLabel.Text = reader[8].ToString() + " m ü. NHN";
-                                                }
-                                                else { heightLabel.Text = ""; }
-                                                cityRemarkRichTextBox.Text = reader[9].ToString();
-                                                if (reader[10].ToString() != String.Empty)
-                                                {
-                                                    cityPictureBox.Image = Image.FromFile(reader[10].ToString());
-                                                }
-                                                else cityPictureBox.Image = cityPictureBox.ErrorImage;
-                                                gpsLabel.Text = GetGPSviaProperty(reader[11].ToString());
-                                                SwitchMapProvider(cityMapControl);
-                                                if (reader[11].ToString() != String.Empty)
-                                                {
-                                                    string loc = reader[11].ToString();
-                                                    GpsCoordinate map_loc = new GpsCoordinate(loc);
-                                                    cityMapControl.Position = map_loc.GetMapPosition();
-                                                    cityMapControl.Refresh();
-                                                }
-                                                break;
-                                            case 5:
-                                                string city = "";
-                                                land = "";
-                                                if (reader[4].ToString() != String.Empty)
-                                                {
-                                                    city = GetDatabaseEntry("Cities", "CityName", (int)reader[4]);
-                                                }
-                                                if (reader[12].ToString() != String.Empty)
-                                                {
-                                                    land = GetDatabaseEntry("Countries", "Country", (int)reader[12]);
-                                                }
-                                                string roles = "";
-                                                if (Convert.ToInt32(reader[19]) == 1) roles = "Anwender";
-                                                if (Convert.ToInt32(reader[20]) == 1) roles = "Administrator";
-                                                personLabel.Text = reader[3].ToString() + " " + reader[2].ToString();
-                                                if (roles.Length > 0) usernameLabel.Text = reader[1].ToString() + " (" + roles + ")";
-                                                else usernameLabel.Text = reader[1].ToString();
-                                                plzCityLabel.Text = reader[9].ToString() + " " + city;
-                                                if (reader[5].ToString().Length > 0)
-                                                    birthdateLabel.Text = Convert.ToDateTime(reader[5]).ToString("dd. MMMM yyyy");
-                                                else
-                                                    birthdateLabel.Text = "";
-                                                if (reader[6].ToString().Length > 0 && reader[5].ToString().Length > 0)   //Deathdate
-                                                {
-                                                    birthdayLabel.Text = "Geburtstag / Todestag";
-                                                    birthdateLabel.Text = Convert.ToDateTime(reader[5]).ToString("dd. MMMM yyyy") + " / " +
-                                                        Convert.ToDateTime(reader[6]).ToString("dd. MMMM yyyy");
-                                                }
-                                                else
-                                                    birthdayLabel.Text = "Geburtstag";
-                                                phoneLabel.Text = reader[7].ToString();
-                                                emailLinkLabel.Text = reader[8].ToString();
-                                                str1Label.Text = reader[10].ToString();
-                                                str2Label.Text = reader[11].ToString();
-                                                userCountryLabel.Text = land;
-                                                if (reader[13].ToString() != String.Empty)
-                                                {
-                                                    personPictureBox.Image = Image.FromFile(reader[13].ToString());
-                                                }
-                                                else cityPictureBox.Image = null;
-                                                personRemarkRichTextBox.Text = reader[14].ToString();
-                                                break;
-                                            case 6:
-                                                goalsTitleLabel.Text = "Ziele";
-                                                goalTitleLabel.Text = reader[1].ToString();
-                                                goalRemarkRichTextBox.Text = reader[2].ToString();
-                                                goalDateTimePicker.Value = Convert.ToDateTime(reader[3]);
-                                                goalDateTimePicker.Enabled = false;
-                                                if (Convert.ToInt32(reader[4]) == 1)
-                                                    doneCheckBox.Checked = true;
-                                                else doneCheckBox.Checked = false;
-                                                doneCheckBox.Enabled = false;
-                                                goalCreatedLabel.Text = Convert.ToDateTime(reader[5]).ToString("dd.MM.yyyy");
-                                                break;
-                                            case 7:
-                                                notesTitleLabel.Text = "Notizen";
-                                                noteTitleLabel.Text = reader[1].ToString();
-                                                notesRemarkRichTextBox.Text = reader[2].ToString();
-                                                break;
-                                        }
-                                    }
-                                    else if (tabPage == 8)
-                                    {
-                                        mainCalendar.AnnuallyBoldedDates = new DateTime[] { };
-                                        
-                                        if (reader[2].ToString() != String.Empty)
-                                        {
-                                            foreach (DateTime mon in monthArray)
-                                            {
-                                                int year = DateTime.Now.Year;
-                                                int month = Convert.ToDateTime(reader[2]).Month;
-                                                int day = Convert.ToDateTime(reader[2]).Day;
-                                                dt = new DateTime(year, month, day);
-                                                if (mon.Month == month || mon.Month == month + 1)
-                                                {
-                                                    string date = "";
-                                                    if (day.ToString().Length == 1) date += "0" + day.ToString() + ".";
-                                                    else date += day.ToString() + ".";
-                                                    if (month.ToString().Length == 1) date += "0" + month.ToString() + ".";
-                                                    else date += month.ToString() + ".";
-                                                    birthdayListBox.Items.Add(date + ": " + reader[0].ToString() + " " + reader[1].ToString() + " (" + reader[3].ToString() + ")");
-                                                    birthdayListBox.Sorted = true;
-                                                }
-                                                mainCalendar.AddAnnuallyBoldedDate(dt);
-                                                
                                             }
-                                        }
-                                        mainCalendar.UpdateBoldedDates();
+                                            if (routeImage != String.Empty)
+                                                dataPictureBox.Image = Image.FromFile(routeImage);
+                                            else
+                                                dataPictureBox.Image = null;
+                                            break;
+                                        case 2:
+                                            routeTitleLabel.Text = reader[1].ToString();
+
+                                            string city1 = "";
+                                            string city2 = "";
+                                            string city3 = "";
+                                            int int_city1 = -1;
+                                            int int_city2 = -1;
+                                            int int_city3 = -1;
+
+                                            if (reader[2].ToString() != String.Empty)
+                                            {
+                                                int_city1 = Convert.ToInt32(reader[2]);
+                                            }
+                                            if (reader[3].ToString() != String.Empty)
+                                            {
+                                                int_city2 = Convert.ToInt32(reader[3]);
+                                            }
+                                            if (reader[4].ToString() != String.Empty)
+                                            {
+                                                int_city3 = Convert.ToInt32(reader[4]);
+                                            }
+                                            using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
+                                            {
+                                                con1.Open();
+                                                using (SqlCommand com1 = new())
+                                                {
+                                                    com1.CommandText = @"SELECT Id, CityName FROM Cities";
+                                                    com1.CommandType = CommandType.Text;
+                                                    com1.Connection = con1;
+                                                    using SqlDataReader reader1 = com1.ExecuteReader();
+                                                    while (reader1.Read())
+                                                    {
+                                                        if (reader1[0].ToString() == int_city1.ToString())
+                                                            city1 = reader1[1].ToString();
+                                                        if (reader1[0].ToString() == int_city2.ToString())
+                                                            city2 = reader1[1].ToString();
+                                                        if (reader1[0].ToString() == int_city3.ToString())
+                                                            city3 = reader1[1].ToString();
+                                                    }
+                                                    reader1.Close();
+                                                }
+                                                con1.Close();
+                                            }
+
+                                            cityLabel.Text = city1;
+                                            cityStartLabel.Text = city2;
+                                            cityEndLabel.Text = city3;
+                                            citiesLabel.Text = reader[5].ToString();
+
+                                            routeTypeLabel.Text = GetDatabaseEntry("RouteTypes", "RouteType", (int)reader[6]);
+
+                                            if (reader[7].ToString() != String.Empty && reader[7].ToString() != "0")
+                                            {
+                                                maxAltLabel.Text = reader[7].ToString() + " m";
+                                            }
+                                            else
+                                            {
+                                                maxAltLabel.Text = "";
+                                            }
+                                            if (reader[8].ToString() != String.Empty && reader[8].ToString() != "0")
+                                            {
+                                                altLabel.Text = reader[7].ToString() + " m";
+                                            }
+                                            else
+                                            {
+                                                altLabel.Text = "";
+                                            }
+
+                                            routeRemarkRichTextBox.Text = reader[9].ToString();
+
+                                            if (reader[10].ToString() != String.Empty)
+                                            {
+                                                altProfilePictureBox.Image = Image.FromFile(reader[10].ToString());
+                                            }
+                                            else altProfilePictureBox.Image = null;
+                                            if (reader[11].ToString() != String.Empty)
+                                            {
+                                                routePictureBox.Image = Image.FromFile(reader[11].ToString());
+                                            }
+                                            else routePictureBox.Image = null;
+                                            break;
+                                        case 3:
+                                            string manufacturer = "";
+                                            string type = "";
+                                            if (reader[2].ToString() != String.Empty)
+                                            {
+                                                manufacturer = GetDatabaseEntry("Companies", "CompanyName", (int)reader[2]);
+                                                if (manufacturer == "Kein Hersteller")
+                                                    manufacturer = "";
+                                            }
+                                            vehicleTitleLabel.Text = manufacturer + " " + reader[1].ToString();
+                                            if (reader[5].ToString() != "")
+                                            {
+                                                vehicleTitleLabel.Text += " (" + reader[5].ToString() + ")";
+                                            }
+                                            if (reader[4].ToString() != "" && reader[6].ToString() != "")
+                                            {
+                                                dt = Convert.ToDateTime(reader[4]);
+                                                boughtLabel.Text = "Gekauft am " + dt.ToString("dd. MMMM yyyy") +
+                                                    " für " + (Convert.ToDecimal(reader[6])).ToString("C") + ".";
+                                            }
+                                            else boughtLabel.Text = "";
+
+                                            if (reader[3].ToString() != String.Empty)
+                                            {
+                                                type = GetDatabaseEntry("VehicleTypes", "VehicleType", (int)reader[3]);
+                                            }
+                                            typeLabel.Text = type;
+                                            equipRichTextBox.Text = reader[7].ToString();
+                                            if (reader[8].ToString() != String.Empty)
+                                            {
+                                                vehiclePictureBox.Image = Image.FromFile(reader[8].ToString());
+                                            }
+                                            else vehiclePictureBox.Image = null;
+                                            if (reader[9].ToString() != null && reader[9].ToString() != "")
+                                            {
+                                                if (Convert.ToInt32(reader[9]) != -1)
+                                                {
+                                                    entfaltungButton.Enabled = true;
+                                                    current_entfaltung = Convert.ToInt32(reader[9]);
+                                                    noEntfaltungLabel.Text = "";
+                                                }
+                                            }
+                                            else
+                                            {
+                                                entfaltungButton.Enabled = false;
+                                                current_entfaltung = -1;
+                                                noEntfaltungLabel.Text = "Noch nicht vorhanden";
+                                            }
+                                            break;
+                                        case 4:
+                                            string bland = "";
+                                            string land = "";
+                                            cityNameLabel.Text = reader[1].ToString();
+                                            if (reader[3].ToString() != String.Empty)
+                                            {
+                                                bland = GetDatabaseEntry("Bundeslaender", "Bundesland", (int)reader[3]);
+                                            }
+                                            if (reader[2].ToString() != String.Empty)
+                                            {
+                                                land = GetDatabaseEntry("Countries", "Country", (int)reader[2]);
+                                            }
+                                            countryLabel.Text = land;
+                                            bundeslandLabel.Text = bland;
+                                            postCodeLabel.Text = reader[4].ToString();
+                                            prefixLabel.Text = reader[5].ToString();
+                                            cityLinkLabel.Text = reader[6].ToString();
+                                            kfzLabel.Text = reader[7].ToString();
+                                            if (reader[8].ToString() != String.Empty)
+                                            {
+                                                heightLabel.Text = reader[8].ToString() + " m ü. NHN";
+                                            }
+                                            else { heightLabel.Text = ""; }
+                                            cityRemarkRichTextBox.Text = reader[9].ToString();
+                                            if (reader[10].ToString() != String.Empty)
+                                            {
+                                                cityPictureBox.Image = Image.FromFile(reader[10].ToString());
+                                            }
+                                            else cityPictureBox.Image = cityPictureBox.ErrorImage;
+                                            gpsLabel.Text = GetGPSviaProperty(reader[11].ToString());
+                                            SwitchMapProvider(cityMapControl);
+                                            if (reader[11].ToString() != String.Empty)
+                                            {
+                                                string loc = reader[11].ToString();
+                                                GpsCoordinate map_loc = new(loc);
+                                                cityMapControl.Position = map_loc.GetMapPosition();
+                                                cityMapControl.Refresh();
+                                            }
+                                            break;
+                                        case 5:
+                                            string city = "";
+                                            land = "";
+                                            if (reader[4].ToString() != String.Empty)
+                                            {
+                                                city = GetDatabaseEntry("Cities", "CityName", (int)reader[4]);
+                                            }
+                                            if (reader[12].ToString() != String.Empty)
+                                            {
+                                                land = GetDatabaseEntry("Countries", "Country", (int)reader[12]);
+                                            }
+                                            string roles = "";
+                                            if (Convert.ToInt32(reader[19]) == 1) roles = "Anwender";
+                                            if (Convert.ToInt32(reader[20]) == 1) roles = "Administrator";
+                                            personLabel.Text = reader[3].ToString() + " " + reader[2].ToString();
+                                            if (roles.Length > 0) usernameLabel.Text = reader[1].ToString() + " (" + roles + ")";
+                                            else usernameLabel.Text = reader[1].ToString();
+                                            plzCityLabel.Text = reader[9].ToString() + " " + city;
+                                            if (reader[5].ToString().Length > 0)
+                                                birthdateLabel.Text = Convert.ToDateTime(reader[5]).ToString("dd. MMMM yyyy");
+                                            else
+                                                birthdateLabel.Text = "";
+                                            if (reader[6].ToString().Length > 0 && reader[5].ToString().Length > 0)   //Deathdate
+                                            {
+                                                birthdayLabel.Text = "Geburtstag / Todestag";
+                                                birthdateLabel.Text = Convert.ToDateTime(reader[5]).ToString("dd. MMMM yyyy") + " / " +
+                                                    Convert.ToDateTime(reader[6]).ToString("dd. MMMM yyyy");
+                                            }
+                                            else
+                                                birthdayLabel.Text = "Geburtstag";
+                                            phoneLabel.Text = reader[7].ToString();
+                                            emailLinkLabel.Text = reader[8].ToString();
+                                            str1Label.Text = reader[10].ToString();
+                                            str2Label.Text = reader[11].ToString();
+                                            userCountryLabel.Text = land;
+                                            if (reader[13].ToString() != String.Empty)
+                                            {
+                                                personPictureBox.Image = Image.FromFile(reader[13].ToString());
+                                            }
+                                            else cityPictureBox.Image = null;
+                                            personRemarkRichTextBox.Text = reader[14].ToString();
+                                            break;
+                                        case 6:
+                                            goalsTitleLabel.Text = "Ziele";
+                                            goalTitleLabel.Text = reader[1].ToString();
+                                            goalRemarkRichTextBox.Text = reader[2].ToString();
+                                            goalDateTimePicker.Value = Convert.ToDateTime(reader[3]);
+                                            goalDateTimePicker.Enabled = false;
+                                            if (Convert.ToInt32(reader[4]) == 1)
+                                                doneCheckBox.Checked = true;
+                                            else doneCheckBox.Checked = false;
+                                            doneCheckBox.Enabled = false;
+                                            goalCreatedLabel.Text = Convert.ToDateTime(reader[5]).ToString("dd.MM.yyyy");
+                                            break;
+                                        case 7:
+                                            notesTitleLabel.Text = "Notizen";
+                                            noteTitleLabel.Text = reader[1].ToString();
+                                            notesRemarkRichTextBox.Text = reader[2].ToString();
+                                            break;
                                     }
                                 }
-                                reader.Close();
-                                if (tabPage == 8)
+                                else if (tabPage == 8)
                                 {
-                                    // Birthday of the current user
-                                    if (Convert.IsDBNull(GetDatabaseEntry("Persons", "Birthdate", "Id = " +
-                                            Properties.Settings.Default.CurrentUserID.ToString())) == false
-                                            && GetDatabaseEntry("Persons", "Birthdate", "Id = " +
-                                            Properties.Settings.Default.CurrentUserID.ToString()) != "")
+                                    mainCalendar.AnnuallyBoldedDates = [];
+
+                                    if (reader[2].ToString() != String.Empty)
                                     {
-                                        MessageBox.Show(GetDatabaseEntry("Persons", "Birthdate", "Id = " +
-                                            Properties.Settings.Default.CurrentUserID.ToString()));
-                                        DateTime bd = Convert.ToDateTime(GetDatabaseEntry("Persons", "Birthdate", "Id = " +
-                                            Properties.Settings.Default.CurrentUserID.ToString()));
-                                        if (bd != null)
+                                        foreach (DateTime mon in monthArray)
                                         {
-                                            mainCalendar.AddAnnuallyBoldedDate(bd);
-                                            foreach (DateTime mon in monthArray)
+                                            int year = DateTime.Now.Year;
+                                            int month = Convert.ToDateTime(reader[2]).Month;
+                                            int day = Convert.ToDateTime(reader[2]).Day;
+                                            dt = new DateTime(year, month, day);
+                                            if (mon.Month == month || mon.Month == month + 1)
                                             {
-                                                int year = DateTime.Now.Year;
-                                                int month = bd.Month;
-                                                int day = bd.Day;
-                                                int nextMon = mon.Month + 1;
-                                                if (nextMon > 12) { nextMon -= 12; year += 1; }
-                                                if (mon.Month == month || nextMon == month)
-                                                {
-                                                    string date = "";
-                                                    if (day.ToString().Length == 1) date += "0" + day.ToString() + ".";
-                                                    else date += day.ToString() + ".";
-                                                    if (month.ToString().Length == 1) date += "0" + month.ToString() + ".";
-                                                    else date += month.ToString() + ".";
-                                                    birthdayListBox.Items.Add(date + ": Du hast " + (year - bd.Year).ToString() + ". Geburtstag!!");
-                                                    birthdayListBox.Sorted = true;
-                                                }
+                                                string date = "";
+                                                if (day.ToString().Length == 1) date += "0" + day.ToString() + ".";
+                                                else date += day.ToString() + ".";
+                                                if (month.ToString().Length == 1) date += "0" + month.ToString() + ".";
+                                                else date += month.ToString() + ".";
+                                                birthdayListBox.Items.Add(date + ": " + reader[0].ToString() + " " + reader[1].ToString() + " (" + reader[3].ToString() + ")");
+                                                birthdayListBox.Sorted = true;
                                             }
-                                        }
-                                    }
-                                    using (SqlCommand com1 = new SqlCommand())
-                                    {
-                                        com1.CommandText = @"SELECT * FROM DateView WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
-                                        com1.CommandType = CommandType.Text;
-                                        com1.Connection = myConnection;
-                                        using (SqlDataReader reader1 = com1.ExecuteReader())
-                                        {
-                                            while (reader1.Read())
-                                            {
-                                                dt = Convert.ToDateTime(reader1[0]);
-                                                mainCalendar.AddBoldedDate(dt);
-                                            }
-                                            reader1.Close();
-                                        }
-                                    }
-                                    using (SqlCommand com1 = new SqlCommand())
-                                    {
-                                        com1.CommandText = @"SELECT * FROM Goals WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
-                                        com1.CommandType = CommandType.Text;
-                                        com1.Connection = myConnection;
-                                        using (SqlDataReader reader1 = com1.ExecuteReader())
-                                        {
-                                            while (reader1.Read())
-                                            {
-                                                dt = Convert.ToDateTime(reader1[3]);
-                                                if (!mainCalendar.BoldedDates.Contains(dt))
-                                                    mainCalendar.AddBoldedDate(dt);
-                                            }
-                                            reader1.Close();
+                                            mainCalendar.AddAnnuallyBoldedDate(dt);
+
                                         }
                                     }
                                     mainCalendar.UpdateBoldedDates();
                                 }
+                            }
+                            reader.Close();
+                            if (tabPage == 8)
+                            {
+                                // Birthday of the current user
+                                if (Convert.IsDBNull(GetDatabaseEntry("Persons", "Birthdate", "Id = " +
+                                        Properties.Settings.Default.CurrentUserID.ToString())) == false
+                                        && GetDatabaseEntry("Persons", "Birthdate", "Id = " +
+                                        Properties.Settings.Default.CurrentUserID.ToString()) != "")
+                                {
+                                    MessageBox.Show(GetDatabaseEntry("Persons", "Birthdate", "Id = " +
+                                        Properties.Settings.Default.CurrentUserID.ToString()));
+                                    DateTime bd = Convert.ToDateTime(GetDatabaseEntry("Persons", "Birthdate", "Id = " +
+                                        Properties.Settings.Default.CurrentUserID.ToString()));
+                                    if (bd != null)
+                                    {
+                                        mainCalendar.AddAnnuallyBoldedDate(bd);
+                                        foreach (DateTime mon in monthArray)
+                                        {
+                                            int year = DateTime.Now.Year;
+                                            int month = bd.Month;
+                                            int day = bd.Day;
+                                            int nextMon = mon.Month + 1;
+                                            if (nextMon > 12) { nextMon -= 12; year += 1; }
+                                            if (mon.Month == month || nextMon == month)
+                                            {
+                                                string date = "";
+                                                if (day.ToString().Length == 1) date += "0" + day.ToString() + ".";
+                                                else date += day.ToString() + ".";
+                                                if (month.ToString().Length == 1) date += "0" + month.ToString() + ".";
+                                                else date += month.ToString() + ".";
+                                                birthdayListBox.Items.Add(date + ": Du hast " + (year - bd.Year).ToString() + ". Geburtstag!!");
+                                                birthdayListBox.Sorted = true;
+                                            }
+                                        }
+                                    }
+                                }
+                                using (SqlCommand com1 = new())
+                                {
+                                    com1.CommandText = @"SELECT * FROM DateView WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
+                                    com1.CommandType = CommandType.Text;
+                                    com1.Connection = myConnection;
+                                    using SqlDataReader reader1 = com1.ExecuteReader();
+                                    while (reader1.Read())
+                                    {
+                                        dt = Convert.ToDateTime(reader1[0]);
+                                        mainCalendar.AddBoldedDate(dt);
+                                    }
+                                    reader1.Close();
+                                }
+                                using (SqlCommand com1 = new())
+                                {
+                                    com1.CommandText = @"SELECT * FROM Goals WHERE [User] = " + Properties.Settings.Default.CurrentUserID;
+                                    com1.CommandType = CommandType.Text;
+                                    com1.Connection = myConnection;
+                                    using SqlDataReader reader1 = com1.ExecuteReader();
+                                    while (reader1.Read())
+                                    {
+                                        dt = Convert.ToDateTime(reader1[3]);
+                                        if (!mainCalendar.BoldedDates.Contains(dt))
+                                            mainCalendar.AddBoldedDate(dt);
+                                    }
+                                    reader1.Close();
+                                }
+                                mainCalendar.UpdateBoldedDates();
                             }
                         }
                         myConnection.Close();
@@ -2649,14 +2672,14 @@ namespace BikeDB2024
         /// <summary>
         /// When data has been changed the combo boxes need to be refreshed and background worker runs again.
         /// </summary>
-        private void refreshComboBoxes()
+        private void RefreshComboBoxes()
         {
             //MessageBox.Show("Refresh Combo");
             //this.vehiclesTableAdapter.Fill(this.dataSet.Vehicles);
             //vehiclesTableAdapter.ClearBeforeFill = true;
             //this.vehiclesTableAdapter.Fill(this.dataSet.Vehicles);
-            loadVehicles();
-            loadRoutes();
+            LoadVehicles();
+            LoadRoutes();
             //this.routesTableAdapter.Fill(this.dataSet.Routes);
             this.tourTableAdapter.Fill(this.dataSet.Tour);
             //vehiclesTableAdapter.Update(dataSet);
@@ -2667,42 +2690,42 @@ namespace BikeDB2024
             //vehicleComboBox.ValueMember = "Id";
             //vehicleComboBox.DisplayMember = "VehicleName";
             showDataBackgroundWorker.RunWorkerAsync();
-            getPersons();
+            GetPersons();
             //tblTableAdapter.Fill(dsMy.tbl);
             //vehicleComboBox.Refresh();
         }
         #endregion
 
         #region Daten
-        private void firstToolStripButton_Click(object sender, EventArgs e)
+        private void FirstToolStripButton_Click(object sender, EventArgs e)
         {
             tour_id = 0;
             current_tour = tour_ids[tour_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void previousToolStripButton_Click(object sender, EventArgs e)
+        private void PreviousToolStripButton_Click(object sender, EventArgs e)
         {
             tour_id--;
             current_tour = tour_ids[tour_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void nextToolStripButton_Click(object sender, EventArgs e)
+        private void NextToolStripButton_Click(object sender, EventArgs e)
         {
             tour_id++;
             current_tour = tour_ids[tour_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void lastToolStripButton_Click(object sender, EventArgs e)
+        private void LastToolStripButton_Click(object sender, EventArgs e)
         {
             tour_id = cnt_tours - 1;
             current_tour = tour_ids[tour_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void editToolStripButton_Click(object sender, EventArgs e)
+        private void EditToolStripButton_Click(object sender, EventArgs e)
         {
             SqlConnection con1;
             try
@@ -2710,52 +2733,50 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = $"SELECT * FROM Tour WHERE Id = " + current_tour.ToString();
                         com1.CommandType = CommandType.Text;
                         com1.Connection = con1;
-                        using (SqlDataReader reader1 = com1.ExecuteReader())
+                        using SqlDataReader reader1 = com1.ExecuteReader();
+                        while (reader1.Read())
                         {
-                            while (reader1.Read())
+                            tourDateTimePicker.Value = Convert.ToDateTime(reader1[1]);
+                            routeComboBox.SelectedValue = (int)reader1[2];
+                            vehicleComboBox.SelectedValue = (int)reader1[3];
+                            kmTextBox.Text = FillDecimalForTextbox((decimal)reader1[4], 3);
+                            timeTextBox.Text = reader1[5].ToString();
+                            avgTextBox.Text = FillDecimalForTextbox((decimal)reader1[6], 3);
+                            vmaxTextBox.Text = FillDecimalForTextbox((decimal)reader1[7], 3);
+                            if (reader1[8].ToString() != "0") altitudeTextBox.Text = reader1[8].ToString();
+                            else altitudeTextBox.Text = "";
+                            if (reader1[9].ToString() != "0") maxAltLabel.Text = reader1[9].ToString();
+                            else maxAltLabel.Text = "";
+                            remarkRichTextBox.Text = reader1[10].ToString();
+                            personsListBox.SelectedIndices.Clear();
+                            if (!reader1.IsDBNull(11))
                             {
-                                tourDateTimePicker.Value = Convert.ToDateTime(reader1[1]);
-                                routeComboBox.SelectedValue = (int)reader1[2];
-                                vehicleComboBox.SelectedValue = (int)reader1[3];
-                                kmTextBox.Text = FillDecimalForTextbox((decimal) reader1[4], 3);
-                                timeTextBox.Text = reader1[5].ToString();
-                                avgTextBox.Text = FillDecimalForTextbox((decimal)reader1[6], 3);
-                                vmaxTextBox.Text = FillDecimalForTextbox((decimal)reader1[7], 3);
-                                if (reader1[8].ToString() != "0") altitudeTextBox.Text = reader1[8].ToString();
-                                else altitudeTextBox.Text = "";
-                                if (reader1[9].ToString() != "0") maxAltLabel.Text = reader1[9].ToString();
-                                else maxAltLabel.Text = "";
-                                remarkRichTextBox.Text = reader1[10].ToString();
-                                personsListBox.SelectedIndices.Clear();
-                                if (!reader1.IsDBNull(11))
+                                string[] tmp_pers = reader1[11].ToString().Split(';');
+                                foreach (string person_id in tmp_pers)
                                 {
-                                    string[] tmp_pers = reader1[11].ToString().Split(';');
-                                    foreach (string person_id in tmp_pers)
+                                    if (person_id.Length > 0)
                                     {
-                                        if (person_id.Length > 0)
+                                        int id = Convert.ToInt32(person_id);
+                                        Person pers = new(id);
+
+                                        int index = personsListBox.FindStringExact(pers.GetLastnameFirst());
+                                        if (index != -1)
                                         {
-                                            int id = Convert.ToInt32(person_id);
-                                            Person pers = new Person(id);
-                                            
-                                            int index = personsListBox.FindStringExact(pers.GetLastnameFirst());
-                                            if (index != -1)
-                                            {
-                                                //TODO: Bug: listbox entries are not selected
-                                                personsListBox.SelectedIndices.Add(index);
-                                                //personsListBox.SetSelected(index, true);break;
-                                            }
+                                            //TODO: Bug: listbox entries are not selected
+                                            personsListBox.SelectedIndices.Add(index);
+                                            //personsListBox.SetSelected(index, true);break;
                                         }
                                     }
-                                    //personsListBox.Focus();
                                 }
+                                //personsListBox.Focus();
                             }
-                            reader1.Close();
                         }
+                        reader1.Close();
                     }
                     con1.Close();
                 }
@@ -2774,7 +2795,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void deleteToolStripButton_Click(object sender, EventArgs e)
+        private void DeleteToolStripButton_Click(object sender, EventArgs e)
         {
 
         }
@@ -2782,37 +2803,37 @@ namespace BikeDB2024
         #endregion
 
         #region Strecken
-        private void routeToolStripButton0_Click(object sender, EventArgs e)
+        private void RouteToolStripButton0_Click(object sender, EventArgs e)
         {
             route_id = 0;
             current_route = route_ids[route_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void routeToolStripButton1_Click(object sender, EventArgs e)
+        private void RouteToolStripButton1_Click(object sender, EventArgs e)
         {
             route_id--;
             current_route = route_ids[route_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void routeToolStripButton2_Click(object sender, EventArgs e)
+        private void RouteToolStripButton2_Click(object sender, EventArgs e)
         {
             route_id++;
             current_route = route_ids[route_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void routeToolStripButton3_Click(object sender, EventArgs e)
+        private void RouteToolStripButton3_Click(object sender, EventArgs e)
         {
             route_id = cnt_routes - 1;
             current_route = route_ids[route_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void routeToolStripButton4_Click(object sender, EventArgs e)
+        private void RouteToolStripButton4_Click(object sender, EventArgs e)
         {
-            RouteForm routeForm = new RouteForm
+            RouteForm routeForm = new()
             {
                 Edit = true,
                 RouteId = current_route
@@ -2828,35 +2849,35 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void routeToolStripButton5_Click(object sender, EventArgs e)
+        private void RouteToolStripButton5_Click(object sender, EventArgs e)
         {
 
         }
         #endregion
 
         #region Fahrzeuge
-        private void vecToolStripButton0_Click(object sender, EventArgs e)
+        private void VecToolStripButton0_Click(object sender, EventArgs e)
         {
             vehicle_id = 0;
             current_vehicle = vehicle_ids[vehicle_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void vecToolStripButton1_Click(object sender, EventArgs e)
+        private void VecToolStripButton1_Click(object sender, EventArgs e)
         {
             vehicle_id--;
             current_vehicle = vehicle_ids[vehicle_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void vecToolStripButton2_Click(object sender, EventArgs e)
+        private void VecToolStripButton2_Click(object sender, EventArgs e)
         {
             vehicle_id++;
             current_vehicle = vehicle_ids[vehicle_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void vecToolStripButton3_Click(object sender, EventArgs e)
+        private void VecToolStripButton3_Click(object sender, EventArgs e)
         {
             vehicle_id = cnt_vehicles - 1;
             current_vehicle = vehicle_ids[vehicle_id];
@@ -2868,9 +2889,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void vecToolStripButton4_Click(object sender, EventArgs e)
+        private void VecToolStripButton4_Click(object sender, EventArgs e)
         {
-            VehicleForm vehicleForm = new VehicleForm
+            VehicleForm vehicleForm = new()
             {
                 Edit = true,
                 VehicleId = current_vehicle
@@ -2886,35 +2907,35 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void vecToolStripButton5_Click(object sender, EventArgs e)
+        private void VecToolStripButton5_Click(object sender, EventArgs e)
         {
 
         }
         #endregion
 
         #region Cities
-        private void city1ToolStripButton_Click(object sender, EventArgs e)
+        private void City1ToolStripButton_Click(object sender, EventArgs e)
         {
             city_id = 0;
             current_city = city_ids[city_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void city2ToolStripButton_Click(object sender, EventArgs e)
+        private void City2ToolStripButton_Click(object sender, EventArgs e)
         {
             city_id--;
             current_city = city_ids[city_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void city3ToolStripButton_Click(object sender, EventArgs e)
+        private void City3ToolStripButton_Click(object sender, EventArgs e)
         {
             city_id++;
             current_city = city_ids[city_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void city4ToolStripButton_Click(object sender, EventArgs e)
+        private void City4ToolStripButton_Click(object sender, EventArgs e)
         {
             city_id = cnt_cities - 1;
             current_city = city_ids[city_id];
@@ -2926,9 +2947,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void city5ToolStripButton_Click(object sender, EventArgs e)
+        private void City5ToolStripButton_Click(object sender, EventArgs e)
         {
-            CityForm cityForm = new CityForm
+            CityForm cityForm = new()
             {
                 Edit = true,
                 CityId = current_city
@@ -2944,35 +2965,35 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void city6ToolStripButton_Click(object sender, EventArgs e)
+        private void City6ToolStripButton_Click(object sender, EventArgs e)
         {
 
         }
         #endregion
 
         #region Persons
-        private void persons1ToolStripButton_Click(object sender, EventArgs e)
+        private void Persons1ToolStripButton_Click(object sender, EventArgs e)
         {
             person_id = 0;
             current_person = person_ids[person_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void persons2ToolStripButton_Click(object sender, EventArgs e)
+        private void Persons2ToolStripButton_Click(object sender, EventArgs e)
         {
             person_id--;
             current_person = person_ids[person_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void persons3ToolStripButton_Click(object sender, EventArgs e)
+        private void Persons3ToolStripButton_Click(object sender, EventArgs e)
         {
             person_id++;
             current_person = person_ids[person_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void persons4ToolStripButton_Click(object sender, EventArgs e)
+        private void Persons4ToolStripButton_Click(object sender, EventArgs e)
         {
             person_id = cnt_persons - 1;
             current_person = person_ids[person_id];
@@ -2984,9 +3005,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void persons5ToolStripButton_Click(object sender, EventArgs e)
+        private void Persons5ToolStripButton_Click(object sender, EventArgs e)
         {
-            PersonsForm personsForm = new PersonsForm
+            PersonsForm personsForm = new()
             {
                 Edit = true,
                 EditId = current_person
@@ -3002,35 +3023,35 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void persons6ToolStripButton_Click(object sender, EventArgs e)
+        private void Persons6ToolStripButton_Click(object sender, EventArgs e)
         {
 
         }
         #endregion
 
         #region Goals
-        private void goals1ToolStripButton_Click(object sender, EventArgs e)
+        private void Goals1ToolStripButton_Click(object sender, EventArgs e)
         {
             goal_id = 0;
             current_goal = goal_ids[goal_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void goals2ToolStripButton_Click(object sender, EventArgs e)
+        private void Goals2ToolStripButton_Click(object sender, EventArgs e)
         {
             goal_id--;
             current_goal = goal_ids[goal_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void goals3ToolStripButton_Click(object sender, EventArgs e)
+        private void Goals3ToolStripButton_Click(object sender, EventArgs e)
         {
             goal_id++;
             current_goal = goal_ids[goal_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void goals4ToolStripButton_Click(object sender, EventArgs e)
+        private void Goals4ToolStripButton_Click(object sender, EventArgs e)
         {
             goal_id = cnt_goals - 1;
             current_goal = goal_ids[goal_id];
@@ -3042,9 +3063,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void goals5ToolStripButton_Click(object sender, EventArgs e)
+        private void Goals5ToolStripButton_Click(object sender, EventArgs e)
         {
-            GoalsForm goalsForm = new GoalsForm
+            GoalsForm goalsForm = new()
             {
                 Edit = true,
                 EditId = current_goal
@@ -3052,7 +3073,7 @@ namespace BikeDB2024
             if (goalsForm.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
-                mainCalendar_ShowDetails();
+                MainCalendar_ShowDetails();
             }
         }
 
@@ -3061,35 +3082,35 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void goals6ToolStripButton_Click(object sender, EventArgs e)
+        private void Goals6ToolStripButton_Click(object sender, EventArgs e)
         {
 
         }
         #endregion
 
         #region Notes
-        private void notes1ToolStripButton_Click(object sender, EventArgs e)
+        private void Notes1ToolStripButton_Click(object sender, EventArgs e)
         {
             note_id = 0;
             current_note = note_ids[note_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void notes2ToolStripButton_Click(object sender, EventArgs e)
+        private void Notes2ToolStripButton_Click(object sender, EventArgs e)
         {
             note_id--;
             current_note = note_ids[note_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void notes3ToolStripButton_Click(object sender, EventArgs e)
+        private void Notes3ToolStripButton_Click(object sender, EventArgs e)
         {
             note_id++;
             current_note = note_ids[note_id];
             showDataBackgroundWorker.RunWorkerAsync();
         }
 
-        private void notes4ToolStripButton_Click(object sender, EventArgs e)
+        private void Notes4ToolStripButton_Click(object sender, EventArgs e)
         {
             note_id = cnt_notes - 1;
             current_note = note_ids[note_id];
@@ -3101,9 +3122,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void notes5ToolStripButton_Click(object sender, EventArgs e)
+        private void Notes5ToolStripButton_Click(object sender, EventArgs e)
         {
-            NotesForm notesForm = new NotesForm
+            NotesForm notesForm = new()
             {
                 Edit = true,
                 EditId = current_note
@@ -3119,25 +3140,25 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void notes6ToolStripButton_Click(object sender, EventArgs e)
+        private void Notes6ToolStripButton_Click(object sender, EventArgs e)
         {
 
         }
         #endregion
 
         #region Export/Import
-        private void exportierenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExportierenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExportForm exportForm = new ExportForm();
+            ExportForm exportForm = new();
             exportForm.ShowDialog();
         }
 
-        private void importierenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ImportierenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ImportForm importForm = new ImportForm();
+            ImportForm importForm = new();
             if (importForm.ShowDialog() == DialogResult.OK)
             {
-                refreshComboBoxes();
+                RefreshComboBoxes();
             }
         }
         #endregion
@@ -3148,18 +3169,18 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bildbetrachterContextMenuItem_Click(object sender, EventArgs e)
+        private void BildbetrachterContextMenuItem_Click(object sender, EventArgs e)
         {
             var menuItem = sender as ToolStripMenuItem;
             var contextMenu = menuItem.GetCurrentParent() as ContextMenuStrip;
             PictureBox pictureBox = (PictureBox)contextMenu.SourceControl;
-            ImageViewerForm viewerForm = new ImageViewerForm(pictureBox.Image);
+            ImageViewerForm viewerForm = new(pictureBox.Image);
             viewerForm.Show();
         }
         #endregion
 
         #region Image Editor
-        private void imageEditorButton_Click(object sender, EventArgs e)
+        private void ImageEditorButton_Click(object sender, EventArgs e)
         {
             if (openImageEditorDialog.ShowDialog() == DialogResult.OK)
             {
@@ -3171,7 +3192,7 @@ namespace BikeDB2024
             }
         }
 
-        private void bildbearbeitungToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BildbearbeitungToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -3187,7 +3208,7 @@ namespace BikeDB2024
             catch (Exception exception) { ShowErrorMessage(exception.Message, "Fehlerhafte Konfiguration Bildeditor"); }
         }
 
-        private void imageEditorTextBox_TextChanged(object sender, EventArgs e)
+        private void ImageEditorTextBox_TextChanged(object sender, EventArgs e)
         {
             if (imageEditorTextBox.Text != String.Empty)
             {
@@ -3198,19 +3219,19 @@ namespace BikeDB2024
         #endregion
 
         #region Statistics
-        private void fahrzeugToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void FahrzeugToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            showStatistics();
+            ShowStatistics();
         }
 
-        private void statisticsToolStripButton_Click(object sender, EventArgs e)
+        private void StatisticsToolStripButton_Click(object sender, EventArgs e)
         {
-            showStatistics();
+            ShowStatistics();
         }
 
-        private void showStatistics()
+        private void ShowStatistics()
         {
-            StatisticsForm statisticsForm = new StatisticsForm();
+            StatisticsForm statisticsForm = new();
             statisticsForm.Show();
         }
         #endregion
@@ -3220,9 +3241,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void entfaltungButton_Click(object sender, EventArgs e)
+        private void EntfaltungButton_Click(object sender, EventArgs e)
         {
-            EntfaltungForm ent = new EntfaltungForm(GetDatabaseEntry("Vehicles", "VehicleName", current_vehicle), current_vehicle, current_entfaltung);
+            EntfaltungForm ent = new(GetDatabaseEntry("Vehicles", "VehicleName", current_vehicle), current_vehicle, current_entfaltung);
             if (ent.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -3234,16 +3255,16 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
+            LoginForm loginForm = new();
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
                 Properties.Settings.Default.UserLoggedIn = true;
                 logged_in = true;
                 this.Refresh();
-                checkLogin();
-                loadNotifyIcon();
+                CheckLogin();
+                LoadNotifyIcon();
             }
         }
 
@@ -3252,81 +3273,81 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogoutForm logoutForm = new LogoutForm();
+            LogoutForm logoutForm = new();
             if (logoutForm.ShowDialog() == DialogResult.OK)
             {
                 logged_in = false;
                 Properties.Settings.Default.CurrentUserName = "";
                 Properties.Settings.Default.CurrentUserID = -1;
                 this.Refresh();
-                checkLogin();
+                CheckLogin();
             }
         }
 
         #region Show PersonsForm
-        private void personsToolStripButton_Click(object sender, EventArgs e)
+        private void PersonsToolStripButton_Click(object sender, EventArgs e)
         {
-            showPersons();
+            ShowPersons();
         }
 
-        private void personToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PersonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showPersons();
+            ShowPersons();
         }
 
         /// <summary>
         /// Shows PersonsForm.
         /// </summary>
-        private void showPersons()
+        private void ShowPersons()
         {
-            PersonsForm personsForm = new PersonsForm();
+            PersonsForm personsForm = new();
             if (personsForm.ShowDialog() == DialogResult.OK)
             {
-                refreshComboBoxes();
+                RefreshComboBoxes();
             }
         }
         #endregion
 
         #region Show Administration
-        private void administrationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AdministrationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showAdmin();
+            ShowAdmin();
         }
 
-        private void adminToolStripButton_Click(object sender, EventArgs e)
+        private void AdminToolStripButton_Click(object sender, EventArgs e)
         {
-            showAdmin();
+            ShowAdmin();
         }
 
         /// <summary>
         /// Shows AdminForm.
         /// </summary>
-        private void showAdmin()
+        private void ShowAdmin()
         {
-            AdminForm adminForm = new AdminForm(Properties.Settings.Default.CurrentUserID, Properties.Settings.Default.CurrentUserName);
+            AdminForm adminForm = new(Properties.Settings.Default.CurrentUserID, Properties.Settings.Default.CurrentUserName);
             adminForm.Show();
         }
         #endregion
 
         #region Show Goals
-        private void goalsToolStripButton_Click(object sender, EventArgs e)
+        private void GoalsToolStripButton_Click(object sender, EventArgs e)
         {
-            showGoals();
+            ShowGoals();
         }
 
-        private void zielToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZielToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showGoals();
+            ShowGoals();
         }
 
         /// <summary>
         /// Shows GoalsForm.
         /// </summary>
-        private void showGoals()
+        private void ShowGoals()
         {
-            GoalsForm goalsForm = new GoalsForm();
+            GoalsForm goalsForm = new();
             if (goalsForm.ShowDialog() == DialogResult.OK)
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -3335,22 +3356,22 @@ namespace BikeDB2024
         #endregion
 
         #region Show Notes
-        private void notesToolStripButton_Click(object sender, EventArgs e)
+        private void NotesToolStripButton_Click(object sender, EventArgs e)
         {
-            showNotes();
+            ShowNotes();
         }
 
-        private void notizToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NotizToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showNotes();
+            ShowNotes();
         }
 
         /// <summary>
         /// Shows NotesForm.
         /// </summary>
-        private void showNotes()
+        private void ShowNotes()
         {
-            NotesForm notesForm = new NotesForm();
+            NotesForm notesForm = new();
             if (notesForm.ShowDialog() == DialogResult.OK) 
             {
                 showDataBackgroundWorker.RunWorkerAsync();
@@ -3359,22 +3380,22 @@ namespace BikeDB2024
         #endregion
 
         #region Costs
-        private void ausgabenUndKostenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AusgabenUndKostenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showCosts();
+            ShowCosts();
         }
 
-        private void costsToolStripButton_Click(object sender, EventArgs e)
+        private void CostsToolStripButton_Click(object sender, EventArgs e)
         {
-            showCosts();
+            ShowCosts();
         }
 
         /// <summary>
         /// Shows CostsForm.
         /// </summary>
-        private void showCosts()
+        private void ShowCosts()
         {
-            CostsForm costForm = new CostsForm();
+            CostsForm costForm = new();
             if (costForm.ShowDialog() == DialogResult.OK)
             {
                 // Currently not needed: costs are displayed in statistics
@@ -3384,16 +3405,16 @@ namespace BikeDB2024
         #endregion
 
         #region NotifyIcon
-        NotifyMessage notifyMessage = new NotifyMessage(Properties.Settings.Default.NotifyTime);
+        NotifyMessage notifyMessage = new(Properties.Settings.Default.NotifyTime);
 
         /// <summary>
         /// Context menu on NotifyIcon: Birthdays
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void geburtstageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void GeburtstageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showCalendar();
+            ShowCalendar();
         }
 
         /// <summary>
@@ -3401,9 +3422,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void zieleToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ZieleToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            showGoalTab();
+            ShowGoalTab();
         }
 
         /// <summary>
@@ -3411,10 +3432,10 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mitAnwendungStartenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MitAnwendungStartenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.ShowNotifyIcon = !Properties.Settings.Default.ShowNotifyIcon;
-            checkNotifyIcon(Properties.Settings.Default.ShowNotifyIcon);
+            CheckNotifyIcon(Properties.Settings.Default.ShowNotifyIcon);
         }
 
         /// <summary>
@@ -3422,7 +3443,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void schließenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SchließenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mainNotifyIcon.Visible = false;
         }
@@ -3430,7 +3451,7 @@ namespace BikeDB2024
         /// <summary>
         /// 
         /// </summary>
-        private void loadNotifyIcon()
+        private void LoadNotifyIcon()
         {
             if (Properties.Settings.Default.ShowNotifyIcon)
             {
@@ -3452,7 +3473,7 @@ namespace BikeDB2024
         /// Personal setting: load NotifyIcon with application Yes/No.
         /// </summary>
         /// <param name="show"></param>
-        private void checkNotifyIcon(bool show = true)
+        private void CheckNotifyIcon(bool show = true)
         {
             Properties.Settings.Default.ShowNotifyIcon = show;
             if (Properties.Settings.Default.ShowNotifyIcon)
@@ -3463,7 +3484,7 @@ namespace BikeDB2024
             {
                 mitAnwendungStartenToolStripMenuItem.Checked = false;
             }
-            loadNotifyIcon();
+            LoadNotifyIcon();
         }
         
         /// <summary>
@@ -3471,7 +3492,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mainTimer_Tick(object sender, EventArgs e)
+        private void MainTimer_Tick(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
             if (now.Hour == 0 && now.Minute == 0)
@@ -3489,9 +3510,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void notificationCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void NotificationCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            checkNotifyIcon(notificationCheckBox.Checked);
+            CheckNotifyIcon(notificationCheckBox.Checked);
             timerMaskedTextBox.Enabled = notificationCheckBox.Checked;
         }
 
@@ -3500,7 +3521,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timerMaskedTextBox_Leave(object sender, EventArgs e)
+        private void TimerMaskedTextBox_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -3527,9 +3548,9 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void passwortÄndernToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PasswortÄndernToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PasswordForm pwform = new PasswordForm();
+            PasswordForm pwform = new();
             if (pwform.ShowDialog() == DialogResult.OK)
             {
                 string password = pwform.Password;
@@ -3537,17 +3558,13 @@ namespace BikeDB2024
                         "WHERE Id = " + Properties.Settings.Default.CurrentUserID.ToString();
                 try
                 {
-                    using (var connection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
-                    {
-                        using (var myCommand = new SqlCommand(sql, connection))
-                        {
-                            myCommand.Parameters.Add("@pwd", SqlDbType.NVarChar).Value = password;
+                    using var connection = new SqlConnection(Properties.Settings.Default.DataConnectionString);
+                    using var myCommand = new SqlCommand(sql, connection);
+                    myCommand.Parameters.Add("@pwd", SqlDbType.NVarChar).Value = password;
 
-                            connection.Open();
-                            myCommand.ExecuteNonQuery();
-                            connection.Close();
-                        }
-                    }
+                    connection.Open();
+                    myCommand.ExecuteNonQuery();
+                    connection.Close();
                 }
                 catch (Exception ex)
                 {
@@ -3561,12 +3578,12 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void sigmaConnectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SigmaConnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SigmaDsForm ds = new SigmaDsForm();
+            SigmaDsForm ds = new();
             if (ds.ShowDialog() == DialogResult.OK)
             {
-                createDirectoryWatcher();
+                CreateDirectoryWatcher();
             }
         }
 
@@ -3575,7 +3592,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timeTextBox_Leave(object sender, EventArgs e)
+        private void TimeTextBox_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -3597,7 +3614,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void vmaxTextBox_Leave(object sender, EventArgs e)
+        private void VmaxTextBox_Leave(object sender, EventArgs e)
         {
             vmaxTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             if (vmaxTextBox.Text == string.Empty)
@@ -3612,7 +3629,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void vehicleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void VehicleComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (vehicleComboBox.Text == "Joggen" || vehicleComboBox.Text == "Wandern/Zu Fuß")
             {
@@ -3634,19 +3651,19 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void flightDBToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FlightDBToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showFlightDb();
+            ShowFlightDb();
         }
 
-        private void flightDbToolStripButton_Click(object sender, EventArgs e)
+        private void FlightDbToolStripButton_Click(object sender, EventArgs e)
         {
-            showFlightDb();
+            ShowFlightDb();
         }
 
-        private void showFlightDb()
+        private void ShowFlightDb()
         {
-            FlightDBForm form = new FlightDBForm();
+            FlightDBForm form = new();
             form.Show();
         }
         #endregion
@@ -3658,7 +3675,7 @@ namespace BikeDB2024
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// Route
-        private void showToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ShowToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem.Name == "checkedToolStripMenuItem")
             {
@@ -3672,7 +3689,7 @@ namespace BikeDB2024
         }
 
         // Vehicle
-        private void showVecToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ShowVecToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem.Name == "showVecCheckedToolStripMenuItem")
             {
@@ -3686,7 +3703,7 @@ namespace BikeDB2024
         }
 
         // City
-        private void showCityToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void ShowCityToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem.Name == "showCityCheckedToolStripMenuItem")
             {
@@ -3700,7 +3717,7 @@ namespace BikeDB2024
         }
 
         // Person
-        private void personToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void PersonToolStripSplitButton_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             if (e.ClickedItem.Name == "showPersonCheckedToolStripMenuItem")
             {
@@ -3714,19 +3731,19 @@ namespace BikeDB2024
         }
 
         #region Show image galleries
-        private void galleryToolStripButton_Click(object sender, EventArgs e)
+        private void GalleryToolStripButton_Click(object sender, EventArgs e)
         {
-            showGalleries();
+            ShowGalleries();
         }
 
-        private void bildergalerienToolStripMenuItem_Click(object sender, EventArgs e)
+        private void BildergalerienToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            showGalleries();
+            ShowGalleries();
         }
 
-        private void showGalleries()
+        private void ShowGalleries()
         {
-            ImageGalleryForm imageGalleryForm = new ImageGalleryForm();
+            ImageGalleryForm imageGalleryForm = new();
             imageGalleryForm.Show();
         }       
 
@@ -3735,11 +3752,11 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void showGalleryToolStripButton_Click(object sender, EventArgs e)
+        private void ShowGalleryToolStripButton_Click(object sender, EventArgs e)
         {
             if (current_gallery != -1)
             {
-                ImageGalleryForm imageGallery = new ImageGalleryForm
+                ImageGalleryForm imageGallery = new()
                 {
                     Id = current_gallery
                 };
@@ -3753,24 +3770,87 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void qrCodeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void QrCodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolStripItem menuItem = sender as ToolStripItem;
-            if (menuItem != null)
+            if (sender is ToolStripItem menuItem)
             {
                 // Retrieve the ContextMenuStrip that owns this ToolStripItem
-                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
-                if (owner != null)
+                if (menuItem.Owner is ContextMenuStrip owner)
                 {
                     // Get the control that is displaying this context menu
                     Control sourceControl = owner.SourceControl;
                     if (sourceControl.Text != "")
                     {
-                        QRForm qRForm = new QRForm(sourceControl.Text);
+                        QRForm qRForm = new(sourceControl.Text);
                         qRForm.Show();
                     }
                 }
             }
+        }
+
+        private void jSONImportierenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            importJson();
+        }
+
+        private void importJsonButton_Click(object sender, EventArgs e)
+        {
+            importJson();
+        }
+
+        private void importJson()
+        {
+            ImportJsonForm importJsonForm = new();
+            if (importJsonForm.ShowDialog() == DialogResult.OK)
+            {
+                // Json import 
+                string json = importJsonForm.SelectedFilePath;
+                if (json != "")
+                {
+                    try
+                    {
+                        RideData rideData = JsonSerializer.Deserialize<RideData>(File.ReadAllText(json));
+                        if (rideData != null)
+                        {
+                            // Create a new tour with the data from the JSON file
+                            if (importJsonForm.ImportDate)
+                            {
+                                tourDateTimePicker.Value = rideData.Timestamp;
+                            }
+                            if (importJsonForm.ImportBike)
+                            {
+                                if (vehicleComboBox.Items.Contains(rideData.BikeName))
+                                {
+                                    vehicleComboBox.SelectedItem = rideData.BikeName;
+                                }
+                                else
+                                {
+                                    ShowErrorMessage($"Fahrrad '{rideData.BikeName}' ist nicht in der Datenbank vorhanden. Bitte zuerst in der Verwaltung hinzufügen.", "Fahrrad nicht gefunden");
+                                }
+                            }
+                            kmTextBox.Text = FillDecimalForTextbox(Convert.ToDecimal(rideData.DistanceKm), 3);
+                            timeTextBox.Text = rideData.Duration.ToString(@"hh\:mm\:ss");
+                            avgTextBox.Text = FillDecimalForTextbox(Convert.ToDecimal(rideData.MeanSpeedKmh), 3);
+                            vmaxTextBox.Text = FillDecimalForTextbox(Convert.ToDecimal(rideData.MaxSpeedKmh), 3);
+                            minAltTextBox.Text = FillDecimalForTextbox(Convert.ToDecimal(rideData.MinAltitudeMeters), 3);
+                            maxAltTextBox.Text = FillDecimalForTextbox(Convert.ToDecimal(rideData.MaxAltitudeMeters), 3);
+                            if (Properties.Settings.Default.UseCadence)
+                            {
+                                cadenceTextBox.Text = rideData.Cadence.ToString();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowErrorMessage(ex.Message, "Fehler beim JSON-Import");
+                    }
+                }
+            }
+        }
+
+        private void gPXDateiumwandelnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

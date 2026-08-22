@@ -873,5 +873,137 @@ namespace BikeDB2024.Properties {
                 this["BikeDBVersion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0.0.0")]
+        public string DBVersion {
+            get {
+                return ((string)(this["DBVersion"]));
+            }
+            set {
+                this["DBVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseGPSBabel {
+            get {
+                return ((bool)(this["UseGPSBabel"]));
+            }
+            set {
+                this["UseGPSBabel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Program Files\\GPSBabel")]
+        public string GPSBabelDir {
+            get {
+                return ((string)(this["GPSBabelDir"]));
+            }
+            set {
+                this["GPSBabelDir"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseTrax {
+            get {
+                return ((bool)(this["UseTrax"]));
+            }
+            set {
+                this["UseTrax"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("gpx")]
+        public string GPSFileType {
+            get {
+                return ((string)(this["GPSFileType"]));
+            }
+            set {
+                this["GPSFileType"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%BIKEDB%/Trax")]
+        public string TraxFolder {
+            get {
+                return ((string)(this["TraxFolder"]));
+            }
+            set {
+                this["TraxFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%BIKEDB%/SigmaNotificationApp")]
+        public string SNAFolder {
+            get {
+                return ((string)(this["SNAFolder"]));
+            }
+            set {
+                this["SNAFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ImportJson {
+            get {
+                return ((bool)(this["ImportJson"]));
+            }
+            set {
+                this["ImportJson"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BikeDBFolder {
+            get {
+                return ((string)(this["BikeDBFolder"]));
+            }
+            set {
+                this["BikeDBFolder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UsePowermeter {
+            get {
+                return ((bool)(this["UsePowermeter"]));
+            }
+            set {
+                this["UsePowermeter"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseHeartRate {
+            get {
+                return ((bool)(this["UseHeartRate"]));
+            }
+            set {
+                this["UseHeartRate"] = value;
+            }
+        }
     }
 }

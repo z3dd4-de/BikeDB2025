@@ -56,7 +56,7 @@ namespace BikeDB2024
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = @"SELECT * FROM Goals WHERE Id = " + EditId.ToString();
                             com1.CommandType = CommandType.Text;
@@ -139,7 +139,7 @@ namespace BikeDB2024
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             int id = NextId("Goals");
                             int achieved = 0;
@@ -639,7 +639,7 @@ namespace BikeDB2024
         private void WeihnachtenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DateTime dt = DateTime.Now;
-            DateTime val = new DateTime(dt.Year, 12, 24);
+            DateTime val = new(dt.Year, 12, 24);
             goalDateTimePicker.Value = val;
             if (val < dt) goalDateTimePicker.Value = new DateTime(dt.Year + 1, 12, 24);
             titleTextBox.Text = "Erledigen bis Weihnachten: " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
@@ -661,7 +661,7 @@ namespace BikeDB2024
         private void ValentinstagToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DateTime dt = DateTime.Now;
-            DateTime val = new DateTime(dt.Year, 2, 14);
+            DateTime val = new(dt.Year, 2, 14);
             goalDateTimePicker.Value = val;
             if (val < dt) goalDateTimePicker.Value = new DateTime(dt.Year + 1, 2, 14);
             titleTextBox.Text = "Erledigen bis zum Valentinstag: " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");
@@ -670,7 +670,7 @@ namespace BikeDB2024
         private void TagDerDtEinheitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DateTime dt = DateTime.Now;
-            DateTime val = new DateTime(dt.Year, 10, 3);
+            DateTime val = new(dt.Year, 10, 3);
             goalDateTimePicker.Value = val;
             if (val < dt) goalDateTimePicker.Value = new DateTime(dt.Year + 1, 10, 3);
             titleTextBox.Text = "Erledigen bis zum Tag der deutschen Einheit: " + goalDateTimePicker.Value.ToString("dd.MM.YYYY");

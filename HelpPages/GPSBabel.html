@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 25.8.5.2 (Windows)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2026-05-20T15:32:08.565813300"/>
+	<meta name="created" content="00:00:00">
+	<meta name="created" content="00:00:00">
+	<meta name="created" content="00:00:00">
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { margin-bottom: 0.25cm; background: transparent }
+	</style>
+</head>
+<body lang="de-DE" dir="ltr"><p align="center" style="line-height: 100%; margin-top: 0.42cm; margin-bottom: 0.21cm; page-break-after: avoid">
+<font face="Liberation Sans, sans-serif"><font size="6" style="font-size: 28pt"><b>GPSBabel</b></font></font></p>
+<p><br/>
+<br/>
+
+</p>
+<p>GPSBabel ist eine freie Software, um GPS-Daten in unterschiedliche
+Formate zu konvertieren.</p>
+<p>GPSBabel wird nicht mit BikeDB ausgeliefert, kann aber, wenn
+installiert, verwendet werden.</p>
+<h2>Warum GPSBabel?</h2>
+<p>GPSBabel benötigt man nur, wenn man <a href="BikeDBTrax.html">BikeDB
+Trax</a> zusammen mit <a href="GoogleEarth.html">Google Earth</a>
+verwenden will.</p>
+<p>Der Hintergrund ist, dass BikeDB Trax auf kleine Dateigrößen
+optimiert wurde und daher Dateien im GPX-Format erstellt. Google
+Earth hingegen benutzt das KML-Format, kann aber auch viele andere
+Dateiformate darstellen. Will man aber per Doppelklick auf eine
+GPS-Datei automatisch Google Earth laden lassen, muss man die
+GPX-Datei in eine KML-Datei konvertieren.</p>
+<p>Dies gilt auch innerhalb der BikeDB: ein Klick auf eine KML-Datei
+öffnet Google Earth direkt, wurde allerdings eine GPX-Datei mit
+einer Tagestour oder Strecke verknüpft, erstellt die BikeDB eine
+temporäre KML-Datei, die dann erst geöffnet wird.</p>
+<p>Für beide Varianten muss allerdings GPSBabel installiert und in
+den Einstellungen der BikeDB verknüpft sein.</p>
+<p><img src="../../../../AppData/Roaming/LibreOffice/4/user/backup/GPSBabel.html_0_html_4fe06f73.gif" name="Bild1" align="left" width="767" height="72" border="0"/>
+<br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+<h2>Einstellung in der BikeDB</h2>
+<p>Das Standard-Installationsverzeichnis von GPSBabel liegt unter
+Windows hier:</p>
+<p><i>C:\Program Files\GPSBabel</i></p>
+<p>Dieser Wert muss in den Einstellungen von BikeDB eingetragen
+werden, also das Verzeichnis, in dem die ausführbare Datei liegt.
+Intern wird dieses Verzeichnis dann als <font face="Courier New, monospace">%GPSBABEL%</font>
+verwendet.</p>
+<p><br/>
+<br/>
+
+</p>
+<h2>Konsolenbefehl</h2>
+<p>Intern benutzt die BikeDB folgenden Konsolenbefehl, um GPSBabel
+anzusprechen:</p>
+<p><font face="Courier New, monospace">%GPSBABEL%/gpsbabel</font><span style="text-decoration: none"><span style="background: transparent">
+</span></span><span style="text-decoration: none"><font face="Courier New, monospace"><span style="background: transparent">-w
+-r -t -i gpx -f %BIKEDBUSERDIR%/Trax/BikeTrack_YYYY-MM-DD_HH-mm.gpx
+-o kml -F %BIKEDBUSERDIR%/Trax/BikeTrack_YYYY-MM-DD_HH-mm.gpx</span></font></span></p>
+<p><br/>
+<br/>
+
+</p>
+<p>Es wird also dasselbe Verzeichnis für die Ausgabedatei verwendet,
+in dem auch die Eingabedatei liegt. „<font face="Courier New, monospace">/Trax</font>“
+ist dabei ein Unterverzeichnis von dem Verzeichnis, in dem alle
+Anwenderdateien der BikeDB liegen. Ab <b>BikeDB 2026 </b>wird dieses
+Verzeichnis automatisch angelegt und sollte nicht gelöscht werden,
+selbst wenn weder BikeDB Trax noch GPSBabel benutzt werden.</p>
+<p>BikeTrack_Datum_Uhrzeit ist dabei der Dateiname, den BikeDB Trax
+automatisch verwendet.</p>
+<p><br/>
+<br/>
+
+</p>
+<h2>Ich bin verwirrt! Welches Format soll ich denn jetzt verwenden?</h2>
+<ul>
+	<li><p>Wenn die Dateigröße <b>keine</b> Rolle spielt:</p></li>
+</ul>
+<p>Kopiere die GPX-Datei vom Smartphone nach <span style="text-decoration: none"><font face="Courier New, monospace"><span style="background: transparent">%BIKEDBUSERDIR%/Trax</span></font></span>
+bevor du eine neue Strecke/Tagestour anlegst. Benutze dann die
+interne Funktion „KML-Datei anlegen“. Nun gibt es beide Dateien
+im Trax-Verzeichnis und es steht dir frei zu wählen, welche Datei du
+als Strecke/Tagestour verknüpfen willst.</p>
+<p><font color="#c9211e"><b>Bedenke: nur KML-Dateien können direkt
+mit Google Earth geöffnet werden.</b></font></p>
+<p><br/>
+<br/>
+
+</p>
+<ul>
+	<li><p>Ich möchte mein BikeDB-Verzeichnis <b>möglichst klein</b>
+	halten:</p></li>
+</ul>
+<p>Verzichte auf Bildergalerien, denn die machen wohl den meisten
+Speicherplatz aus. (Kleiner Scherz)</p>
+<p>Benutze die GPX-Dateien, klicke in den Einstellungen auf
+„temporäre KML“ und verknüpfe mit Strecken und Tagestouren nur
+die GPX-Dateien. Das führt zwar zu einer kleinen Verzögerung beim
+Laden der GPX, nutzt aber den minimalen Speicherplatz im
+BikeDB-Verzeichnis. 
+</p>
+<h2>Download-Link</h2>
+<p><a href="https://www.gpsbabel.org/download.html">https://www.gpsbabel.org/download.html</a></p>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+<p><a href="Content.html">Inhalt</a></p>
+</body>
+</html>

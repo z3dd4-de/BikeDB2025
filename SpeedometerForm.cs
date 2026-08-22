@@ -91,7 +91,7 @@ namespace BikeDB2024
             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
             {
                 con1.Open();
-                using (SqlCommand com1 = new SqlCommand())
+                using (SqlCommand com1 = new())
                 {
                     com1.CommandText = @"SELECT * FROM Speedometers WHERE Id = " + SpeedometerID.ToString() + " AND User = " + 
                         Properties.Settings.Default.CurrentUserID.ToString();

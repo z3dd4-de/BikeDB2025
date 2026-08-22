@@ -136,7 +136,7 @@ namespace BikeDB2024.FlightDB
             str = str.Replace("S", " S").Replace("N", " N");
             str = str.Replace("E", " E").Replace("W", " W");
             str = str.Replace("O", " O");
-            char[] separators = { ' ' };
+            char[] separators = new[] { ' ' };
             string[] fields = str.Split(separators,
                 StringSplitOptions.RemoveEmptyEntries);
 

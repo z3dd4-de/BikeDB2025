@@ -59,7 +59,7 @@ namespace BikeDB2024
             
             SqlConnection con1, myConnection;
             sqlquery = $"SELECT * FROM {table} WHERE Id = @id";
-            SqlParameter sqlParameter = new SqlParameter();
+            SqlParameter sqlParameter = new();
             sqlParameter.ParameterName = "@id";
             
             try
@@ -67,7 +67,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         myCommand.CommandText = sqlquery;
                         myCommand.CommandType = CommandType.Text;
@@ -104,7 +104,7 @@ namespace BikeDB2024
                                         int_city3 = Convert.ToInt32(reader[4]);
                                     }
                                     con1.Open();
-                                    using (SqlCommand com1 = new SqlCommand())
+                                    using (SqlCommand com1 = new())
                                     {
                                         com1.CommandText = @"SELECT Id, CityName FROM Cities";
                                         com1.CommandType = CommandType.Text;

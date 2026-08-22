@@ -20,10 +20,21 @@ namespace BikeDB2024
         public byte Cadence { get; set; }
         public uint TripSectionDistanceMeters { get; set; }
         public uint TripSectionTimeSeconds { get; set; }
+        public double MinAltitudeMeters { get; set; }   // ← neu
+        public double MaxAltitudeMeters { get; set; }   // ← neu
+        public uint HeartRate { get; set; }             // ← neu
+        public uint NormalizedPower { get; set; }       // ← neu
+        public uint Profile { get; set; }               // ← neu
+        public uint Weather { get; set; }               // ← neu
+        public uint Feeling { get; set; }               // ← neu
+        public uint Wind { get; set; }                  // ← neu
+        public double Temperature { get; set; }         // ← neu
 
+        // Computed properties – werden nicht in JSON serialisiert
         public double DistanceKm => DistanceMeters / 1000.0;
         public TimeSpan Duration => TimeSpan.FromSeconds(TimeSeconds);
-        public TimeSpan TripSectionDuration => TimeSpan.FromSeconds(TripSectionTimeSeconds);
+        public TimeSpan TripSectionDuration =>
+            TimeSpan.FromSeconds(TripSectionTimeSeconds);
     }
 
     public class DirectoryWatcher
@@ -31,7 +42,7 @@ namespace BikeDB2024
         private FileSystemWatcher watcher;
         private bool newFileDetected = false;
         private string latestFileTimeStamp = string.Empty;
-        static string filename = "bikedata.json";
+        static string filename = "bikedata.json";           //TODO
         public bool IsWatcherActive = false;
 
         // Eigene Events definieren

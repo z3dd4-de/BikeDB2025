@@ -61,8 +61,8 @@ namespace BikeDB2024
         // Map Settings
         private Marker StartMarker { get; set; }
         private Marker EndMarker { get; set; }
-        private List<PointLatLng> FlightLocations = new List<PointLatLng>();
-        GMapOverlay markers = new GMap.NET.WindowsForms.GMapOverlay("markers");
+        private List<PointLatLng> FlightLocations = new();
+        GMapOverlay markers = new("markers");
         #endregion
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace BikeDB2024
 
                 if (Properties.Settings.Default.FDBTakeOffSetting >= 0)
                 {
-                    Marker test = new Marker(Properties.Settings.Default.FDBTakeOffSetting);
+                    Marker test = new(Properties.Settings.Default.FDBTakeOffSetting);
                     takeoffLayoutComboBox.SelectedValue = test.Value;
                     //takeoffLayoutComboBox.SelectedText = Properties.Settings.Default.FDBTakeOffSetting;
                 }
@@ -101,7 +101,7 @@ namespace BikeDB2024
 
                 if (Properties.Settings.Default.FDBLandingSetting >= 0)
                 {
-                    Marker test = new Marker(Properties.Settings.Default.FDBLandingSetting);
+                    Marker test = new(Properties.Settings.Default.FDBLandingSetting);
                     landingLayoutComboBox.SelectedValue = test.Value;
                     //landingLayoutComboBox.SelectedText = Properties.Settings.Default.FDBLandingSetting;
                 }
@@ -241,7 +241,7 @@ namespace BikeDB2024
 
         private void showInfo()
         {
-            AboutFlightDBForm aboutFlightDBForm = new AboutFlightDBForm();
+            AboutFlightDBForm aboutFlightDBForm = new();
             aboutFlightDBForm.ShowDialog();
         }
         #endregion
@@ -282,7 +282,7 @@ namespace BikeDB2024
         
         private void showAirportForm()
         {
-            AirportForm airportForm = new AirportForm();
+            AirportForm airportForm = new();
             if (airportForm.ShowDialog() == DialogResult.OK)
             {
 
@@ -303,7 +303,7 @@ namespace BikeDB2024
 
         private void showPlaneForm()
         {
-            PlaneForm planeForm = new PlaneForm();
+            PlaneForm planeForm = new();
             if (planeForm.ShowDialog() == DialogResult.OK)
             {
 
@@ -324,7 +324,7 @@ namespace BikeDB2024
 
         private void showCosts()
         {
-            CostsForm costForm = new CostsForm();
+            CostsForm costForm = new();
             costForm.IsFlight = true;
             if (costForm.ShowDialog() == DialogResult.OK)
             {
@@ -346,7 +346,7 @@ namespace BikeDB2024
 
         private void showCountryForm()
         {
-            CountryForm countryForm = new CountryForm();
+            CountryForm countryForm = new();
             if (countryForm.ShowDialog() == DialogResult.OK)
             {
 
@@ -367,7 +367,7 @@ namespace BikeDB2024
 
         private void showCityForm()
         {
-            CityForm cityForm = new CityForm();
+            CityForm cityForm = new();
             if (cityForm.ShowDialog() == DialogResult.OK)
             {
 
@@ -388,7 +388,7 @@ namespace BikeDB2024
 
         private void showAirlineForm()
         {
-            AirlineForm airlineForm = new AirlineForm();
+            AirlineForm airlineForm = new();
             if (airlineForm.ShowDialog() == DialogResult.OK)
             {
 
@@ -409,7 +409,7 @@ namespace BikeDB2024
 
         private void showConstructorForm()
         {
-            PlaneManufacturersForm planeManufacturersForm = new PlaneManufacturersForm();
+            PlaneManufacturersForm planeManufacturersForm = new();
             if (planeManufacturersForm.ShowDialog() == DialogResult.OK)
             {
 
@@ -433,7 +433,7 @@ namespace BikeDB2024
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             int id = NextId("Flights");
                             string sqlquery = "INSERT INTO Flights " +
@@ -645,7 +645,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = $"SELECT * FROM Flights WHERE Id = " + current_flight.ToString();
                         com1.CommandType = CommandType.Text;
@@ -754,7 +754,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void airport4ToolStripButton_Click(object sender, EventArgs e)
         {
-            AirportForm airportForm = new AirportForm();
+            AirportForm airportForm = new();
             airportForm.Edit = true;
             airportForm.EditId = current_airline;
             if (airportForm.ShowDialog() == DialogResult.OK)
@@ -823,7 +823,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void plane4ToolStripButton_Click(object sender, EventArgs e)
         {
-            PlaneForm planeForm = new PlaneForm();
+            PlaneForm planeForm = new();
             planeForm.Edit = true;
             planeForm.EditId = current_airline;
             if (planeForm.ShowDialog() == DialogResult.OK)
@@ -892,7 +892,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void airline4ToolStripButton_Click(object sender, EventArgs e)
         {
-            AirlineForm airlineForm = new AirlineForm();
+            AirlineForm airlineForm = new();
             airlineForm.Edit = true;
             airlineForm.EditId = current_airline;
             if (airlineForm.ShowDialog() == DialogResult.OK)
@@ -961,7 +961,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void cost4ToolStripButton_Click(object sender, EventArgs e)
         {
-            CostsForm costsForm = new CostsForm();
+            CostsForm costsForm = new();
             costsForm.Edit = true;
             costsForm.EditId = current_country;
             if (costsForm.ShowDialog() == DialogResult.OK)
@@ -1030,7 +1030,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void country4ToolStripButton_Click(object sender, EventArgs e)
         {
-            CountryForm countryForm = new CountryForm();
+            CountryForm countryForm = new();
             countryForm.Edit = true;
             countryForm.EditId = current_country;
             if (countryForm.ShowDialog() == DialogResult.OK)
@@ -1099,7 +1099,7 @@ namespace BikeDB2024
         /// <param name="e"></param>
         private void city4ToolStripButton_Click(object sender, EventArgs e)
         {
-            CityForm cityForm = new CityForm();
+            CityForm cityForm = new();
             cityForm.Edit = true;
             cityForm.CityId = current_city;
             if (cityForm.ShowDialog() == DialogResult.OK)
@@ -1285,7 +1285,7 @@ namespace BikeDB2024
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             switch (tabPage)
                             {
@@ -1723,7 +1723,7 @@ namespace BikeDB2024
                                                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                                     {
                                                         con1.Open();
-                                                        using (SqlCommand com1 = new SqlCommand())
+                                                        using (SqlCommand com1 = new())
                                                         {
                                                             com1.CommandText = @"SELECT Name, Image FROM Planes WHERE Id = " + reader[4].ToString();
                                                             com1.CommandType = CommandType.Text;
@@ -1755,7 +1755,7 @@ namespace BikeDB2024
                                                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                                 {
                                                     con1.Open();
-                                                    using (SqlCommand com1 = new SqlCommand())
+                                                    using (SqlCommand com1 = new())
                                                     {
                                                         com1.CommandText = @"SELECT Id, Name, IATA FROM Cities";
                                                         com1.CommandType = CommandType.Text;
@@ -1830,7 +1830,7 @@ namespace BikeDB2024
                                                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                                                     {
                                                         con1.Open();
-                                                        using (SqlCommand com1 = new SqlCommand())
+                                                        using (SqlCommand com1 = new())
                                                         {
                                                             com1.CommandText = @"SELECT Name, Nationality, Logo FROM PlaneManufacturers WHERE Id = " + reader[1].ToString();
                                                             com1.CommandType = CommandType.Text;
@@ -1950,7 +1950,7 @@ namespace BikeDB2024
 
         private void distanzberechnungToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GpsDistanceForm gpsForm = new GpsDistanceForm();
+            GpsDistanceForm gpsForm = new();
             gpsForm.ShowDialog();
         }
 
@@ -2034,7 +2034,7 @@ namespace BikeDB2024
             {
                 t_marker = (Marker)takeoffLayoutComboBox.SelectedItem;
             }
-            GMarkerGoogle loc_marker = new GMarkerGoogle(gps_loc, t_marker.Type);
+            GMarkerGoogle loc_marker = new(gps_loc, t_marker.Type);
             loc_marker.ToolTipText = loc.Name;
             loc_marker.ToolTipMode = MarkerTooltipMode.OnMouseOver;
             markers.Markers.Add(loc_marker);
@@ -2099,7 +2099,7 @@ namespace BikeDB2024
 
         private void showSetup()
         {
-            SettingsFlightDBForm settings = new SettingsFlightDBForm();
+            SettingsFlightDBForm settings = new();
             if (settings.ShowDialog() == DialogResult.OK)
             {
                 refreshSettings();

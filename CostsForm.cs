@@ -98,7 +98,7 @@ namespace BikeDB2024
                     break;
             }
 
-            List<CostCategory> data = new List<CostCategory>();
+            List<CostCategory> data = new();
             categoryComboBox.DisplayMember = "Text";
             categoryComboBox.ValueMember = "Value";
 
@@ -107,7 +107,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = sqlquery; 
                         com1.CommandType = CommandType.Text;
@@ -154,7 +154,7 @@ namespace BikeDB2024
             vehicleComboBox.Items.Clear();
 
             SqlConnection con1;
-            List<Vehicle> data = new List<Vehicle>();
+            List<Vehicle> data = new();
             vehicleComboBox.DisplayMember = "Text";
             vehicleComboBox.ValueMember = "Value";
             try
@@ -162,7 +162,7 @@ namespace BikeDB2024
                 using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     con1.Open();
-                    using (SqlCommand com1 = new SqlCommand())
+                    using (SqlCommand com1 = new())
                     {
                         com1.CommandText = @"SELECT * FROM Vehicles WHERE [User] = " + Properties.Settings.Default.CurrentUserID.ToString();
                         com1.CommandType = CommandType.Text;
@@ -200,7 +200,7 @@ namespace BikeDB2024
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = @"SELECT * FROM Costs WHERE Id = " + EditId.ToString();
                             com1.CommandType = CommandType.Text;
@@ -244,7 +244,7 @@ namespace BikeDB2024
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             int id = NextId("Costs");
                             string sqlquery = "INSERT INTO Costs " +

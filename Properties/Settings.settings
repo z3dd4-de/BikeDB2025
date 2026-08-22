@@ -220,5 +220,38 @@
     <Setting Name="BikeDBVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)">BikeDB 2026</Value>
     </Setting>
+    <Setting Name="DBVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0.0.0</Value>
+    </Setting>
+    <Setting Name="UseGPSBabel" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="GPSBabelDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Program Files\GPSBabel</Value>
+    </Setting>
+    <Setting Name="UseTrax" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="GPSFileType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">gpx</Value>
+    </Setting>
+    <Setting Name="TraxFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%BIKEDB%/Trax</Value>
+    </Setting>
+    <Setting Name="SNAFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%BIKEDB%/SigmaNotificationApp</Value>
+    </Setting>
+    <Setting Name="ImportJson" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BikeDBFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UsePowermeter" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UseHeartRate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

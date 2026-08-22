@@ -44,13 +44,13 @@ namespace BikeDB2024.FlightDB
             // Layout Takeoff
             if (Properties.Settings.Default.FDBTakeOffSetting >= 0)
             {
-                Marker test = new Marker(Properties.Settings.Default.FDBTakeOffSetting);
+                Marker test = new(Properties.Settings.Default.FDBTakeOffSetting);
                 takeoffComboBox.SelectedValue = test.Value;
             }
             // Layout Landing
             if (Properties.Settings.Default.FDBLandingSetting >= 0)
             {
-                Marker test = new Marker(Properties.Settings.Default.FDBLandingSetting);
+                Marker test = new(Properties.Settings.Default.FDBLandingSetting);
                 landingComboBox.SelectedValue = test.Value;
             }
             if (Properties.Settings.Default.FDBStartTypeSetting == 0)
@@ -149,6 +149,7 @@ namespace BikeDB2024.FlightDB
 
         private void SettingsFlightDBForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Properties.Settings.Default.Save();
             this.DialogResult = DialogResult.OK;
         }
     }

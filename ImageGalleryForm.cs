@@ -25,13 +25,13 @@ namespace BikeDB2024
         public int Id { get; set; }
         public string CurrentPath { get; set; }
         public GalleryType Gallery { get; set; }
-        private List<Image> images = new List<Image>();
-        private List<PictureBox> boxes = new List<PictureBox>();
+        private List<Image> images = new();
+        private List<PictureBox> boxes = new();
         Bitmap folder = GalleryResources.icons8_folder_48;
         Bitmap image = GalleryResources.icons8_image_48;
         Bitmap flight = GalleryResources.icons8_airport_32;
         Bitmap route = GalleryResources.icons8_journey_32;
-        private ImageList imageList = new ImageList();
+        private ImageList imageList = new();
         //Thumbnail sizes
         private int twidth = 100;
         private int theight = 100;
@@ -128,7 +128,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         string sql = $"SELECT * FROM ImageGalleries WHERE Id = {Id}";   //[User] = " + Properties.Settings.Default.CurrentUserID;
                         myCommand.CommandText = sql;
@@ -177,7 +177,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         string sql = $"SELECT * FROM ImageGalleries WHERE [User] = " + Properties.Settings.Default.CurrentUserID +
                             " ORDER BY Date";
@@ -201,7 +201,7 @@ namespace BikeDB2024
                                         key = "Flight";
                                     }
                                 }
-                                TreeNode node = new TreeNode();
+                                TreeNode node = new();
                                 node.Text = Convert.ToDateTime(reader[5]).ToString("yyyy-MM-dd");
                                 node.ImageKey = key;
                                 node.Tag = reader[3].ToString() + ";" + reader[4].ToString();
@@ -275,7 +275,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         string sql = "";
                         if (type == "Flug")
@@ -372,7 +372,7 @@ namespace BikeDB2024
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     { 
                         int id = NextId("ImageGalleries");
                         string sqlquery = "INSERT INTO ImageGalleries" +
@@ -507,7 +507,7 @@ namespace BikeDB2024
         private void createGallery(GalleryType galleryType, string path)
         {
             boxes = new List<PictureBox>();
-            List<string> filenames = new List<string>();
+            List<string> filenames = new();
 
             switch (galleryType)
             {
@@ -517,7 +517,7 @@ namespace BikeDB2024
                     break;
                 case GalleryType.FOLDER:
                     if (!Directory.Exists(path)) return;
-                    string[] patterns = { "*.png", "*.gif", "*.jpg", "*.tif", "*.bmp" };
+                    string[] patterns = new[] { "*.png", "*.gif", "*.jpg", "*.tif", "*.bmp" };
                     foreach (string pattern in patterns)
                     {
                         filenames.AddRange(Directory.GetFiles(path, pattern, SearchOption.AllDirectories));
@@ -530,7 +530,7 @@ namespace BikeDB2024
 
             foreach (string filename in filenames)
             {
-                PictureBox box = new PictureBox();
+                PictureBox box = new();
                 // Create a thumbnail if needed
                 CreateThumbnail(filename);
                 box.Image = new Bitmap(GetThumbnailFilename(filename));
@@ -556,10 +556,10 @@ namespace BikeDB2024
                 // Add the DoubleClick Event handler
                 box.DoubleClick += pictureBox_DoubleClick;
                 // Add a tooltip
-                FileInfo fileInfo = new FileInfo(filename);
+                FileInfo fileInfo = new(filename);
                 if (fileInfo.Exists)
                 {
-                    using (Bitmap img = new Bitmap(filename))
+                    using (Bitmap img = new(filename))
                     {
                         string tooltip = fileInfo.Name +
                             "\nErstellt: " + fileInfo.CreationTime.ToShortDateString() +
@@ -586,7 +586,7 @@ namespace BikeDB2024
             {
                 if (Properties.Settings.Default.ImageGalleryViewer == "ImageViewer")
                 {
-                    ImageViewerForm imageViewerForm = new ImageViewerForm();
+                    ImageViewerForm imageViewerForm = new();
                     imageViewerForm.Filename = fileInfo.FullName;
                     imageViewerForm.Show();
                 }

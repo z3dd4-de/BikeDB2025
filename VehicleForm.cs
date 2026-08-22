@@ -40,56 +40,54 @@ namespace BikeDB2024
             this.vehiclesTableAdapter.Fill(this.dataSet.Vehicles);
             errorToolStripStatusLabel.Text = "";
             vehiclesComboBox.Text = "";
-            nameEmpty();
+            NameEmpty();
 
             if (Edit)
             {
                 this.Text = "Fahrzeug bearbeiten";
-                loadVehicle();
+                LoadVehicle();
             }
         }
 
         /// <summary>
         /// When in Edit mode, the selected vehicle is loaded.
         /// </summary>
-        private void loadVehicle()
+        private void LoadVehicle()
         {
             SqlConnection con1;
 
             using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
             {
                 con1.Open();
-                using (SqlCommand com1 = new SqlCommand())
+                using (SqlCommand com1 = new())
                 {
                     com1.CommandText = @"SELECT * FROM Vehicles WHERE Id = " + VehicleId.ToString();
                     com1.CommandType = CommandType.Text;
                     com1.Connection = con1;
-                    using (SqlDataReader reader1 = com1.ExecuteReader())
+                    using SqlDataReader reader1 = com1.ExecuteReader();
+                    while (reader1.Read())
                     {
-                        while (reader1.Read())
-                        {
-                            vehiclesComboBox.SelectedIndex = Convert.ToInt32(reader1[0]);
-                            vehiclesComboBox.Enabled = false;
-                            nameTextBox.Text = reader1[1].ToString();
-                            constructorComboBox.SelectedIndex = Convert.ToInt32(reader1[2]);
-                            typeComboBox.SelectedValue = Convert.ToInt32(reader1[3]);
-                            boughtDateTimePicker.Value = Convert.ToDateTime(reader1[4].ToString());
-                            buildYearTextBox.Text = reader1[5].ToString();
-                            priceTextBox.Text = reader1[6].ToString();
-                            inventoryRichTextBox.Text = reader1[7].ToString();
-                            fileTextBox.Text = reader1[8].ToString();
-                            licenseTextBox.Text = reader1[14].ToString();
-                            if (reader1[15] != DBNull.Value)
-                                SpeedometerId = Convert.ToInt32(reader1[15]);
-                            else
-                                SpeedometerId = -1;
-                            ShowSpeedometerButton();
-                            addButton.Enabled = true;
-                            addButton.Text = "Bearbeiten";
-                            errorToolStripStatusLabel.Text = "Bearbeiten: Vehicles - Datensatz " + VehicleId.ToString();
-                        }
-                        reader1.Close();
+                        vehiclesComboBox.SelectedIndex = Convert.ToInt32(reader1[0]);
+                        vehiclesComboBox.Enabled = false;
+                        nameTextBox.Text = reader1[1].ToString();
+                        constructorComboBox.SelectedIndex = Convert.ToInt32(reader1[2]);
+                        typeComboBox.SelectedValue = Convert.ToInt32(reader1[3]);
+                        boughtDateTimePicker.Value = Convert.ToDateTime(reader1[4].ToString());
+                        buildYearTextBox.Text = reader1[5].ToString();
+                        priceTextBox.Text = reader1[6].ToString();
+                        inventoryRichTextBox.Text = reader1[7].ToString();
+                        fileTextBox.Text = reader1[8].ToString();
+                        licenseTextBox.Text = reader1[14].ToString();
+                        if (reader1[15] != DBNull.Value)
+                            SpeedometerId = Convert.ToInt32(reader1[15]);
+                        else
+                            SpeedometerId = -1;
+                        ShowSpeedometerButton();
+                        addButton.Enabled = true;
+                        addButton.Text = "Bearbeiten";
+                        errorToolStripStatusLabel.Text = "Bearbeiten: Vehicles - Datensatz " + VehicleId.ToString();
                     }
+                    reader1.Close();
                 }
                 con1.Close();
             }
@@ -98,7 +96,7 @@ namespace BikeDB2024
         /// <summary>
         /// nameTextBox cannot be empty.
         /// </summary>
-        private void nameEmpty()
+        private void NameEmpty()
         {
             if (nameTextBox.Text == "") addButton.Enabled = false;
         }
@@ -108,7 +106,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
         {
             if (vehiclesComboBox.FindStringExact(nameTextBox.Text) >= 0)
             {
@@ -120,7 +118,7 @@ namespace BikeDB2024
                 addButton.Enabled = true;
                 errorToolStripStatusLabel.Text = "";
             }
-            nameEmpty();
+            NameEmpty();
         }
 
         /// <summary>
@@ -128,7 +126,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void addButton_Click(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -143,7 +141,7 @@ namespace BikeDB2024
                     if (priceTextBox.Text == "") price = 0.0m;
                     else price = Convert.ToDecimal(priceTextBox.Text);
 
-                    DataSetTableAdapters.VehiclesTableAdapter adapter = new DataSetTableAdapters.VehiclesTableAdapter();
+                    DataSetTableAdapters.VehiclesTableAdapter adapter = new();
                     adapter.Insert(length,
                         nameTextBox.Text,
                         constructorComboBox.SelectedIndex,
@@ -170,28 +168,24 @@ namespace BikeDB2024
                         "WHERE Id = " + VehicleId.ToString();
                     try
                     {
-                        using (var connection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
-                        {
-                            using (var command = new SqlCommand(sql, connection))
-                            {
-                                command.Parameters.Add("@VehicleName", SqlDbType.NVarChar).Value = nameTextBox.Text;
-                                command.Parameters.Add("@Manufacturer", SqlDbType.Int).Value = constructorComboBox.SelectedIndex;
-                                command.Parameters.Add("@VehicleType", SqlDbType.Int).Value = typeComboBox.SelectedIndex;
-                                command.Parameters.Add("@BoughtOn", SqlDbType.Date).Value = Convert.ToDateTime(boughtDateTimePicker.Text);
-                                command.Parameters.Add("@BuildYear", SqlDbType.Int).Value = Convert.ToInt32(buildYearTextBox.Text);
-                                command.Parameters.Add("@Price", SqlDbType.Money).Value = Convert.ToDecimal(priceTextBox.Text);
-                                command.Parameters.Add("@Equipment", SqlDbType.NVarChar).Value = inventoryRichTextBox.Text;
-                                command.Parameters.Add("@Image", SqlDbType.NVarChar).Value = fileTextBox.Text;
-                                command.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
-                                command.Parameters.Add("@license", SqlDbType.NChar).Value = licenseTextBox.Text;
-                                command.Parameters.Add("@speedometer", SqlDbType.Int).Value = SpeedometerId;
+                        using var connection = new SqlConnection(Properties.Settings.Default.DataConnectionString);
+                        using var command = new SqlCommand(sql, connection);
+                        command.Parameters.Add("@VehicleName", SqlDbType.NVarChar).Value = nameTextBox.Text;
+                        command.Parameters.Add("@Manufacturer", SqlDbType.Int).Value = constructorComboBox.SelectedIndex;
+                        command.Parameters.Add("@VehicleType", SqlDbType.Int).Value = typeComboBox.SelectedIndex;
+                        command.Parameters.Add("@BoughtOn", SqlDbType.Date).Value = Convert.ToDateTime(boughtDateTimePicker.Text);
+                        command.Parameters.Add("@BuildYear", SqlDbType.Int).Value = Convert.ToInt32(buildYearTextBox.Text);
+                        command.Parameters.Add("@Price", SqlDbType.Money).Value = Convert.ToDecimal(priceTextBox.Text);
+                        command.Parameters.Add("@Equipment", SqlDbType.NVarChar).Value = inventoryRichTextBox.Text;
+                        command.Parameters.Add("@Image", SqlDbType.NVarChar).Value = fileTextBox.Text;
+                        command.Parameters.Add("@last", SqlDbType.DateTime).Value = DateTime.Now;
+                        command.Parameters.Add("@license", SqlDbType.NChar).Value = licenseTextBox.Text;
+                        command.Parameters.Add("@speedometer", SqlDbType.Int).Value = SpeedometerId;
 
-                                connection.Open();
-                                command.ExecuteNonQuery();
-                                connection.Close();
-                                this.DialogResult = DialogResult.OK;
-                            }
-                        }
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                        this.DialogResult = DialogResult.OK;
                     }
                     catch (Exception ex)
                     {
@@ -212,7 +206,7 @@ namespace BikeDB2024
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void fileButton_Click(object sender, EventArgs e)
+        private void FileButton_Click(object sender, EventArgs e)
         {
             openFileDialog.Title = "Bilddatei für Fahrzeug auswählen";
             openFileDialog.FileName = "";
@@ -227,12 +221,14 @@ namespace BikeDB2024
             }
         }
 
-        private void tachoButton_Click(object sender, EventArgs e)
+        private void TachoButton_Click(object sender, EventArgs e)
         {
             if (SpeedometerId >= 0)
             {
-                SpeedometerForm speedometerForm = new SpeedometerForm();
-                speedometerForm.SpeedometerID = SpeedometerId;
+                SpeedometerForm speedometerForm = new()
+                {
+                    SpeedometerID = SpeedometerId
+                };
                 if (speedometerForm.ShowDialog() == DialogResult.OK)
                 {
                     SpeedometerId = speedometerForm.SpeedometerID;
@@ -240,7 +236,7 @@ namespace BikeDB2024
             }
             else
             {
-                SpeedometerForm speedometerForm = new SpeedometerForm();
+                SpeedometerForm speedometerForm = new();
                 if (speedometerForm.ShowDialog() == DialogResult.OK)
                 {
                     SpeedometerId = speedometerForm.SpeedometerID;
@@ -248,14 +244,14 @@ namespace BikeDB2024
             }
         }
 
-        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowSpeedometerButton();
         }
 
         private void ShowSpeedometerButton()
         {
-            int[] ints = { 1, 3, 4, 5, 7, 8, 9, 10, 18, 19 };
+            int[] ints = new[] { 1, 3, 4, 5, 7, 8, 9, 10, 18, 19 };
             if (ints.Contains((int)typeComboBox.SelectedValue))
             {
                 tachoButton.Visible = true;

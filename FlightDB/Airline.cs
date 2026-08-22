@@ -67,7 +67,7 @@ namespace BikeDB2024.FlightDB
                 using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                 {
                     myConnection.Open();
-                    using (SqlCommand myCommand = new SqlCommand())
+                    using (SqlCommand myCommand = new())
                     {
                         myCommand.CommandText = sqlquery;
                         myCommand.CommandType = CommandType.Text;

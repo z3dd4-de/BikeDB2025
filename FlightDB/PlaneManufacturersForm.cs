@@ -62,7 +62,7 @@ namespace BikeDB2024.FlightDB
                     using (myConnection = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         myConnection.Open();
-                        using (SqlCommand myCommand = new SqlCommand())
+                        using (SqlCommand myCommand = new())
                         {
                             int id = NextId("PlaneManufacturers");
                             string sqlquery = "INSERT INTO PlaneManufacturers " +
@@ -165,7 +165,7 @@ namespace BikeDB2024.FlightDB
                     using (con1 = new SqlConnection(Properties.Settings.Default.DataConnectionString))
                     {
                         con1.Open();
-                        using (SqlCommand com1 = new SqlCommand())
+                        using (SqlCommand com1 = new())
                         {
                             com1.CommandText = @"SELECT * FROM PlaneManufacturers WHERE Id = " + EditId.ToString();
                             com1.CommandType = CommandType.Text;
